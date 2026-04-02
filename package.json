@@ -1,0 +1,11 @@
+{
+  "name": "gregs-bar-server",
+  "version": "1.0.0",
+  "main": "bar-sync-server.js",
+  "scripts": {
+    "start": "node bar-sync-server.js"
+  },
+  "dependencies": {
+    "web-push": "^3.6.7"
+  }
+}

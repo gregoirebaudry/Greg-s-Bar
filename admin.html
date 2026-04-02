@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0f1724">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Cocktail Bar Admin">
+  <link rel="manifest" href="./manifest.webmanifest">
+  <link rel="apple-touch-icon" href="./icon-180.png">
+  <title>Barman Console</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --background: #0f1724;
+      --foreground: #f4efe6;
+      --muted-foreground: #9aa4b2;
+      --card: #1f2737;
+      --border: rgba(212, 168, 83, 0.18);
+      --primary: #d4a853;
+      --primary-strong: #efc56d;
+      --danger-bg: rgba(212, 110, 110, 0.12);
+      --danger-border: rgba(228, 107, 115, 0.26);
+      --danger-fg: #ffd6d9;
+      --success-bg: rgba(69, 151, 92, 0.16);
+      --success-border: rgba(69, 151, 92, 0.36);
+      --success-fg: #dcf5e0;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: 'Inter', system-ui, sans-serif;
+      background:
+        radial-gradient(circle at top, rgba(212, 168, 83, 0.12), transparent 35%),
+        linear-gradient(180deg, #0f1724 0%, #111827 100%);
+      color: var(--foreground);
+    }
+    .page { max-width: 900px; margin: 0 auto; padding: 1rem; }
+    .hero {
+      display: flex; justify-content: space-between; gap: 1rem; align-items: flex-start;
+      margin-bottom: 1rem; padding: 1rem 1.05rem 0.9rem;
+      border: 1px solid var(--border); border-radius: 1rem; background: rgba(31, 39, 55, 0.8);
+      box-shadow: 0 18px 40px rgba(0,0,0,0.18);
+    }
+    .hero-close-control {
+      display: flex;
+      align-items: flex-start;
+      justify-content: flex-start;
+      flex: 0 0 auto;
+      order: -1;
+    }
+    .hero-main {
+      flex: 1 1 auto;
+      min-width: 0;
+    }
+    .admin-brand { display: flex; align-items: center; gap: 0.75rem; }
+    .admin-brand img { max-width: 220px; width: auto; height: 52px; object-fit: contain; object-position: left center; }
+    .admin-brand-text {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 1.02rem;
+      letter-spacing: 0.03em;
+      color: var(--primary-strong);
+      line-height: 0.95;
+      display: inline-flex;
+      flex-direction: column;
+      white-space: normal;
+    }
+    .hero-meta { margin-top: 0.5rem; display: flex; flex-wrap: wrap; align-items: center; gap: 0.55rem; font-size: 0.84rem; color: var(--muted-foreground); }
+    .hero-meta strong { color: var(--foreground); font-weight: 700; }
+    .dot { opacity: 0.6; }
+    .sound-status {
+      display: inline-flex; align-items: center; gap: 0.35rem; padding: 0.18rem 0.48rem; border-radius: 999px;
+      border: 1px solid rgba(212, 168, 83, 0.22); background: rgba(255,255,255,0.03); font-size: 0.76rem; line-height: 1.2;
+    }
+    .sound-status.ready { color: #dff5e5; border-color: rgba(69,151,92,0.3); background: rgba(69,151,92,0.12); }
+    .hero-subtitle { margin: 0.45rem 0 0; color: var(--muted-foreground); font-size: 0.82rem; }
+
+    .bar-sign {
+      border: 1px solid rgba(125, 180, 132, 0.55);
+      border-radius: 999px;
+      padding: 0.42rem 0.24rem;
+      width: 2.1rem;
+      min-width: 2.1rem;
+      background: linear-gradient(180deg, rgba(164, 214, 177, 0.24) 0%, rgba(164, 214, 177, 0.14) 100%);
+      color: var(--foreground);
+      cursor: pointer;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.22);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      align-self: flex-start;
+      transition: border-color 0.2s ease, background 0.2s ease;
+    }
+    .bar-sign.closed {
+      background: linear-gradient(180deg, rgba(212, 110, 110, 0.18) 0%, rgba(212, 110, 110, 0.10) 100%);
+      border-color: rgba(212, 110, 110, 0.42);
+    }
+    .bar-sign.closed .bar-sign-status {
+      background: rgba(175, 63, 63, 0.28);
+      border-color: rgba(228, 107, 115, 0.62);
+    }
+    .bar-sign.closed .bar-sign-status::after {
+      transform: translateX(-50%);
+      background: #fff3f4;
+    }
+    .bar-sign-status {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 1.34rem;
+      height: 2.95rem;
+      min-width: 1.34rem;
+      border-radius: 999px;
+      font-size: 0;
+      line-height: 0;
+      border: 1px solid rgba(255,255,255,0.14);
+      background: rgba(69, 151, 92, 0.38);
+      transition: background 0.2s ease, border-color 0.2s ease;
+    }
+    .bar-sign-status::after {
+      content: '';
+      position: absolute;
+      left: 50%;
+      top: 0.12rem;
+      width: 0.9rem;
+      height: 0.9rem;
+      border-radius: 999px;
+      background: #f7fff5;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.22);
+      transform: translate(-50%, 1.8rem);
+      transition: transform 0.22s ease, background 0.2s ease;
+    }
+    .panel {
+      border: 1px solid var(--border); border-radius: 1rem; background: rgba(31,39,55,0.78); padding: 1rem;
+      box-shadow: 0 18px 40px rgba(0,0,0,0.16);
+    }
+    .panel-header { display: flex; justify-content: space-between; align-items: center; gap: 1rem; margin-bottom: 0.85rem; }
+    .panel-title { margin: 0; font-family: 'Playfair Display', Georgia, serif; font-size: 1.4rem; }
+    .panel-subtitle { margin: 0.18rem 0 0; color: var(--muted-foreground); font-size: 0.86rem; }
+    .queue { display: flex; flex-direction: column; gap: 0.7rem; }
+    .order-card { border: 1px solid var(--border); border-radius: 0.9rem; background: rgba(15,23,42,0.55); padding: 0.75rem 0.9rem; max-width: 680px; }
+    .order-top { display: flex; justify-content: space-between; gap: 0.75rem; align-items: center; margin-bottom: 0.35rem; }
+    .guest { font-weight: 700; font-size: 1rem; }
+    .cocktail { color: var(--primary-strong); font-size: 0.95rem; font-weight: 600; }
+    .time { color: var(--muted-foreground); font-size: 0.8rem; white-space: nowrap; }
+    .actions { display: flex; justify-content: flex-end; margin-top: 0.65rem; }
+    .serve-btn {
+      border: 1px solid var(--success-border); border-radius: 999px; padding: 0.62rem 0.96rem;
+      background: var(--success-bg); color: var(--success-fg); cursor: pointer; font: inherit;
+      transition: background 0.15s ease, border-color 0.15s ease;
+    }
+    .serve-btn:hover { background: rgba(69, 151, 92, 0.28); border-color: rgba(69, 151, 92, 0.55); }
+    .serve-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+    .bar-sign:disabled,
+    .close-bar-btn:disabled,
+    .serve-btn:disabled {
+      cursor: not-allowed;
+      opacity: 0.6;
+    }
+    .order-line { display: flex; flex-wrap: wrap; align-items: center; gap: 0.35rem; font-size: 1rem; line-height: 1.35; }
+    .order-line .gold { color: #d4a853; font-weight: 800; text-shadow: 0 0 10px rgba(212, 168, 83, 0.22); }
+    .order-card.order-enter { animation: orderSlideIn 260ms ease-out; }
+    @keyframes orderSlideIn {
+      from { opacity: 0; transform: translateX(16px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+    .empty { color: var(--muted-foreground); padding: 0.3rem 0 0.1rem; }
+    .error { margin-top: 0.75rem; color: #ffb3b8; min-height: 1.2rem; font-size: 0.85rem; }
+
+    /* Close-bar button in panel header */
+    .close-bar-btn {
+      border: 1px solid var(--danger-border); border-radius: 999px; padding: 0.5rem 0.9rem;
+      background: var(--danger-bg); color: var(--danger-fg); cursor: pointer; font: inherit; font-size: 0.82rem;
+      transition: background 0.15s ease;
+    }
+    .close-bar-btn:hover { background: rgba(212, 110, 110, 0.22); }
+
+    /* Refresh button */
+    .refresh-btn {
+      border: 1px solid var(--border); border-radius: 999px; padding: 0.5rem 0.9rem;
+      background: rgba(255,255,255,0.04); color: var(--muted-foreground); cursor: pointer; font: inherit; font-size: 0.82rem;
+      transition: color 0.15s ease, border-color 0.15s ease;
+    }
+    .refresh-btn:hover { color: var(--foreground); border-color: rgba(212, 168, 83, 0.4); }
+
+    .pwa-card {
+      margin-top: 0.75rem; padding: 0.75rem 0.85rem; border-radius: 0.9rem; border: 1px solid rgba(212, 168, 83, 0.24);
+      background: rgba(255,255,255,0.03); display: flex; flex-wrap: wrap; align-items: center; gap: 0.65rem;
+    }
+    .pwa-card.hidden { display: none; }
+    .pwa-title { font-size: 0.82rem; color: var(--foreground); font-weight: 600; }
+    .pwa-copy { font-size: 0.78rem; color: var(--muted-foreground); line-height: 1.35; flex: 1 1 260px; }
+    .pwa-actions { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+    .pwa-btn { border: 1px solid rgba(212, 168, 83, 0.28); border-radius: 999px; padding: 0.46rem 0.75rem; background: rgba(212, 168, 83, 0.12); color: var(--foreground); cursor: pointer; font: inherit; font-size: 0.78rem; }
+    .pwa-btn.secondary { background: transparent; }
+    .pwa-status-note { width: 100%; font-size: 0.75rem; color: var(--muted-foreground); }
+
+    /* Kicked-out overlay */
+    .kicked-overlay {
+      display: none; position: fixed; inset: 0; background: rgba(7, 10, 18, 0.85);
+      backdrop-filter: blur(6px); align-items: center; justify-content: center;
+      padding: 1.5rem; z-index: 2000; text-align: center;
+    }
+    .kicked-overlay.active { display: flex; flex-direction: column; gap: 1rem; }
+    .kicked-overlay p { color: var(--muted-foreground); max-width: 340px; }
+    .kicked-overlay a {
+      border: 1px solid rgba(212, 168, 83, 0.4); border-radius: 999px; padding: 0.7rem 1.4rem;
+      background: rgba(212, 168, 83, 0.14); color: var(--foreground); text-decoration: none; font-weight: 600;
+    }
+
+    @media (max-width: 640px) {
+      .hero { flex-direction: row; align-items: flex-start; }
+      .admin-brand img { height: 46px; max-width: 180px; }
+      .admin-brand-text { font-size: 0.92rem; }
+      .bar-sign { width: 1.9rem; min-width: 1.9rem; padding: 0.38rem 0.2rem; }
+      .bar-sign-status { width: 1.18rem; min-width: 1.18rem; height: 2.55rem; }
+      .bar-sign-status::after { width: 0.78rem; height: 0.78rem; transform: translate(-50%, 1.5rem); }
+      .bar-sign.closed .bar-sign-status::after { transform: translateX(-50%); }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <section class="hero">
+      <div class="hero-close-control">
+        <button type="button" class="bar-sign" id="closeBarBtn" aria-label="Close bar">
+          <span class="bar-sign-status" id="barSignStatus"></span>
+        </button>
+      </div>
+      <div class="hero-main">
+        <div class="admin-brand">
+          <img id="adminLogo" src="images/logos/greg-logo.png" alt="Bar logo">
+          <div class="admin-brand-text"><span>Barman</span><span>Console</span></div>
+        </div>
+        <div class="hero-meta">
+          <span>Orders taken: <strong id="metricOrders">0</strong></span>
+          <span class="dot">•</span>
+          <span>Pending cocktails: <strong id="metricPending">0</strong></span>
+          <span class="sound-status" id="soundStatus">Background alerts not enabled</span>
+        </div>
+
+        <div class="pwa-card hidden" id="pwaCard">
+          <div>
+            <div class="pwa-title">Install on iPhone for real background alerts</div>
+            <div class="pwa-copy">Add this admin screen to your Home Screen, then enable notifications once. iPhone will alert you for new orders even when the app is in the background.</div>
+          </div>
+          <div class="pwa-actions">
+            <button type="button" class="pwa-btn" id="enablePushBtn">Enable background alerts</button>
+            <button type="button" class="pwa-btn secondary" id="dismissPwaBtn">Hide</button>
+          </div>
+          <div class="pwa-status-note" id="pwaStatusNote"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel">
+      <div class="panel-header">
+        <div>
+          <h2 class="panel-title">Cocktails to make</h2>
+        </div>
+
+      </div>
+      <div class="queue" id="queue"></div>
+      <div class="empty" id="emptyQueue" style="display:none;">No pending cocktails right now.</div>
+      <div class="error" id="errorBox"></div>
+    </section>
+  </div>
+
+  <!-- Kicked out overlay (session expired / bar closed externally) -->
+  <div class="kicked-overlay" id="kickedOverlay">
+    <h2 style="font-family:'Playfair Display',serif;font-size:1.5rem;">Session ended</h2>
+    <p>The bar has been closed or your admin session has expired.</p>
+    <a href="index.html">← Back to menu</a>
+  </div>
+
+  <script>
+    // ─── Constants ────────────────────────────────────────────────────────────
+    const BASE_URL = 'https://gregs-bar.onrender.com';
+    const POLL_MS  = 4000;
+    const ADMIN_SESSION_STORAGE_KEY = 'bar_admin_session_token';
+
+    const BAR_CONFIG = {
+      Greg:    { logo: 'images/logos/greg-logo.png',    headerAlt: "Greg's Bar"        },
+      Clement: { logo: 'images/logos/clement-logo.png', headerAlt: "Clement's Lounge"  },
+      Bastien: { logo: 'images/logos/bastien-logo.png', headerAlt: "Bastien's Bar"      }
+    };
+
+    // ─── State ────────────────────────────────────────────────────────────────
+    let barState   = { isOpen: false, barman: null, sessionOrders: 0, pendingOrders: [] };
+    let poller     = null;
+    let pushReady  = false;
+    let adminBusy  = false;
+
+    // Ensure a controlling service worker exists before requesting push.
+    async function ensureServiceWorkerRegistration() {
+      if (!('serviceWorker' in navigator)) {
+        throw new Error('Service workers are not supported on this device/browser.');
+      }
+      const registration = await navigator.serviceWorker.register('./service-worker.js', { scope: './' });
+      await navigator.serviceWorker.ready;
+      return registration;
+    }
+
+    // ─── Storage helpers ──────────────────────────────────────────────────────
+    function getToken() {
+      try { return localStorage.getItem(ADMIN_SESSION_STORAGE_KEY) || ''; } catch { return ''; }
+    }
+    function clearToken() {
+      try { localStorage.removeItem(ADMIN_SESSION_STORAGE_KEY); } catch {}
+    }
+
+    // ─── API helpers ──────────────────────────────────────────────────────────
+    async function apiFetch(path, options = {}) {
+      const res = await fetch(`${BASE_URL}${path}`, {
+        cache: 'no-store',
+        headers: { 'Content-Type': 'application/json' },
+        ...options
+      });
+      const payload = await res.json().catch(() => ({}));
+      return { res, payload };
+    }
+
+    function escapeHtml(v) {
+      return String(v).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+    }
+
+    function formatTime(iso) {
+      if (!iso) return '';
+      const d = new Date(iso);
+      if (isNaN(d)) return '';
+      return d.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+    }
+
+    // ─── Normalise bar state from server ──────────────────────────────────────
+    function normaliseState(raw) {
+      const s = raw && typeof raw === 'object' ? raw : {};
+      return {
+        isOpen:        Boolean(s.isOpen),
+        barman:        typeof s.barman === 'string' ? s.barman : null,
+        sessionOrders: Math.max(0, Math.floor(Number(s.sessionOrders) || 0)),
+        pendingOrders: Array.isArray(s.pendingOrders) ? s.pendingOrders : []
+      };
+    }
+
+    // ─── Render ───────────────────────────────────────────────────────────────
+    function renderHero() {
+      const cfg = BAR_CONFIG[barState.barman];
+      if (cfg) {
+        document.getElementById('adminLogo').src = cfg.logo;
+        document.getElementById('adminLogo').alt = cfg.headerAlt;
+      }
+      document.getElementById('metricOrders').textContent  = barState.sessionOrders;
+      document.getElementById('metricPending').textContent = barState.pendingOrders.length;
+
+
+      const closeBtn = document.getElementById('closeBarBtn');
+      closeBtn.classList.toggle('closed', !barState.isOpen);
+      closeBtn.disabled = adminBusy || !barState.isOpen;
+    }
+
+    function renderQueue() {
+      const queue    = document.getElementById('queue');
+      const emptyEl  = document.getElementById('emptyQueue');
+      const orders   = barState.pendingOrders;
+
+      if (!orders.length) {
+        queue.innerHTML = '';
+        emptyEl.style.display = 'block';
+        return;
+      }
+      emptyEl.style.display = 'none';
+
+      // Preserve existing cards; add new ones; remove served ones
+      const existingIds = new Set([...queue.querySelectorAll('.order-card')].map(el => el.dataset.id));
+      const incomingIds = new Set(orders.map(o => o.id));
+
+      // Remove cards no longer in queue
+      queue.querySelectorAll('.order-card').forEach(el => {
+        if (!incomingIds.has(el.dataset.id)) el.remove();
+      });
+
+      // Add new cards at the bottom
+      orders.forEach(order => {
+        if (existingIds.has(order.id)) return; // already rendered
+        const card = document.createElement('div');
+        card.className = 'order-card order-enter';
+        card.dataset.id = order.id;
+        card.innerHTML = `
+          <div class="order-top">
+            <span class="guest">${escapeHtml(order.guestName)}</span>
+            <span class="time">${escapeHtml(formatTime(order.createdAt))}</span>
+          </div>
+          <div class="order-line">
+            <span>Ordered a</span>
+            <span class="gold">${escapeHtml(order.cocktailName)}</span>
+          </div>
+          <div class="actions">
+            <button class="serve-btn" data-id="${escapeHtml(order.id)}">✓ Served</button>
+          </div>
+        `;
+        card.querySelector('.serve-btn').addEventListener('click', () => serveOrder(order.id, card));
+        queue.appendChild(card);
+      });
+    }
+
+    function setError(msg) {
+      document.getElementById('errorBox').textContent = msg || '';
+    }
+
+    function setAdminBusy(nextValue, message = '') {
+      adminBusy = Boolean(nextValue);
+      const closeBtn = document.getElementById('closeBarBtn');
+      if (closeBtn) closeBtn.disabled = adminBusy || !barState.isOpen;
+
+      document.querySelectorAll('.serve-btn').forEach(btn => {
+        btn.disabled = adminBusy;
+      });
+
+      if (message) setError(message);
+      else if (!adminBusy) setError('');
+    }
+
+
+    // ─── Apply incoming state ─────────────────────────────────────────────────
+    function applyState(raw) {
+      barState = normaliseState(raw);
+      renderHero();
+      renderQueue();
+
+      if (!barState.isOpen) {
+        showKickedOverlay();
+      }
+    }
+
+    // ─── Server calls ─────────────────────────────────────────────────────────
+    async function loadState(silent = false) {
+      try {
+        const token = getToken();
+        if (!token) { showKickedOverlay(); return; }
+
+        // Validate admin session
+        const { res: sRes, payload: sPayload } = await apiFetch(`/api/admin-session?token=${encodeURIComponent(token)}`);
+        if (!sRes.ok || !sPayload.active) {
+          clearToken();
+          showKickedOverlay();
+          return;
+        }
+
+        applyState(sPayload.state);
+      } catch (err) {
+        if (!silent) setError('Unable to connect to the server.');
+      }
+    }
+
+    async function serveOrder(orderId, cardEl) {
+      const btn = cardEl?.querySelector('.serve-btn');
+      if (btn) btn.disabled = true;
+      setError('');
+
+      try {
+        const { res, payload } = await apiFetch('/api/orders/complete', {
+          method: 'POST',
+          body: JSON.stringify({ orderId, token: getToken() })
+        });
+
+        if (!res.ok) {
+          if (res.status === 401) { clearToken(); showKickedOverlay(); return; }
+          throw new Error(payload.error || `Server error ${res.status}`);
+        }
+
+        if (payload.state) applyState(payload.state);
+      } catch (err) {
+        setError(err.message || 'Unable to mark order as served.');
+        if (btn) btn.disabled = false;
+      }
+    }
+
+    async function closeBar() {
+      // Show custom confirmation dialog without the browser title
+      const confirmed = await showCustomConfirm('Close the bar and end the session?');
+      if (!confirmed) return;
+      
+      setError('');
+      try {
+        const { res, payload } = await apiFetch('/api/bar-state/close', {
+          method: 'POST',
+          body: JSON.stringify({ token: getToken() })
+        });
+        if (!res.ok) throw new Error(payload.error || `Server error ${res.status}`);
+        clearToken();
+        applyState({ isOpen: false, barman: null, sessionOrders: 0, pendingOrders: [] });
+        stopPolling();
+        
+        // Redirect to the main index page after successful close
+        window.location.href = 'index.html';
+      } catch (err) {
+        setError(err.message || 'Unable to close the bar.');
+      }
+    }
+    
+    function showCustomConfirm(message) {
+      return new Promise((resolve) => {
+        // Create overlay
+        const overlay = document.createElement('div');
+        overlay.style.cssText = `
+          position: fixed;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          background: rgba(0, 0, 0, 0.5);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          z-index: 10000;
+        `;
+        
+        // Create dialog box
+        const dialog = document.createElement('div');
+        dialog.style.cssText = `
+          background: white;
+          padding: 24px;
+          border-radius: 8px;
+          box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+          max-width: 400px;
+          font-family: inherit;
+        `;
+        
+        // Create message
+        const messageEl = document.createElement('p');
+        messageEl.textContent = message;
+        messageEl.style.cssText = `
+          margin: 0 0 20px 0;
+          font-size: 16px;
+          color: #333;
+        `;
+        
+        // Create button container
+        const buttonContainer = document.createElement('div');
+        buttonContainer.style.cssText = `
+          display: flex;
+          gap: 10px;
+          justify-content: flex-end;
+        `;
+        
+        // Create Cancel button
+        const cancelBtn = document.createElement('button');
+        cancelBtn.textContent = 'Cancel';
+        cancelBtn.style.cssText = `
+          padding: 8px 16px;
+          background: #f0f0f0;
+          border: 1px solid #ddd;
+          border-radius: 4px;
+          cursor: pointer;
+          font-size: 14px;
+          transition: background 0.2s;
+        `;
+        cancelBtn.onmouseover = () => cancelBtn.style.background = '#e0e0e0';
+        cancelBtn.onmouseout = () => cancelBtn.style.background = '#f0f0f0';
+        cancelBtn.onclick = () => {
+          overlay.remove();
+          resolve(false);
+        };
+        
+        // Create Confirm button
+        const confirmBtn = document.createElement('button');
+        confirmBtn.textContent = 'Close Bar';
+        confirmBtn.style.cssText = `
+          padding: 8px 16px;
+          background: #dc2626;
+          color: white;
+          border: none;
+          border-radius: 4px;
+          cursor: pointer;
+          font-size: 14px;
+          transition: background 0.2s;
+        `;
+        confirmBtn.onmouseover = () => confirmBtn.style.background = '#b91c1c';
+        confirmBtn.onmouseout = () => confirmBtn.style.background = '#dc2626';
+        confirmBtn.onclick = () => {
+          overlay.remove();
+          resolve(true);
+        };
+        
+        buttonContainer.appendChild(cancelBtn);
+        buttonContainer.appendChild(confirmBtn);
+        
+        dialog.appendChild(messageEl);
+        dialog.appendChild(buttonContainer);
+        overlay.appendChild(dialog);
+        document.body.appendChild(overlay);
+        
+        // Focus the cancel button by default for safety
+        cancelBtn.focus();
+      });
+    }
+
+    // ─── Polling ──────────────────────────────────────────────────────────────
+    function startPolling() {
+      if (poller) return;
+      poller = setInterval(() => {
+        if (!document.hidden) loadState(true);
+      }, POLL_MS);
+    }
+
+    function stopPolling() {
+      clearInterval(poller);
+      poller = null;
+    }
+
+    // ─── Kicked-out overlay ───────────────────────────────────────────────────
+    function showKickedOverlay() {
+      stopPolling();
+      document.getElementById('kickedOverlay').classList.add('active');
+    }
+
+    // ─── Push notifications ───────────────────────────────────────────────────
+    async function initPush() {
+      if (!('serviceWorker' in navigator) || !('PushManager' in window)) return;
+      try {
+        await ensureServiceWorkerRegistration();
+      } catch (error) {
+        console.warn('Service worker registration failed:', error);
+        return;
+      }
+
+      const isPwa = window.matchMedia('(display-mode: standalone)').matches
+        || window.navigator.standalone === true;
+
+      const pwaCard     = document.getElementById('pwaCard');
+      const statusNote  = document.getElementById('pwaStatusNote');
+      const soundStatus = document.getElementById('soundStatus');
+
+      if (!isPwa) {
+        pwaCard.classList.remove('hidden');
+        return;
+      }
+
+      // Already granted?
+      if (Notification.permission === 'granted') {
+        await subscribePush();
+        return;
+      }
+
+      pwaCard.classList.remove('hidden');
+
+      document.getElementById('enablePushBtn').addEventListener('click', async () => {
+        statusNote.textContent = 'Requesting permission…';
+        const perm = await Notification.requestPermission();
+        if (perm === 'granted') {
+          await subscribePush();
+          statusNote.textContent = '✓ Background alerts enabled. Keep this Home Screen app installed and allow notifications in iPhone Settings.';
+          soundStatus.textContent = '✓ Background alerts active';
+          soundStatus.classList.add('ready');
+        } else {
+          statusNote.textContent = 'Permission denied — alerts will not work.';
+        }
+      });
+
+      document.getElementById('dismissPwaBtn').addEventListener('click', () => {
+        pwaCard.classList.add('hidden');
+      });
+    }
+
+    async function subscribePush() {
+      try {
+        const { payload: keyPayload } = await apiFetch('/api/push/public-key');
+        if (!keyPayload.publicKey) return;
+
+        const reg = await ensureServiceWorkerRegistration();
+        let sub = await reg.pushManager.getSubscription();
+        if (!sub) {
+          sub = await reg.pushManager.subscribe({
+            userVisibleOnly: true,
+            applicationServerKey: urlBase64ToUint8Array(keyPayload.publicKey)
+          });
+        }
+
+        const subscribeRes = await apiFetch('/api/push/subscribe', {
+          method: 'POST',
+          body: JSON.stringify({ subscription: sub.toJSON() })
+        });
+        if (!subscribeRes.res.ok) {
+          throw new Error(subscribeRes.payload.error || 'Subscription upload failed');
+        }
+
+        document.getElementById('soundStatus').textContent = '✓ Background alerts active';
+        document.getElementById('soundStatus').classList.add('ready');
+        pushReady = true;
+      } catch (err) {
+        console.warn('Push subscription failed:', err);
+      }
+    }
+
+    function urlBase64ToUint8Array(base64String) {
+      const padding = '='.repeat((4 - base64String.length % 4) % 4);
+      const base64  = (base64String + padding).replace(/-/g, '+').replace(/_/g, '/');
+      const raw     = atob(base64);
+      return Uint8Array.from([...raw].map(c => c.charCodeAt(0)));
+    }
+
+    // ─── Wire up buttons ──────────────────────────────────────────────────────
+    document.getElementById('closeBarBtn').addEventListener('click', closeBar);
+
+    // ─── Boot ─────────────────────────────────────────────────────────────────
+    (async function init() {
+      const token = getToken();
+      if (!token) { showKickedOverlay(); return; }
+      try {
+        await ensureServiceWorkerRegistration();
+      } catch (error) {
+        console.warn('Unable to register service worker during boot.', error);
+      }
+      await loadState(false);
+      startPolling();
+      initPush();
+    })();
+  </script>
+</body>
+</html>
