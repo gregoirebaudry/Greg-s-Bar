@@ -7,7 +7,6 @@ const webpush = require('web-push');
 const PORT = process.env.PORT || 3000;
 const HOST = '0.0.0.0';
 const STATE_FILE = path.join(__dirname, 'bar-state.json');
-const LOCAL_COCKTAILS_FILE = path.join(__dirname, 'cocktail.json');
 
 const VAPID_PUBLIC_KEY = process.env.VAPID_PUBLIC_KEY || '';
 const VAPID_PRIVATE_KEY = process.env.VAPID_PRIVATE_KEY || '';
@@ -28,27 +27,9 @@ if (VAPID_PUBLIC_KEY && VAPID_PRIVATE_KEY) {
 }
 
 const BARMEN = {
-  Greg: {
-    password: 'Tom Collins',
-    title: "Greg's Bar order",
-    summaryTitle: "Greg's Bar recap",
-    openTitle: "Greg's Bar open",
-    closeTitle: "Greg's Bar closed"
-  },
-  Clement: {
-    password: 'Chartreuse',
-    title: "Clement's Lounge order",
-    summaryTitle: "Clement's Lounge recap",
-    openTitle: "Clement's Lounge open",
-    closeTitle: "Clement's Lounge closed"
-  },
-  Bastien: {
-    password: 'Belle Bulle',
-    title: 'Bar Stoss order',
-    summaryTitle: 'Bar Stoss recap',
-    openTitle: 'Bar Stoss open',
-    closeTitle: 'Bar Stoss closed'
-  }
+  Greg: { password: 'Tom Collins', title: "Greg's Bar order", summaryTitle: "Greg's Bar recap", openTitle: "Greg's Bar open", closeTitle: "Greg's Bar closed" },
+  Clement: { password: 'Chartreuse', title: "Clement's Lounge order", summaryTitle: "Clement's Lounge recap", openTitle: "Clement's Lounge open", closeTitle: "Clement's Lounge closed" },
+  Bastien: { password: 'Belle Bulle', title: 'Bar Stoss order', summaryTitle: 'Bar Stoss recap', openTitle: 'Bar Stoss open', closeTitle: 'Bar Stoss closed' }
 };
 
 const DEFAULT_STATE = {
@@ -63,12 +44,13 @@ const DEFAULT_STATE = {
   updatedAt: new Date().toISOString()
 };
 
+let state = normalizeState(DEFAULT_STATE);
 let queue = Promise.resolve();
 let cocktailsCache = [];
 let cocktailsCacheUpdatedAt = null;
 let cocktailsCacheSource = 'uninitialized';
 let cocktailsCacheError = null;
-let state = normalizeState(DEFAULT_STATE);
+state = loadState();
 
 function normalizePendingOrders(rawOrders) {
   if (!Array.isArray(rawOrders)) return [];
@@ -90,8 +72,7 @@ function normalizeOrderHistory(rawOrders) {
       guestName: String(order && order.guestName ? order.guestName : '').trim(),
       cocktailName: String(order && order.cocktailName ? order.cocktailName : '').trim(),
       createdAt: String(order && order.createdAt ? order.createdAt : new Date().toISOString()),
-      servedAt: order && order.servedAt ? String(order.servedAt) : null,
-      sheetLoggedAt: order && order.sheetLoggedAt ? String(order.sheetLoggedAt) : null
+      servedAt: order && order.servedAt ? String(order.servedAt) : null
     }))
     .filter((order) => order.id && order.guestName && order.cocktailName);
 }
@@ -135,7 +116,6 @@ function loadState() {
   } catch (error) {
     console.warn('Unable to read state file, using defaults.', error);
   }
-
   const initialState = normalizeState({ ...DEFAULT_STATE, updatedAt: new Date().toISOString() });
   fs.writeFileSync(STATE_FILE, JSON.stringify(initialState, null, 2));
   return initialState;
@@ -169,7 +149,6 @@ function sendJson(res, statusCode, payload) {
 function readJsonBody(req) {
   return new Promise((resolve, reject) => {
     let body = '';
-
     req.on('data', (chunk) => {
       body += chunk;
       if (body.length > 1024 * 1024) {
@@ -177,16 +156,14 @@ function readJsonBody(req) {
         req.destroy();
       }
     });
-
     req.on('end', () => {
       if (!body) return resolve({});
       try {
         resolve(JSON.parse(body));
-      } catch (_error) {
+      } catch (error) {
         reject(new Error('Invalid JSON body'));
       }
     });
-
     req.on('error', reject);
   });
 }
@@ -202,14 +179,12 @@ function formatDateParts(isoString) {
   if (Number.isNaN(date.getTime())) {
     return { date: '', time: '' };
   }
-
   const yyyy = date.getUTCFullYear();
   const mm = String(date.getUTCMonth() + 1).padStart(2, '0');
   const dd = String(date.getUTCDate()).padStart(2, '0');
   const hh = String(date.getUTCHours()).padStart(2, '0');
   const mi = String(date.getUTCMinutes()).padStart(2, '0');
   const ss = String(date.getUTCSeconds()).padStart(2, '0');
-
   return {
     date: `${yyyy}-${mm}-${dd}`,
     time: `${hh}:${mi}:${ss}`
@@ -222,8 +197,8 @@ function parseGoogleSheetId(input) {
 
   const idMatch = value.match(/\/spreadsheets\/d\/([a-zA-Z0-9-_]+)/);
   if (idMatch) return idMatch[1];
-  if (/^[a-zA-Z0-9-_]{20,}$/.test(value)) return value;
 
+  if (/^[a-zA-Z0-9-_]{20,}$/.test(value)) return value;
   return '';
 }
 
@@ -312,7 +287,6 @@ function parseTimesMadeValue(value) {
   if (typeof value === 'number' && Number.isFinite(value)) {
     return Math.max(0, Math.floor(value));
   }
-
   if (typeof value === 'string') {
     const trimmed = value.trim();
     if (!trimmed) return null;
@@ -321,7 +295,6 @@ function parseTimesMadeValue(value) {
     const parsed = Number.parseInt(cleaned, 10);
     return Number.isFinite(parsed) ? Math.max(0, parsed) : null;
   }
-
   return null;
 }
 
@@ -372,7 +345,6 @@ function normalizeCocktailFromLocalJson(record, index) {
   const timesMade = getTimesMadeFromRecord(record);
   const image = String(record && (record.image || record.images || record.img) ? (record.image || record.images || record.img) : '').trim();
   const id = String(record && (record.id || record.ID) ? (record.id || record.ID) : name || `cocktail-${index + 1}`).trim();
-
   return { id, name, description, ingredients, timesMade, image };
 }
 
@@ -380,20 +352,14 @@ function loadCocktailsFromLocalJson() {
   if (!fs.existsSync(LOCAL_COCKTAILS_FILE)) {
     throw new Error('cocktail.json fallback file not found.');
   }
-
   const raw = JSON.parse(fs.readFileSync(LOCAL_COCKTAILS_FILE, 'utf8'));
   if (!Array.isArray(raw) || raw.length === 0) {
     throw new Error('cocktail.json fallback file is empty or invalid.');
   }
-
-  const items = raw
-    .map((record, index) => normalizeCocktailFromLocalJson(record, index))
-    .filter((record) => record.name);
-
+  const items = raw.map((record, index) => normalizeCocktailFromLocalJson(record, index)).filter((record) => record.name);
   if (items.length === 0) {
     throw new Error('cocktail.json fallback file contains no valid cocktails.');
   }
-
   return items;
 }
 
@@ -401,7 +367,7 @@ async function fetchCocktailsFromGoogleSheet() {
   const csvUrl = buildCocktailsSheetCsvUrl();
   const response = await fetch(csvUrl, {
     method: 'GET',
-    headers: { Accept: 'text/csv,text/plain;q=0.9,*/*;q=0.8' }
+    headers: { 'Accept': 'text/csv,text/plain;q=0.9,*/*;q=0.8' }
   });
 
   if (!response.ok) {
@@ -414,6 +380,8 @@ async function fetchCocktailsFromGoogleSheet() {
     throw new Error('The Google Sheet is empty or missing its header row.');
   }
 
+  // FIX: normalize header keys by stripping spaces/special chars and lowercasing,
+  // so columns like "Times Made" or "times_made" all map to "timesmade".
   const rawHeaders = rows[0].map((header) => String(header || '').trim());
   const headerMap = rawHeaders.map((header) => header.toLowerCase().replace(/[^a-z0-9]/g, ''));
 
@@ -423,8 +391,7 @@ async function fetchCocktailsFromGoogleSheet() {
     throw new Error(`Missing required sheet column(s): ${missing.join(', ')}`);
   }
 
-  return rows
-    .slice(1)
+  return rows.slice(1)
     .map((cells) => {
       const record = {};
       headerMap.forEach((header, idx) => {
@@ -446,7 +413,6 @@ async function refreshCocktailsCache(options = {}) {
     cocktailsCacheUpdatedAt = new Date().toISOString();
     cocktailsCacheSource = reason;
     cocktailsCacheError = null;
-
     return {
       items: cocktailsCache,
       updatedAt: cocktailsCacheUpdatedAt,
@@ -462,7 +428,6 @@ async function refreshCocktailsCache(options = {}) {
     cocktailsCache = fallbackItems;
     cocktailsCacheUpdatedAt = new Date().toISOString();
     cocktailsCacheSource = `${reason}-local-fallback`;
-
     return {
       items: cocktailsCache,
       updatedAt: cocktailsCacheUpdatedAt,
@@ -493,7 +458,6 @@ function hasRefreshAccess(body, req) {
 
   if (token && isValidAdminToken(token)) return true;
   if (ADMIN_REFRESH_SECRET && headerSecret && headerSecret === ADMIN_REFRESH_SECRET) return true;
-
   return false;
 }
 
@@ -513,7 +477,6 @@ async function callSheetsWebhook(payload) {
 
   const text = await response.text().catch(() => '');
   let data = {};
-
   try {
     data = text ? JSON.parse(text) : {};
   } catch (_error) {
@@ -540,36 +503,12 @@ async function removeStoredSubscription(endpoint) {
   await callSheetsWebhook({ action: 'removeSubscription', endpoint });
 }
 
-async function appendSingleOrderToSheet(sessionState, order) {
-  const sessionLabel = `${sessionState.barman || 'Unknown'} - ${sessionState.sessionId}`;
-  const ordered = formatDateParts(order.createdAt);
-  const served = order.servedAt ? formatDateParts(order.servedAt) : { date: '', time: '' };
-
-  await callSheetsWebhook({
-    action: 'appendOrders',
-    orders: [{
-      sessionLabel,
-      barman: sessionState.barman || '',
-      guestName: order.guestName || '',
-      cocktailName: order.cocktailName || '',
-      orderedDate: ordered.date,
-      orderedTime: ordered.time,
-      servedDate: served.date,
-      servedTime: served.time
-    }]
-  });
-}
-
 async function appendOrdersToSheet(sessionSnapshot) {
-  const servedOrders = sessionSnapshot.orderHistory.filter((order) => order.servedAt);
-
-  if (servedOrders.length === 0) return;
-
   const sessionLabel = `${sessionSnapshot.barman || 'Unknown'} - ${sessionSnapshot.sessionId}`;
-  const orders = servedOrders.map((order) => {
+
+  const orders = sessionSnapshot.orderHistory.map((order) => {
     const ordered = formatDateParts(order.createdAt);
     const served = order.servedAt ? formatDateParts(order.servedAt) : { date: '', time: '' };
-
     return {
       sessionLabel,
       barman: sessionSnapshot.barman || '',
@@ -582,48 +521,8 @@ async function appendOrdersToSheet(sessionSnapshot) {
     };
   });
 
+  if (orders.length === 0) return;
   await callSheetsWebhook({ action: 'appendOrders', orders });
-}
-
-async function appendUnloggedOrders(sessionSnapshot) {
-  const unlogged = sessionSnapshot.orderHistory.filter((order) => order.servedAt && !order.sheetLoggedAt);
-  if (unlogged.length === 0) return;
-
-  for (const order of unlogged) {
-    await appendSingleOrderToSheet(sessionSnapshot, order);
-  }
-}
-
-async function upsertRemoteBarState() {
-  try {
-    await callSheetsWebhook({
-      action: 'upsertBarState',
-      state
-    });
-  } catch (error) {
-    console.warn('Unable to sync bar state to Google Sheets.', error && error.message ? error.message : error);
-  }
-}
-
-async function clearRemoteBarState() {
-  try {
-    await callSheetsWebhook({ action: 'clearBarState' });
-  } catch (error) {
-    console.warn('Unable to clear remote bar state in Google Sheets.', error && error.message ? error.message : error);
-  }
-}
-
-async function restoreStateFromRemote() {
-  try {
-    const data = await callSheetsWebhook({ action: 'getBarState' });
-    if (data && data.state) {
-      const restored = normalizeState(data.state);
-      persistState(restored);
-      console.log('Bar state restored from Google Sheets.');
-    }
-  } catch (error) {
-    console.warn('No remote bar state restored.', error && error.message ? error.message : error);
-  }
 }
 
 async function sendPushToAll(payload) {
@@ -650,6 +549,7 @@ async function sendPushToAll(payload) {
   }
 }
 
+
 async function handleCocktailsRefresh(body, req) {
   if (!hasRefreshAccess(body, req)) {
     return { status: 401, payload: { error: 'Admin authorization required to refresh cocktails.' } };
@@ -675,7 +575,6 @@ async function handleToggle(body) {
   const name = String(body && body.name ? body.name : '').trim();
   const password = String(body && body.password ? body.password : '');
   const config = BARMEN[name];
-
   if (!config || config.password !== password) {
     return { status: 401, payload: { error: 'Invalid credentials.' } };
   }
@@ -689,7 +588,7 @@ async function handleToggle(body) {
       orderHistory: state.orderHistory
     };
 
-    await appendUnloggedOrders(sessionSnapshot);
+    await appendOrdersToSheet(sessionSnapshot);
 
     const closedState = persistState({
       isOpen: false,
@@ -701,9 +600,6 @@ async function handleToggle(body) {
       orderHistory: [],
       adminSessionToken: null
     });
-
-    await clearRemoteBarState();
-
     return { status: 200, payload: { ok: true, state: buildPublicState(closedState) } };
   }
 
@@ -730,8 +626,6 @@ async function handleToggle(body) {
     adminSessionToken
   });
 
-  await upsertRemoteBarState();
-
   return {
     status: 200,
     payload: {
@@ -751,7 +645,6 @@ async function handleOrder(body) {
   if (!guestName || !cocktailName) {
     return { status: 400, payload: { error: 'guestName and cocktailName are required.' } };
   }
-
   if (!state.isOpen || !state.barman || !BARMEN[state.barman]) {
     return { status: 409, payload: { error: 'The bar is currently closed.' } };
   }
@@ -761,8 +654,7 @@ async function handleOrder(body) {
     guestName,
     cocktailName,
     createdAt: new Date().toISOString(),
-    servedAt: null,
-    sheetLoggedAt: null
+    servedAt: null
   };
 
   const nextState = persistState({
@@ -771,8 +663,6 @@ async function handleOrder(body) {
     pendingOrders: [...state.pendingOrders, pendingOrder],
     orderHistory: [...state.orderHistory, pendingOrder]
   });
-
-  await upsertRemoteBarState();
 
   const pendingCount = nextState.pendingOrders.length;
 
@@ -793,54 +683,27 @@ async function handleCompleteOrder(body) {
   const orderId = String(body && body.orderId ? body.orderId : '').trim();
   const token = String(body && body.token ? body.token : '').trim();
 
-  if (!isValidAdminToken(token)) {
-    return { status: 401, payload: { error: 'Admin session expired.' } };
-  }
+  if (!isValidAdminToken(token)) return { status: 401, payload: { error: 'Admin session expired.' } };
+  if (!orderId) return { status: 400, payload: { error: 'orderId is required.' } };
 
-  if (!orderId) {
-    return { status: 400, payload: { error: 'orderId is required.' } };
-  }
-
-  const existing = state.pendingOrders.find((order) => order.id === orderId);
-  if (!existing) {
-    return { status: 404, payload: { error: 'Order not found.' } };
-  }
+  const exists = state.pendingOrders.some((order) => order.id === orderId);
+  if (!exists) return { status: 404, payload: { error: 'Order not found.' } };
 
   const servedAt = new Date().toISOString();
-  const completedOrder = {
-    ...existing,
-    servedAt
-  };
-
-  try {
-    await appendSingleOrderToSheet(state, completedOrder);
-    completedOrder.sheetLoggedAt = new Date().toISOString();
-  } catch (error) {
-    console.error('Failed to log order to Google Sheets.', error);
-    return {
-      status: 500,
-      payload: { error: 'Failed to log cocktail to Google Sheets. Please try again.' }
-    };
-  }
-
   const nextState = persistState({
     ...state,
     pendingOrders: state.pendingOrders.filter((order) => order.id !== orderId),
     orderHistory: state.orderHistory.map((order) => (
-      order.id === orderId ? completedOrder : order
+      order.id === orderId ? { ...order, servedAt } : order
     ))
   });
-
-  await upsertRemoteBarState();
 
   return { status: 200, payload: { ok: true, state: buildPublicState(nextState) } };
 }
 
 async function handleCloseByToken(body) {
   const token = String(body && body.token ? body.token : '').trim();
-  if (!isValidAdminToken(token)) {
-    return { status: 401, payload: { error: 'Admin session expired.' } };
-  }
+  if (!isValidAdminToken(token)) return { status: 401, payload: { error: 'Admin session expired.' } };
 
   const sessionSnapshot = {
     sessionId: state.sessionId,
@@ -850,7 +713,7 @@ async function handleCloseByToken(body) {
     orderHistory: state.orderHistory
   };
 
-  await appendUnloggedOrders(sessionSnapshot);
+  await appendOrdersToSheet(sessionSnapshot);
 
   const closedState = persistState({
     isOpen: false,
@@ -863,18 +726,14 @@ async function handleCloseByToken(body) {
     adminSessionToken: null
   });
 
-  await clearRemoteBarState();
-
   return { status: 200, payload: { ok: true, state: buildPublicState(closedState) } };
 }
 
 async function handlePushSubscribe(body) {
   const subscription = body && body.subscription;
-
   if (!VAPID_PUBLIC_KEY || !VAPID_PRIVATE_KEY) {
     return { status: 503, payload: { error: 'Push is not configured on the server.' } };
   }
-
   if (!subscription || !subscription.endpoint || !subscription.keys || !subscription.keys.p256dh || !subscription.keys.auth) {
     return { status: 400, payload: { error: 'A valid push subscription is required.' } };
   }
@@ -886,7 +745,6 @@ async function handlePushSubscribe(body) {
 async function handlePushUnsubscribe(body) {
   const endpoint = String(body && body.endpoint ? body.endpoint : '').trim();
   if (!endpoint) return { status: 400, payload: { error: 'endpoint is required.' } };
-
   await removeStoredSubscription(endpoint);
   return { status: 200, payload: { ok: true } };
 }
@@ -956,13 +814,7 @@ const server = http.createServer(async (req, res) => {
         active: isValidAdminToken(token),
         state: isValidAdminToken(token)
           ? buildPublicState(state)
-          : buildPublicState({
-              isOpen: false,
-              barman: null,
-              sessionOrders: 0,
-              pendingOrders: [],
-              updatedAt: new Date().toISOString()
-            })
+          : buildPublicState({ isOpen: false, barman: null, sessionOrders: 0, pendingOrders: [], updatedAt: new Date().toISOString() })
       });
     }
 
@@ -991,21 +843,6 @@ const server = http.createServer(async (req, res) => {
   }
 });
 
-async function bootstrap() {
-  state = loadState();
-
-  try {
-    await restoreStateFromRemote();
-  } catch (error) {
-    console.warn('Remote state restore failed during bootstrap.', error && error.message ? error.message : error);
-  }
-
-  server.listen(PORT, HOST, () => {
-    console.log(`Bar sync server listening on http://${HOST}:${PORT}`);
-  });
-}
-
-bootstrap().catch((error) => {
-  console.error('Fatal bootstrap error:', error);
-  process.exit(1);
+server.listen(PORT, HOST, () => {
+  console.log(`Bar sync server listening on http://${HOST}:${PORT}`);
 });
