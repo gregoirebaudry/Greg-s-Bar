@@ -216,6 +216,21 @@ function formatDateParts(isoString) {
   };
 }
 
+function buildOrderEvent(sessionState, order, eventType, eventIso) {
+  const when = formatDateParts(eventIso);
+  return {
+    orderId: order.id || '',
+    eventType: eventType || '',
+    sessionLabel: `${sessionState.barman || 'Unknown'} - ${sessionState.sessionId}`,
+    barman: sessionState.barman || '',
+    guestName: order.guestName || '',
+    cocktailName: order.cocktailName || '',
+    eventDate: when.date,
+    eventTime: when.time,
+    createdAtIso: eventIso
+  };
+}
+
 function parseGoogleSheetId(input) {
   const value = String(input || '').trim();
   if (!value) return '';
@@ -560,29 +575,11 @@ async function appendSingleOrderToSheet(sessionState, order) {
   });
 }
 
-async function appendOrdersToSheet(sessionSnapshot) {
-  const servedOrders = sessionSnapshot.orderHistory.filter((order) => order.servedAt);
-
-  if (servedOrders.length === 0) return;
-
-  const sessionLabel = `${sessionSnapshot.barman || 'Unknown'} - ${sessionSnapshot.sessionId}`;
-  const orders = servedOrders.map((order) => {
-    const ordered = formatDateParts(order.createdAt);
-    const served = order.servedAt ? formatDateParts(order.servedAt) : { date: '', time: '' };
-
-    return {
-      sessionLabel,
-      barman: sessionSnapshot.barman || '',
-      guestName: order.guestName || '',
-      cocktailName: order.cocktailName || '',
-      orderedDate: ordered.date,
-      orderedTime: ordered.time,
-      servedDate: served.date,
-      servedTime: served.time
-    };
+async function appendOrderEventToSheet(event) {
+  await callSheetsWebhook({
+    action: 'appendOrderEvents',
+    events: [event]
   });
-
-  await callSheetsWebhook({ action: 'appendOrders', orders });
 }
 
 async function appendUnloggedOrders(sessionSnapshot) {
@@ -774,6 +771,14 @@ async function handleOrder(body) {
 
   await upsertRemoteBarState();
 
+  try {
+    await appendOrderEventToSheet(
+      buildOrderEvent(nextState, pendingOrder, 'ORDER_PLACED', pendingOrder.createdAt)
+    );
+  } catch (error) {
+    console.error('Failed to log ORDER_PLACED event to Google Sheets.', error);
+  }
+
   const pendingCount = nextState.pendingOrders.length;
 
   sendPushToAll({
@@ -814,6 +819,9 @@ async function handleCompleteOrder(body) {
 
   try {
     await appendSingleOrderToSheet(state, completedOrder);
+    await appendOrderEventToSheet(
+      buildOrderEvent(state, completedOrder, 'ORDER_SERVED', servedAt)
+    );
     completedOrder.sheetLoggedAt = new Date().toISOString();
   } catch (error) {
     console.error('Failed to log order to Google Sheets.', error);
