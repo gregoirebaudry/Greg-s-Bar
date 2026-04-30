@@ -1252,6 +1252,45 @@
   }
 }
 
+
+/* Responsive vertical ON/OFF bar-status badge */
+.top-controls {
+  align-self: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: clamp(0.3rem, 1vw, 0.8rem);
+}
+
+.bar-sign {
+  width: clamp(1.8rem, 2.8vw, 2.45rem);
+  min-width: clamp(1.8rem, 2.8vw, 2.45rem);
+  height: clamp(3.9rem, 6.5vw, 5.4rem);
+  padding: 0.35rem 0.15rem;
+}
+
+.bar-sign-text {
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  font-size: clamp(0.68rem, 1.1vw, 0.9rem);
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  display: inline-block;
+  line-height: 1;
+}
+
+.bar-sign.open .bar-sign-text { color: #4ade80; }
+.bar-sign.closed .bar-sign-text { color: #f87171; }
+
+.header-top-row {
+  align-items: center;
+  grid-template-columns: clamp(1.8rem, 2.8vw, 2.45rem) minmax(0, 1fr) auto;
+}
+
+.logo-container {
+  align-self: center;
+}
+
 </style>
 </head>
 <body>

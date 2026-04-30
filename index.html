@@ -1291,7 +1291,88 @@
   align-self: center;
 }
 
-</style>
+
+    .smart-filter-trigger {
+      border-color: rgba(212, 168, 83, 0.65);
+      background: rgba(212, 168, 83, 0.12);
+      color: var(--primary);
+      font-weight: 700;
+    }
+    .smart-filter-summary {
+      margin-top: 0.7rem;
+      text-align: center;
+      font-size: 0.82rem;
+      color: var(--muted-foreground);
+      line-height: 1.4;
+    }
+    .smart-filter-summary strong { color: var(--primary); font-weight: 700; }
+    .smart-filter-summary button {
+      margin-left: 0.45rem;
+      border: 0;
+      background: transparent;
+      color: var(--primary);
+      cursor: pointer;
+      font: inherit;
+      text-decoration: underline;
+    }
+    .filter-section { margin-bottom: 1rem; }
+    .filter-section-title {
+      font-size: 0.82rem;
+      color: var(--muted-foreground);
+      margin-bottom: 0.45rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+    .filter-chip-row { display: flex; flex-wrap: wrap; gap: 0.45rem; }
+    .filter-chip {
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 0.52rem 0.72rem;
+      background: var(--input);
+      color: var(--foreground);
+      cursor: pointer;
+      font: inherit;
+      font-size: 0.88rem;
+    }
+    .filter-chip:hover { border-color: rgba(212, 168, 83, 0.55); color: var(--primary); }
+    .filter-chip.active {
+      background: var(--primary);
+      color: var(--primary-foreground);
+      border-color: var(--primary);
+      font-weight: 700;
+    }
+    .filter-help {
+      margin-top: 0.35rem;
+      font-size: 0.75rem;
+      color: var(--muted-foreground);
+      line-height: 1.35;
+    }
+    .no-smart-results {
+      grid-column: 1 / -1;
+      text-align: center;
+      padding: 3rem 1rem;
+      color: var(--muted-foreground);
+    }
+    .no-smart-results h3 {
+      color: var(--foreground);
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 1.35rem;
+      margin-bottom: 0.45rem;
+    }
+    .no-smart-results button {
+      margin-top: 0.9rem;
+      border: 1px solid rgba(212, 168, 83, 0.4);
+      border-radius: 999px;
+      padding: 0.62rem 0.95rem;
+      background: rgba(212, 168, 83, 0.14);
+      color: var(--foreground);
+      cursor: pointer;
+      font: inherit;
+      font-weight: 700;
+    }
+
+  </style>
 </head>
 <body>
   <header>
@@ -1349,7 +1430,10 @@
         <button class="sort-btn active" data-sort="name">A–Z</button>
         <button class="sort-btn" data-sort="most-made">Most made</button>
         <button class="sort-btn" data-sort="least-made">Least made</button>
+        <button class="sort-btn smart-filter-trigger" id="smartFilterBtn" type="button">✨ Find my cocktail</button>
       </div>
+
+      <div class="smart-filter-summary" id="smartFilterSummary" style="display:none;"></div>
 
       <!-- Result Count -->
       <div class="result-count">
@@ -1475,6 +1559,31 @@
       BASE_URL: 'https://gregs-bar.onrender.com',
       POLL_MS: 4000
     };
+
+    const SMART_FILTER_OPTIONS = {
+      spirits: {
+        gin: ['gin', 'sloe gin', 'genever'],
+        vodka: ['vodka'],
+        whisky: ['whisky', 'whiskey', 'bourbon', 'rye', 'scotch'],
+        tequila: ['tequila', 'mezcal'],
+        rum: ['rum', 'rhum', 'white rum', 'light rum', 'dark rum', 'aged rum', 'spiced rum', 'cachaca', 'cachaça']
+      },
+      spiritLabels: {
+        gin: 'Gin',
+        vodka: 'Vodka',
+        whisky: 'Whisky',
+        tequila: 'Tequila',
+        rum: 'Rum'
+      }
+    };
+
+    let smartFilters = {
+      spirits: [],
+      alcohol: '',
+      taste: '',
+      popularity: ''
+    };
+
     let barStatePoller = null;
 
     // Wine glass SVG for placeholder
@@ -1589,6 +1698,49 @@
       return 0;
     }
 
+
+    function normalizeText(value) {
+      return String(value || '')
+        .toLowerCase()
+        .normalize('NFD')
+        .replace(/[\u0300-\u036f]/g, '')
+        .replace(/[^a-z0-9]+/g, ' ')
+        .trim();
+    }
+
+    function getAlcoholContentFromRecord(record, fallback = {}) {
+      const sources = [record, fallback].filter(Boolean);
+      for (const source of sources) {
+        for (const [key, value] of Object.entries(source)) {
+          const normalizedKey = String(key).toLowerCase().replace(/[^a-z0-9]/g, '');
+          if (
+            normalizedKey === 'alcoholcontent' ||
+            normalizedKey === 'alcohollevel' ||
+            normalizedKey === 'strength' ||
+            normalizedKey === 'abv'
+          ) {
+            return String(value || '').trim();
+          }
+        }
+      }
+      return '';
+    }
+
+    function normalizeAlcoholLevel(value) {
+      const text = normalizeText(value);
+      if (!text) return '';
+      if (/\b(light|low|soft|weak|leger|legere|1)\b/.test(text)) return 'light';
+      if (/\b(medium|balanced|moderate|moyen|2)\b/.test(text)) return 'medium';
+      if (/\b(strong|high|heavy|fort|forte|boozy|3)\b/.test(text)) return 'strong';
+      const number = Number.parseFloat(text.replace(',', '.'));
+      if (Number.isFinite(number)) {
+        if (number <= 1.5) return 'light';
+        if (number <= 2.5) return 'medium';
+        return 'strong';
+      }
+      return '';
+    }
+
     function normalizeCocktailRecord(raw, fallback = {}) {
       const ingredientText = Array.isArray(raw?.ingredients)
         ? raw.ingredients.join('\n')
@@ -1602,6 +1754,7 @@
         description: raw?.description || fallback.description || '',
         ingredients: ingredientText,
         timesMade: getTimesMadeFromRecord(raw, fallback),
+        alcoholContent: getAlcoholContentFromRecord(raw, fallback),
         image: raw?.image || fallback.image || ''
       };
     }
@@ -2126,15 +2279,76 @@
       renderCocktails();
     }
 
+    function hasActiveSmartFilters() {
+      return smartFilters.spirits.length > 0 || smartFilters.alcohol || smartFilters.taste || smartFilters.popularity;
+    }
+
+    function getCocktailSearchText(cocktail) {
+      return normalizeText(`${cocktail.name || ''} ${cocktail.ingredients || ''} ${cocktail.description || ''}`);
+    }
+
+    function getSpiritMatches(cocktail) {
+      const text = getCocktailSearchText(cocktail);
+      return Object.entries(SMART_FILTER_OPTIONS.spirits).filter(([, aliases]) => {
+        return aliases.some(alias => {
+          const normalizedAlias = normalizeText(alias);
+          const pattern = new RegExp(`(^| )${normalizedAlias.replace(/\s+/g, ' ')}( |$)`);
+          return pattern.test(text);
+        });
+      }).map(([key]) => key);
+    }
+
+    function inferTaste(cocktail) {
+      const text = getCocktailSearchText(cocktail);
+      const sweetHits = ['syrup', 'honey', 'agave', 'orgeat', 'grenadine', 'liqueur', 'cream', 'coconut', 'pineapple', 'passion fruit', 'mango', 'strawberry', 'peach', 'vanilla']
+        .filter(word => text.includes(normalizeText(word))).length;
+      const bitterHits = ['campari', 'aperol', 'bitter', 'bitters', 'amaro', 'fernet', 'suze', 'gentian', 'grapefruit']
+        .filter(word => text.includes(normalizeText(word))).length;
+      if (sweetHits > bitterHits && sweetHits > 0) return 'sweet';
+      if (bitterHits > sweetHits && bitterHits > 0) return 'bitter';
+      return 'balanced';
+    }
+
+    function getPopularityThresholds(items) {
+      const values = items.map(item => Number(item.timesMade || 0)).sort((a, b) => a - b);
+      if (!values.length) return { nicheMax: 0, popularMin: 0 };
+      const nicheIndex = Math.floor((values.length - 1) * 0.3);
+      const popularIndex = Math.ceil((values.length - 1) * 0.7);
+      return { nicheMax: values[nicheIndex], popularMin: values[popularIndex] };
+    }
+
+    function cocktailMatchesSmartFilters(cocktail, popularityThresholds) {
+      if (smartFilters.spirits.length > 0) {
+        const matches = getSpiritMatches(cocktail);
+        if (!smartFilters.spirits.some(spirit => matches.includes(spirit))) return false;
+      }
+      if (smartFilters.alcohol) {
+        if (normalizeAlcoholLevel(cocktail.alcoholContent) !== smartFilters.alcohol) return false;
+      }
+      if (smartFilters.taste) {
+        if (inferTaste(cocktail) !== smartFilters.taste) return false;
+      }
+      if (smartFilters.popularity === 'popular') {
+        if (Number(cocktail.timesMade || 0) < popularityThresholds.popularMin) return false;
+      }
+      if (smartFilters.popularity === 'niche') {
+        if (Number(cocktail.timesMade || 0) > popularityThresholds.nicheMax) return false;
+      }
+      return true;
+    }
+
     function filterAndSortCocktails() {
       const query = searchQuery.toLowerCase().trim();
+      const popularityThresholds = getPopularityThresholds(cocktails);
 
       let filtered = cocktails.filter(cocktail => {
-        if (!query) return true;
-        const nameMatch = cocktail.name.toLowerCase().includes(query);
-        const ingredientsMatch = cocktail.ingredients.toLowerCase().includes(query);
-        const timesMadeMatch = cocktail.timesMade.toString().includes(query);
-        return nameMatch || ingredientsMatch || timesMadeMatch;
+        if (query) {
+          const nameMatch = cocktail.name.toLowerCase().includes(query);
+          const ingredientsMatch = cocktail.ingredients.toLowerCase().includes(query);
+          const timesMadeMatch = cocktail.timesMade.toString().includes(query);
+          if (!(nameMatch || ingredientsMatch || timesMadeMatch)) return false;
+        }
+        return cocktailMatchesSmartFilters(cocktail, popularityThresholds);
       });
 
       switch (currentSort) {
@@ -2229,6 +2443,18 @@
       document.getElementById('filteredCount').textContent = filtered.length;
 
       if (filtered.length === 0) {
+        if (hasActiveSmartFilters()) {
+          emptyState.style.display = 'none';
+          grid.style.display = 'grid';
+          grid.innerHTML = `
+            <div class="no-smart-results">
+              <h3>No cocktails match these filters</h3>
+              <p>Try relaxing one filter or reset the cocktail finder.</p>
+              <button type="button" onclick="resetSmartFilters()">Reset smart filters</button>
+            </div>
+          `;
+          return;
+        }
         grid.style.display = 'none';
         emptyState.style.display = 'flex';
         return;
@@ -2243,6 +2469,134 @@
         grid.appendChild(card);
       });
     }
+
+
+    function getSmartFilterLabels() {
+      const labels = [];
+      if (smartFilters.spirits.length) {
+        labels.push(smartFilters.spirits.map(spirit => SMART_FILTER_OPTIONS.spiritLabels[spirit] || spirit).join(' or '));
+      }
+
+      const alcoholLabels = { light: 'Light alcohol', medium: 'Medium alcohol', strong: 'Strong alcohol' };
+      const tasteLabels = { sweet: 'Sweet', balanced: 'Balanced', bitter: 'Bitter' };
+      const popularityLabels = { popular: 'Popular', niche: 'Niche' };
+
+      if (smartFilters.alcohol) labels.push(alcoholLabels[smartFilters.alcohol]);
+      if (smartFilters.taste) labels.push(tasteLabels[smartFilters.taste]);
+      if (smartFilters.popularity) labels.push(popularityLabels[smartFilters.popularity]);
+
+      return labels;
+    }
+
+    function updateSmartFilterSummary() {
+      const summary = document.getElementById('smartFilterSummary');
+      if (!summary) return;
+      const labels = getSmartFilterLabels();
+
+      if (!labels.length) {
+        summary.style.display = 'none';
+        summary.innerHTML = '';
+        return;
+      }
+
+      summary.style.display = 'block';
+      summary.innerHTML = `Showing cocktails matching: <strong>${labels.map(escapeHtml).join(' · ')}</strong><button type="button" onclick="resetSmartFilters()">Clear</button>`;
+    }
+
+    function renderFilterChip({ label, value, group, multi = false, any = false }) {
+      const active = any
+        ? (multi ? smartFilters[group].length === 0 : !smartFilters[group])
+        : (multi ? smartFilters[group].includes(value) : smartFilters[group] === value);
+
+      return `<button type="button" class="filter-chip${active ? ' active' : ''}" data-filter-group="${group}" data-filter-value="${value}" data-filter-multi="${multi ? 'true' : 'false'}" data-filter-any="${any ? 'true' : 'false'}">${escapeHtml(label)}</button>`;
+    }
+
+    function openSmartFilterModal() {
+      openModal({
+        title: 'Find my cocktail',
+        subtitle: 'Choose one or more filters. Base spirit supports multiple choices, like Gin or Vodka.',
+        bodyHtml: `
+          <div class="filter-section">
+            <div class="filter-section-title">Base spirit</div>
+            <div class="filter-chip-row">
+              ${renderFilterChip({ label: 'Gin', value: 'gin', group: 'spirits', multi: true })}
+              ${renderFilterChip({ label: 'Vodka', value: 'vodka', group: 'spirits', multi: true })}
+              ${renderFilterChip({ label: 'Whisky', value: 'whisky', group: 'spirits', multi: true })}
+              ${renderFilterChip({ label: 'Tequila', value: 'tequila', group: 'spirits', multi: true })}
+              ${renderFilterChip({ label: 'Rum', value: 'rum', group: 'spirits', multi: true })}
+              ${renderFilterChip({ label: 'Any', value: '', group: 'spirits', multi: true, any: true })}
+            </div>
+            <div class="filter-help">Includes related spirits: whisky/whiskey/bourbon/rye/scotch, tequila/mezcal, rum/rhum/light/dark/spiced/cachaça, gin/sloe gin.</div>
+          </div>
+
+          <div class="filter-section">
+            <div class="filter-section-title">Alcohol level</div>
+            <div class="filter-chip-row">
+              ${renderFilterChip({ label: 'Light', value: 'light', group: 'alcohol' })}
+              ${renderFilterChip({ label: 'Medium', value: 'medium', group: 'alcohol' })}
+              ${renderFilterChip({ label: 'Strong', value: 'strong', group: 'alcohol' })}
+              ${renderFilterChip({ label: 'Any', value: '', group: 'alcohol', any: true })}
+            </div>
+            <div class="filter-help">Uses the “alcohol content” column when available.</div>
+          </div>
+
+          <div class="filter-section">
+            <div class="filter-section-title">Taste</div>
+            <div class="filter-chip-row">
+              ${renderFilterChip({ label: 'Sweet', value: 'sweet', group: 'taste' })}
+              ${renderFilterChip({ label: 'Balanced', value: 'balanced', group: 'taste' })}
+              ${renderFilterChip({ label: 'Bitter', value: 'bitter', group: 'taste' })}
+              ${renderFilterChip({ label: 'Any', value: '', group: 'taste', any: true })}
+            </div>
+            <div class="filter-help">Inferred from ingredients and descriptions.</div>
+          </div>
+
+          <div class="filter-section">
+            <div class="filter-section-title">Popularity</div>
+            <div class="filter-chip-row">
+              ${renderFilterChip({ label: 'Popular', value: 'popular', group: 'popularity' })}
+              ${renderFilterChip({ label: 'Niche', value: 'niche', group: 'popularity' })}
+              ${renderFilterChip({ label: 'Any', value: '', group: 'popularity', any: true })}
+            </div>
+            <div class="filter-help">Based on the times made column: popular is the top range, niche is the lower range.</div>
+          </div>
+        `,
+        actions: [
+          { label: 'Reset', onClick: () => { resetSmartFilters(false); openSmartFilterModal(); } },
+          { label: 'Show cocktails', primary: true, onClick: () => { closeModal(); updateSmartFilterSummary(); renderCocktails(); } }
+        ]
+      });
+
+      document.querySelectorAll('#modalBody .filter-chip').forEach(chip => {
+        chip.addEventListener('click', () => {
+          const group = chip.dataset.filterGroup;
+          const value = chip.dataset.filterValue;
+          const multi = chip.dataset.filterMulti === 'true';
+          const any = chip.dataset.filterAny === 'true';
+
+          if (multi) {
+            if (any) {
+              smartFilters[group] = [];
+            } else if (smartFilters[group].includes(value)) {
+              smartFilters[group] = smartFilters[group].filter(item => item !== value);
+            } else {
+              smartFilters[group] = [...smartFilters[group], value];
+            }
+          } else {
+            smartFilters[group] = any ? '' : value;
+          }
+
+          openSmartFilterModal();
+        });
+      });
+    }
+
+    function resetSmartFilters(shouldRender = true) {
+      smartFilters = { spirits: [], alcohol: '', taste: '', popularity: '' };
+      updateSmartFilterSummary();
+      if (shouldRender) renderCocktails();
+    }
+
 
     // Event Listeners
     function syncSearchClearButton() {
@@ -2270,7 +2624,13 @@
     document.querySelectorAll('.sort-btn').forEach(btn => {
       btn.addEventListener('click', () => {
         if (uiBusy) return;
-        document.querySelectorAll('.sort-btn').forEach(b => b.classList.remove('active'));
+        if (btn.id === 'smartFilterBtn') {
+          openSmartFilterModal();
+          return;
+        }
+        document.querySelectorAll('.sort-btn').forEach(b => {
+          if (b.id !== 'smartFilterBtn') b.classList.remove('active');
+        });
         btn.classList.add('active');
         currentSort = btn.dataset.sort;
         renderCocktails();
@@ -2293,6 +2653,7 @@
     updateBarUI();
     renderCocktails();
     syncSearchClearButton();
+    updateSmartFilterSummary();
     loadCocktails();
     maybeResumeAdminSession();
     loadBarStateFromServer({ silent: true });
