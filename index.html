@@ -1298,6 +1298,11 @@
       color: var(--primary);
       font-weight: 700;
     }
+    .smart-filter-label { display: inline; }
+    @media (max-width: 480px) {
+      .smart-filter-label { display: none; }
+      .filter-chip { padding: 0.4rem 0.55rem; font-size: 0.8rem; }
+    }
     .smart-filter-summary {
       margin-top: 0.7rem;
       text-align: center;
@@ -1470,7 +1475,7 @@
         <button class="sort-btn active" data-sort="name">A–Z</button>
         <button class="sort-btn" data-sort="most-made">Most made</button>
         <button class="sort-btn" data-sort="least-made">Least made</button>
-        <button class="sort-btn smart-filter-trigger" id="smartFilterBtn" type="button">✨ Find my cocktail</button>
+        <button class="sort-btn smart-filter-trigger" id="smartFilterBtn" type="button">✨ <span class="smart-filter-label">Find my cocktail</span></button>
       </div>
 
       <div class="smart-filter-summary" id="smartFilterSummary" style="display:none;"></div>
@@ -2318,6 +2323,7 @@
           throw new Error('No cocktail records found in the backend cache.');
         }
 
+        // DEBUG: log raw keys — open browser console (F12) to read
         cocktails = records.map(record => normalizeCocktailRecord(record));
         document.getElementById('totalCount').textContent = cocktails.length;
         renderCocktails();
