@@ -1220,57 +1220,47 @@
       min-height: 1.2em;
     }
 
-    /* Clear ON/OFF bar status badge */
-    .top-controls {
-      visibility: visible !important;
-      pointer-events: none;
-    }
+  
+.bar-sign-text {
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  display: inline-block;
+}
 
-    .bar-sign {
-      width: 3.15rem !important;
-      min-width: 3.15rem !important;
-      height: 2rem;
-      cursor: default;
-    }
+.bar-sign.open .bar-sign-text { color: #4ade80; }
+.bar-sign.closed .bar-sign-text { color: #f87171; }
 
-    .bar-sign-status {
-      width: 2.45rem !important;
-      min-width: 2.45rem !important;
-      height: 1.35rem !important;
-      font-size: initial !important;
-      line-height: 1 !important;
-    }
+.top-controls { margin-right: 0.3rem; }
 
-    .bar-sign-status::after {
-      display: none !important;
-    }
+@media (max-width: 640px) {
+  .bar-sign {
+    width: 1.6rem;
+    min-width: 1.6rem;
+    padding: 0.3rem 0.1rem;
+  }
 
-    .bar-sign-text {
-      font-size: 0.7rem;
-      font-weight: 800;
-      letter-spacing: 0.08em;
-      line-height: 1;
-    }
+  .bar-sign-text {
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+    font-size: 0.55rem;
+    letter-spacing: 0.1em;
+  }
 
-    .bar-sign.open .bar-sign-text {
-      color: #4ade80;
-      text-shadow: 0 0 10px rgba(74, 222, 128, 0.35);
-    }
+  .header-top-row {
+    grid-template-columns: 1.6rem minmax(0, 1fr) auto;
+  }
+}
 
-    .bar-sign.closed .bar-sign-text {
-      color: #f87171;
-      text-shadow: 0 0 10px rgba(248, 113, 113, 0.35);
-    }
-
-  </style>
+</style>
 </head>
 <body>
   <header>
     <div class="header-content">
       <div class="header-top-row">
-        <div class="top-controls">
+        <div class="top-controls" aria-hidden="true" >
           <button id="barToggleBtn" class="bar-sign closed" type="button" aria-label="Bar status" tabindex="-1" disabled>
-            <span class="bar-sign-status" id="barSignStatus"><span id="barSignText" class="bar-sign-text">OFF</span></span>
+            <span id="barSignText" class="bar-sign-text">OFF</span>
             <span class="bar-sign-labels">
               <span class="bar-sign-state" id="barSignState">CLOSED</span>
               <span class="bar-sign-name" id="barSignName"></span>
@@ -1769,9 +1759,7 @@
 
       toggleBtn.classList.toggle('open', barState.isOpen);
       toggleBtn.classList.toggle('closed', !barState.isOpen);
-      if (signStatus) signStatus.setAttribute('aria-label', barState.isOpen ? 'ON' : 'OFF');
-      const barSignText = document.getElementById('barSignText');
-      if (barSignText) barSignText.textContent = barState.isOpen ? 'ON' : 'OFF';
+      document.getElementById('barSignText').textContent = barState.isOpen ? 'ON' : 'OFF';
       signState.textContent = barState.isOpen ? 'OPEN' : 'CLOSED';
       signName.textContent = '';
       statusNote.textContent = uiBusy

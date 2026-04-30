@@ -253,7 +253,76 @@
       .bar-sign-status::after { width: 0.78rem; height: 0.78rem; transform: translate(-50%, 1.5rem); }
       .bar-sign.closed .bar-sign-status::after { transform: translateX(-50%); }
     }
-  </style>
+  
+/* Clear, responsive vertical ON/OFF admin switch */
+.hero {
+  align-items: center;
+}
+
+.hero-close-control {
+  align-self: center;
+  align-items: center;
+}
+
+.bar-sign {
+  position: relative;
+  width: clamp(2.25rem, 3.2vw, 3rem);
+  min-width: clamp(2.25rem, 3.2vw, 3rem);
+  height: clamp(5rem, 7vw, 6.5rem);
+  padding: 0.45rem 0.18rem;
+}
+
+.bar-sign::after {
+  content: "Tap to close";
+  position: absolute;
+  left: calc(100% + 0.55rem);
+  top: 50%;
+  transform: translateY(-50%);
+  width: max-content;
+  max-width: 7.5rem;
+  color: var(--muted-foreground);
+  font-size: clamp(0.68rem, 0.9vw, 0.8rem);
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  pointer-events: none;
+}
+
+.bar-sign.closed::after {
+  content: "Tap to open";
+}
+
+.bar-sign-text {
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  font-size: clamp(0.78rem, 1.2vw, 1rem);
+  font-weight: 800;
+  letter-spacing: 0.13em;
+  display: inline-block;
+  line-height: 1;
+}
+
+.bar-sign:not(.closed) .bar-sign-text { color: #4ade80; }
+.bar-sign.closed .bar-sign-text { color: #f87171; }
+
+@media (max-width: 640px) {
+  .bar-sign {
+    width: clamp(1.8rem, 7vw, 2.25rem);
+    min-width: clamp(1.8rem, 7vw, 2.25rem);
+    height: clamp(4.1rem, 14vw, 5rem);
+  }
+
+  .bar-sign::after {
+    left: calc(100% + 0.4rem);
+    max-width: 4.8rem;
+    font-size: 0.62rem;
+  }
+
+  .bar-sign-text {
+    font-size: clamp(0.62rem, 2.5vw, 0.78rem);
+  }
+}
+
+</style>
 </head>
 <body>
   <div class="page">
@@ -392,7 +461,7 @@
       closeBtn.classList.toggle('closed', !barState.isOpen);
       closeBtn.disabled = adminBusy;
       closeBtn.setAttribute('aria-label', barState.isOpen ? 'Close bar' : 'Open bar');
-      closeBtn.setAttribute('title', barState.isOpen ? 'Close bar' : 'Open bar');
+      closeBtn.setAttribute('title', barState.isOpen ? 'Tap to close the bar' : 'Tap to open the bar');
       if (barSignText) {
         barSignText.textContent = barState.isOpen ? 'ON' : 'OFF';
       }

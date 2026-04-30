@@ -135,6 +135,36 @@
       transform: translate(-50%, 1.8rem);
       transition: transform 0.22s ease, background 0.2s ease;
     }
+
+    .bar-sign-text {
+      font-size: 0.65rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      display: inline-block;
+      line-height: 1;
+    }
+    .bar-sign:not(.closed) .bar-sign-text {
+      color: #4ade80;
+    }
+    .bar-sign.closed .bar-sign-text {
+      color: #f87171;
+    }
+
+    @media (max-width: 640px) {
+      .bar-sign {
+        width: 1.6rem;
+        min-width: 1.6rem;
+        padding: 0.3rem 0.1rem;
+      }
+
+      .bar-sign-text {
+        writing-mode: vertical-rl;
+        transform: rotate(180deg);
+        font-size: 0.55rem;
+        letter-spacing: 0.1em;
+      }
+    }
+
     .panel {
       border: 1px solid var(--border); border-radius: 1rem; background: rgba(31,39,55,0.78); padding: 1rem;
       box-shadow: 0 18px 40px rgba(0,0,0,0.16);
@@ -230,7 +260,7 @@
     <section class="hero">
       <div class="hero-close-control">
         <button type="button" class="bar-sign" id="closeBarBtn" aria-label="Open or close bar">
-          <span class="bar-sign-status" id="barSignStatus"></span>
+          <span id="barSignText" class="bar-sign-text">OFF</span>
         </button>
       </div>
       <div class="hero-main">
@@ -356,15 +386,21 @@
       document.getElementById('metricOrders').textContent  = barState.sessionOrders;
       document.getElementById('metricPending').textContent = barState.pendingOrders.length;
 
+
+      const closeBtn = document.getElementById('closeBarBtn');
+      const barSignText = document.getElementById('barSignText');
+      closeBtn.classList.toggle('closed', !barState.isOpen);
+      closeBtn.disabled = adminBusy;
+      closeBtn.setAttribute('aria-label', barState.isOpen ? 'Close bar' : 'Open bar');
+      closeBtn.setAttribute('title', barState.isOpen ? 'Close bar' : 'Open bar');
+      if (barSignText) {
+        barSignText.textContent = barState.isOpen ? 'ON' : 'OFF';
+      }
+
       const panelTitle = document.getElementById('panelTitle');
       if (panelTitle) {
         panelTitle.textContent = barState.isOpen ? 'Cocktails to make' : 'The bar is closed.';
       }
-
-      const closeBtn = document.getElementById('closeBarBtn');
-      closeBtn.classList.toggle('closed', !barState.isOpen);
-      closeBtn.disabled = adminBusy;
-      closeBtn.setAttribute('aria-label', barState.isOpen ? 'Close bar' : 'Open bar');
     }
 
     function renderQueue() {
