@@ -1226,8 +1226,8 @@
   <header>
     <div class="header-content">
       <div class="header-top-row">
-        <div class="top-controls" aria-hidden="true" style="visibility:hidden; pointer-events:none;">
-          <button id="barToggleBtn" class="bar-sign closed" type="button" aria-label="Bar status" tabindex="-1" disabled>
+        <div class="top-controls">
+          <button id="barToggleBtn" class="bar-sign closed" type="button" aria-label="Open or close bar">
             <span class="bar-sign-status" id="barSignStatus">OFF</span>
             <span class="bar-sign-labels">
               <span class="bar-sign-state" id="barSignState">CLOSED</span>
@@ -1446,6 +1446,7 @@
       try {
         const { response, payload } = await barApi.getAdminSession(token);
         if (response.ok && payload.ok && payload.active) {
+          window.location.href = 'admin.html';
           return true;
         }
       } catch (error) {
@@ -1887,6 +1888,7 @@
 
         if (payload.adminSessionToken) {
           storeAdminSessionToken(payload.adminSessionToken);
+          window.location.href = 'admin.html';
         } else {
           storeAdminSessionToken('');
         }
@@ -2207,8 +2209,9 @@
       });
     });
 
-    document.getElementById('barToggleBtn')?.addEventListener('click', (event) => {
-      event.preventDefault();
+    document.getElementById('barToggleBtn').addEventListener('click', () => {
+      if (uiBusy) return;
+      promptBarCredentials();
     });
     document.getElementById('pendingCounterToggle')?.addEventListener('keydown', handlePendingOrdersToggleKeydown);
     document.getElementById('modalBackdrop').addEventListener('click', (event) => {
