@@ -1619,6 +1619,7 @@
 
     let smartFilters = {
       spirits: [],
+      spiritsAny: false,
       alcohol: '',
       taste: '',
       popularity: ''
@@ -1752,7 +1753,15 @@
 
     function getAbvPercentFromRecord(record, fallback = {}) {
       const sources = [record, fallback].filter(Boolean);
+      const exactKeys = ['ABV %', 'ABV%', 'ABV', 'abv %', 'abv%', 'abv'];
+
       for (const source of sources) {
+        for (const key of exactKeys) {
+          if (source[key] !== undefined && source[key] !== null && String(source[key]).trim() !== '') {
+            return String(source[key]).trim();
+          }
+        }
+
         for (const [key, value] of Object.entries(source)) {
           const normalizedKey = String(key).toLowerCase().replace(/[^a-z0-9]/g, '');
           if (
@@ -2368,10 +2377,10 @@
         const matches = getSpiritMatches(cocktail);
         if (!smartFilters.spirits.some(spirit => matches.includes(spirit))) return false;
       }
-      if (smartFilters.alcohol) {
+      if (smartFilters.alcohol && smartFilters.alcohol !== 'any') {
         if (normalizeAlcoholLevel(cocktail.abvPercent) !== smartFilters.alcohol) return false;
       }
-      if (smartFilters.taste) {
+      if (smartFilters.taste && smartFilters.taste !== 'any') {
         if (inferTaste(cocktail) !== smartFilters.taste) return false;
       }
       if (smartFilters.popularity === 'popular') {
@@ -2538,7 +2547,7 @@
 
 
     function getSmartFilterStep() {
-      if (smartFilters.spirits.length === 0) return 1;
+      if (smartFilters.spirits.length === 0 && !smartFilters.spiritsAny) return 1;
       if (!smartFilters.alcohol) return 2;
       if (!smartFilters.taste) return 3;
       if (!smartFilters.popularity) return 4;
@@ -2551,13 +2560,13 @@
         labels.push(smartFilters.spirits.map(spirit => SMART_FILTER_OPTIONS.spiritLabels[spirit] || spirit).join(' or '));
       }
 
-      const alcoholLabels = { light: 'Light alcohol', medium: 'Medium alcohol', strong: 'Strong alcohol' };
+      const alcoholLabels = { light: 'Low alcohol', medium: 'Medium alcohol', strong: 'Strong alcohol' };
       const tasteLabels = { sweet: 'Sweet', balanced: 'Balanced', bitter: 'Bitter' };
       const popularityLabels = { popular: 'Popular', niche: 'Niche' };
 
-      if (smartFilters.alcohol) labels.push(alcoholLabels[smartFilters.alcohol]);
-      if (smartFilters.taste) labels.push(tasteLabels[smartFilters.taste]);
-      if (smartFilters.popularity) labels.push(popularityLabels[smartFilters.popularity]);
+      if (smartFilters.alcohol && smartFilters.alcohol !== 'any') labels.push(alcoholLabels[smartFilters.alcohol]);
+      if (smartFilters.taste && smartFilters.taste !== 'any') labels.push(tasteLabels[smartFilters.taste]);
+      if (smartFilters.popularity && smartFilters.popularity !== 'any') labels.push(popularityLabels[smartFilters.popularity]);
 
       return labels;
     }
@@ -2579,7 +2588,7 @@
 
     function renderFilterChip({ label, value, group, multi = false, any = false }) {
       const active = any
-        ? (multi ? smartFilters[group].length === 0 : !smartFilters[group])
+        ? (group === 'spirits' ? smartFilters.spiritsAny : !smartFilters[group])
         : (multi ? smartFilters[group].includes(value) : smartFilters[group] === value);
 
       return `<button type="button" class="filter-chip${active ? ' active' : ''}" data-filter-group="${group}" data-filter-value="${value}" data-filter-multi="${multi ? 'true' : 'false'}" data-filter-any="${any ? 'true' : 'false'}">${escapeHtml(label)}</button>`;
@@ -2597,10 +2606,10 @@
 
       openModal({
         title: 'Find my cocktail',
-        subtitle: 'Choose a base spirit first, then refine if you want.',
+        subtitle: 'Start with a base spirit or choose Any, then refine if you want.',
         bodyHtml: `
           <div class="filter-match-count">
-            <strong>${count}</strong> cocktail${count === 1 ? '' : 's'} match${count === 1 ? 'es' : ''}${labels.length ? ` · ${labels.map(escapeHtml).join(' · ')}` : ''}
+            <strong>${count}</strong> cocktail${count === 1 ? '' : 's'} matching${labels.length ? ` · ${labels.map(escapeHtml).join(' · ')}` : ''}
           </div>
           <div class="filter-progress-note">${step < 4 ? 'Pick an option to reveal the next filter, or show results now.' : 'You can show results, surprise yourself, or keep changing filters.'}</div>
 
@@ -2614,18 +2623,16 @@
               ${renderFilterChip({ label: 'Rum', value: 'rum', group: 'spirits', multi: true })}
               ${renderFilterChip({ label: 'Any', value: '', group: 'spirits', multi: true, any: true })}
             </div>
-            <div class="filter-help">Includes related spirits: whisky/whiskey/bourbon/rye/scotch, tequila/mezcal, rum/rhum/light/dark/spiced/cachaça, gin/sloe gin.</div>
           </div>
 
           <div class="filter-section${step < 2 ? ' locked' : ''}">
             <div class="filter-section-title">2. Alcohol level</div>
             <div class="filter-chip-row">
-              ${renderFilterChip({ label: 'Light < 18%', value: 'light', group: 'alcohol' })}
-              ${renderFilterChip({ label: 'Medium 18–27%', value: 'medium', group: 'alcohol' })}
-              ${renderFilterChip({ label: 'Strong ≥ 27%', value: 'strong', group: 'alcohol' })}
+              ${renderFilterChip({ label: 'Low', value: 'light', group: 'alcohol' })}
+              ${renderFilterChip({ label: 'Medium', value: 'medium', group: 'alcohol' })}
+              ${renderFilterChip({ label: 'Strong', value: 'strong', group: 'alcohol' })}
               ${renderFilterChip({ label: 'Any', value: '', group: 'alcohol', any: true })}
             </div>
-            <div class="filter-help">Uses the “ABV %” column.</div>
           </div>
 
           <div class="filter-section${step < 3 ? ' locked' : ''}">
@@ -2636,7 +2643,6 @@
               ${renderFilterChip({ label: 'Bitter', value: 'bitter', group: 'taste' })}
               ${renderFilterChip({ label: 'Any', value: '', group: 'taste', any: true })}
             </div>
-            <div class="filter-help">Inferred from ingredients and descriptions.</div>
           </div>
 
           <div class="filter-section${step < 4 ? ' locked' : ''}">
@@ -2646,7 +2652,6 @@
               ${renderFilterChip({ label: 'Niche', value: 'niche', group: 'popularity' })}
               ${renderFilterChip({ label: 'Any', value: '', group: 'popularity', any: true })}
             </div>
-            <div class="filter-help">Based on the times made column: popular is the top range, niche is the lower range.</div>
           </div>
         `,
         actions: [
@@ -2666,13 +2671,16 @@
           if (multi) {
             if (any) {
               smartFilters[group] = [];
+              if (group === 'spirits') smartFilters.spiritsAny = true;
             } else if (smartFilters[group].includes(value)) {
               smartFilters[group] = smartFilters[group].filter(item => item !== value);
+              if (group === 'spirits') smartFilters.spiritsAny = false;
             } else {
               smartFilters[group] = [...smartFilters[group], value];
+              if (group === 'spirits') smartFilters.spiritsAny = false;
             }
           } else {
-            smartFilters[group] = any ? '' : value;
+            smartFilters[group] = any ? 'any' : value;
           }
 
           surpriseCocktailId = '';
@@ -2682,7 +2690,7 @@
     }
 
     function resetSmartFilters(shouldRender = true) {
-      smartFilters = { spirits: [], alcohol: '', taste: '', popularity: '' };
+      smartFilters = { spirits: [], spiritsAny: false, alcohol: '', taste: '', popularity: '' };
       surpriseCocktailId = '';
       updateSmartFilterSummary();
       if (shouldRender) renderCocktails();
