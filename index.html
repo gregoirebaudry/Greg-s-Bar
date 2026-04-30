@@ -1753,9 +1753,9 @@
 
     function getAbvPercentFromRecord(record, fallback = {}) {
       const sources = [record, fallback].filter(Boolean);
-      // Covers: original sheet key "ABV", camelCased variants the backend may produce
-      // ("abv " with trailing space from "ABV", "abvPercent", "abv%", etc.)
-      const exactKeys = ['ABV', 'ABV%', 'ABV', 'ABV', 'abv%', 'abv', 'abvPercent', 'abv_percent', 'abv_pct'];
+      // Covers: original sheet key "ABV %", camelCased variants the backend may produce
+      // ("abv " with trailing space from "ABV %", "abvPercent", "abv%", etc.)
+      const exactKeys = ['ABV %', 'ABV%', 'ABV', 'abv %', 'abv%', 'abv', 'abvPercent', 'abv_percent', 'abv_pct'];
 
       for (const source of sources) {
         for (const key of exactKeys) {
@@ -1789,7 +1789,9 @@
       const match = text.match(/\d+(?:\.\d+)?/);
       if (!match) return null;
       const parsed = Number.parseFloat(match[0]);
-      return Number.isFinite(parsed) ? parsed : null;
+      if (!Number.isFinite(parsed)) return null;
+      // Google Sheets decimal format: 40% is stored as 0.4 — convert to percentage
+      return parsed < 1 ? parsed * 100 : parsed;
     }
 
     function normalizeAlcoholLevel(value) {
