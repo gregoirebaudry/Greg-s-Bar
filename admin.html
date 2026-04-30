@@ -262,7 +262,7 @@
     <section class="panel">
       <div class="panel-header">
         <div>
-          <h2 class="panel-title">Cocktails to make</h2>
+          <h2 class="panel-title" id="panelTitle">Cocktails to make</h2>
         </div>
 
       </div>
@@ -356,6 +356,10 @@
       document.getElementById('metricOrders').textContent  = barState.sessionOrders;
       document.getElementById('metricPending').textContent = barState.pendingOrders.length;
 
+      const panelTitle = document.getElementById('panelTitle');
+      if (panelTitle) {
+        panelTitle.textContent = barState.isOpen ? 'Cocktails to make' : 'The bar is closed.';
+      }
 
       const closeBtn = document.getElementById('closeBarBtn');
       closeBtn.classList.toggle('closed', !barState.isOpen);
