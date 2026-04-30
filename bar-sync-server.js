@@ -376,8 +376,9 @@ function normalizeCocktailFromSheet(record, index) {
   const timesMade = getTimesMadeFromRecord(record);
   const image = String(record.image || record.images || record.img || '').trim();
   const id = String(record.id || name || `cocktail-${index + 1}`).trim();
+  const abv = String(record.abv || '').trim();
 
-  return { id, name, description, ingredients, timesMade, image };
+  return { id, name, description, ingredients, timesMade, image, abv };
 }
 
 function normalizeCocktailFromLocalJson(record, index) {
