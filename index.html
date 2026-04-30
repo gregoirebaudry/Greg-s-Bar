@@ -1753,9 +1753,9 @@
 
     function getAbvPercentFromRecord(record, fallback = {}) {
       const sources = [record, fallback].filter(Boolean);
-      // Covers: original sheet key "ABV %", camelCased variants the backend may produce
-      // ("abv " with trailing space from "ABV %", "abvPercent", "abv%", etc.)
-      const exactKeys = ['ABV %', 'ABV%', 'ABV', 'abv %', 'abv%', 'abv', 'abvPercent', 'abv_percent', 'abv_pct'];
+      // Covers: original sheet key "ABV", camelCased variants the backend may produce
+      // ("abv " with trailing space from "ABV", "abvPercent", "abv%", etc.)
+      const exactKeys = ['ABV', 'ABV%', 'ABV', 'ABV', 'abv%', 'abv', 'abvPercent', 'abv_percent', 'abv_pct'];
 
       for (const source of sources) {
         for (const key of exactKeys) {
