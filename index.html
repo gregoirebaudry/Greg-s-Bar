@@ -1372,6 +1372,46 @@
       font-weight: 700;
     }
 
+  
+    .filter-section.locked { display: none; }
+    .filter-progress-note {
+      margin: 0.2rem 0 1rem;
+      color: var(--muted-foreground);
+      font-size: 0.86rem;
+      line-height: 1.4;
+    }
+    .filter-match-count {
+      margin: 0 0 1rem;
+      padding: 0.7rem 0.8rem;
+      border: 1px solid rgba(212, 168, 83, 0.24);
+      border-radius: 0.85rem;
+      background: rgba(212, 168, 83, 0.08);
+      color: var(--foreground);
+      font-size: 0.9rem;
+      line-height: 1.35;
+    }
+    .filter-match-count strong { color: var(--primary); }
+    .surprise-card {
+      grid-column: 1 / -1;
+      border: 1px solid rgba(212, 168, 83, 0.42);
+      border-radius: 1rem;
+      background: rgba(212, 168, 83, 0.1);
+      padding: 1rem;
+      margin-bottom: 0.4rem;
+      color: var(--foreground);
+      box-shadow: 0 12px 32px rgba(0,0,0,0.16);
+    }
+    .surprise-card-title {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 1.25rem;
+      color: var(--primary);
+      margin-bottom: 0.25rem;
+    }
+    .surprise-card-copy {
+      color: var(--muted-foreground);
+      font-size: 0.9rem;
+    }
+
   </style>
 </head>
 <body>
@@ -1584,6 +1624,8 @@
       popularity: ''
     };
 
+    let surpriseCocktailId = '';
+
     let barStatePoller = null;
 
     // Wine glass SVG for placeholder
@@ -1708,16 +1750,18 @@
         .trim();
     }
 
-    function getAlcoholContentFromRecord(record, fallback = {}) {
+    function getAbvPercentFromRecord(record, fallback = {}) {
       const sources = [record, fallback].filter(Boolean);
       for (const source of sources) {
         for (const [key, value] of Object.entries(source)) {
           const normalizedKey = String(key).toLowerCase().replace(/[^a-z0-9]/g, '');
           if (
+            normalizedKey === 'abv' ||
+            normalizedKey === 'abvpercent' ||
+            normalizedKey === 'abvpct' ||
             normalizedKey === 'alcoholcontent' ||
             normalizedKey === 'alcohollevel' ||
-            normalizedKey === 'strength' ||
-            normalizedKey === 'abv'
+            normalizedKey === 'strength'
           ) {
             return String(value || '').trim();
           }
@@ -1726,20 +1770,22 @@
       return '';
     }
 
-    function normalizeAlcoholLevel(value) {
-      const text = normalizeText(value);
-      if (!text) return '';
-      if (/\b(light|low|soft|weak|leger|legere|1)\b/.test(text)) return 'light';
-      if (/\b(medium|balanced|moderate|moyen|2)\b/.test(text)) return 'medium';
-      if (/\b(strong|high|heavy|fort|forte|boozy|3)\b/.test(text)) return 'strong';
-      const number = Number.parseFloat(text.replace(',', '.'));
-      if (Number.isFinite(number)) {
-        if (number <= 1.5) return 'light';
-        if (number <= 2.5) return 'medium';
-        return 'strong';
-      }
-      return '';
+    function parseAbvPercent(value) {
+      const text = String(value || '').replace(',', '.');
+      const match = text.match(/\d+(?:\.\d+)?/);
+      if (!match) return null;
+      const parsed = Number.parseFloat(match[0]);
+      return Number.isFinite(parsed) ? parsed : null;
     }
+
+    function normalizeAlcoholLevel(value) {
+      const abv = parseAbvPercent(value);
+      if (abv === null) return '';
+      if (abv < 18) return 'light';
+      if (abv < 27) return 'medium';
+      return 'strong';
+    }
+
 
     function normalizeCocktailRecord(raw, fallback = {}) {
       const ingredientText = Array.isArray(raw?.ingredients)
@@ -1754,7 +1800,7 @@
         description: raw?.description || fallback.description || '',
         ingredients: ingredientText,
         timesMade: getTimesMadeFromRecord(raw, fallback),
-        alcoholContent: getAlcoholContentFromRecord(raw, fallback),
+        abvPercent: getAbvPercentFromRecord(raw, fallback),
         image: raw?.image || fallback.image || ''
       };
     }
@@ -2323,7 +2369,7 @@
         if (!smartFilters.spirits.some(spirit => matches.includes(spirit))) return false;
       }
       if (smartFilters.alcohol) {
-        if (normalizeAlcoholLevel(cocktail.alcoholContent) !== smartFilters.alcohol) return false;
+        if (normalizeAlcoholLevel(cocktail.abvPercent) !== smartFilters.alcohol) return false;
       }
       if (smartFilters.taste) {
         if (inferTaste(cocktail) !== smartFilters.taste) return false;
@@ -2337,11 +2383,11 @@
       return true;
     }
 
-    function filterAndSortCocktails() {
+    function getFilteredCocktailsForCurrentState() {
       const query = searchQuery.toLowerCase().trim();
       const popularityThresholds = getPopularityThresholds(cocktails);
 
-      let filtered = cocktails.filter(cocktail => {
+      return cocktails.filter(cocktail => {
         if (query) {
           const nameMatch = cocktail.name.toLowerCase().includes(query);
           const ingredientsMatch = cocktail.ingredients.toLowerCase().includes(query);
@@ -2350,6 +2396,11 @@
         }
         return cocktailMatchesSmartFilters(cocktail, popularityThresholds);
       });
+    }
+
+
+    function filterAndSortCocktails() {
+      let filtered = getFilteredCocktailsForCurrentState();
 
       switch (currentSort) {
         case 'name':
@@ -2380,6 +2431,7 @@
 
       const card = document.createElement('article');
       card.className = 'cocktail-card';
+      card.dataset.cocktailId = cocktail.id;
       card.style.animationDelay = `${Math.min(index * 50, 500)}ms`;
       if (barState.isOpen) {
         card.classList.add('order-enabled');
@@ -2464,12 +2516,34 @@
       emptyState.style.display = 'none';
 
       grid.innerHTML = '';
+
+      if (surpriseCocktailId) {
+        const surprise = filtered.find(cocktail => cocktail.id === surpriseCocktailId);
+        if (surprise) {
+          const surpriseCard = document.createElement('div');
+          surpriseCard.className = 'surprise-card';
+          surpriseCard.innerHTML = `
+            <div class="surprise-card-title">✨ Surprise pick: ${escapeHtml(surprise.name)}</div>
+            <div class="surprise-card-copy">Picked randomly from your current cocktail finder matches.</div>
+          `;
+          grid.appendChild(surpriseCard);
+        }
+      }
+
       filtered.forEach((cocktail, index) => {
         const card = createCocktailCard(cocktail, index);
         grid.appendChild(card);
       });
     }
 
+
+    function getSmartFilterStep() {
+      if (smartFilters.spirits.length === 0) return 1;
+      if (!smartFilters.alcohol) return 2;
+      if (!smartFilters.taste) return 3;
+      if (!smartFilters.popularity) return 4;
+      return 4;
+    }
 
     function getSmartFilterLabels() {
       const labels = [];
@@ -2511,13 +2585,27 @@
       return `<button type="button" class="filter-chip${active ? ' active' : ''}" data-filter-group="${group}" data-filter-value="${value}" data-filter-multi="${multi ? 'true' : 'false'}" data-filter-any="${any ? 'true' : 'false'}">${escapeHtml(label)}</button>`;
     }
 
+    function getCurrentSmartMatchCount() {
+      return getFilteredCocktailsForCurrentState().length;
+    }
+
     function openSmartFilterModal() {
+      const step = getSmartFilterStep();
+      const count = getCurrentSmartMatchCount();
+      const canSurprise = count > 0;
+      const labels = getSmartFilterLabels();
+
       openModal({
         title: 'Find my cocktail',
-        subtitle: 'Choose one or more filters. Base spirit supports multiple choices, like Gin or Vodka.',
+        subtitle: 'Choose a base spirit first, then refine if you want.',
         bodyHtml: `
+          <div class="filter-match-count">
+            <strong>${count}</strong> cocktail${count === 1 ? '' : 's'} match${count === 1 ? 'es' : ''}${labels.length ? ` · ${labels.map(escapeHtml).join(' · ')}` : ''}
+          </div>
+          <div class="filter-progress-note">${step < 4 ? 'Pick an option to reveal the next filter, or show results now.' : 'You can show results, surprise yourself, or keep changing filters.'}</div>
+
           <div class="filter-section">
-            <div class="filter-section-title">Base spirit</div>
+            <div class="filter-section-title">1. Base spirit</div>
             <div class="filter-chip-row">
               ${renderFilterChip({ label: 'Gin', value: 'gin', group: 'spirits', multi: true })}
               ${renderFilterChip({ label: 'Vodka', value: 'vodka', group: 'spirits', multi: true })}
@@ -2529,19 +2617,19 @@
             <div class="filter-help">Includes related spirits: whisky/whiskey/bourbon/rye/scotch, tequila/mezcal, rum/rhum/light/dark/spiced/cachaça, gin/sloe gin.</div>
           </div>
 
-          <div class="filter-section">
-            <div class="filter-section-title">Alcohol level</div>
+          <div class="filter-section${step < 2 ? ' locked' : ''}">
+            <div class="filter-section-title">2. Alcohol level</div>
             <div class="filter-chip-row">
-              ${renderFilterChip({ label: 'Light', value: 'light', group: 'alcohol' })}
-              ${renderFilterChip({ label: 'Medium', value: 'medium', group: 'alcohol' })}
-              ${renderFilterChip({ label: 'Strong', value: 'strong', group: 'alcohol' })}
+              ${renderFilterChip({ label: 'Light < 18%', value: 'light', group: 'alcohol' })}
+              ${renderFilterChip({ label: 'Medium 18–27%', value: 'medium', group: 'alcohol' })}
+              ${renderFilterChip({ label: 'Strong ≥ 27%', value: 'strong', group: 'alcohol' })}
               ${renderFilterChip({ label: 'Any', value: '', group: 'alcohol', any: true })}
             </div>
-            <div class="filter-help">Uses the “alcohol content” column when available.</div>
+            <div class="filter-help">Uses the “ABV %” column.</div>
           </div>
 
-          <div class="filter-section">
-            <div class="filter-section-title">Taste</div>
+          <div class="filter-section${step < 3 ? ' locked' : ''}">
+            <div class="filter-section-title">3. Taste</div>
             <div class="filter-chip-row">
               ${renderFilterChip({ label: 'Sweet', value: 'sweet', group: 'taste' })}
               ${renderFilterChip({ label: 'Balanced', value: 'balanced', group: 'taste' })}
@@ -2551,8 +2639,8 @@
             <div class="filter-help">Inferred from ingredients and descriptions.</div>
           </div>
 
-          <div class="filter-section">
-            <div class="filter-section-title">Popularity</div>
+          <div class="filter-section${step < 4 ? ' locked' : ''}">
+            <div class="filter-section-title">4. Popularity</div>
             <div class="filter-chip-row">
               ${renderFilterChip({ label: 'Popular', value: 'popular', group: 'popularity' })}
               ${renderFilterChip({ label: 'Niche', value: 'niche', group: 'popularity' })}
@@ -2563,6 +2651,7 @@
         `,
         actions: [
           { label: 'Reset', onClick: () => { resetSmartFilters(false); openSmartFilterModal(); } },
+          { label: 'Surprise me', disabled: !canSurprise, onClick: surpriseMeFromSmartFilters },
           { label: 'Show cocktails', primary: true, onClick: () => { closeModal(); updateSmartFilterSummary(); renderCocktails(); } }
         ]
       });
@@ -2586,6 +2675,7 @@
             smartFilters[group] = any ? '' : value;
           }
 
+          surpriseCocktailId = '';
           openSmartFilterModal();
         });
       });
@@ -2593,10 +2683,24 @@
 
     function resetSmartFilters(shouldRender = true) {
       smartFilters = { spirits: [], alcohol: '', taste: '', popularity: '' };
+      surpriseCocktailId = '';
       updateSmartFilterSummary();
       if (shouldRender) renderCocktails();
     }
 
+    function surpriseMeFromSmartFilters() {
+      const matches = getFilteredCocktailsForCurrentState();
+      if (!matches.length) return;
+      const pick = matches[Math.floor(Math.random() * matches.length)];
+      surpriseCocktailId = pick.id;
+      closeModal();
+      updateSmartFilterSummary();
+      renderCocktails();
+      setTimeout(() => {
+        const card = document.querySelector(`[data-cocktail-id="${CSS.escape(pick.id)}"]`);
+        if (card) card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }, 50);
+    }
 
     // Event Listeners
     function syncSearchClearButton() {
@@ -2608,6 +2712,7 @@
 
     document.getElementById('searchInput').addEventListener('input', (e) => {
       searchQuery = e.target.value;
+      surpriseCocktailId = '';
       syncSearchClearButton();
       renderCocktails();
     });
@@ -2633,6 +2738,7 @@
         });
         btn.classList.add('active');
         currentSort = btn.dataset.sort;
+        surpriseCocktailId = '';
         renderCocktails();
         scrollToTopAfterSort();
       });
