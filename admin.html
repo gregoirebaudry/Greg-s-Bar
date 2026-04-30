@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <meta name="theme-color" content="#0f1724">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -273,7 +273,7 @@
 }
 
 .bar-sign::after {
-  content: "Tap to close";
+  content: "";
   position: absolute;
   left: calc(100% + 0.55rem);
   top: 50%;
@@ -288,7 +288,7 @@
 }
 
 .bar-sign.closed::after {
-  content: "Tap to open";
+  content: "";
 }
 
 .bar-sign-text {
@@ -321,6 +321,38 @@
     font-size: clamp(0.62rem, 2.5vw, 0.78rem);
   }
 }
+
+
+.hero {
+  align-items: center;
+}
+
+.hero-close-control {
+  align-self: center;
+  display: flex;
+  align-items: center;
+}
+
+.bar-sign {
+  height: clamp(5.5rem, 6vw, 6.5rem);
+  width: clamp(2.4rem, 3vw, 3rem);
+  min-width: clamp(2.4rem, 3vw, 3rem);
+}
+
+
+    input,
+    select,
+    textarea {
+      font-size: 16px;
+    }
+
+    @media (max-width: 640px) {
+      input,
+      select,
+      textarea {
+        font-size: 16px;
+      }
+    }
 
 </style>
 </head>
@@ -468,7 +500,7 @@
 
       const panelTitle = document.getElementById('panelTitle');
       if (panelTitle) {
-        panelTitle.textContent = barState.isOpen ? 'Cocktails to make' : 'The bar is closed.';
+        panelTitle.textContent = barState.isOpen ? 'Cocktails to make' : 'The bar is closed. Press on the OFF button to open it.';
       }
     }
 
@@ -664,10 +696,10 @@
           <h2 style="margin:0 0 8px;font-family:'Playfair Display',serif;">Open a bar</h2>
           <p style="margin:0 0 16px;color:#9aa4b2;font-size:14px;">Enter the barman credentials.</p>
           <label style="display:block;margin-bottom:10px;font-size:13px;color:#9aa4b2;">Admin name
-            <input id="openNameInput" autocomplete="off" placeholder="Greg, Clement or Bastien" style="display:block;width:100%;margin-top:5px;padding:10px;border-radius:8px;border:1px solid rgba(212,168,83,.24);background:#0f1724;color:#f4efe6;">
+            <input id="openNameInput" autocomplete="off" placeholder="Greg, Clement or Bastien" style="display:block;width:100%;margin-top:5px;padding:10px;border-radius:8px;border:1px solid rgba(212,168,83,.24);background:#0f1724;color:#f4efe6;font-size:16px;">
           </label>
           <label style="display:block;margin-bottom:14px;font-size:13px;color:#9aa4b2;">Password
-            <input id="openPasswordInput" type="password" placeholder="Password" style="display:block;width:100%;margin-top:5px;padding:10px;border-radius:8px;border:1px solid rgba(212,168,83,.24);background:#0f1724;color:#f4efe6;">
+            <input id="openPasswordInput" type="password" placeholder="Password" style="display:block;width:100%;margin-top:5px;padding:10px;border-radius:8px;border:1px solid rgba(212,168,83,.24);background:#0f1724;color:#f4efe6;font-size:16px;">
           </label>
           <div id="openCredentialError" style="min-height:18px;color:#ffb3b8;font-size:13px;margin-bottom:10px;"></div>
           <div style="display:flex;gap:10px;justify-content:flex-end;">
