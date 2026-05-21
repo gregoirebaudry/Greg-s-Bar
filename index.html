@@ -1802,6 +1802,7 @@
     function normalizeAlcoholLevel(value) {
       const abv = parseAbvPercent(value);
       if (abv === null) return '';
+      if (abv === 0) return 'zero';
       if (abv < 18) return 'light';
       if (abv < 27) return 'medium';
       return 'strong';
@@ -2573,7 +2574,7 @@
         labels.push(smartFilters.spirits.map(spirit => SMART_FILTER_OPTIONS.spiritLabels[spirit] || spirit).join(' or '));
       }
 
-      const alcoholLabels = { light: 'Low alcohol', medium: 'Medium alcohol', strong: 'Strong alcohol' };
+      const alcoholLabels = { zero: 'Alcohol-free', light: 'Low alcohol', medium: 'Medium alcohol', strong: 'Strong alcohol' };
       const tasteLabels = { sweet: 'Sweet', balanced: 'Balanced', bitter: 'Bitter' };
       const popularityLabels = { popular: 'Popular', niche: 'Niche' };
 
@@ -2641,6 +2642,7 @@
           <div class="filter-section${step < 2 ? ' locked' : ''}">
             <div class="filter-section-title">2. Alcohol level</div>
             <div class="filter-chip-row">
+              ${renderFilterChip({ label: 'Zero', value: 'zero', group: 'alcohol' })}
               ${renderFilterChip({ label: 'Low', value: 'light', group: 'alcohol' })}
               ${renderFilterChip({ label: 'Medium', value: 'medium', group: 'alcohol' })}
               ${renderFilterChip({ label: 'Strong', value: 'strong', group: 'alcohol' })}
