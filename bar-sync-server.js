@@ -1012,6 +1012,27 @@ async function bootstrap() {
   server.listen(PORT, HOST, () => {
     console.log(`Bar sync server listening on http://${HOST}:${PORT}`);
   });
+
+  const BACKLOG_REMINDER_INTERVAL_MS = 3 * 60 * 1000; // 3 minutes
+
+  setInterval(() => {
+    const pendingCount = state.pendingOrders.length;
+    if (!state.isOpen || pendingCount === 0) return;
+
+    const oldestOrder = state.pendingOrders[0];
+    const waitMinutes = Math.floor((Date.now() - new Date(oldestOrder.createdAt).getTime()) / 60000);
+    const waitLabel = waitMinutes >= 1 ? ` (oldest: ${waitMinutes} min ago)` : '';
+
+    sendPushToAll({
+      title: `⏰ ${pendingCount} cocktail${pendingCount > 1 ? 's' : ''} still waiting`,
+      body: `${oldestOrder.guestName} is still waiting for ${oldestOrder.cocktailName}${waitLabel}`,
+      tag: 'bar-backlog-reminder',
+      renotify: true,
+      url: './admin.html',
+      icon: './icons/icon-512.png',
+      badge: './icons/icon-192.png'
+    }).catch((error) => console.warn('Unable to send backlog reminder push notification.', error && error.message ? error.message : error));
+  }, BACKLOG_REMINDER_INTERVAL_MS);
 }
 
 bootstrap().catch((error) => {
