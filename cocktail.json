@@ -140,7 +140,7 @@
     "name": "Belle Bulle",
     "description": "All the freshness of the pear in a simple, refreshing drink. The lemon juice tempers the sweetness of the Belle De Brillet liqueur, topped with sparkling water for a light finish.",
     "ingredients": "Belle De Brillet – 50 ml  Lemon Juice – 20 ml  Sparkling Water – 100 ml",
-    "timesMade": 77,
+    "timesMade": 78,
     "image": "images/cocktails/belle-bulle.jpg"
   },
   {
@@ -840,14 +840,6 @@
     "image": "images/cocktails/hot-caipirinha.jpg"
   },
   {
-    "id": "hugo-spritz",
-    "name": "Hugo Spritz",
-    "description": "A lighter variation of the Spritz popular in Austria and northern Italy. St. Germain elderflower liqueur replaces the traditional Aperol, combined with sparkling wine and a splash of club soda.",
-    "ingredients": "St. Germain – 40 ml  Sparkling Wine – 60 ml  Club Soda – 20 ml",
-    "timesMade": 5,
-    "image": "images/cocktails/hugo-spritz.jpg"
-  },
-  {
     "id": "hummingbird",
     "name": "Hummingbird",
     "description": "A refreshing take on the Hummingbird from Brooks Reitz of FIG in Charleston, South Carolina. Gin, Campari, St. Germain, and sweet vermouth make a bittersweet, floral, and complex aperitif.",
@@ -892,7 +884,7 @@
     "name": "Jamaican Mule",
     "description": "A Caribbean twist on the Moscow Mule, swapping vodka for dark rum. The rum's molasses richness pairs naturally with spicy ginger beer and fresh lime juice for a tropical, full-bodied mule.",
     "ingredients": "Dark Rum – 60 ml  Lime Juice – 15 ml  Ginger Beer – 120 ml",
-    "timesMade": 1,
+    "timesMade": 2,
     "image": "images/cocktails/jamaican-mule.jpg"
   },
   {
@@ -1080,6 +1072,14 @@
     "image": "images/cocktails/martini.jpg"
   },
   {
+    "id": "m-nage-trois",
+    "name": "Ménage à trois",
+    "description": "The classic Old Fashioned revisited with a fruity, spicy twist. Belle De Brillet pear liqueur, dark rum, and fresh coffee form a trio in harmony, accented by a dash of Angostura bitters.",
+    "ingredients": "Belle de Brillet – 50 ml   Dark rum – 20 ml   Coffee – 15 ml   Angostura Bitters – 1 dash",
+    "timesMade": 0,
+    "image": "images/cocktails/menage-a-trois.jpg"
+  },
+  {
     "id": "mezcal-negroni",
     "name": "Mezcal Negroni",
     "description": "A smoky twist on the classic Negroni, replacing gin with mezcal. The spirit's earthy, smoky character adds a distinctive Mexican dimension to the Campari and sweet vermouth combination.",
@@ -1091,7 +1091,7 @@
     "id": "michelada",
     "name": "Michelada",
     "description": "A popular Mexican beer cocktail with many versions throughout Latin America, often used as a hangover remedy. Spiced with hot sauce, Worcestershire, lime, and celery salt over beer.",
-    "ingredients": "Beer – 360 ml  Cayenne Pepper  Salt  Lime Juice – 15 ml  Hot Sauce – 2 drop  Worcestershire Sauce – 2 dash  Black Pepper – 1 pinch  Celery Salt – 1 pinch  Lime – 1 wedge",
+    "ingredients": "Beer– 360 ml  Cayenne Pepper  Salt  Lime Juice – 15 ml  Hot Sauce – 2 drop  Worcestershire Sauce – 2 dash  Black Pepper – 1 pinch  Celery Salt – 1 pinch  Lime – 1 wedge",
     "timesMade": 0,
     "image": "images/cocktails/michelada.jpg"
   },
@@ -1131,8 +1131,8 @@
     "id": "mojitosco",
     "name": "Mojitosco",
     "description": "Mocktail based on the famous Mojito, with Osco original as a base. Very refreshing.",
-    "ingredients": "Club Soda – 60 ml   Osco – 25 ml   Simple Syrup – 10 ml   Lime Juice – 10 ml   Mint – 1 sprig",
-    "timesMade": 0,
+    "ingredients": "Club Soda – 60 ml\nOsco – 25 ml\nSimple Syrup – 10 ml\nLime Juice – 10 ml\nMint – 1 sprig",
+    "timesMade": 3,
     "image": "images/cocktails/mojitosco.jpg"
   },
   {
@@ -1150,14 +1150,6 @@
     "ingredients": "Vodka – 60 ml  Coffee Liqueur – 30 ml  Irish Cream – 30 ml  Cream – 30 ml",
     "timesMade": 0,
     "image": "images/cocktails/mudslide.jpg"
-  },
-  {
-    "id": "m-nage-trois",
-    "name": "Ménage à trois",
-    "description": "The classic Old Fashioned revisited with a fruity, spicy twist. Belle De Brillet pear liqueur, dark rum, and fresh coffee form a trio in harmony, accented by a dash of Angostura bitters.",
-    "ingredients": "Belle de Brillet – 50 ml   Dark rum – 20 ml   Coffee – 15 ml   Angostura Bitters – 1 dash",
-    "timesMade": 0,
-    "image": "images/cocktails/menage-a-trois.jpg"
   },
   {
     "id": "naked-and-famous",
@@ -1251,7 +1243,7 @@
     "id": "osco-daiquiri",
     "name": "Osco Daiquiri",
     "description": "Mocktail based on the classic Daiquiri, with Osco Original as a base. Interesting flavors!",
-    "ingredients": "Osco – 50 ml   Lime Juice – 20 ml   Agave Syrup – 20 ml",
+    "ingredients": "Osco – 50 ml\nLime Juice – 20 ml\nAgave Syrup – 20 ml",
     "timesMade": 0,
     "image": "images/cocktails/oscodaiquiri.jpg"
   },
@@ -1259,25 +1251,25 @@
     "id": "osco-ice-tea",
     "name": "Osco Ice Tea",
     "description": "Original mocktail, with Osco Rouge Ardent as a base. Very refreshing.",
-    "ingredients": "Iced Tea – 150 ml  Osco Rouge Ardent – 50 ml  Lime Juice – 20 ml  Agave Syrup – 20 ml",
-    "timesMade": 0,
+    "ingredients": "Iced Tea – 150 ml\nOsco Rouge Ardent – 50 ml\nLime Juice – 20 ml\nAgave Syrup – 20 ml",
+    "timesMade": 3,
     "image": "images/cocktails/oscoicetea.jpg"
   },
   {
     "id": "osco-mule",
     "name": "Osco Mule",
     "description": "Mocktail based on the classic Moscow Mule, with Osco Rouge Ardent as a base.",
-    "ingredients": "Ginger Beer – 80 ml  Osco Rouge Ardent – 40 ml",
-    "timesMade": 0,
+    "ingredients": "Ginger Beer – 80 ml\nOsco Rouge Ardent – 40 ml",
+    "timesMade": 1,
     "image": "images/cocktails/oscomule.jpg"
   },
   {
     "id": "osco-tonic",
     "name": "Osco Tonic",
     "description": "Star mix of the Osco Original alcohol-free mix. Nice and bitter. For a sweeter version, try the Osco Daiquiri!",
-    "ingredients": "Tonic water – 80 ml  Osco – 40 ml",
+    "ingredients": "Tonic water – 80 ml\nOsco – 40 ml",
     "timesMade": 0,
-    "image": "images/cocktails/oscotonic.jpeg"
+    "image": "images/cocktails/oscotonic.jpg"
   },
   {
     "id": "paper-plane",
@@ -1292,7 +1284,7 @@
     "name": "Penicillin",
     "description": "A modern classic created by New York bartender Sam Ross. Scotch whisky is combined with honey, lemon juice, and ginger for a soothing, warming cocktail that's a cure for a chilly night.",
     "ingredients": "Scotch Whiskey – 50 ml  Lemon Juice – 20 ml  Ginger Syrup – 10 ml  Honey – 5 ml",
-    "timesMade": 4,
+    "timesMade": 5,
     "image": "images/cocktails/penicillin.jpg"
   },
   {
@@ -1332,7 +1324,7 @@
     "name": "Pompadour",
     "description": "Mentioned in Philippe Collin's 2024 novel Le Barman du Ritz. Created by Frank Meier at the Ritz, it combines Pineau des Charentes, light rum, and lemon juice for an extraordinary flavor.",
     "ingredients": "Pineau des Charentes – 45 ml  Light Rum – 45 ml  Lemon Juice – 15 ml",
-    "timesMade": 1,
+    "timesMade": 4,
     "image": "images/cocktails/pompadour.jpg"
   },
   {
@@ -1488,6 +1480,22 @@
     "image": "images/cocktails/sea-breeze.jpg"
   },
   {
+    "id": "seedlip-cosmo",
+    "name": "Seedlip Cosmo",
+    "description": "A sophisticated and refreshing non-alcoholic cocktail experience . At its core is Seedlip Grove 42, that delivers a zesty, citrus-forward profile with notes of bitter orange, complemented by a dry lemongrass finish.",
+    "ingredients": "Seedlip Grove 42 – 40 ml  Cranberry Juice – 20 ml  Lime Juice – 10 ml  Simple Syrup – 10 ml",
+    "timesMade": 0,
+    "image": "images/cocktails/seedlipcosmo.jpg"
+  },
+  {
+    "id": "seedlip-tonic",
+    "name": "Seedlip Tonic",
+    "description": "A non-alcoholic tonic with Seedlip 42, a zesty, citrus blend made using oranges, lemons, ginger, and lemongrass. A cool prickle of Japanese sansho peppercorn gives this non-alcoholic spirit a bright, dry finish.",
+    "ingredients": "Seedlip Grove 42 – 50 ml\nTonic Water – 100 ml",
+    "timesMade": 0,
+    "image": "images/cocktails/seedliptonic.jpg"
+  },
+  {
     "id": "seelbach",
     "name": "Seelbach",
     "description": "Created at the Seelbach Hotel in Louisville, Kentucky in 1917. The recipe was lost during Prohibition but \"rediscovered\" in 1995. Bourbon, Cointreau, bitters, and sparkling wine.",
@@ -1572,8 +1580,64 @@
     "name": "Spritz",
     "description": "An Italian wine-based cocktail commonly served as an aperitif in Northeast Italy. Prosecco, Aperol, and soda water combine in this light, refreshing, bittersweet drink now popular worldwide.",
     "ingredients": "Aperol – 40 ml  Sparkling Wine – 60 ml  Club Soda – 20 ml",
-    "timesMade": 104,
+    "timesMade": 113,
     "image": "images/cocktails/spritz.jpg"
+  },
+  {
+    "id": "spritz-averna",
+    "name": "Spritz Averna",
+    "description": "A Spritz version with Averna, an Italian liqueur in the amaro category produced in Caltanissetta, Italy",
+    "ingredients": "Averna – 40 ml  Sparkling Wine – 60 ml  Club Soda – 20 ml",
+    "timesMade": 0,
+    "image": "images/cocktails/spritzaverna.jpg"
+  },
+  {
+    "id": "spritz-campari",
+    "name": "Spritz Campari",
+    "description": "A Spritz version with Campari, the famous Italian bitter characterised by its dark red colour",
+    "ingredients": "Campari – 40 ml  Sparkling Wine – 60 ml  Club Soda – 20 ml",
+    "timesMade": 0,
+    "image": "images/cocktails/spritzcampari.jpg"
+  },
+  {
+    "id": "spritz-cynar",
+    "name": "Spritz Cynar",
+    "description": "A Spritz version with Cynar, an Italian bitter apéritif of the amaro variety. It is made from 13 herbs and plants, predominantly artichoke (Cynara scolymus), from which the drink derives its name",
+    "ingredients": "Cynar – 40 ml  Sparkling Wine – 60 ml  Club Soda – 20 ml",
+    "timesMade": 1,
+    "image": "images/cocktails/spritzcynar.jpg"
+  },
+  {
+    "id": "spritz-immortelle",
+    "name": "Spritz Immortelle",
+    "description": "A Spritz version with Spritz des Dunes, a bitter from Corsica with Immortelle flowers",
+    "ingredients": "Spritz des Dunes – 40 ml  Sparkling Wine – 60 ml  Club Soda – 20 ml",
+    "timesMade": 1,
+    "image": "images/cocktails/spritzimmortelle.jpg"
+  },
+  {
+    "id": "spritz-italicus",
+    "name": "Spritz Italicus",
+    "description": "A Spritz version with Italicus, a bergamot rosolio (a type of aperitivo) manufactured in Italy. The liqueur uses bergamot from Calabria and citrons from Sicily, along with Italian flower varieties.",
+    "ingredients": "Italicus – 40 ml  Sparkling Wine – 60 ml  Club Soda – 20 ml",
+    "timesMade": 0,
+    "image": "images/cocktails/spritzitalicus.jpg"
+  },
+  {
+    "id": "spritz-select",
+    "name": "Spritz Select",
+    "description": "A Spritz version with Select, an original Venetian aperitivo crafted with 30 botanicals including juniper berries and rhubarb root for a refined harmony of bitter, floral, and citrus notes.",
+    "ingredients": "Select – 40 ml  Sparkling Wine – 60 ml  Club Soda – 20 ml",
+    "timesMade": 3,
+    "image": "images/cocktails/spritzselect.jpg"
+  },
+  {
+    "id": "hugo-spritz",
+    "name": "Spritz St Germain (Hugo)",
+    "description": "A lighter variation of the Spritz popular in Austria and northern Italy. St. Germain elderflower liqueur replaces the traditional Aperol, combined with sparkling wine and a splash of club soda.",
+    "ingredients": "St. Germain – 40 ml  Sparkling Wine – 60 ml  Club Soda – 20 ml",
+    "timesMade": 5,
+    "image": "images/cocktails/hugo-spritz.jpg"
   },
   {
     "id": "sweet-basil-2",
