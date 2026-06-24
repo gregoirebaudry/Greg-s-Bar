@@ -377,7 +377,7 @@
           <div class="admin-brand-text"><span>Barman</span><span>Console</span></div>
         </div>
         <div class="hero-meta">
-          <span>Orders taken: <strong id="metricOrders">0</strong></span>
+<span>Orders taken: <strong id="metricOrders">0</strong></span>
           <span class="dot">•</span>
           <span>Pending cocktails: <strong id="metricPending">0</strong></span>
           <span class="sound-status" id="soundStatus">Background alerts not enabled</span>
@@ -428,6 +428,16 @@
       Clement: { logo: 'images/logos/clement-logo.png', headerAlt: "Clement's Lounge", password: 'Chartreuse' },
       Bastien: { logo: 'images/logos/bastien-logo.png', headerAlt: "Bastien's Bar",     password: 'Belle Bulle' }
     };
+
+    // ─── Active barman (from ?bar=Greg URL param) ────────────────────────────
+    // Each barman bookmarks admin.html?bar=Greg (or Clement / Bastien).
+    // This restricts push subscriptions so only the active barman's phone
+    // receives new-order notifications.
+    const urlBarman = (() => {
+      const p = new URLSearchParams(window.location.search).get('bar') || '';
+      const name = p.charAt(0).toUpperCase() + p.slice(1).toLowerCase();
+      return BAR_CONFIG[name] ? name : null;
+    })();
 
     // ─── State ────────────────────────────────────────────────────────────────
     let barState   = { isOpen: false, barman: null, sessionOrders: 0, pendingOrders: [] };
@@ -814,7 +824,13 @@
         passwordInput.addEventListener('keydown', (event) => {
           if (event.key === 'Enter') dialog.querySelector('#confirmOpenBtn').click();
         });
-        setTimeout(() => nameInput.focus(), 0);
+        // Pre-fill name from URL param so the barman only needs to enter password
+        if (urlBarman) {
+          nameInput.value = urlBarman;
+          setTimeout(() => passwordInput.focus(), 0);
+        } else {
+          setTimeout(() => nameInput.focus(), 0);
+        }
       });
     }
 
@@ -998,7 +1014,7 @@
 
         const subscribeRes = await apiFetch('/api/push/subscribe', {
           method: 'POST',
-          body: JSON.stringify({ subscription: sub.toJSON() })
+          body: JSON.stringify({ subscription: sub.toJSON(), barman: urlBarman || '' })
         });
         if (!subscribeRes.res.ok) {
           throw new Error(subscribeRes.payload.error || 'Subscription upload failed');
@@ -1024,7 +1040,7 @@
 
     // ─── Boot ─────────────────────────────────────────────────────────────────
     (async function init() {
-      try {
+try {
         await ensureServiceWorkerRegistration();
       } catch (error) {
         console.warn('Unable to register service worker during boot.', error);

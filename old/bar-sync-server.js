@@ -845,6 +845,44 @@ async function handleCompleteOrder(body) {
   return { status: 200, payload: { ok: true, state: buildPublicState(nextState) } };
 }
 
+async function handleCancelOrder(body) {
+  const orderId = String(body && body.orderId ? body.orderId : '').trim();
+  const token   = String(body && body.token   ? body.token   : '').trim();
+
+  if (!isValidAdminToken(token)) {
+    return { status: 401, payload: { error: 'Admin session expired.' } };
+  }
+
+  if (!orderId) {
+    return { status: 400, payload: { error: 'orderId is required.' } };
+  }
+
+  const existing = state.pendingOrders.find((order) => order.id === orderId);
+  if (!existing) {
+    return { status: 404, payload: { error: 'Order not found.' } };
+  }
+
+  // Remove from pending AND from history — no sheet logging
+  const nextState = persistState({
+    ...state,
+    sessionOrders: Math.max(0, state.sessionOrders - 1),
+    pendingOrders: state.pendingOrders.filter((order) => order.id !== orderId),
+    orderHistory:  state.orderHistory.filter((order)  => order.id !== orderId)
+  });
+
+  await upsertRemoteBarState();
+
+  try {
+    await appendOrderEventToSheet(
+      buildOrderEvent(state, existing, 'ORDER_CANCELLED', new Date().toISOString())
+    );
+  } catch (error) {
+    console.warn('Failed to log ORDER_CANCELLED event to Google Sheets.', error);
+  }
+
+  return { status: 200, payload: { ok: true, state: buildPublicState(nextState) } };
+}
+
 async function handleCloseByToken(body) {
   const token = String(body && body.token ? body.token : '').trim();
   if (!isValidAdminToken(token)) {
@@ -990,6 +1028,12 @@ const server = http.createServer(async (req, res) => {
     if (req.method === 'POST' && req.url === '/api/orders/complete') {
       const body = await readJsonBody(req);
       const result = await enqueue(() => handleCompleteOrder(body));
+      return sendJson(res, result.status, result.payload);
+    }
+
+    if (req.method === 'POST' && req.url === '/api/orders/cancel') {
+      const body = await readJsonBody(req);
+      const result = await enqueue(() => handleCancelOrder(body));
       return sendJson(res, result.status, result.payload);
     }
 
