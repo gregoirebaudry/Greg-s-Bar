@@ -1,16 +1,1200 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="theme-color" content="#0f1724">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Cocktail Bar Admin">
   <link rel="manifest" href="./manifest-admin-clement.webmanifest">
   <link rel="apple-touch-icon" href="./icons/icon-clement-512.png">
-  <title>Clement</title>
-  <script>
-    window.location.replace('./admin.html?bar=Clement');
-  </script>
+  <title>Barman Console</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --background: #0f1724;
+      --foreground: #f4efe6;
+      --muted-foreground: #9aa4b2;
+      --card: #1f2737;
+      --border: rgba(212, 168, 83, 0.18);
+      --primary: #d4a853;
+      --primary-strong: #efc56d;
+      --danger-bg: rgba(212, 110, 110, 0.12);
+      --danger-border: rgba(228, 107, 115, 0.26);
+      --danger-fg: #ffd6d9;
+      --success-bg: rgba(69, 151, 92, 0.16);
+      --success-border: rgba(69, 151, 92, 0.36);
+      --success-fg: #dcf5e0;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: 'Inter', system-ui, sans-serif;
+      background:
+        radial-gradient(circle at top, rgba(212, 168, 83, 0.12), transparent 35%),
+        linear-gradient(180deg, #0f1724 0%, #111827 100%);
+      color: var(--foreground);
+    }
+    .page { max-width: 900px; margin: 0 auto; padding: 1rem; }
+    .hero {
+      display: flex; justify-content: space-between; gap: 1rem; align-items: flex-start;
+      margin-bottom: 1rem; padding: 1rem 1.05rem 0.9rem;
+      border: 1px solid var(--border); border-radius: 1rem; background: rgba(31, 39, 55, 0.8);
+      box-shadow: 0 18px 40px rgba(0,0,0,0.18);
+    }
+    .hero-close-control {
+      display: flex;
+      align-items: flex-start;
+      justify-content: flex-start;
+      flex: 0 0 auto;
+      order: -1;
+    }
+    .hero-main {
+      flex: 1 1 auto;
+      min-width: 0;
+    }
+    .admin-brand { display: flex; align-items: center; gap: 0.75rem; }
+    .admin-brand img { max-width: 220px; width: auto; height: 52px; object-fit: contain; object-position: left center; }
+    .admin-brand-text {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 1.02rem;
+      letter-spacing: 0.03em;
+      color: var(--primary-strong);
+      line-height: 0.95;
+      display: inline-flex;
+      flex-direction: column;
+      white-space: normal;
+    }
+    .hero-meta { margin-top: 0.5rem; display: flex; flex-wrap: wrap; align-items: center; gap: 0.55rem; font-size: 0.84rem; color: var(--muted-foreground); }
+    .hero-meta strong { color: var(--foreground); font-weight: 700; }
+    .dot { opacity: 0.6; }
+    .sound-status {
+      display: inline-flex; align-items: center; gap: 0.35rem; padding: 0.18rem 0.48rem; border-radius: 999px;
+      border: 1px solid rgba(212, 168, 83, 0.22); background: rgba(255,255,255,0.03); font-size: 0.76rem; line-height: 1.2;
+    }
+    .sound-status.ready { color: #dff5e5; border-color: rgba(69,151,92,0.3); background: rgba(69,151,92,0.12); }
+    .hero-subtitle { margin: 0.45rem 0 0; color: var(--muted-foreground); font-size: 0.82rem; }
+
+    .bar-sign {
+      border: 1px solid rgba(125, 180, 132, 0.55);
+      border-radius: 999px;
+      padding: 0.42rem 0.24rem;
+      width: 2.1rem;
+      min-width: 2.1rem;
+      background: linear-gradient(180deg, rgba(164, 214, 177, 0.24) 0%, rgba(164, 214, 177, 0.14) 100%);
+      color: var(--foreground);
+      cursor: pointer;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.22);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      align-self: flex-start;
+      transition: border-color 0.2s ease, background 0.2s ease;
+    }
+    .bar-sign.closed {
+      background: linear-gradient(180deg, rgba(212, 110, 110, 0.18) 0%, rgba(212, 110, 110, 0.10) 100%);
+      border-color: rgba(212, 110, 110, 0.42);
+    }
+    .bar-sign.closed .bar-sign-status {
+      background: rgba(175, 63, 63, 0.28);
+      border-color: rgba(228, 107, 115, 0.62);
+    }
+    .bar-sign.closed .bar-sign-status::after {
+      transform: translateX(-50%);
+      background: #fff3f4;
+    }
+    .bar-sign-status {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 1.34rem;
+      height: 2.95rem;
+      min-width: 1.34rem;
+      border-radius: 999px;
+      font-size: 0;
+      line-height: 0;
+      border: 1px solid rgba(255,255,255,0.14);
+      background: rgba(69, 151, 92, 0.38);
+      transition: background 0.2s ease, border-color 0.2s ease;
+    }
+    .bar-sign-status::after {
+      content: '';
+      position: absolute;
+      left: 50%;
+      top: 0.12rem;
+      width: 0.9rem;
+      height: 0.9rem;
+      border-radius: 999px;
+      background: #f7fff5;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.22);
+      transform: translate(-50%, 1.8rem);
+      transition: transform 0.22s ease, background 0.2s ease;
+    }
+
+    .bar-sign-text {
+      font-size: 0.65rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      display: inline-block;
+      line-height: 1;
+    }
+    .bar-sign:not(.closed) .bar-sign-text {
+      color: #4ade80;
+    }
+    .bar-sign.closed .bar-sign-text {
+      color: #f87171;
+    }
+
+    @media (max-width: 640px) {
+      .bar-sign {
+        width: 1.6rem;
+        min-width: 1.6rem;
+        padding: 0.3rem 0.1rem;
+      }
+
+      .bar-sign-text {
+        writing-mode: vertical-rl;
+        transform: rotate(180deg);
+        font-size: 0.55rem;
+        letter-spacing: 0.1em;
+      }
+    }
+
+    .panel {
+      border: 1px solid var(--border); border-radius: 1rem; background: rgba(31,39,55,0.78); padding: 1rem;
+      box-shadow: 0 18px 40px rgba(0,0,0,0.16);
+    }
+    .panel-header { display: flex; justify-content: space-between; align-items: center; gap: 1rem; margin-bottom: 0.85rem; }
+    .panel-title { margin: 0; font-family: 'Playfair Display', Georgia, serif; font-size: 1.4rem; }
+    .panel-subtitle { margin: 0.18rem 0 0; color: var(--muted-foreground); font-size: 0.86rem; }
+    .queue { display: flex; flex-direction: column; gap: 0.7rem; }
+    .order-card { border: 1px solid var(--border); border-radius: 0.9rem; background: rgba(15,23,42,0.55); padding: 0.75rem 0.9rem; max-width: 680px; }
+    .order-top { display: flex; justify-content: space-between; gap: 0.75rem; align-items: center; margin-bottom: 0.35rem; }
+    .guest { font-weight: 700; font-size: 1rem; }
+    .cocktail { color: var(--primary-strong); font-size: 0.95rem; font-weight: 600; }
+    .time { color: var(--muted-foreground); font-size: 0.8rem; white-space: nowrap; }
+    .actions { display: flex; justify-content: flex-end; gap: 0.5rem; margin-top: 0.65rem; }
+    .serve-btn {
+      border: 1px solid var(--success-border); border-radius: 999px; padding: 0.62rem 0.96rem;
+      background: var(--success-bg); color: var(--success-fg); cursor: pointer; font: inherit;
+      transition: background 0.15s ease, border-color 0.15s ease;
+    }
+    .serve-btn:hover { background: rgba(69, 151, 92, 0.28); border-color: rgba(69, 151, 92, 0.55); }
+    .serve-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+    .cancel-btn {
+      border: 1px solid var(--danger-border); border-radius: 999px; padding: 0.62rem 0.96rem;
+      background: var(--danger-bg); color: var(--danger-fg); cursor: pointer; font: inherit;
+      transition: background 0.15s ease, border-color 0.15s ease;
+    }
+    .cancel-btn:hover { background: rgba(212, 110, 110, 0.22); border-color: rgba(228, 107, 115, 0.5); }
+    .cancel-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+    .bar-sign:disabled,
+    .close-bar-btn:disabled,
+    .serve-btn:disabled {
+      cursor: not-allowed;
+      opacity: 0.6;
+    }
+    .order-line { display: flex; flex-wrap: wrap; align-items: center; gap: 0.35rem; font-size: 1rem; line-height: 1.35; }
+    .order-line .gold { color: #d4a853; font-weight: 800; text-shadow: 0 0 10px rgba(212, 168, 83, 0.22); }
+    .order-card.order-enter { animation: orderSlideIn 260ms ease-out; }
+    @keyframes orderSlideIn {
+      from { opacity: 0; transform: translateX(16px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+    .empty { color: var(--muted-foreground); padding: 0.3rem 0 0.1rem; }
+    .error { margin-top: 0.75rem; color: #ffb3b8; min-height: 1.2rem; font-size: 0.85rem; }
+
+    /* Close-bar button in panel header */
+    .close-bar-btn {
+      border: 1px solid var(--danger-border); border-radius: 999px; padding: 0.5rem 0.9rem;
+      background: var(--danger-bg); color: var(--danger-fg); cursor: pointer; font: inherit; font-size: 0.82rem;
+      transition: background 0.15s ease;
+    }
+    .close-bar-btn:hover { background: rgba(212, 110, 110, 0.22); }
+
+    /* Refresh button */
+    .refresh-btn {
+      border: 1px solid var(--border); border-radius: 999px; padding: 0.5rem 0.9rem;
+      background: rgba(255,255,255,0.04); color: var(--muted-foreground); cursor: pointer; font: inherit; font-size: 0.82rem;
+      transition: color 0.15s ease, border-color 0.15s ease;
+    }
+    .refresh-btn:hover { color: var(--foreground); border-color: rgba(212, 168, 83, 0.4); }
+
+    .pwa-card {
+      margin-top: 0.75rem; padding: 0.75rem 0.85rem; border-radius: 0.9rem; border: 1px solid rgba(212, 168, 83, 0.24);
+      background: rgba(255,255,255,0.03); display: flex; flex-wrap: wrap; align-items: center; gap: 0.65rem;
+    }
+    .pwa-card.hidden { display: none; }
+    .pwa-title { font-size: 0.82rem; color: var(--foreground); font-weight: 600; }
+    .pwa-copy { font-size: 0.78rem; color: var(--muted-foreground); line-height: 1.35; flex: 1 1 260px; }
+    .pwa-actions { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+    .pwa-btn { border: 1px solid rgba(212, 168, 83, 0.28); border-radius: 999px; padding: 0.46rem 0.75rem; background: rgba(212, 168, 83, 0.12); color: var(--foreground); cursor: pointer; font: inherit; font-size: 0.78rem; }
+    .pwa-btn.secondary { background: transparent; }
+    .pwa-status-note { width: 100%; font-size: 0.75rem; color: var(--muted-foreground); }
+
+    /* Kicked-out overlay */
+    .kicked-overlay {
+      display: none; position: fixed; inset: 0; background: rgba(7, 10, 18, 0.85);
+      backdrop-filter: blur(6px); align-items: center; justify-content: center;
+      padding: 1.5rem; z-index: 2000; text-align: center;
+    }
+    .kicked-overlay.active { display: flex; flex-direction: column; gap: 1rem; }
+    .kicked-overlay p { color: var(--muted-foreground); max-width: 340px; }
+    .kicked-overlay a {
+      border: 1px solid rgba(212, 168, 83, 0.4); border-radius: 999px; padding: 0.7rem 1.4rem;
+      background: rgba(212, 168, 83, 0.14); color: var(--foreground); text-decoration: none; font-weight: 600;
+    }
+
+    @media (max-width: 640px) {
+      .hero { flex-direction: row; align-items: flex-start; }
+      .admin-brand img { height: 46px; max-width: 180px; }
+      .admin-brand-text { font-size: 0.92rem; }
+      .bar-sign { width: 1.9rem; min-width: 1.9rem; padding: 0.38rem 0.2rem; }
+      .bar-sign-status { width: 1.18rem; min-width: 1.18rem; height: 2.55rem; }
+      .bar-sign-status::after { width: 0.78rem; height: 0.78rem; transform: translate(-50%, 1.5rem); }
+      .bar-sign.closed .bar-sign-status::after { transform: translateX(-50%); }
+    }
+  
+/* Clear, responsive vertical ON/OFF admin switch */
+.hero {
+  align-items: center;
+}
+
+.hero-close-control {
+  align-self: center;
+  align-items: center;
+}
+
+.bar-sign {
+  position: relative;
+  width: clamp(2.25rem, 3.2vw, 3rem);
+  min-width: clamp(2.25rem, 3.2vw, 3rem);
+  height: clamp(5rem, 7vw, 6.5rem);
+  padding: 0.45rem 0.18rem;
+}
+
+.bar-sign::after {
+  content: "";
+  position: absolute;
+  left: calc(100% + 0.55rem);
+  top: 50%;
+  transform: translateY(-50%);
+  width: max-content;
+  max-width: 7.5rem;
+  color: var(--muted-foreground);
+  font-size: clamp(0.68rem, 0.9vw, 0.8rem);
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  pointer-events: none;
+}
+
+.bar-sign.closed::after {
+  content: "";
+}
+
+.bar-sign-text {
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  font-size: clamp(0.78rem, 1.2vw, 1rem);
+  font-weight: 800;
+  letter-spacing: 0.13em;
+  display: inline-block;
+  line-height: 1;
+}
+
+.bar-sign:not(.closed) .bar-sign-text { color: #4ade80; }
+.bar-sign.closed .bar-sign-text { color: #f87171; }
+
+@media (max-width: 640px) {
+  .bar-sign {
+    width: clamp(1.8rem, 7vw, 2.25rem);
+    min-width: clamp(1.8rem, 7vw, 2.25rem);
+    height: clamp(4.1rem, 14vw, 5rem);
+  }
+
+  .bar-sign::after {
+    left: calc(100% + 0.4rem);
+    max-width: 4.8rem;
+    font-size: 0.62rem;
+  }
+
+  .bar-sign-text {
+    font-size: clamp(0.62rem, 2.5vw, 0.78rem);
+  }
+}
+
+
+.hero {
+  align-items: center;
+}
+
+.hero-close-control {
+  align-self: center;
+  display: flex;
+  align-items: center;
+}
+
+.bar-sign {
+  height: clamp(5.5rem, 6vw, 6.5rem);
+  width: clamp(2.4rem, 3vw, 3rem);
+  min-width: clamp(2.4rem, 3vw, 3rem);
+}
+
+
+    input,
+    select,
+    textarea {
+      font-size: 16px;
+    }
+
+    @media (max-width: 640px) {
+      input,
+      select,
+      textarea {
+        font-size: 16px;
+      }
+    }
+
+</style>
 </head>
-<body></body>
+<body>
+  <div class="page">
+    <section class="hero">
+      <div class="hero-close-control">
+        <button type="button" class="bar-sign" id="closeBarBtn" aria-label="Open or close bar">
+          <span id="barSignText" class="bar-sign-text">OFF</span>
+        </button>
+      </div>
+      <div class="hero-main">
+        <div class="admin-brand">
+          <img id="adminLogo" src="images/logos/greg-logo.png" alt="Bar logo">
+          <div class="admin-brand-text"><span>Barman</span><span>Console</span></div>
+        </div>
+        <div class="hero-meta">
+<span>Orders taken: <strong id="metricOrders">0</strong></span>
+          <span class="dot">•</span>
+          <span>Pending cocktails: <strong id="metricPending">0</strong></span>
+          <span class="sound-status" id="soundStatus">Background alerts not enabled</span>
+        </div>
+
+        <div class="pwa-card hidden" id="pwaCard">
+          <div>
+            <div class="pwa-title">Install on iPhone for real background alerts</div>
+            <div class="pwa-copy">Add this admin screen to your Home Screen, then enable notifications once. iPhone will alert you for new orders even when the app is in the background.</div>
+          </div>
+          <div class="pwa-actions">
+            <button type="button" class="pwa-btn" id="enablePushBtn">Enable background alerts</button>
+            <button type="button" class="pwa-btn secondary" id="dismissPwaBtn">Hide</button>
+          </div>
+          <div class="pwa-status-note" id="pwaStatusNote"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel">
+      <div class="panel-header">
+        <div>
+          <h2 class="panel-title" id="panelTitle">Cocktails to make</h2>
+        </div>
+
+      </div>
+      <div class="queue" id="queue"></div>
+      <div class="empty" id="emptyQueue" style="display:none;">No pending cocktails right now.</div>
+      <div class="error" id="errorBox"></div>
+    </section>
+  </div>
+
+  <!-- Kicked out overlay (session expired / bar closed externally) -->
+  <div class="kicked-overlay" id="kickedOverlay">
+    <h2 style="font-family:'Playfair Display',serif;font-size:1.5rem;">Session ended</h2>
+    <p id="kickedMsg">The bar has been closed or your admin session has expired.</p>
+    <button type="button" id="reclaimBtn" style="display:none;border:1px solid rgba(212,168,83,0.4);border-radius:999px;padding:0.7rem 1.4rem;background:rgba(212,168,83,0.14);color:#f4efe6;font:inherit;font-weight:600;cursor:pointer;">🔑 Reclaim session</button>
+    <a href="index.html">← Back to menu</a>
+  </div>
+
+  <script>
+    // ─── Constants ────────────────────────────────────────────────────────────
+    const BASE_URL = 'https://gregs-bar.onrender.com';
+    const POLL_MS  = 4000;
+    const ADMIN_SESSION_STORAGE_KEY = 'bar_admin_session_token';
+
+    const BAR_CONFIG = {
+      Greg:    { logo: 'images/logos/greg-logo.png',    headerAlt: "Greg's Bar",       password: 'Tom Collins' },
+      Clement: { logo: 'images/logos/clement-logo.png', headerAlt: "Clement's Lounge", password: 'Chartreuse' },
+      Bastien: { logo: 'images/logos/bastien-logo.png', headerAlt: "Bastien's Bar",     password: 'Belle Bulle' }
+    };
+
+    // ─── Active barman (from ?bar=Greg URL param) ────────────────────────────
+    // Each barman bookmarks admin.html?bar=Greg (or Clement / Bastien).
+    // This restricts push subscriptions so only the active barman's phone
+    // receives new-order notifications.
+    const urlBarman = (() => {
+      const p = new URLSearchParams(window.location.search).get('bar') || '';
+      const name = p.charAt(0).toUpperCase() + p.slice(1).toLowerCase();
+      return BAR_CONFIG[name] ? name : null;
+    })();
+
+    // ─── State ────────────────────────────────────────────────────────────────
+    let barState   = { isOpen: false, barman: null, sessionOrders: 0, pendingOrders: [] };
+    let poller     = null;
+    let pushReady  = false;
+    let adminBusy  = false;
+
+    // Ensure a controlling service worker exists before requesting push.
+    async function ensureServiceWorkerRegistration() {
+      if (!('serviceWorker' in navigator)) {
+        throw new Error('Service workers are not supported on this device/browser.');
+      }
+      const registration = await navigator.serviceWorker.register('./service-worker.js', { scope: './' });
+      await navigator.serviceWorker.ready;
+      return registration;
+    }
+
+    // ─── Storage helpers ──────────────────────────────────────────────────────
+    function getToken() {
+      try { return localStorage.getItem(ADMIN_SESSION_STORAGE_KEY) || ''; } catch { return ''; }
+    }
+    function clearToken() {
+      try { localStorage.removeItem(ADMIN_SESSION_STORAGE_KEY); } catch {}
+    }
+
+    // ─── API helpers ──────────────────────────────────────────────────────────
+    async function apiFetch(path, options = {}) {
+      const res = await fetch(`${BASE_URL}${path}`, {
+        cache: 'no-store',
+        headers: { 'Content-Type': 'application/json' },
+        ...options
+      });
+      const payload = await res.json().catch(() => ({}));
+      return { res, payload };
+    }
+
+    function escapeHtml(v) {
+      return String(v).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+    }
+
+    function formatTime(iso) {
+      if (!iso) return '';
+      const d = new Date(iso);
+      if (isNaN(d)) return '';
+      return d.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+    }
+
+    // ─── Normalise bar state from server ──────────────────────────────────────
+    function normaliseState(raw) {
+      const s = raw && typeof raw === 'object' ? raw : {};
+      return {
+        isOpen:        Boolean(s.isOpen),
+        barman:        typeof s.barman === 'string' ? s.barman : null,
+        sessionOrders: Math.max(0, Math.floor(Number(s.sessionOrders) || 0)),
+        pendingOrders: Array.isArray(s.pendingOrders) ? s.pendingOrders : []
+      };
+    }
+
+    // ─── Render ───────────────────────────────────────────────────────────────
+    function renderHero() {
+      const cfg = BAR_CONFIG[barState.barman] || BAR_CONFIG[urlBarman] || BAR_CONFIG.Greg;
+      document.getElementById('adminLogo').src = cfg.logo;
+      document.getElementById('adminLogo').alt = cfg.headerAlt;
+      document.getElementById('metricOrders').textContent  = barState.sessionOrders;
+      document.getElementById('metricPending').textContent = barState.pendingOrders.length;
+
+
+      const closeBtn = document.getElementById('closeBarBtn');
+      const barSignText = document.getElementById('barSignText');
+      closeBtn.classList.toggle('closed', !barState.isOpen);
+      closeBtn.disabled = adminBusy;
+      closeBtn.setAttribute('aria-label', barState.isOpen ? 'Close bar' : 'Open bar');
+      closeBtn.setAttribute('title', barState.isOpen ? 'Tap to close the bar' : 'Tap to open the bar');
+      if (barSignText) {
+        barSignText.textContent = barState.isOpen ? 'ON' : 'OFF';
+      }
+
+      const panelTitle = document.getElementById('panelTitle');
+      if (panelTitle) {
+        panelTitle.textContent = barState.isOpen ? 'Cocktails to make' : 'The bar is closed. Press on the OFF button to open it.';
+      }
+    }
+
+    function renderQueue() {
+      const queue    = document.getElementById('queue');
+      const emptyEl  = document.getElementById('emptyQueue');
+      const orders   = barState.pendingOrders;
+
+      if (!orders.length) {
+        queue.innerHTML = '';
+        emptyEl.style.display = 'block';
+        return;
+      }
+      emptyEl.style.display = 'none';
+
+      // Preserve existing cards; add new ones; remove served ones
+      const existingIds = new Set([...queue.querySelectorAll('.order-card')].map(el => el.dataset.id));
+      const incomingIds = new Set(orders.map(o => o.id));
+
+      // Remove cards no longer in queue
+      queue.querySelectorAll('.order-card').forEach(el => {
+        if (!incomingIds.has(el.dataset.id)) el.remove();
+      });
+
+      // Add new cards at the bottom
+      orders.forEach(order => {
+        if (existingIds.has(order.id)) return; // already rendered
+        const card = document.createElement('div');
+        card.className = 'order-card order-enter';
+        card.dataset.id = order.id;
+        card.innerHTML = `
+          <div class="order-top">
+            <span class="guest">${escapeHtml(order.guestName)}</span>
+            <span class="time">${escapeHtml(formatTime(order.createdAt))}</span>
+          </div>
+          <div class="order-line">
+            <span>Ordered a</span>
+            <span class="gold">${escapeHtml(order.cocktailName)}</span>
+          </div>
+          <div class="actions">
+            <button class="cancel-btn" data-id="${escapeHtml(order.id)}">✕ Cancel</button>
+            <button class="serve-btn" data-id="${escapeHtml(order.id)}">✓ Served</button>
+          </div>
+        `;
+        card.querySelector('.serve-btn').addEventListener('click', () => serveOrder(order.id, card));
+        card.querySelector('.cancel-btn').addEventListener('click', () => cancelOrder(order.id, card));
+        queue.appendChild(card);
+      });
+    }
+
+    function setError(msg) {
+      document.getElementById('errorBox').textContent = msg || '';
+    }
+
+    function setAdminBusy(nextValue, message = '') {
+      adminBusy = Boolean(nextValue);
+      const closeBtn = document.getElementById('closeBarBtn');
+      if (closeBtn) closeBtn.disabled = adminBusy;
+
+      document.querySelectorAll('.serve-btn, .cancel-btn').forEach(btn => {
+        btn.disabled = adminBusy;
+      });
+
+      if (message) setError(message);
+      else if (!adminBusy) setError('');
+    }
+
+
+    // ─── Apply incoming state ─────────────────────────────────────────────────
+    function applyState(raw) {
+      barState = normaliseState(raw);
+      checkForNewOrders(barState.pendingOrders);
+      renderHero();
+      renderQueue();
+
+      if (!barState.isOpen) {
+        clearToken();
+      }
+    }
+
+    // ─── Server calls ─────────────────────────────────────────────────────────
+    async function loadState(silent = false) {
+      try {
+        const token = getToken();
+        if (!token) {
+          const { res, payload } = await apiFetch('/api/bar-state');
+          if (!res.ok) throw new Error(payload.error || `Server error ${res.status}`);
+          applyState(payload.state);
+          // Bar is open but we have no token
+          if (!silent && payload.state && payload.state.isOpen) {
+            const openBarman = payload.state.barman;
+            if (urlBarman && openBarman && urlBarman !== openBarman) {
+              // Different barman — offer to take over
+              offerTakeover(openBarman, urlBarman);
+            } else {
+              // Same barman — offer to reclaim session
+              offerReclaim(openBarman);
+            }
+          }
+          return;
+        }
+
+        // Validate admin session
+        const { res: sRes, payload: sPayload } = await apiFetch(`/api/admin-session?token=${encodeURIComponent(token)}`);
+        if (!sRes.ok || !sPayload.active) {
+          clearToken();
+          const { res, payload } = await apiFetch('/api/bar-state');
+          if (!res.ok) throw new Error(payload.error || `Server error ${res.status}`);
+          applyState(payload.state);
+          return;
+        }
+
+        applyState(sPayload.state);
+      } catch (err) {
+        if (!silent) setError('Unable to connect to the server.');
+      }
+    }
+
+    async function serveOrder(orderId, cardEl) {
+      const btn = cardEl?.querySelector('.serve-btn');
+      if (btn) btn.disabled = true;
+      setError('');
+
+      try {
+        const { res, payload } = await apiFetch('/api/orders/complete', {
+          method: 'POST',
+          body: JSON.stringify({ orderId, token: getToken() })
+        });
+
+        if (!res.ok) {
+          if (res.status === 401) { clearToken(); showKickedOverlay(); return; }
+          throw new Error(payload.error || `Server error ${res.status}`);
+        }
+
+        if (payload.state) applyState(payload.state);
+      } catch (err) {
+        setError(err.message || 'Unable to mark order as served.');
+        if (btn) btn.disabled = false;
+      }
+    }
+
+    async function cancelOrder(orderId, cardEl) {
+      const cancelBtn = cardEl?.querySelector('.cancel-btn');
+      const serveBtn  = cardEl?.querySelector('.serve-btn');
+      if (cancelBtn) cancelBtn.disabled = true;
+      if (serveBtn)  serveBtn.disabled  = true;
+      setError('');
+
+      try {
+        const { res, payload } = await apiFetch('/api/orders/cancel', {
+          method: 'POST',
+          body: JSON.stringify({ orderId, token: getToken() })
+        });
+
+        if (!res.ok) {
+          if (res.status === 401) { clearToken(); showKickedOverlay(); return; }
+          throw new Error(payload.error || `Server error ${res.status}`);
+        }
+
+        if (payload.state) applyState(payload.state);
+      } catch (err) {
+        setError(err.message || 'Unable to cancel order.');
+        if (cancelBtn) cancelBtn.disabled = false;
+        if (serveBtn)  serveBtn.disabled  = false;
+      }
+    }
+
+    // ─── In-page audio alert (DND-proof fallback) ─────────────────────────────
+    // Plays a short chime via Web Audio API whenever a new order arrives.
+    // Runs entirely inside the browser tab — unaffected by iOS/Android DND.
+    let audioCtx = null;
+    let lastKnownOrderIds = new Set();
+
+    function ensureAudioCtx() {
+      if (!audioCtx) {
+        try { audioCtx = new (window.AudioContext || window.webkitAudioContext)(); } catch {}
+      }
+      if (audioCtx && audioCtx.state === 'suspended') {
+        audioCtx.resume().catch(() => {});
+      }
+    }
+
+    // Unlock AudioContext on first user gesture (required by browsers)
+    document.addEventListener('pointerdown', ensureAudioCtx, { once: true });
+
+    function playOrderChime() {
+      ensureAudioCtx();
+      if (!audioCtx) return;
+      try {
+        // Two-tone "ding ding" chime
+        [[880, 0], [1100, 0.18]].forEach(([freq, delay]) => {
+          const osc  = audioCtx.createOscillator();
+          const gain = audioCtx.createGain();
+          osc.connect(gain);
+          gain.connect(audioCtx.destination);
+          osc.type = 'sine';
+          osc.frequency.value = freq;
+          const t = audioCtx.currentTime + delay;
+          gain.gain.setValueAtTime(0, t);
+          gain.gain.linearRampToValueAtTime(0.35, t + 0.01);
+          gain.gain.exponentialRampToValueAtTime(0.001, t + 0.55);
+          osc.start(t);
+          osc.stop(t + 0.6);
+        });
+      } catch {}
+    }
+
+    function checkForNewOrders(orders) {
+      const incoming = new Set(orders.map(o => o.id));
+      const hasNew   = orders.some(o => !lastKnownOrderIds.has(o.id));
+      if (hasNew && lastKnownOrderIds.size > 0) {
+        playOrderChime();
+      }
+      lastKnownOrderIds = incoming;
+    }
+
+    // ─── Reclaim / join session ───────────────────────────────────────────────
+    // Called when this device has no token but the bar is already open.
+    // Uses /api/admin-session/join to mint a fresh token for this device
+    // without touching the session or pending orders at all.
+    async function reclaimSession(barmanName) {
+      const name = barmanName || urlBarman;
+      if (!name && !barState.barman) {
+        // No idea who the barman is — fall back to full open flow
+        return openBar();
+      }
+
+      const credentials = await showCredentialDialog(name || barState.barman);
+      if (!credentials) return;
+
+      setAdminBusy(true, 'Joining session…');
+      try {
+        const { res, payload } = await apiFetch('/api/admin-session/join', {
+          method: 'POST',
+          body: JSON.stringify(credentials)
+        });
+        if (!res.ok) throw new Error(payload.error || `Server error ${res.status}`);
+        if (payload.adminSessionToken) {
+          try { localStorage.setItem(ADMIN_SESSION_STORAGE_KEY, payload.adminSessionToken); } catch {}
+        }
+        // Hide kicked overlay if it was showing
+        document.getElementById('kickedOverlay').classList.remove('active');
+        if (payload.state) applyState(payload.state);
+        startPolling();
+      } catch (err) {
+        setError(err.message || 'Unable to join session.');
+      } finally {
+        setAdminBusy(false);
+      }
+    }
+
+    function offerTakeover(currentBarman, newBarman) {
+      const overlay = document.getElementById('kickedOverlay');
+      const msg     = document.getElementById('kickedMsg');
+      const btn     = document.getElementById('reclaimBtn');
+      if (!overlay || !btn) return;
+      if (msg) msg.textContent = `${currentBarman}'s bar is currently open. Close it and open ${newBarman}'s bar?`;
+      btn.textContent = `Close ${currentBarman}'s bar & open ${newBarman}'s`;
+      btn.style.display = 'inline-block';
+      btn.onclick = async () => {
+        overlay.classList.remove('active');
+        btn.style.display = 'none';
+        btn.textContent = '🔑 Reclaim session'; // reset for future use
+
+        // Close current bar with new barman's credentials
+        const credentials = await showCredentialDialog(
+          newBarman,
+          { title: `Open ${newBarman}'s bar`, subtitle: `Enter ${newBarman}'s password to close ${currentBarman}'s bar and open yours.`, confirmLabel: 'Take over' }
+        );
+        if (!credentials) return;
+
+        setAdminBusy(true, 'Switching bar…');
+        try {
+          // Close current bar
+          const { res: closeRes, payload: closePayload } = await apiFetch('/api/bar-state/close-with-password', {
+            method: 'POST',
+            body: JSON.stringify(credentials)
+          });
+          if (!closeRes.ok) throw new Error(closePayload.error || `Server error ${closeRes.status}`);
+
+          // Open new bar
+          const { res: openRes, payload: openPayload } = await apiFetch('/api/bar-state/toggle', {
+            method: 'POST',
+            body: JSON.stringify(credentials)
+          });
+          if (!openRes.ok) throw new Error(openPayload.error || `Server error ${openRes.status}`);
+          if (openPayload.adminSessionToken) {
+            try { localStorage.setItem(ADMIN_SESSION_STORAGE_KEY, openPayload.adminSessionToken); } catch {}
+          }
+          if (openPayload.state) applyState(openPayload.state);
+          startPolling();
+        } catch (err) {
+          setError(err.message || 'Unable to switch bar.');
+        } finally {
+          setAdminBusy(false);
+        }
+      };
+      overlay.classList.add('active');
+    }
+
+    function offerReclaim(barmanName) {
+      const overlay = document.getElementById('kickedOverlay');
+      const msg     = document.getElementById('kickedMsg');
+      const btn     = document.getElementById('reclaimBtn');
+      if (!overlay || !btn) return;
+      if (msg) msg.textContent = 'The bar is open but your session token is missing (e.g. after reinstalling the app). Re-enter your password to continue.';
+      btn.style.display = 'inline-block';
+      btn.onclick = () => {
+        overlay.classList.remove('active');
+        btn.style.display = 'none';
+        reclaimSession(barmanName);
+      };
+      overlay.classList.add('active');
+    }
+
+    async function closeBar() {
+      const confirmed = await showCustomConfirm('Close the bar and end the session?');
+      if (!confirmed) return;
+
+      setError('');
+
+      // If this device has a valid token, use the fast token-based close
+      if (getToken()) {
+        try {
+          const { res, payload } = await apiFetch('/api/bar-state/close', {
+            method: 'POST',
+            body: JSON.stringify({ token: getToken() })
+          });
+          if (!res.ok) throw new Error(payload.error || `Server error ${res.status}`);
+          clearToken();
+          applyState({ isOpen: false, barman: null, sessionOrders: 0, pendingOrders: [] });
+          startPolling();
+        } catch (err) {
+          setError(err.message || 'Unable to close the bar.');
+        }
+        return;
+      }
+
+      // No token on this device — ask for credentials to close
+      const credentials = await showCredentialDialog(
+        barState.barman || urlBarman,
+        { title: 'Close the bar', subtitle: 'Confirm your identity to close the bar.', confirmLabel: 'Close bar' }
+      );
+      if (!credentials) return;
+
+      try {
+        const { res, payload } = await apiFetch('/api/bar-state/close-with-password', {
+          method: 'POST',
+          body: JSON.stringify(credentials)
+        });
+        if (!res.ok) throw new Error(payload.error || `Server error ${res.status}`);
+        clearToken();
+        applyState({ isOpen: false, barman: null, sessionOrders: 0, pendingOrders: [] });
+        startPolling();
+      } catch (err) {
+        setError(err.message || 'Unable to close the bar.');
+      }
+    }
+    
+    async function toggleBarFromAdmin() {
+      if (barState.isOpen) {
+        closeBar();
+      } else {
+        openBar();
+      }
+    }
+
+    async function openBar() {
+      const credentials = await showCredentialDialog();
+      if (!credentials) return;
+
+      setAdminBusy(true, 'Opening bar...');
+      try {
+        const { res, payload } = await apiFetch('/api/bar-state/toggle', {
+          method: 'POST',
+          body: JSON.stringify(credentials)
+        });
+        if (!res.ok) throw new Error(payload.error || `Server error ${res.status}`);
+        if (payload.adminSessionToken) {
+          try { localStorage.setItem(ADMIN_SESSION_STORAGE_KEY, payload.adminSessionToken); } catch {}
+        }
+        if (payload.state) applyState(payload.state);
+        startPolling();
+      } catch (err) {
+        setError(err.message || 'Unable to open the bar.');
+      } finally {
+        setAdminBusy(false);
+      }
+    }
+
+    function showCredentialDialog(prefillName, opts = {}) {
+      const dlgTitle    = opts.title        || 'Open a bar';
+      const dlgSubtitle = opts.subtitle     || 'Enter the barman credentials.';
+      const dlgConfirm  = opts.confirmLabel || 'Open bar';
+      return new Promise((resolve) => {
+        const overlay = document.createElement('div');
+        overlay.style.cssText = `
+          position: fixed; inset: 0; background: rgba(0, 0, 0, 0.5);
+          display: flex; align-items: center; justify-content: center; z-index: 10000;
+        `;
+        const dialog = document.createElement('div');
+        dialog.style.cssText = `
+          background: #1f2737; color: #f4efe6; padding: 24px; border-radius: 12px;
+          border: 1px solid rgba(212, 168, 83, 0.24); box-shadow: 0 20px 60px rgba(0,0,0,0.35);
+          width: min(92vw, 420px); font-family: inherit;
+        `;
+        dialog.innerHTML = `
+          <h2 style="margin:0 0 8px;font-family:'Playfair Display',serif;">${dlgTitle}</h2>
+          <p style="margin:0 0 16px;color:#9aa4b2;font-size:14px;">${dlgSubtitle}</p>
+          <label style="display:block;margin-bottom:10px;font-size:13px;color:#9aa4b2;">Admin name
+            <input id="openNameInput" autocomplete="off" placeholder="Greg, Clement or Bastien" style="display:block;width:100%;margin-top:5px;padding:10px;border-radius:8px;border:1px solid rgba(212,168,83,.24);background:#0f1724;color:#f4efe6;font-size:16px;">
+          </label>
+          <label style="display:block;margin-bottom:14px;font-size:13px;color:#9aa4b2;">Password
+            <input id="openPasswordInput" type="password" placeholder="Password" style="display:block;width:100%;margin-top:5px;padding:10px;border-radius:8px;border:1px solid rgba(212,168,83,.24);background:#0f1724;color:#f4efe6;font-size:16px;">
+          </label>
+          <div id="openCredentialError" style="min-height:18px;color:#ffb3b8;font-size:13px;margin-bottom:10px;"></div>
+          <div style="display:flex;gap:10px;justify-content:flex-end;">
+            <button id="cancelOpenBtn" type="button" style="padding:8px 16px;border-radius:999px;border:1px solid rgba(212,168,83,.24);background:transparent;color:#f4efe6;cursor:pointer;">Cancel</button>
+            <button id="confirmOpenBtn" type="button" style="padding:8px 16px;border-radius:999px;border:1px solid #d4a853;background:#d4a853;color:#0f1724;cursor:pointer;font-weight:700;">${dlgConfirm}</button>
+          </div>
+        `;
+        overlay.appendChild(dialog);
+        document.body.appendChild(overlay);
+
+        const nameInput = dialog.querySelector('#openNameInput');
+        const passwordInput = dialog.querySelector('#openPasswordInput');
+        const errorEl = dialog.querySelector('#openCredentialError');
+        const close = (value) => { overlay.remove(); resolve(value); };
+        dialog.querySelector('#cancelOpenBtn').onclick = () => close(null);
+        overlay.addEventListener('click', (event) => { if (event.target === overlay) close(null); });
+        dialog.querySelector('#confirmOpenBtn').onclick = () => {
+          const enteredName = nameInput.value.trim();
+          const name = enteredName.charAt(0).toUpperCase() + enteredName.slice(1).toLowerCase();
+          const cfg = BAR_CONFIG[name];
+          if (!cfg || passwordInput.value !== cfg.password) {
+            errorEl.textContent = 'Invalid credentials.';
+            return;
+          }
+          close({ name, password: passwordInput.value });
+        };
+        passwordInput.addEventListener('keydown', (event) => {
+          if (event.key === 'Enter') dialog.querySelector('#confirmOpenBtn').click();
+        });
+        // Pre-fill name from explicit arg, URL param, or leave blank
+        const fillName = prefillName || urlBarman;
+        if (fillName) {
+          nameInput.value = fillName;
+          setTimeout(() => passwordInput.focus(), 0);
+        } else {
+          setTimeout(() => nameInput.focus(), 0);
+        }
+      });
+    }
+
+    function showCustomConfirm(message) {
+      return new Promise((resolve) => {
+        // Create overlay
+        const overlay = document.createElement('div');
+        overlay.style.cssText = `
+          position: fixed;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          background: rgba(0, 0, 0, 0.5);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          z-index: 10000;
+        `;
+        
+        // Create dialog box
+        const dialog = document.createElement('div');
+        dialog.style.cssText = `
+          background: white;
+          padding: 24px;
+          border-radius: 8px;
+          box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+          max-width: 400px;
+          font-family: inherit;
+        `;
+        
+        // Create message
+        const messageEl = document.createElement('p');
+        messageEl.textContent = message;
+        messageEl.style.cssText = `
+          margin: 0 0 20px 0;
+          font-size: 16px;
+          color: #333;
+        `;
+        
+        // Create button container
+        const buttonContainer = document.createElement('div');
+        buttonContainer.style.cssText = `
+          display: flex;
+          gap: 10px;
+          justify-content: flex-end;
+        `;
+        
+        // Create Cancel button
+        const cancelBtn = document.createElement('button');
+        cancelBtn.textContent = 'Cancel';
+        cancelBtn.style.cssText = `
+          padding: 8px 16px;
+          background: #f0f0f0;
+          border: 1px solid #ddd;
+          border-radius: 4px;
+          cursor: pointer;
+          font-size: 14px;
+          transition: background 0.2s;
+        `;
+        cancelBtn.onmouseover = () => cancelBtn.style.background = '#e0e0e0';
+        cancelBtn.onmouseout = () => cancelBtn.style.background = '#f0f0f0';
+        cancelBtn.onclick = () => {
+          overlay.remove();
+          resolve(false);
+        };
+        
+        // Create Confirm button
+        const confirmBtn = document.createElement('button');
+        confirmBtn.textContent = 'Close Bar';
+        confirmBtn.style.cssText = `
+          padding: 8px 16px;
+          background: #dc2626;
+          color: white;
+          border: none;
+          border-radius: 4px;
+          cursor: pointer;
+          font-size: 14px;
+          transition: background 0.2s;
+        `;
+        confirmBtn.onmouseover = () => confirmBtn.style.background = '#b91c1c';
+        confirmBtn.onmouseout = () => confirmBtn.style.background = '#dc2626';
+        confirmBtn.onclick = () => {
+          overlay.remove();
+          resolve(true);
+        };
+        
+        buttonContainer.appendChild(cancelBtn);
+        buttonContainer.appendChild(confirmBtn);
+        
+        dialog.appendChild(messageEl);
+        dialog.appendChild(buttonContainer);
+        overlay.appendChild(dialog);
+        document.body.appendChild(overlay);
+        
+        // Focus the cancel button by default for safety
+        cancelBtn.focus();
+      });
+    }
+
+    // ─── Polling ──────────────────────────────────────────────────────────────
+    function startPolling() {
+      if (poller) return;
+      poller = setInterval(() => {
+        if (!document.hidden) loadState(true);
+      }, POLL_MS);
+    }
+
+    function stopPolling() {
+      clearInterval(poller);
+      poller = null;
+    }
+
+    // ─── Kicked-out overlay ───────────────────────────────────────────────────
+    function showKickedOverlay() {
+      stopPolling();
+      // If bar is still open (mid-session 401), offer reclaim instead of dead-end
+      if (barState.isOpen) {
+        offerReclaim(barState.barman || urlBarman);
+      } else {
+        document.getElementById('kickedOverlay').classList.add('active');
+      }
+    }
+
+    // ─── Push notifications ───────────────────────────────────────────────────
+    async function initPush() {
+      if (!('serviceWorker' in navigator) || !('PushManager' in window)) return;
+      try {
+        await ensureServiceWorkerRegistration();
+      } catch (error) {
+        console.warn('Service worker registration failed:', error);
+        return;
+      }
+
+      const isPwa = window.matchMedia('(display-mode: standalone)').matches
+        || window.navigator.standalone === true;
+
+      const pwaCard     = document.getElementById('pwaCard');
+      const statusNote  = document.getElementById('pwaStatusNote');
+      const soundStatus = document.getElementById('soundStatus');
+
+      if (!isPwa) {
+        pwaCard.classList.remove('hidden');
+        return;
+      }
+
+      // Already granted — re-subscribe silently and update status pill
+      if (Notification.permission === 'granted') {
+        await subscribePush();
+        soundStatus.textContent = '✓ Background alerts active';
+        soundStatus.classList.add('ready');
+        return;
+      }
+
+      pwaCard.classList.remove('hidden');
+
+      document.getElementById('enablePushBtn').addEventListener('click', async () => {
+        statusNote.textContent = 'Requesting permission…';
+        const perm = await Notification.requestPermission();
+        if (perm === 'granted') {
+          await subscribePush();
+          statusNote.textContent = '✓ Background alerts enabled. Keep this Home Screen app installed and allow notifications in iPhone Settings.';
+          soundStatus.textContent = '✓ Background alerts active';
+          soundStatus.classList.add('ready');
+        } else {
+          statusNote.textContent = 'Permission denied — alerts will not work.';
+        }
+      });
+
+      document.getElementById('dismissPwaBtn').addEventListener('click', () => {
+        pwaCard.classList.add('hidden');
+      });
+    }
+
+    async function subscribePush() {
+      try {
+        const { payload: keyPayload } = await apiFetch('/api/push/public-key');
+        if (!keyPayload.publicKey) return;
+
+        const reg = await ensureServiceWorkerRegistration();
+        let sub = await reg.pushManager.getSubscription();
+        if (!sub) {
+          sub = await reg.pushManager.subscribe({
+            userVisibleOnly: true,
+            applicationServerKey: urlBase64ToUint8Array(keyPayload.publicKey)
+          });
+        }
+
+        const subscribeRes = await apiFetch('/api/push/subscribe', {
+          method: 'POST',
+          body: JSON.stringify({ subscription: sub.toJSON(), barman: urlBarman || '' })
+        });
+        if (!subscribeRes.res.ok) {
+          throw new Error(subscribeRes.payload.error || 'Subscription upload failed');
+        }
+
+        document.getElementById('soundStatus').textContent = '✓ Background alerts active';
+        document.getElementById('soundStatus').classList.add('ready');
+        pushReady = true;
+      } catch (err) {
+        console.warn('Push subscription failed:', err);
+      }
+    }
+
+    function urlBase64ToUint8Array(base64String) {
+      const padding = '='.repeat((4 - base64String.length % 4) % 4);
+      const base64  = (base64String + padding).replace(/-/g, '+').replace(/_/g, '/');
+      const raw     = atob(base64);
+      return Uint8Array.from([...raw].map(c => c.charCodeAt(0)));
+    }
+
+    // ─── Wire up buttons ──────────────────────────────────────────────────────
+    document.getElementById('closeBarBtn').addEventListener('click', toggleBarFromAdmin);
+
+    // ─── Boot ─────────────────────────────────────────────────────────────────
+    (async function init() {
+try {
+        await ensureServiceWorkerRegistration();
+      } catch (error) {
+        console.warn('Unable to register service worker during boot.', error);
+      }
+      await loadState(false);
+      startPolling();
+      initPush();
+    })();
+  </script>
+</body>
 </html>
