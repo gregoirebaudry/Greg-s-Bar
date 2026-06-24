@@ -779,15 +779,39 @@
     }
 
     async function closeBar() {
-      // Show custom confirmation dialog without the browser title
       const confirmed = await showCustomConfirm('Close the bar and end the session?');
       if (!confirmed) return;
-      
+
       setError('');
+
+      // If this device has a valid token, use the fast token-based close
+      if (getToken()) {
+        try {
+          const { res, payload } = await apiFetch('/api/bar-state/close', {
+            method: 'POST',
+            body: JSON.stringify({ token: getToken() })
+          });
+          if (!res.ok) throw new Error(payload.error || `Server error ${res.status}`);
+          clearToken();
+          applyState({ isOpen: false, barman: null, sessionOrders: 0, pendingOrders: [] });
+          startPolling();
+        } catch (err) {
+          setError(err.message || 'Unable to close the bar.');
+        }
+        return;
+      }
+
+      // No token on this device — ask for credentials to close
+      const credentials = await showCredentialDialog(
+        barState.barman || urlBarman,
+        { title: 'Close the bar', subtitle: 'Confirm your identity to close the bar.', confirmLabel: 'Close bar' }
+      );
+      if (!credentials) return;
+
       try {
-        const { res, payload } = await apiFetch('/api/bar-state/close', {
+        const { res, payload } = await apiFetch('/api/bar-state/close-with-password', {
           method: 'POST',
-          body: JSON.stringify({ token: getToken() })
+          body: JSON.stringify(credentials)
         });
         if (!res.ok) throw new Error(payload.error || `Server error ${res.status}`);
         clearToken();
@@ -800,12 +824,6 @@
     
     async function toggleBarFromAdmin() {
       if (barState.isOpen) {
-        // If we have no token, join the session first (silently), then close
-        if (!getToken()) {
-          await reclaimSession(barState.barman || urlBarman);
-          // reclaimSession is async and updates the token; if it succeeded we now have one
-          if (!getToken()) return; // user cancelled or join failed
-        }
         closeBar();
       } else {
         openBar();
@@ -835,7 +853,10 @@
       }
     }
 
-    function showCredentialDialog(prefillName) {
+    function showCredentialDialog(prefillName, opts = {}) {
+      const dlgTitle    = opts.title        || 'Open a bar';
+      const dlgSubtitle = opts.subtitle     || 'Enter the barman credentials.';
+      const dlgConfirm  = opts.confirmLabel || 'Open bar';
       return new Promise((resolve) => {
         const overlay = document.createElement('div');
         overlay.style.cssText = `
@@ -849,8 +870,8 @@
           width: min(92vw, 420px); font-family: inherit;
         `;
         dialog.innerHTML = `
-          <h2 style="margin:0 0 8px;font-family:'Playfair Display',serif;">Open a bar</h2>
-          <p style="margin:0 0 16px;color:#9aa4b2;font-size:14px;">Enter the barman credentials.</p>
+          <h2 style="margin:0 0 8px;font-family:'Playfair Display',serif;">${dlgTitle}</h2>
+          <p style="margin:0 0 16px;color:#9aa4b2;font-size:14px;">${dlgSubtitle}</p>
           <label style="display:block;margin-bottom:10px;font-size:13px;color:#9aa4b2;">Admin name
             <input id="openNameInput" autocomplete="off" placeholder="Greg, Clement or Bastien" style="display:block;width:100%;margin-top:5px;padding:10px;border-radius:8px;border:1px solid rgba(212,168,83,.24);background:#0f1724;color:#f4efe6;font-size:16px;">
           </label>
@@ -860,7 +881,7 @@
           <div id="openCredentialError" style="min-height:18px;color:#ffb3b8;font-size:13px;margin-bottom:10px;"></div>
           <div style="display:flex;gap:10px;justify-content:flex-end;">
             <button id="cancelOpenBtn" type="button" style="padding:8px 16px;border-radius:999px;border:1px solid rgba(212,168,83,.24);background:transparent;color:#f4efe6;cursor:pointer;">Cancel</button>
-            <button id="confirmOpenBtn" type="button" style="padding:8px 16px;border-radius:999px;border:1px solid #d4a853;background:#d4a853;color:#0f1724;cursor:pointer;font-weight:700;">Open bar</button>
+            <button id="confirmOpenBtn" type="button" style="padding:8px 16px;border-radius:999px;border:1px solid #d4a853;background:#d4a853;color:#0f1724;cursor:pointer;font-weight:700;">${dlgConfirm}</button>
           </div>
         `;
         overlay.appendChild(dialog);
