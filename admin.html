@@ -618,9 +618,16 @@
           const { res, payload } = await apiFetch('/api/bar-state');
           if (!res.ok) throw new Error(payload.error || `Server error ${res.status}`);
           applyState(payload.state);
-          // Bar is open but we have no token — offer to reclaim silently on first load
+          // Bar is open but we have no token
           if (!silent && payload.state && payload.state.isOpen) {
-            offerReclaim(payload.state.barman);
+            const openBarman = payload.state.barman;
+            if (urlBarman && openBarman && urlBarman !== openBarman) {
+              // Different barman — offer to take over
+              offerTakeover(openBarman, urlBarman);
+            } else {
+              // Same barman — offer to reclaim session
+              offerReclaim(openBarman);
+            }
           }
           return;
         }
@@ -772,6 +779,55 @@
       } finally {
         setAdminBusy(false);
       }
+    }
+
+    function offerTakeover(currentBarman, newBarman) {
+      const overlay = document.getElementById('kickedOverlay');
+      const msg     = document.getElementById('kickedMsg');
+      const btn     = document.getElementById('reclaimBtn');
+      if (!overlay || !btn) return;
+      if (msg) msg.textContent = `${currentBarman}'s bar is currently open. Close it and open ${newBarman}'s bar?`;
+      btn.textContent = `Close ${currentBarman}'s bar & open ${newBarman}'s`;
+      btn.style.display = 'inline-block';
+      btn.onclick = async () => {
+        overlay.classList.remove('active');
+        btn.style.display = 'none';
+        btn.textContent = '🔑 Reclaim session'; // reset for future use
+
+        // Close current bar with new barman's credentials
+        const credentials = await showCredentialDialog(
+          newBarman,
+          { title: `Open ${newBarman}'s bar`, subtitle: `Enter ${newBarman}'s password to close ${currentBarman}'s bar and open yours.`, confirmLabel: 'Take over' }
+        );
+        if (!credentials) return;
+
+        setAdminBusy(true, 'Switching bar…');
+        try {
+          // Close current bar
+          const { res: closeRes, payload: closePayload } = await apiFetch('/api/bar-state/close-with-password', {
+            method: 'POST',
+            body: JSON.stringify(credentials)
+          });
+          if (!closeRes.ok) throw new Error(closePayload.error || `Server error ${closeRes.status}`);
+
+          // Open new bar
+          const { res: openRes, payload: openPayload } = await apiFetch('/api/bar-state/toggle', {
+            method: 'POST',
+            body: JSON.stringify(credentials)
+          });
+          if (!openRes.ok) throw new Error(openPayload.error || `Server error ${openRes.status}`);
+          if (openPayload.adminSessionToken) {
+            try { localStorage.setItem(ADMIN_SESSION_STORAGE_KEY, openPayload.adminSessionToken); } catch {}
+          }
+          if (openPayload.state) applyState(openPayload.state);
+          startPolling();
+        } catch (err) {
+          setError(err.message || 'Unable to switch bar.');
+        } finally {
+          setAdminBusy(false);
+        }
+      };
+      overlay.classList.add('active');
     }
 
     function offerReclaim(barmanName) {

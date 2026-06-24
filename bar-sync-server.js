@@ -957,10 +957,7 @@ async function handleCloseWithPassword(body) {
     return { status: 409, payload: { error: 'The bar is already closed.' } };
   }
 
-  if (state.barman !== name) {
-    return { status: 403, payload: { error: `The bar was opened by ${state.barman}, not ${name}.` } };
-  }
-
+  // Any valid barman can close any other barman's bar
   const sessionSnapshot = {
     sessionId: state.sessionId,
     barman: state.barman,
