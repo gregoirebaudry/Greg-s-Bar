@@ -7,7 +7,18 @@
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="apple-mobile-web-app-title" content="Cocktail Bar Admin">
-  <link rel="manifest" href="./manifest-admin.webmanifest">
+  <link rel="manifest" id="manifestLink" href="./manifest-admin.webmanifest">
+  <script>
+    // Swap manifest before browser parses it, based on ?bar= param
+    (function() {
+      const p = new URLSearchParams(window.location.search).get('bar') || '';
+      const name = p.charAt(0).toUpperCase() + p.slice(1).toLowerCase();
+      const valid = ['Greg', 'Bastien', 'Clement'];
+      if (valid.includes(name)) {
+        document.getElementById('manifestLink').href = './manifest-admin-' + name.toLowerCase() + '.webmanifest';
+      }
+    })();
+  </script>
   <link rel="apple-touch-icon" href="./icon-180.png">
   <title>Barman Console</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -1060,9 +1071,11 @@
         return;
       }
 
-      // Already granted?
+      // Already granted — re-subscribe silently and update status pill
       if (Notification.permission === 'granted') {
         await subscribePush();
+        soundStatus.textContent = '✓ Background alerts active';
+        soundStatus.classList.add('ready');
         return;
       }
 

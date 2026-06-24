@@ -1,0 +1,16 @@
+{
+  "name": "Bar Stoss Admin",
+  "short_name": "Bar Stoss",
+  "start_url": "./admin.html?bar=Bastien",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#0f1724",
+  "theme_color": "#0f1724",
+  "icons": [
+    {
+      "src": "./icons/icon-bastien-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

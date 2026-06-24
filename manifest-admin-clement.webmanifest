@@ -1,0 +1,16 @@
+{
+  "name": "Clement's Lounge Admin",
+  "short_name": "Clem's Lounge",
+  "start_url": "./admin.html?bar=Clement",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#0f1724",
+  "theme_color": "#0f1724",
+  "icons": [
+    {
+      "src": "./icons/icon-clement-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

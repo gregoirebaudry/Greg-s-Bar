@@ -1,0 +1,16 @@
+{
+  "name": "Greg's Bar Admin",
+  "short_name": "Greg",
+  "start_url": "./admin.html?bar=Greg",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#0f1724",
+  "theme_color": "#0f1724",
+  "icons": [
+    {
+      "src": "./icons/icon-greg-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
