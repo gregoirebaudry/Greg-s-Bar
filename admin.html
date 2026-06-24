@@ -178,7 +178,7 @@
     .guest { font-weight: 700; font-size: 1rem; }
     .cocktail { color: var(--primary-strong); font-size: 0.95rem; font-weight: 600; }
     .time { color: var(--muted-foreground); font-size: 0.8rem; white-space: nowrap; }
-    .actions { display: flex; justify-content: flex-end; margin-top: 0.65rem; }
+    .actions { display: flex; justify-content: flex-end; gap: 0.5rem; margin-top: 0.65rem; }
     .serve-btn {
       border: 1px solid var(--success-border); border-radius: 999px; padding: 0.62rem 0.96rem;
       background: var(--success-bg); color: var(--success-fg); cursor: pointer; font: inherit;
@@ -186,6 +186,13 @@
     }
     .serve-btn:hover { background: rgba(69, 151, 92, 0.28); border-color: rgba(69, 151, 92, 0.55); }
     .serve-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+    .cancel-btn {
+      border: 1px solid var(--danger-border); border-radius: 999px; padding: 0.62rem 0.96rem;
+      background: var(--danger-bg); color: var(--danger-fg); cursor: pointer; font: inherit;
+      transition: background 0.15s ease, border-color 0.15s ease;
+    }
+    .cancel-btn:hover { background: rgba(212, 110, 110, 0.22); border-color: rgba(228, 107, 115, 0.5); }
+    .cancel-btn:disabled { opacity: 0.5; cursor: not-allowed; }
 
     .bar-sign:disabled,
     .close-bar-btn:disabled,
@@ -541,10 +548,12 @@
             <span class="gold">${escapeHtml(order.cocktailName)}</span>
           </div>
           <div class="actions">
+            <button class="cancel-btn" data-id="${escapeHtml(order.id)}">✕ Cancel</button>
             <button class="serve-btn" data-id="${escapeHtml(order.id)}">✓ Served</button>
           </div>
         `;
         card.querySelector('.serve-btn').addEventListener('click', () => serveOrder(order.id, card));
+        card.querySelector('.cancel-btn').addEventListener('click', () => cancelOrder(order.id, card));
         queue.appendChild(card);
       });
     }
@@ -558,7 +567,7 @@
       const closeBtn = document.getElementById('closeBarBtn');
       if (closeBtn) closeBtn.disabled = adminBusy;
 
-      document.querySelectorAll('.serve-btn').forEach(btn => {
+      document.querySelectorAll('.serve-btn, .cancel-btn').forEach(btn => {
         btn.disabled = adminBusy;
       });
 
@@ -570,6 +579,7 @@
     // ─── Apply incoming state ─────────────────────────────────────────────────
     function applyState(raw) {
       barState = normaliseState(raw);
+      checkForNewOrders(barState.pendingOrders);
       renderHero();
       renderQueue();
 
@@ -626,6 +636,81 @@
         setError(err.message || 'Unable to mark order as served.');
         if (btn) btn.disabled = false;
       }
+    }
+
+    async function cancelOrder(orderId, cardEl) {
+      const cancelBtn = cardEl?.querySelector('.cancel-btn');
+      const serveBtn  = cardEl?.querySelector('.serve-btn');
+      if (cancelBtn) cancelBtn.disabled = true;
+      if (serveBtn)  serveBtn.disabled  = true;
+      setError('');
+
+      try {
+        const { res, payload } = await apiFetch('/api/orders/cancel', {
+          method: 'POST',
+          body: JSON.stringify({ orderId, token: getToken() })
+        });
+
+        if (!res.ok) {
+          if (res.status === 401) { clearToken(); showKickedOverlay(); return; }
+          throw new Error(payload.error || `Server error ${res.status}`);
+        }
+
+        if (payload.state) applyState(payload.state);
+      } catch (err) {
+        setError(err.message || 'Unable to cancel order.');
+        if (cancelBtn) cancelBtn.disabled = false;
+        if (serveBtn)  serveBtn.disabled  = false;
+      }
+    }
+
+    // ─── In-page audio alert (DND-proof fallback) ─────────────────────────────
+    // Plays a short chime via Web Audio API whenever a new order arrives.
+    // Runs entirely inside the browser tab — unaffected by iOS/Android DND.
+    let audioCtx = null;
+    let lastKnownOrderIds = new Set();
+
+    function ensureAudioCtx() {
+      if (!audioCtx) {
+        try { audioCtx = new (window.AudioContext || window.webkitAudioContext)(); } catch {}
+      }
+      if (audioCtx && audioCtx.state === 'suspended') {
+        audioCtx.resume().catch(() => {});
+      }
+    }
+
+    // Unlock AudioContext on first user gesture (required by browsers)
+    document.addEventListener('pointerdown', ensureAudioCtx, { once: true });
+
+    function playOrderChime() {
+      ensureAudioCtx();
+      if (!audioCtx) return;
+      try {
+        // Two-tone "ding ding" chime
+        [[880, 0], [1100, 0.18]].forEach(([freq, delay]) => {
+          const osc  = audioCtx.createOscillator();
+          const gain = audioCtx.createGain();
+          osc.connect(gain);
+          gain.connect(audioCtx.destination);
+          osc.type = 'sine';
+          osc.frequency.value = freq;
+          const t = audioCtx.currentTime + delay;
+          gain.gain.setValueAtTime(0, t);
+          gain.gain.linearRampToValueAtTime(0.35, t + 0.01);
+          gain.gain.exponentialRampToValueAtTime(0.001, t + 0.55);
+          osc.start(t);
+          osc.stop(t + 0.6);
+        });
+      } catch {}
+    }
+
+    function checkForNewOrders(orders) {
+      const incoming = new Set(orders.map(o => o.id));
+      const hasNew   = orders.some(o => !lastKnownOrderIds.has(o.id));
+      if (hasNew && lastKnownOrderIds.size > 0) {
+        playOrderChime();
+      }
+      lastKnownOrderIds = incoming;
     }
 
     async function closeBar() {

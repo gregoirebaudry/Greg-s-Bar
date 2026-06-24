@@ -3,1249 +3,1405 @@
     "id": "abbey",
     "name": "Abbey",
     "description": "A classic cocktail and the first drink in The Savoy Cocktail Book from 1930. Still well known in Britain, it blends gin, Lillet Blanc, orange juice, and a dash of orange bitters.",
-    "ingredients": "Gin – 45 ml  Lillet Blanc – 20 ml  Orange Juice – 20 ml  Orange Bitters – 2 dash  Cherry – 1",
-    "timesMade": 7,
-    "image": "images/cocktails/abbey.jpg"
+    "ingredients": "Gin – 45 ml\nLillet Blanc – 20 ml\nOrange Juice – 20 ml\nOrange Bitters – 2 dash\nCherry – 1",
+    "timesMade": 8,
+    "image": "images/cocktails/abbey.jpg",
+    "abv": 0.252
   },
   {
     "id": "adam-eve",
     "name": "Adam & Eve",
     "description": "This variation on the Old Fashioned gets a pleasant herbal kick from Galliano liqueur, adding vanilla and anise notes to the bourbon base with simple syrup and Angostura bitters.",
-    "ingredients": "Bourbon – 60 ml  Galliano – 15 ml  Simple Syrup – 7 ml  Angostura Bitters – 3 dash",
+    "ingredients": "Bourbon – 60 ml\nGalliano – 15 ml\nSimple Syrup – 7 ml\nAngostura Bitters – 3 dash",
     "timesMade": 5,
-    "image": "images/cocktails/adam-eve.jpg"
+    "image": "images/cocktails/adam-eve.jpg",
+    "abv": 0.371
   },
   {
     "id": "adonis",
     "name": "Adonis",
     "description": "The Adonis cocktail was most likely named after a play (the first Broadway play to run more than 500 shows) in the 19th century, which was also a time when sherry was extremely popular.",
-    "ingredients": "Dry Sherry – 45 ml  Sweet Vermouth – 20 ml  Orange Bitters – 1 dash  Orange Peel – 1",
+    "ingredients": "Dry Sherry – 45 ml\nSweet Vermouth – 20 ml\nOrange Bitters – 1 dash\nOrange Peel – 1",
     "timesMade": 0,
-    "image": "images/cocktails/adonis.jpg"
+    "image": "images/cocktails/adonis.jpg",
+    "abv": 0.168
   },
   {
     "id": "airmail",
     "name": "Airmail",
     "description": "A rum-based champagne cocktail likely created in 1930s Cuba, possibly by Bacardi to celebrate the launch of airmail service. Published in Esquire's 1949 Handbook for Hosts.",
-    "ingredients": "Rum – 60 ml  Lime Juice – 15 ml  Honey – 5.0 ml  Sparkling Wine – 150 ml",
+    "ingredients": "Rum – 60 ml\nLime Juice – 15 ml\nHoney – 5.0 ml\nSparkling Wine – 150 ml",
     "timesMade": 3,
-    "image": "images/cocktails/airmail.jpg"
+    "image": "images/cocktails/airmail.jpg",
+    "abv": 0.183
   },
   {
     "id": "alabama-slammer",
     "name": "Alabama Slammer",
     "description": "Also sometimes known as a Southern Slammer, this fruity drink was popular in the 1980s and was often available in pitcher size at chain restaurants. It blends vodka with amaretto and Southern Comfort.",
-    "ingredients": "Vodka – 45 ml  Orange Juice – 30 ml  Amaretto – 15 ml  Southern Comfort – 15 ml  Grenadine – 7 ml  Orange – 1 slice",
+    "ingredients": "Vodka – 45 ml\nOrange Juice – 30 ml\nAmaretto – 15 ml\nSouthern Comfort – 15 ml\nGrenadine – 7 ml\nOrange – 1 slice",
     "timesMade": 0,
-    "image": "images/cocktails/alabama-slammer.jpg"
+    "image": "images/cocktails/alabama-slammer.jpg",
+    "abv": 0.246
   },
   {
     "id": "alaska",
     "name": "Alaska",
     "description": "A variation on the martini replacing dry vermouth with yellow Chartreuse, a liqueur produced by Carthusian monks in France. A classic cocktail dating to the early 20th century.",
-    "ingredients": "Gin – 60 ml  Yellow Chartreuse – 15 ml",
+    "ingredients": "Gin – 60 ml\nYellow Chartreuse – 15 ml",
     "timesMade": 1,
-    "image": "images/cocktails/alaska.jpg"
+    "image": "images/cocktails/alaska.jpg",
+    "abv": 0.4
   },
   {
     "id": "alfonso",
     "name": "Alfonso",
     "description": "Named after Spanish King Alfonso XIII, who is said to have tried this cocktail while in France. A sugar cube soaked in Angostura bitters is topped with Dubonnet and sparkling wine.",
-    "ingredients": "Sugar Cube – 1  Angostura Bitters – 4 dash  Dubonnet – 15 ml  Sparkling Wine – 120 ml",
+    "ingredients": "Sugar Cube – 1\nAngostura Bitters – 4 dash\nDubonnet – 15 ml\nSparkling Wine – 120 ml",
     "timesMade": 1,
-    "image": "images/cocktails/alfonso.jpg"
+    "image": "images/cocktails/alfonso.jpg",
+    "abv": 0.123
   },
   {
     "id": "algonquin",
     "name": "Algonquin",
     "description": "Named for the famed Algonquin Hotel in New York City. Since the hotel didn't serve alcohol until after Prohibition, this rye, vermouth, and pineapple cocktail likely dates to the mid-1930s.",
-    "ingredients": "Rye – 60 ml  Dry Vermouth – 30 ml  Pineapple Juice – 30 ml  Cherry – 1",
+    "ingredients": "Rye – 60 ml\nDry Vermouth – 30 ml\nPineapple Juice – 30 ml\nCherry – 1",
     "timesMade": 0,
-    "image": "images/cocktails/algonquin.jpg"
+    "image": "images/cocktails/algonquin.jpg",
+    "abv": 0.245
   },
   {
     "id": "amaretto-sour",
     "name": "Amaretto Sour",
     "description": "A smooth, sweet cocktail ideal for those who prefer an easy-drinking drink. The almond-flavored amaretto is balanced by fresh lemon juice for a simple yet satisfying sour.",
-    "ingredients": "Amaretto – 60 ml  Lemon Juice – 30 ml  Lemon – 1 wedge  Cherry – 1",
+    "ingredients": "Amaretto – 60 ml\nLemon Juice – 30 ml\nLemon – 1 wedge\nCherry – 1",
     "timesMade": 5,
-    "image": "images/cocktails/amaretto-sour.jpg"
+    "image": "images/cocktails/amaretto-sour.jpg",
+    "abv": 0.187
   },
   {
     "id": "american-variation",
     "name": "American Variation",
     "description": "Based on the American Trilogy cocktail from Little Branch in New York City. A nice combination of rye whiskey, Grand Marnier, apple brandy, and both Angostura and Peychaud's bitters.",
-    "ingredients": "Rye – 60 ml  Grand Marnier – 15 ml  Apple Brandy – 15 ml  Angostura Bitters – 1 dash  Peychaud's Bitters – 1 dash  Lemon Peel – 1 twist",
+    "ingredients": "Rye – 60 ml\nGrand Marnier – 15 ml\nApple Brandy – 15 ml\nAngostura Bitters – 1 dash\nPeychaud's Bitters – 1 dash\nLemon Peel – 1 twist",
     "timesMade": 1,
-    "image": "images/cocktails/american-variation.jpg"
+    "image": "images/cocktails/american-variation.jpg",
+    "abv": 0.4
   },
   {
     "id": "americana",
     "name": "Americana",
     "description": "A very pleasant sparkling cocktail where smooth Tennessee whiskey meets champagne. A sugar cube soaked in Angostura bitters adds depth to this elegant, celebratory drink.",
-    "ingredients": "Sugar Cube – 1  Angostura Bitters – 4 dash  Tennessee Whiskey – 30 ml  Sparkling Wine – 150 ml",
+    "ingredients": "Sugar Cube – 1\nAngostura Bitters – 4 dash\nTennessee Whiskey – 30 ml\nSparkling Wine – 150 ml",
     "timesMade": 1,
-    "image": "images/cocktails/americana.jpg"
+    "image": "images/cocktails/americana.jpg",
+    "abv": 0.167
   },
   {
     "id": "americano",
     "name": "Americano",
     "description": "Originally dubbed the Americano because of its popularity with US tourists in Italy during Prohibition. The recipe was created at Gaspare's Campari Bar in Turin in 1861.",
-    "ingredients": "Campari – 45 ml  Sweet Vermouth – 45 ml  Club Soda – 90 ml  Orange Peel – 1",
+    "ingredients": "Campari – 45 ml\nSweet Vermouth – 45 ml\nClub Soda – 90 ml\nOrange Peel – 1",
     "timesMade": 1,
-    "image": "images/cocktails/americano.jpg"
+    "image": "images/cocktails/americano.jpg",
+    "abv": 0.103
   },
   {
     "id": "angostura-fizz",
     "name": "Angostura Fizz",
     "description": "Also called a Trinidad Fizz, this cocktail comes from Charles Baker's 1939 \"Gentleman's Companion.\" Unusual for a cocktail, this drink uses Angostura bitters as the base spirit.",
-    "ingredients": "Egg white – 15 ml  Angostura Bitters – 30 ml  Lime Juice – 30 ml  Simple Syrup – 7 ml  Grenadine – 7 ml  Cream – 15 ml  Club Soda – 30 ml",
-    "timesMade": 0,
-    "image": "images/cocktails/angostura-fizz.jpg"
+    "ingredients": "Egg white – 15 ml\nAngostura Bitters – 30 ml\nLime Juice – 30 ml\nSimple Syrup – 7 ml\nGrenadine – 7 ml\nCream – 15 ml\nClub Soda – 30 ml",
+    "timesMade": 1,
+    "image": "images/cocktails/angostura-fizz.jpg",
+    "abv": 0.1
   },
   {
     "id": "atlas",
     "name": "Atlas",
     "description": "A rich, spicy after-dinner cocktail first published in the late 1930s. Dark rum meets triple sec and Calvados for a spirit-forward blend of fruit and woody notes.",
-    "ingredients": "Dark Rum – 45 ml  Triple Sec – 30 ml  Calvados – 15 ml  Orange – 1 slice",
+    "ingredients": "Dark Rum – 45 ml\nTriple Sec – 30 ml\nCalvados – 15 ml\nOrange – 1 slice",
     "timesMade": 0,
-    "image": "images/cocktails/atlas.jpg"
+    "image": "images/cocktails/atlas.jpg",
+    "abv": 0.367
   },
   {
     "id": "barlovento",
     "name": "Barlovento",
     "description": "An easy, refreshing tropical drink served at the Barlovento Maloka hotel in Colombia's Tayrona Park. Light rum, pineapple, and orange juice get a surprising kick from a dash of hot sauce.",
-    "ingredients": "Light Rum – 60 ml  Pineapple Juice – 45 ml  Orange Juice – 45 ml  Hot Sauce – 1 dash",
+    "ingredients": "Light Rum – 60 ml\nPineapple Juice – 45 ml\nOrange Juice – 45 ml\nHot Sauce – 1 dash",
     "timesMade": 3,
-    "image": "images/cocktails/barlovento.jpg"
+    "image": "images/cocktails/barlovento.jpg",
+    "abv": 0.16
   },
   {
     "id": "bee-s-knees",
     "name": "Bee’s Knees",
     "description": "A Prohibition-era cocktail whose exact creator is unknown, though some attribute it to Frank Meier, a famous bartender at the Ritz in Paris in the 1920s. It blends gin, lemon, and honey.",
-    "ingredients": "Gin – 50 ml  Lemon Juice – 25 ml  Honey – 10 ml",
+    "ingredients": "Gin – 50 ml\nLemon Juice – 25 ml\nHoney – 10 ml",
     "timesMade": 0,
-    "image": "images/cocktails/bee-s-knees.jpg"
+    "image": "images/cocktails/bee-s-knees.jpg",
+    "abv": 0.235
   },
   {
     "id": "belle-amande",
     "name": "Belle Amande",
     "description": "Sweet, fresh, and indulgent. Belle De Brillet pear liqueur and orgeat syrup create a perfect pear-almond harmony, brightened by lemon juice and lengthened with sparkling water.",
-    "ingredients": "Belle De Brillet – 50 ml  Lemon Juice – 30 ml  Orgeat Syrup – 15 ml  Sparkling Water – 100 ml",
+    "ingredients": "Belle De Brillet – 50 ml\nLemon Juice – 30 ml\nOrgeat Syrup – 15 ml\nSparkling Water – 100 ml",
     "timesMade": 5,
-    "image": "images/cocktails/belle-amande.jpg"
+    "image": "images/cocktails/belle-amande.jpg",
+    "abv": 0.077
   },
   {
     "id": "belle-bulle",
     "name": "Belle Bulle",
     "description": "All the freshness of the pear in a simple, refreshing drink. The lemon juice tempers the sweetness of the Belle De Brillet liqueur, topped with sparkling water for a light finish.",
-    "ingredients": "Belle De Brillet – 50 ml  Lemon Juice – 20 ml  Sparkling Water – 100 ml",
+    "ingredients": "Belle De Brillet – 50 ml\nLemon Juice – 20 ml\nSparkling Water – 100 ml",
     "timesMade": 78,
-    "image": "images/cocktails/belle-bulle.jpg"
+    "image": "images/cocktails/belle-bulle.jpg",
+    "abv": 0.088
   },
   {
     "id": "belle-ipa",
     "name": "Belle IPA",
     "description": "Freshness and simplicity in a glass. The sweet bitterness of IPA beer marries beautifully with the pear fruitiness of Belle De Brillet for an easy, refreshing two-ingredient beer cocktail.",
-    "ingredients": "Belle de Brillet – 40 ml   IPA Beer – 200 ml",
+    "ingredients": "Belle de Brillet – 40 ml \nIPA Beer – 200 ml",
     "timesMade": 0,
-    "image": "images/cocktails/belle-ipa.jpg"
+    "image": "images/cocktails/belle-ipa.jpg",
+    "abv": 0.104
   },
   {
     "id": "belle-mimosa",
     "name": "Belle Mimosa",
     "description": "A variation of the classic Mimosa, the star cocktail of brunches sublimated by the pear! Belle De Brillet replaces the traditional triple sec, adding fruity depth to orange juice and champagne.",
-    "ingredients": "Belle de Brillet – 40 ml   Orange juice – 50 ml   Champagne – 120 ml",
-    "timesMade": 0,
-    "image": "images/cocktails/belle-mimosa.jpg"
+    "ingredients": "Belle de Brillet – 40 ml \nOrange juice – 50 ml \nChampagne – 120 ml",
+    "timesMade": 2,
+    "image": "images/cocktails/belle-mimosa.jpg",
+    "abv": 0.126
   },
   {
     "id": "belle-ros",
     "name": "Belle Rosé",
     "description": "A fresh and fruity summer aperitif blending Belle De Brillet pear liqueur with rosé wine and tonic. The pear's sweetness complements the dry rosé, while tonic adds a crisp effervescence.",
-    "ingredients": "Belle de Brillet – 30 ml   Rosé wine – 80 ml   Tonic – 100 ml",
+    "ingredients": "Belle de Brillet – 30 ml \nRosé wine – 80 ml \nTonic – 100 ml",
     "timesMade": 0,
-    "image": "images/cocktails/belle-rose.jpg"
+    "image": "images/cocktails/belle-rose.jpg",
+    "abv": 0.089
   },
   {
     "id": "belle-summer",
     "name": "Belle Summer",
     "description": "An original, fresh, and zesty summer cocktail with a touch of pear! Belle De Brillet is paired with dry vermouth and sparkling water for a light, effervescent warm-weather sipper.",
-    "ingredients": "Belle De Brillet – 40 ml  Dry Vermouth – 20 ml  Sparkling Water – 120 ml",
+    "ingredients": "Belle De Brillet – 40 ml\nDry Vermouth – 20 ml\nSparkling Water – 120 ml",
     "timesMade": 4,
-    "image": "images/cocktails/belle-summer.jpg"
+    "image": "images/cocktails/belle-summer.jpg",
+    "abv": 0.087
   },
   {
     "id": "belle-tampico",
     "name": "Belle Tampico",
     "description": "A long, bittersweet, and refreshing drink. Belle De Brillet pear liqueur meets Campari's bitter edge, brightened by lemon juice and lengthened with tonic water for a vibrant, citrusy aperitif.",
-    "ingredients": "Belle de Brillet – 40 ml   Campari – 20 ml   Lemon juice – 15 ml   Tonic Water – 100 ml",
+    "ingredients": "Belle de Brillet – 40 ml \nCampari – 20 ml \nLemon juice – 15 ml \nTonic Water – 100 ml",
     "timesMade": 0,
-    "image": "images/cocktails/belle-tampico.jpg"
+    "image": "images/cocktails/belle-tampico.jpg",
+    "abv": 0.097
   },
   {
     "id": "bennett",
     "name": "Bennett",
     "description": "A variation on the gin sour family. Replace the lemon in a gin sour with lime and you get a gimlet; add Angostura bitters to a gimlet and you get the Bennett. Simple and elegant.",
-    "ingredients": "Gin – 60 ml  Lime Juice – 30 ml  Simple Syrup – 15 ml  Angostura Bitters – 2 dash",
-    "timesMade": 1,
-    "image": "images/cocktails/bennett.jpg"
+    "ingredients": "Gin – 60 ml\nLime Juice – 30 ml\nSimple Syrup – 15 ml\nAngostura Bitters – 2 dash",
+    "timesMade": 3,
+    "image": "images/cocktails/bennett.jpg",
+    "abv": 0.229
   },
   {
     "id": "bentley",
     "name": "Bentley",
     "description": "A deceptively simple cocktail from The Savoy Cocktail Book. Equal parts Calvados and Dubonnet combine to create a rich, fruity, and aromatic aperitif that belies its two-ingredient simplicity.",
-    "ingredients": "Calvados – 45 ml  Dubonnet – 45 ml",
+    "ingredients": "Calvados – 45 ml\nDubonnet – 45 ml",
     "timesMade": 1,
-    "image": "images/cocktails/bentley.jpg"
+    "image": "images/cocktails/bentley.jpg",
+    "abv": 0.272
   },
   {
     "id": "betsy-ross",
     "name": "Betsy Ross",
     "description": "Named after the legendary maker of the American flag, this version comes from David Embury's The Fine Art of Mixing Drinks. It combines brandy, ruby port, and a touch of orange curaçao.",
-    "ingredients": "Brandy – 45 ml  Ruby Port – 15 ml  Orange Curacao – 7 ml  Lemon Peel – 1 twist",
+    "ingredients": "Brandy – 45 ml\nRuby Port – 15 ml\nOrange Curacao – 7 ml\nLemon Peel – 1 twist",
     "timesMade": 0,
-    "image": "images/cocktails/betsy-ross.jpg"
+    "image": "images/cocktails/betsy-ross.jpg",
+    "abv": 0.345
   },
   {
     "id": "between-the-sheets",
     "name": "Between The Sheets",
     "description": "A Prohibition-era cocktail and the grandfather of all the suggestively named drinks that followed. Similar to a Sidecar, but with the addition of aged rum alongside the brandy.",
-    "ingredients": "Aged Rum – 30 ml  Brandy – 30 ml  Triple Sec – 20 ml  Lime Juice – 15 ml",
+    "ingredients": "Aged Rum – 30 ml\nBrandy – 30 ml\nTriple Sec – 20 ml\nLime Juice – 15 ml",
     "timesMade": 4,
-    "image": "images/cocktails/between-the-sheets.jpg"
+    "image": "images/cocktails/between-the-sheets.jpg",
+    "abv": 0.316
   },
   {
     "id": "bijou",
     "name": "Bijou",
     "description": "One of the oldest cocktails in Harry Johnson's 1900 \"New and Improved Bartender Manual.\" Bijou is French for jewel, and the drink blends gin, sweet vermouth, and green Chartreuse.",
-    "ingredients": "Gin – 20 ml  Sweet Vermouth – 20 ml  Green Chartreuse – 20 ml  Orange Bitters – 1 dash  Orange Peel – 1  Cherry – 1",
+    "ingredients": "Gin – 20 ml\nSweet Vermouth – 20 ml\nGreen Chartreuse – 20 ml\nOrange Bitters – 1 dash\nOrange Peel – 1\nCherry – 1",
     "timesMade": 2,
-    "image": "images/cocktails/bijou.jpg"
+    "image": "images/cocktails/bijou.jpg",
+    "abv": 0.37
   },
   {
     "id": "bitter-mai-tai",
     "name": "Bitter Mai Tai",
     "description": "Created by Jeremy Ortel of Dram in New York. While you can taste the Mai Tai, the addition of Campari adds a bitter complexity. The mint garnish provides a fresh scent to the citrus aroma.",
-    "ingredients": "Orange Curacao – 15 ml  Orgeat Syrup – 20 ml  Dark Rum – 20 ml  Lime Juice – 30 ml  Campari – 45 ml  Mint – 1 sprig",
+    "ingredients": "Orange Curacao – 15 ml\nOrgeat Syrup – 20 ml\nDark Rum – 20 ml\nLime Juice – 30 ml\nCampari – 45 ml\nMint – 1 sprig",
     "timesMade": 8,
-    "image": "images/cocktails/bitter-mai-tai.jpg"
+    "image": "images/cocktails/bitter-mai-tai.jpg",
+    "abv": 0.183
   },
   {
     "id": "black-forest",
     "name": "Black Forest",
     "description": "A coffee-forward cocktail from the Angostura Professional Mixing Guide. Benedictine and maraschino liqueur blend with chilled coffee for a drink reminiscent of Black Forest cake.",
-    "ingredients": "Coffee – 60 ml  Benedictine – 7 ml  Maraschino Liqueur – 7 ml",
+    "ingredients": "Coffee – 60 ml\nBenedictine – 7 ml\nMaraschino Liqueur – 7 ml",
     "timesMade": 2,
-    "image": "images/cocktails/black-forest.jpg"
+    "image": "images/cocktails/black-forest.jpg",
+    "abv": 0.068
   },
   {
     "id": "black-russian",
     "name": "Black Russian",
     "description": "A classic coffee and vodka drink from 1949, attributed to Belgian barkeep Gustave Tops of the Hotel Metropole in Brussels. Vodka is poured over ice, followed by coffee liqueur.",
-    "ingredients": "Vodka – 60 ml  Coffee Liqueur – 30 ml",
+    "ingredients": "Vodka – 60 ml\nCoffee Liqueur – 30 ml",
     "timesMade": 1,
-    "image": "images/cocktails/black-russian.jpg"
+    "image": "images/cocktails/black-russian.jpg",
+    "abv": 0.333
   },
   {
     "id": "blackthorne",
     "name": "Blackthorne",
     "description": "Rich and smooth, the Blackthorne was invented by famed American expatriate Harry Craddock at the Savoy Hotel in London during Prohibition. It pairs Irish whiskey with sweet vermouth and bitters.",
-    "ingredients": "Irish Whiskey – 60 ml  Sweet Vermouth – 30 ml  Angostura Bitters – 2 dash  Lemon Peel – 1",
+    "ingredients": "Irish Whiskey – 60 ml\nSweet Vermouth – 30 ml\nAngostura Bitters – 2 dash\nLemon Peel – 1",
     "timesMade": 1,
-    "image": "images/cocktails/blackthorne.jpg"
+    "image": "images/cocktails/blackthorne.jpg",
+    "abv": 0.32
   },
   {
     "id": "bloody-mary",
     "name": "Bloody Mary",
     "description": "A classic \"hair of the dog\" brunch cocktail with disputed origins from the early 20th century. Its base of vodka and tomato juice is spiced with Worcestershire, hot sauce, and horseradish.",
-    "ingredients": "Lime – 1 wedge  Salt  Vodka – 45 ml  Tomato Juice – 90 ml  Lemon Juice – 30 ml  Worcestershire Sauce – 2.5 ml  Hot Sauce – 3 drop  Celery Salt – 1.0 ml  Horseradish – 7 ml",
+    "ingredients": "Lime – 1 wedge\nSalt\nVodka – 45 ml\nTomato Juice – 90 ml\nLemon Juice – 30 ml\nWorcestershire Sauce – 2.5 ml\nHot Sauce – 3 drop\nCelery Salt – 1.0 ml\nHorseradish – 7 ml",
     "timesMade": 7,
-    "image": "images/cocktails/bloody-mary.jpg"
+    "image": "images/cocktails/bloody-mary.jpg",
+    "abv": 0.103
   },
   {
     "id": "blue-bird",
     "name": "Blue Bird",
     "description": "A gin-based cocktail created in 1927 by Frank Meier at the Ritz in Paris to celebrate the automobile speed record set by Sir Malcolm Campbell in his famous Blue Bird racing car.",
-    "ingredients": "Gin – 40 ml  Triple Sec – 10 ml  Blue Curacao – 5 ml  Lemon Juice – 15 ml",
+    "ingredients": "Gin – 40 ml\nTriple Sec – 10 ml\nBlue Curacao – 5 ml\nLemon Juice – 15 ml",
     "timesMade": 0,
-    "image": "images/cocktails/blue-bird.jpg"
+    "image": "images/cocktails/blue-bird.jpg",
+    "abv": 0.29
   },
   {
     "id": "bobby-burns",
     "name": "Bobby Burns",
     "description": "A classic cocktail named for Scottish poet Robert Burns. Equal parts Scotch and sweet vermouth are enhanced with a barspoon of herbal Benedictine and a lemon peel garnish.",
-    "ingredients": "Scotch Whiskey – 45 ml  Sweet Vermouth – 45 ml  Benedictine – 5.0 ml  Lemon Peel – 1",
+    "ingredients": "Scotch Whiskey – 45 ml\nSweet Vermouth – 45 ml\nBenedictine – 5.0 ml\nLemon Peel – 1",
     "timesMade": 2,
-    "image": "images/cocktails/bobby-burns.jpg"
+    "image": "images/cocktails/bobby-burns.jpg",
+    "abv": 0.286
   },
   {
     "id": "bocce-ball",
     "name": "Bocce Ball",
     "description": "A fruit-forward, simple, easy-drinking cocktail named for the Italian lawn game. Amaretto and orange juice are lengthened with club soda for a refreshing, low-proof afternoon sipper.",
-    "ingredients": "Amaretto – 45 ml  Orange Juice – 45 ml  Club Soda – 120 ml  Orange – 1 slice",
+    "ingredients": "Amaretto – 45 ml\nOrange Juice – 45 ml\nClub Soda – 120 ml\nOrange – 1 slice",
     "timesMade": 0,
-    "image": "images/cocktails/bocce-ball.jpg"
+    "image": "images/cocktails/bocce-ball.jpg",
+    "abv": 0.06
   },
   {
     "id": "bols-old-fashioned",
     "name": "Bols Old Fashioned",
     "description": "A twist on the classic Old Fashioned using Bols Barrel Aged Genever, whose malty taste is similar to bourbon. Simple syrup and Angostura bitters complete this spirit-forward Dutch variation.",
-    "ingredients": "Bols Barrel Aged Genever – 60 ml  Simple Syrup – 10 ml  Angostura Bitters – 2 dashes  Cherry – 1",
+    "ingredients": "Bols Barrel Aged Genever – 60 ml\nSimple Syrup – 10 ml\nAngostura Bitters – 2 dashes\nCherry – 1",
     "timesMade": 1,
-    "image": "images/cocktails/bols-old-fashioned.jpg"
+    "image": "images/cocktails/bols-old-fashioned.jpg",
+    "abv": 0.343
   },
   {
     "id": "boulevardier",
     "name": "Boulevardier",
     "description": "Cousin to the Negroni, substituting bourbon for gin. First appeared in Harry McElhone's 1927 Barflies & Cocktails. Named after a Paris magazine edited by American expatriate Erskine Gwynn.",
-    "ingredients": "Bourbon – 45 ml  Campari – 30 ml  Sweet Vermouth – 30 ml  Orange Peel – 1 twist  Cherry – 1",
+    "ingredients": "Bourbon – 45 ml\nCampari – 30 ml\nSweet Vermouth – 30 ml\nOrange Peel – 1 twist\nCherry – 1",
     "timesMade": 1,
-    "image": "images/cocktails/boulevardier.jpg"
+    "image": "images/cocktails/boulevardier.jpg",
+    "abv": 0.289
   },
   {
     "id": "boulevardier-rye",
     "name": "Boulevardier Rye",
     "description": "A variant of the Boulevardier using rye whiskey instead of bourbon for a spicier, more assertive take. The rye's peppery notes pair beautifully with Campari and sweet vermouth.",
-    "ingredients": "Rye – 45 ml  Campari – 30 ml  Sweet Vermouth – 30 ml  Orange Peel – 1 twist  Cherry – 1",
+    "ingredients": "Rye – 45 ml\nCampari – 30 ml\nSweet Vermouth – 30 ml\nOrange Peel – 1 twist\nCherry – 1",
     "timesMade": 1,
-    "image": "images/cocktails/boulevardier-rye.jpg"
+    "image": "images/cocktails/boulevardier-rye.jpg",
+    "abv": 0.289
   },
   {
     "id": "brainstorm",
     "name": "Brainstorm",
     "description": "A cocktail similar to the Manhattan, getting its sweetness and complexity from Benedictine liqueur. Bourbon and dry vermouth provide the backbone, finished with an orange peel twist.",
-    "ingredients": "Bourbon – 45 ml  Dry Vermouth – 30 ml  Benedictine – 20 ml  Orange Peel – 1 twist",
+    "ingredients": "Bourbon – 45 ml\nDry Vermouth – 30 ml\nBenedictine – 20 ml\nOrange Peel – 1 twist",
     "timesMade": 1,
-    "image": "images/cocktails/brainstorm.jpg"
+    "image": "images/cocktails/brainstorm.jpg",
+    "abv": 0.331
   },
   {
     "id": "brandy-crusta",
     "name": "Brandy Crusta",
     "description": "A cocktail originating at the New Orleans City Exchange under Joseph Santini in the 1850s. Named for its sugar-crusted rim, it features cognac, orange curaçao, and a touch of lemon.",
-    "ingredients": "Lemon – 1 wedge  Granulated Sugar  Cognac – 60 ml  Orange Curacao – 5.0 ml  Lemon Juice – 2.5 ml  Angostura Bitters – 1 dash  Lemon Peel – 1",
+    "ingredients": "Lemon – 1 wedge\nGranulated Sugar\nCognac – 60 ml\nOrange Curacao – 5.0 ml\nLemon Juice – 2.5 ml\nAngostura Bitters – 1 dash\nLemon Peel – 1",
     "timesMade": 0,
-    "image": "images/cocktails/brandy-crusta.jpg"
+    "image": "images/cocktails/brandy-crusta.jpg",
+    "abv": 0.378
   },
   {
     "id": "brandy-milk-punch",
     "name": "Brandy Milk Punch",
     "description": "A popular New Orleans brunch cocktail, this delicious and decadent drink blends cognac with milk, simple syrup, and vanilla extract, topped with a dusting of fresh nutmeg.",
-    "ingredients": "Cognac – 60 ml  Milk – 120 ml  Simple Syrup – 7 ml  Vanilla Extract – 2.5 ml  Nutmeg – 1 pinch",
+    "ingredients": "Cognac – 60 ml\nMilk – 120 ml\nSimple Syrup – 7 ml\nVanilla Extract – 2.5 ml\nNutmeg – 1 pinch",
     "timesMade": 1,
-    "image": "images/cocktails/brandy-milk-punch.jpg"
+    "image": "images/cocktails/brandy-milk-punch.jpg",
+    "abv": 0.127
   },
   {
     "id": "brave-bull",
     "name": "Brave Bull",
     "description": "Essentially a Black Russian with tequila in place of vodka. The flavor combination of tequila and coffee liqueur works surprisingly well, yielding a rich, spirit-forward nightcap.",
-    "ingredients": "Tequila – 30 ml  Coffee Liqueur – 30 ml",
+    "ingredients": "Tequila – 30 ml\nCoffee Liqueur – 30 ml",
     "timesMade": 0,
-    "image": "images/cocktails/brave-bull.jpg"
+    "image": "images/cocktails/brave-bull.jpg",
+    "abv": 0.3
   },
   {
     "id": "breizh-mule",
     "name": "Breizh Mule",
     "description": "A Breton variation of the Moscow Mule using buckwheat-flavored gin from Saint-Malo instead of vodka. The gin's toasty, nutty character adds depth to the classic lime and ginger beer combo.",
-    "ingredients": "Malouins Gin – 60 ml  Lime Juice – 15 ml  Ginger Beer – 120 ml",
+    "ingredients": "Malouins Gin – 60 ml\nLime Juice – 15 ml\nGinger Beer – 120 ml",
     "timesMade": 2,
-    "image": "images/cocktails/breizh-mule.jpg"
+    "image": "images/cocktails/breizh-mule.jpg",
+    "abv": 0.123
   },
   {
     "id": "bronx",
     "name": "Bronx",
     "description": "Essentially a Martini with orange juice and sweet vermouth, hugely popular right after Prohibition. Its inventor is disputed between Johnnie Solon at the Waldorf-Astoria and a Bronx restaurateur.",
-    "ingredients": "Gin – 60 ml  Orange Juice – 30 ml  Sweet Vermouth – 15 ml  Dry Vermouth – 15 ml",
+    "ingredients": "Gin – 60 ml\nOrange Juice – 30 ml\nSweet Vermouth – 15 ml\nDry Vermouth – 15 ml",
     "timesMade": 1,
-    "image": "images/cocktails/bronx.jpg"
+    "image": "images/cocktails/bronx.jpg",
+    "abv": 0.243
   },
   {
     "id": "brookstone",
     "name": "Brookstone",
     "description": "Designed by cocktail consultant Jacob Grier, sweetened with maple syrup as a nod to New Hampshire heritage. Aged rum and grade B maple syrup make this drink exceptional.",
-    "ingredients": "Aged Rum – 60 ml  Lime Juice – 20 ml  Maple Syrup – 20 ml  Angostura Bitters – 1 dash  Lime – 1 wedge",
+    "ingredients": "Aged Rum – 60 ml\nLime Juice – 20 ml\nMaple Syrup – 20 ml\nAngostura Bitters – 1 dash\nLime – 1 wedge",
     "timesMade": 2,
-    "image": "images/cocktails/brookstone.jpg"
+    "image": "images/cocktails/brookstone.jpg",
+    "abv": 0.24
   },
   {
     "id": "bushwacker",
     "name": "Bushwacker",
     "description": "A creamy tropical cocktail blending coffee liqueur, Irish cream, light rum, and amaretto with cream. This version from Stew Ellington's 901 Very Good Cocktails is very easy going.",
-    "ingredients": "Coffee Liqueur – 15 ml  Irish Cream – 15 ml  Light Rum – 15 ml  Amaretto – 15 ml  Cream – 60 ml",
+    "ingredients": "Coffee Liqueur – 15 ml\nIrish Cream – 15 ml\nLight Rum – 15 ml\nAmaretto – 15 ml\nCream – 60 ml",
     "timesMade": 2,
-    "image": "images/cocktails/bushwacker.jpg"
+    "image": "images/cocktails/bushwacker.jpg",
+    "abv": 0.132
   },
   {
     "id": "buster-brown",
     "name": "Buster Brown",
     "description": "Most likely named after the comic strip character from the early 1900s, the Buster Brown is a classic pre-Prohibition bourbon sour with lemon juice, simple syrup, and orange bitters.",
-    "ingredients": "Bourbon – 45 ml  Lemon Juice – 15 ml  Simple Syrup – 7 ml  Orange Bitters – 2 dash",
+    "ingredients": "Bourbon – 45 ml\nLemon Juice – 15 ml\nSimple Syrup – 7 ml\nOrange Bitters – 2 dash",
     "timesMade": 1,
-    "image": "images/cocktails/buster-brown.jpg"
+    "image": "images/cocktails/buster-brown.jpg",
+    "abv": 0.269
   },
   {
     "id": "cable-car",
     "name": "Cable Car",
     "description": "Adapted from a cocktail at the Starlight Room in San Francisco. Spiced rum and triple sec are shaken with lemon juice, egg white, and simple syrup, served in a cinnamon-sugar-rimmed glass.",
-    "ingredients": "Lemon – 1 wedge  Cinnamon Sugar  Egg white – 15 ml  Spiced Rum – 60 ml  Triple Sec – 30 ml  Lemon Juice – 15 ml  Simple Syrup – 7 ml",
+    "ingredients": "Lemon – 1 wedge\nCinnamon Sugar\nEgg white – 15 ml\nSpiced Rum – 60 ml\nTriple Sec – 30 ml\nLemon Juice – 15 ml\nSimple Syrup – 7 ml",
     "timesMade": 3,
-    "image": "images/cocktails/cable-car.jpg"
+    "image": "images/cocktails/cable-car.jpg",
+    "abv": 0.26
   },
   {
     "id": "caipirinha",
     "name": "Caipirinha",
     "description": "The national drink of Brazil, made from cachaça, a spirit distilled from fermented sugar cane juice. Muddled lime and sugar complete this simple yet iconic cocktail now popular worldwide.",
-    "ingredients": "Granulated Sugar – 20 g  Lime – 2 quarter  Cachaca – 60 ml",
+    "ingredients": "Granulated Sugar – 20 g\nLime – 2 quarter\nCachaca – 60 ml",
     "timesMade": 14,
-    "image": "images/cocktails/caipirinha.jpg"
+    "image": "images/cocktails/caipirinha.jpg",
+    "abv": 0.4
   },
   {
     "id": "caipiroska",
     "name": "Caipiroska",
     "description": "A variation on the Caipirinha using vodka instead of cachaça, this drink has grown popular in South America as premium vodkas have become more available in that region.",
-    "ingredients": "Granulated Sugar – 20 g  Lime – 2 wedge  Vodka – 60 ml",
+    "ingredients": "Granulated Sugar – 20 g\nLime – 2 wedge\nVodka – 60 ml",
     "timesMade": 0,
-    "image": "images/cocktails/caipiroska.jpg"
+    "image": "images/cocktails/caipiroska.jpg",
+    "abv": 0.4
   },
   {
     "id": "cameron-s-kick",
     "name": "Cameron's Kick",
     "description": "An odd combination of ingredients that somehow comes together quite nicely. Adapted from The Savoy Cocktail Book, it blends Scotch and Irish whiskey with lemon juice and orgeat syrup.",
-    "ingredients": "Scotch Whiskey – 30 ml  Irish Whiskey – 30 ml  Lemon Juice – 15 ml  Orgeat Syrup – 15 ml",
+    "ingredients": "Scotch Whiskey – 30 ml\nIrish Whiskey – 30 ml\nLemon Juice – 15 ml\nOrgeat Syrup – 15 ml",
     "timesMade": 2,
-    "image": "images/cocktails/cameron-s-kick.jpg"
+    "image": "images/cocktails/cameron-s-kick.jpg",
+    "abv": 0.267
   },
   {
     "id": "cape-cod-cocktail",
     "name": "Cape Cod Cocktail",
     "description": "Originally called the \"Red Devil\" when created by the Ocean Spray cooperative in 1945. A simple mix of vodka and cranberry juice, it is related to the Sea Breeze and Bay Breeze cocktails.",
-    "ingredients": "Cranberry Juice – 120 ml  Vodka – 60 ml  Lime – 1 wedge",
+    "ingredients": "Cranberry Juice – 120 ml\nVodka – 60 ml\nLime – 1 wedge",
     "timesMade": 0,
-    "image": "images/cocktails/cape-cod-cocktail.jpg"
+    "image": "images/cocktails/cape-cod-cocktail.jpg",
+    "abv": 0.133
   },
   {
     "id": "champagne-mojito",
     "name": "Champagne Mojito",
     "description": "A sparkling spin on the classic mojito. Muddled mint, lime, and light rum form the base, topped with sparkling wine for an effervescent, celebratory Caribbean-inspired cocktail.",
-    "ingredients": "Mint – 8 leaf  Raw Sugar – 4 g  Lime Juice – 20 ml  Light Rum – 60 ml  Simple Syrup – 15 ml  Angostura Bitters – 1 dash  Sparkling Wine – 60 ml  Lime – 1 wheel  Mint – 1 sprig",
+    "ingredients": "Mint – 8 leaf\nRaw Sugar – 4 g\nLime Juice – 20 ml\nLight Rum – 60 ml\nSimple Syrup – 15 ml\nAngostura Bitters – 1 dash\nSparkling Wine – 60 ml\nLime – 1 wheel\nMint – 1 sprig",
     "timesMade": 0,
-    "image": "images/cocktails/champagne-mojito.jpg"
+    "image": "images/cocktails/champagne-mojito.jpg",
+    "abv": 0.201
   },
   {
     "id": "charlie-chaplin",
     "name": "Charlie Chaplin",
     "description": "Created at the Waldorf Astoria in NYC in the 1920s and named after the legendary silent film star. Equal parts apricot liqueur, sloe gin, and lime juice make a fruity, balanced cocktail.",
-    "ingredients": "Apricot Liqueur – 30 ml  Sloe Gin – 30 ml  Lime Juice – 30 ml",
+    "ingredients": "Apricot Liqueur – 30 ml\nSloe Gin – 30 ml\nLime Juice – 30 ml",
     "timesMade": 1,
-    "image": "images/cocktails/charlie-chaplin.jpg"
+    "image": "images/cocktails/charlie-chaplin.jpg",
+    "abv": 0.167
   },
   {
     "id": "chingon",
     "name": "Chingon",
     "description": "Created by Brian Miller of Death & Company in 2009 and named after a Mexican slang term for cool. Tequila reposado meets Benedictine, citrus juices, and orgeat for a complex sipper.",
-    "ingredients": "Tequila Reposado – 60 ml  Benedictine – 7 ml  Orange Juice – 15 ml  Lime Juice – 15 ml  Orgeat Syrup – 15 ml  Orange Peel – 1 twist",
+    "ingredients": "Tequila Reposado – 60 ml\nBenedictine – 7 ml\nOrange Juice – 15 ml\nLime Juice – 15 ml\nOrgeat Syrup – 15 ml\nOrange Peel – 1 twist",
     "timesMade": 3,
-    "image": "images/cocktails/chingon.jpg"
+    "image": "images/cocktails/chingon.jpg",
+    "abv": 0.239
   },
   {
     "id": "christmas-moscow-mule",
     "name": "Christmas Moscow Mule",
     "description": "A festive variation of the popular Moscow Mule that swaps ginger beer for cranberry juice and spiced red berries syrup, giving a warm holiday spirit to this beloved classic.",
-    "ingredients": "Vodka – 60 ml  Lime Juice – 15 ml  Spiced Red Berries Syrup – 10 ml  Cranberry Juice – 60 ml",
+    "ingredients": "Vodka – 60 ml\nLime Juice – 15 ml\nSpiced Red Berries Syrup – 10 ml\nCranberry Juice – 60 ml",
     "timesMade": 5,
-    "image": "images/cocktails/christmas-moscow-mule.jpg"
+    "image": "images/cocktails/christmas-moscow-mule.jpg",
+    "abv": 0.166
   },
   {
     "id": "chrysanthemum",
     "name": "Chrysanthemum",
     "description": "A low-alcohol cocktail created around 1916 by Hugo Ensslin, a German bartender in New York. Dry vermouth and Benedictine with a dash of absinthe make an elegant, herbal aperitif.",
-    "ingredients": "Dry Vermouth – 60 ml  Benedictine – 30 ml  Absinthe – 3 dash  Orange Peel – 1",
+    "ingredients": "Dry Vermouth – 60 ml\nBenedictine – 30 ml\nAbsinthe – 3 dash\nOrange Peel – 1",
     "timesMade": 0,
-    "image": "images/cocktails/chrysanthemum.jpg"
+    "image": "images/cocktails/chrysanthemum.jpg",
+    "abv": 0.253
   },
   {
     "id": "clipper",
     "name": "Clipper",
     "description": "Peggy Guggenheim's biography mentions this cocktail was served during the 1940s on the Boeing flying boats known as Clippers. Light rum, dry vermouth, and grenadine make a smooth sipper.",
-    "ingredients": "Light Rum – 45 ml  Dry Vermouth – 45 ml  Grenadine – 10 ml",
+    "ingredients": "Light Rum – 45 ml\nDry Vermouth – 45 ml\nGrenadine – 10 ml",
     "timesMade": 0,
-    "image": "images/cocktails/clipper.jpg"
+    "image": "images/cocktails/clipper.jpg",
+    "abv": 0.261
   },
   {
     "id": "cloister",
     "name": "Cloister",
     "description": "An herbal gin sour dating back at least to the 1970s. Yellow Chartreuse adds alpine complexity to gin, grapefruit juice, and lemon juice for a refreshing, layered citrus cocktail.",
-    "ingredients": "Gin – 45 ml  Yellow Chartreuse – 15 ml  Grapefruit Juice – 15 ml  Lemon Juice – 7 ml  Simple Syrup – 7 ml",
+    "ingredients": "Gin – 45 ml\nYellow Chartreuse – 15 ml\nGrapefruit Juice – 15 ml\nLemon Juice – 7 ml\nSimple Syrup – 7 ml",
     "timesMade": 1,
-    "image": "images/cocktails/cloister.jpg"
+    "image": "images/cocktails/cloister.jpg",
+    "abv": 0.27
   },
   {
     "id": "coffee-boulevardier",
     "name": "Coffee Boulevardier",
     "description": "A twist on the classic Boulevardier where coffee-infused Campari replaces the original, adding roasted depth. Bourbon and the bitter coffee notes create a bold, sophisticated variation.",
-    "ingredients": "Bourbon – 45 ml  Coffee-infused Campari – 30 ml",
+    "ingredients": "Bourbon – 45 ml\nCoffee-infused Campari – 30 ml",
     "timesMade": 0,
-    "image": "images/cocktails/coffee-boulevardier.jpg"
+    "image": "images/cocktails/coffee-boulevardier.jpg",
+    "abv": 0.4
   },
   {
     "id": "coffee-cocktail",
     "name": "Coffee Cocktail",
     "description": "Despite its name, this classic drink contains no coffee at all. A whole egg, brandy, ruby port, and simple syrup are shaken to create a rich, velvety drink topped with nutmeg.",
-    "ingredients": "Egg – 45 ml  Brandy – 45 ml  Ruby Port – 45 ml  Simple Syrup – 15 ml  Nutmeg – 1 pinch",
+    "ingredients": "Egg – 45 ml\nBrandy – 45 ml\nRuby Port – 45 ml\nSimple Syrup – 15 ml\nNutmeg – 1 pinch",
     "timesMade": 0,
-    "image": "images/cocktails/coffee-cocktail.jpg"
+    "image": "images/cocktails/coffee-cocktail.jpg",
+    "abv": 0.18
   },
   {
     "id": "coffee-negroni",
     "name": "Coffee Negroni",
     "description": "A modern twist on the 1919 Negroni, replacing standard Campari with coffee-infused Campari. The roasted coffee notes add complexity to the classic combination of gin and sweet vermouth.",
-    "ingredients": "Gin – 30 ml  Coffee-infused Campari – 30 ml  Sweet Vermouth – 30 ml  Orange Peel – 1",
+    "ingredients": "Gin – 30 ml\nCoffee-infused Campari – 30 ml\nSweet Vermouth – 30 ml\nOrange Peel – 1",
     "timesMade": 3,
-    "image": "images/cocktails/coffee-negroni.jpg"
+    "image": "images/cocktails/coffee-negroni.jpg",
+    "abv": 0.28
   },
   {
     "id": "cognac-sazerac",
     "name": "Cognac Sazerac",
     "description": "Early Sazeracs were made with cognac until the Phylloxera epidemic wiped out French vineyards in the 1870s. Rye was substituted and the change stuck, but this is the original version.",
-    "ingredients": "Cognac – 60 ml  Simple Syrup – 15 ml  Peychaud's Bitters – 3 dash",
+    "ingredients": "Cognac – 60 ml\nSimple Syrup – 15 ml\nPeychaud's Bitters – 3 dash",
     "timesMade": 1,
-    "image": "images/cocktails/cognac-sazerac.jpg"
+    "image": "images/cocktails/cognac-sazerac.jpg",
+    "abv": 0.32
   },
   {
     "id": "colorado-bulldog",
     "name": "Colorado Bulldog",
     "description": "Very similar to a White Russian, this simple fizzy cocktail blends vodka, coffee liqueur, and cream. Its unknown origins haven't diminished its popularity as a creamy, easy-drinking treat.",
-    "ingredients": "Vodka – 30 ml  Coffee Liqueur – 30 ml  Cream – 30 ml",
+    "ingredients": "Vodka – 30 ml\nCoffee Liqueur – 30 ml\nCream – 30 ml",
     "timesMade": 1,
-    "image": "images/cocktails/colorado-bulldog.jpg"
+    "image": "images/cocktails/colorado-bulldog.jpg",
+    "abv": 0.2
   },
   {
     "id": "corpse-reviver-2",
     "name": "Corpse Reviver #2",
     "description": "From Harry Craddock's 1930 Savoy Cocktail Handbook, this \"hair of the dog\" hangover cure combines gin, Cointreau, Lillet Blanc, and lemon juice with a dash of absinthe.",
-    "ingredients": "Gin – 20 ml  Cointreau – 20 ml  Lillet Blanc – 20 ml  Lemon Juice – 20 ml  Absinthe – 1 dash",
+    "ingredients": "Gin – 20 ml\nCointreau – 20 ml\nLillet Blanc – 20 ml\nLemon Juice – 20 ml\nAbsinthe – 1 dash",
     "timesMade": 4,
-    "image": "images/cocktails/corpse-reviver-2.jpg"
+    "image": "images/cocktails/corpse-reviver-2.jpg",
+    "abv": 0.243
   },
   {
     "id": "cosmopolitan",
     "name": "Cosmopolitan",
     "description": "The Cosmo, a relative of cranberry juice cocktails, is claimed by several 1970s bartenders. It became extremely popular in the 1990s after frequent mentions in Sex and the City.",
-    "ingredients": "Vodka – 60 ml  Triple Sec – 20 ml  Lime Juice – 15 ml  Cranberry Juice – 15 ml  Orange Peel – 1",
+    "ingredients": "Vodka – 60 ml\nTriple Sec – 20 ml\nLime Juice – 15 ml\nCranberry Juice – 15 ml\nOrange Peel – 1",
     "timesMade": 8,
-    "image": "images/cocktails/cosmopolitan.jpg"
+    "image": "images/cocktails/cosmopolitan.jpg",
+    "abv": 0.273
   },
   {
     "id": "cranberry-margarita",
     "name": "Cranberry Margarita",
     "description": "A variation on the classic Margarita adding cranberry juice to the mix. Tequila, triple sec, lime juice, and cranberry make a tart, fruity twist on the beloved Mexican classic.",
-    "ingredients": "Lime – 1 wedge  Kosher Salt  Tequila – 45 ml  Triple Sec – 30 ml  Cranberry Juice – 30 ml  Lime Juice – 15 ml  Lime – 1 wheel",
+    "ingredients": "Lime – 1 wedge\nKosher Salt\nTequila – 45 ml\nTriple Sec – 30 ml\nCranberry Juice – 30 ml\nLime Juice – 15 ml\nLime – 1 wheel",
     "timesMade": 3,
-    "image": "images/cocktails/cranberry-margarita.jpg"
+    "image": "images/cocktails/cranberry-margarita.jpg",
+    "abv": 0.225
   },
   {
     "id": "crux",
     "name": "Crux",
     "description": "An equal-portions drink that comes together very nicely. Cognac, Dubonnet, triple sec, and lemon juice are combined in equal measure for a balanced, citrus-accented cocktail.",
-    "ingredients": "Cognac – 20 ml  Dubonnet – 20 ml  Triple Sec – 20 ml  Lemon Juice – 20 ml  Orange Peel – 1 twist",
+    "ingredients": "Cognac – 20 ml\nDubonnet – 20 ml\nTriple Sec – 20 ml\nLemon Juice – 20 ml\nOrange Peel – 1 twist",
     "timesMade": 2,
-    "image": "images/cocktails/crux.jpg"
+    "image": "images/cocktails/crux.jpg",
+    "abv": 0.211
   },
   {
     "id": "daiquiri",
     "name": "Daiquiri",
     "description": "Reportedly invented by American mining engineer Jennings Cox in late 1800s Cuba. Its popularity exploded in the 1940s during wartime rum availability. A simple blend of rum, lime, and sugar.",
-    "ingredients": "Light Rum – 60 ml  Lime Juice – 20 ml  Simple Syrup – 20 ml  Lime – 1 wedge",
+    "ingredients": "Light Rum – 60 ml\nLime Juice – 20 ml\nSimple Syrup – 20 ml\nLime – 1 wedge",
     "timesMade": 9,
-    "image": "images/cocktails/daiquiri.jpg"
+    "image": "images/cocktails/daiquiri.jpg",
+    "abv": 0.24
   },
   {
     "id": "daisy",
     "name": "Daisy",
     "description": "The Brandy Daisy is the precursor to both the Sidecar and Margarita (margarita is Spanish for daisy). Popular in the late 1800s, first published in Jerry Thomas' 1876 Bartender's Guide.",
-    "ingredients": "Brandy – 60 ml  Lemon Juice – 15 ml  Grenadine – 5.0 ml  Simple Syrup – 5.0 ml  Lemon – 1 wedge",
+    "ingredients": "Brandy – 60 ml\nLemon Juice – 15 ml\nGrenadine – 5.0 ml\nSimple Syrup – 5.0 ml\nLemon – 1 wedge",
     "timesMade": 0,
-    "image": "images/cocktails/daisy.jpg"
+    "image": "images/cocktails/daisy.jpg",
+    "abv": 0.282
   },
   {
     "id": "darb",
     "name": "Darb",
     "description": "An adaptation of a cocktail from The Savoy Cocktail Book. Equal parts gin, apricot liqueur, and dry vermouth are brightened with a splash of lemon juice for a fruity, balanced drink.",
-    "ingredients": "Gin – 20 ml  Apricot Liqueur – 20 ml  Dry Vermouth – 20 ml  Lemon Juice – 7 ml",
+    "ingredients": "Gin – 20 ml\nApricot Liqueur – 20 ml\nDry Vermouth – 20 ml\nLemon Juice – 7 ml",
     "timesMade": 1,
-    "image": "images/cocktails/darb.jpg"
+    "image": "images/cocktails/darb.jpg",
+    "abv": 0.245
   },
   {
     "id": "dark-n-stormy",
     "name": "Dark 'N Stormy",
     "description": "Created and trademarked by the makers of Gosling's Black Seal Rum, this mix of dark rum and ginger beer with lime juice has been called the national drink of Bermuda.",
-    "ingredients": "Dark Rum – 45 ml  Lime Juice – 15 ml  Ginger Beer – 120 ml  Lime – 1 wedge",
+    "ingredients": "Dark Rum – 45 ml\nLime Juice – 15 ml\nGinger Beer – 120 ml\nLime – 1 wedge",
     "timesMade": 21,
-    "image": "images/cocktails/dark-n-stormy.jpg"
+    "image": "images/cocktails/dark-n-stormy.jpg",
+    "abv": 0.1
   },
   {
     "id": "death-in-the-afternoon",
     "name": "Death In The Afternoon",
     "description": "A cocktail by Ernest Hemingway, contributed to the 1935 book So Red The Nose. Simply absinthe topped with chilled sparkling wine, this potent drink is sometimes called a Hemingway.",
-    "ingredients": "Absinthe – 20 ml  Sparkling Wine – 150 ml",
+    "ingredients": "Absinthe – 20 ml\nSparkling Wine – 150 ml",
     "timesMade": 1,
-    "image": "images/cocktails/death-in-the-afternoon.jpg"
+    "image": "images/cocktails/death-in-the-afternoon.jpg",
+    "abv": 0.186
   },
   {
     "id": "derby",
     "name": "Derby",
     "description": "A relatively uncommon pairing of bourbon and lime juice, the Derby was named after the Kentucky Derby horse race and appeared in Trader Vic's 1947 Bartenders Guide.",
-    "ingredients": "Bourbon – 30 ml  Lime Juice – 20 ml  Orange Curacao – 15 ml  Sweet Vermouth – 15 ml  Mint – 1 leaf",
+    "ingredients": "Bourbon – 30 ml\nLime Juice – 20 ml\nOrange Curacao – 15 ml\nSweet Vermouth – 15 ml\nMint – 1 leaf",
     "timesMade": 2,
-    "image": "images/cocktails/derby.jpg"
+    "image": "images/cocktails/derby.jpg",
+    "abv": 0.236
   },
   {
     "id": "diamondback",
     "name": "Diamondback",
     "description": "A cocktail from Ted Saucier's 1962 Bottoms Up! book. Rye whiskey, applejack, and yellow Chartreuse combine for a spirit-forward drink with herbal and apple notes. Garnished with a cherry.",
-    "ingredients": "Rye – 45 ml  Applejack – 20 ml  Yellow Chartreuse – 20 ml  Cherry – 1",
+    "ingredients": "Rye – 45 ml\nApplejack – 20 ml\nYellow Chartreuse – 20 ml\nCherry – 1",
     "timesMade": 0,
-    "image": "images/cocktails/diamondback.jpg"
+    "image": "images/cocktails/diamondback.jpg",
+    "abv": 0.4
   },
   {
     "id": "diplomat",
     "name": "Diplomat",
     "description": "A vermouth-based cocktail that's not too heavy on alcohol, ideal for keeping a clear head during important diplomatic negotiations. Equal parts dry and sweet vermouth with maraschino and bitters.",
-    "ingredients": "Dry Vermouth – 45 ml  Sweet Vermouth – 45 ml  Maraschino Liqueur – 1 dash  Angostura Bitters – 1 dash  Cherry – 1",
+    "ingredients": "Dry Vermouth – 45 ml\nSweet Vermouth – 45 ml\nMaraschino Liqueur – 1 dash\nAngostura Bitters – 1 dash\nCherry – 1",
     "timesMade": 0,
-    "image": "images/cocktails/diplomat.jpg"
+    "image": "images/cocktails/diplomat.jpg",
+    "abv": 0.17
   },
   {
     "id": "division-bell",
     "name": "Division Bell",
     "description": "From Mayahuel restaurant in New York, famed for its elevation of mezcal drinks to an art form. Named after the Pink Floyd album, it combines mezcal, Aperol, lime, and maraschino.",
-    "ingredients": "Mezcal – 30 ml  Aperol – 20 ml  Lime Juice – 20 ml  Maraschino Liqueur – 15 ml  Grapefruit Peel – 1",
+    "ingredients": "Mezcal – 30 ml\nAperol – 20 ml\nLime Juice – 20 ml\nMaraschino Liqueur – 15 ml\nGrapefruit Peel – 1",
     "timesMade": 2,
-    "image": "images/cocktails/division-bell.jpg"
+    "image": "images/cocktails/division-bell.jpg",
+    "abv": 0.224
   },
   {
     "id": "dry-rob-roy",
     "name": "Dry Rob Roy",
     "description": "Created at the Waldorf Astoria in 1894 to honor the operetta Rob Roy, based on the Scottish hero. Similar to a Manhattan but made with Scotch and dry vermouth instead of bourbon and sweet vermouth.",
-    "ingredients": "Scotch Whiskey – 75 ml  Dry Vermouth – 30 ml  Angostura Bitters – 2 dash  Lemon Peel – 1",
+    "ingredients": "Scotch Whiskey – 75 ml\nDry Vermouth – 30 ml\nAngostura Bitters – 2 dash\nLemon Peel – 1",
     "timesMade": 1,
-    "image": "images/cocktails/dry-rob-roy.jpg"
+    "image": "images/cocktails/dry-rob-roy.jpg",
+    "abv": 0.337
   },
   {
     "id": "dubonnet-cocktail",
     "name": "Dubonnet Cocktail",
     "description": "A popular English cocktail from the 1920s. Equal parts Dubonnet and gin are stirred with Angostura bitters and garnished with a lemon twist for a bittersweet, aromatic aperitif.",
-    "ingredients": "Dubonnet – 45 ml  Gin – 45 ml  Angostura Bitters – 2 dash  Lemon Peel – 1 twist",
+    "ingredients": "Dubonnet – 45 ml\nGin – 45 ml\nAngostura Bitters – 2 dash\nLemon Peel – 1 twist",
     "timesMade": 1,
-    "image": "images/cocktails/dubonnet-cocktail.jpg"
+    "image": "images/cocktails/dubonnet-cocktail.jpg",
+    "abv": 0.272
   },
   {
     "id": "eastern-standard-soho-house-tonic",
     "name": "Eastern Standard - SoHo House Tonic",
     "description": "One of the Soho House group's House Tonic cocktails, the Eastern Standard is based on the Eastside, a cucumber and mint gin drink inspired by the classic Southside cocktail.",
-    "ingredients": "Cucumber - 3 slices  Simple Syrup - 10 ml  Gin - 50 ml  Lime Juice - 10 ml  Mint - 2 leaf  Cucumber - 1 slice",
+    "ingredients": "Cucumber - 3 slices\nSimple Syrup - 10 ml\nGin - 50 ml\nLime Juice - 10 ml\nMint - 2 leaf\nCucumber - 1 slice",
     "timesMade": 2,
-    "image": "images/cocktails/eastern-standard-soho-house-tonic.jpg"
+    "image": "images/cocktails/eastern-standard-soho-house-tonic.jpg",
+    "abv": 0.286
   },
   {
     "id": "el-camino",
     "name": "El Camino",
     "description": "An intriguing spirit-forward cocktail from The Chestnut Club in Santa Monica, California. Mezcal and rye are united by herbal Benedictine and Peychaud's bitters, with an orange twist.",
-    "ingredients": "Mezcal – 30 ml  Rye – 30 ml  Benedictine – 15 ml  Peychaud's Bitters – 4 dash  Orange Peel – 1 twist",
+    "ingredients": "Mezcal – 30 ml\nRye – 30 ml\nBenedictine – 15 ml\nPeychaud's Bitters – 4 dash\nOrange Peel – 1 twist",
     "timesMade": 2,
-    "image": "images/cocktails/el-camino.jpg"
+    "image": "images/cocktails/el-camino.jpg",
+    "abv": 0.4
   },
   {
     "id": "el-diablo",
     "name": "El Diablo",
     "description": "First referenced in a 1946 Trader Vic's book, this is one of the few tequila drinks from that era. Its brilliant red color from crème de cassis likely inspired the devilish name.",
-    "ingredients": "Tequila Blanco – 60 ml  Lime Juice – 30 ml  Creme de Cassis – 30 ml  Ginger Beer – 120 ml  Lime – 1 wedge",
+    "ingredients": "Tequila Blanco – 60 ml\nLime Juice – 30 ml\nCreme de Cassis – 30 ml\nGinger Beer – 120 ml\nLime – 1 wedge",
     "timesMade": 3,
-    "image": "images/cocktails/el-diablo.jpg"
+    "image": "images/cocktails/el-diablo.jpg",
+    "abv": 0.125
   },
   {
     "id": "el-floridita-no-1",
     "name": "El Floridita No. 1",
     "description": "Named after the Floridita bar in Havana, this was rumored to be Ernest Hemingway's favorite. The bar's bartenders specialized in rum and citrus cocktails like this rum-lime-maraschino blend.",
-    "ingredients": "Light Rum – 60 ml  Lime Juice – 30 ml  Simple Syrup – 15 ml  Maraschino Liqueur – 15 ml  Lime – 1 wedge",
+    "ingredients": "Light Rum – 60 ml\nLime Juice – 30 ml\nSimple Syrup – 15 ml\nMaraschino Liqueur – 15 ml\nLime – 1 wedge",
     "timesMade": 3,
-    "image": "images/cocktails/el-floridita-no-1.jpg"
+    "image": "images/cocktails/el-floridita-no-1.jpg",
+    "abv": 0.24
   },
   {
     "id": "el-presidente",
     "name": "El Presidente",
     "description": "A classic Cuban cocktail named after president Gerardo Machado in the 1920s. Light rum, bianco vermouth, orange curaçao, and a touch of grenadine make this elegant pre-dinner drink.",
-    "ingredients": "Light Rum – 45 ml  Bianco Vermouth – 30 ml  Orange Curacao – 5.0 ml  Grenadine – 2.5 ml  Cherry – 1",
+    "ingredients": "Light Rum – 45 ml\nBianco Vermouth – 30 ml\nOrange Curacao – 5.0 ml\nGrenadine – 2.5 ml\nCherry – 1",
     "timesMade": 4,
-    "image": "images/cocktails/el-presidente.jpg"
+    "image": "images/cocktails/el-presidente.jpg",
+    "abv": 0.291
   },
   {
     "id": "elderflower-margarita",
     "name": "Elderflower Margarita",
     "description": "A variant of the classic Margarita using St. Germain elderflower liqueur in place of triple sec. The floral elderflower adds elegance and sweetness to the tequila and lime combination.",
-    "ingredients": "Lime – 1 wedge  Kosher Salt  Tequila – 45 ml  St. Germain – 30 ml  Lime Juice – 20 ml  Lime – 1 wheel",
+    "ingredients": "Lime – 1 wedge\nKosher Salt\nTequila – 45 ml\nSt. Germain – 30 ml\nLime Juice – 20 ml\nLime – 1 wheel",
     "timesMade": 3,
-    "image": "images/cocktails/elderflower-margarita.jpg"
+    "image": "images/cocktails/elderflower-margarita.jpg",
+    "abv": 0.253
   },
   {
     "id": "electric-kamikaze",
     "name": "Electric Kamikaze",
     "description": "A shooter named for its electric blue appearance from blue curaçao, though its fruity flavor is all citrus. Triple sec, vodka, and lime juice complete this refreshing but potent shot.",
-    "ingredients": "Triple Sec – 15 ml  Vodka – 15 ml  Blue Curacao – 15 ml  Lime Juice – 15 ml",
+    "ingredients": "Triple Sec – 15 ml\nVodka – 15 ml\nBlue Curacao – 15 ml\nLime Juice – 15 ml",
     "timesMade": 0,
-    "image": "images/cocktails/electric-kamikaze.jpg"
+    "image": "images/cocktails/electric-kamikaze.jpg",
+    "abv": 0.238
   },
   {
     "id": "final-ward",
     "name": "Final Ward",
     "description": "A variation on the Last Word by New York bartender Phil Ward. He swapped gin for rye and lime for lemon, letting the interplay of maraschino and green Chartreuse shine through.",
-    "ingredients": "Rye – 20 ml  Lemon Juice – 20 ml  Green Chartreuse – 20 ml  Maraschino Liqueur – 20 ml",
+    "ingredients": "Rye – 20 ml\nLemon Juice – 20 ml\nGreen Chartreuse – 20 ml\nMaraschino Liqueur – 20 ml",
     "timesMade": 1,
-    "image": "images/cocktails/final-ward.jpg"
+    "image": "images/cocktails/final-ward.jpg",
+    "abv": 0.318
   },
   {
     "id": "fourth-degree",
     "name": "Fourth Degree",
     "description": "Yet another cocktail from the tremendously influential Savoy Cocktail Book. Equal parts gin, dry vermouth, and sweet vermouth are accented with a dash of absinthe and a lemon peel.",
-    "ingredients": "Gin – 20 ml  Dry Vermouth – 20 ml  Sweet Vermouth – 20 ml  Absinthe – 5.0 ml  Lemon Peel – 1",
+    "ingredients": "Gin – 20 ml\nDry Vermouth – 20 ml\nSweet Vermouth – 20 ml\nAbsinthe – 5.0 ml\nLemon Peel – 1",
     "timesMade": 2,
-    "image": "images/cocktails/fourth-degree.jpg"
+    "image": "images/cocktails/fourth-degree.jpg",
+    "abv": 0.28
   },
   {
     "id": "freddie-fudpucker",
     "name": "Freddie Fudpucker",
     "description": "A tequila-based variation of the classic Harvey Wallbanger. Tequila replaces vodka, mixed with orange juice and floated Galliano liqueur, for a fruity, vanilla-accented tall drink.",
-    "ingredients": "Tequila – 30 ml  Orange Juice – 120 ml  Galliano – 15 ml  Lemon Peel – 1",
+    "ingredients": "Tequila – 30 ml\nOrange Juice – 120 ml\nGalliano – 15 ml\nLemon Peel – 1",
     "timesMade": 5,
-    "image": "images/cocktails/freddie-fudpucker.jpg"
+    "image": "images/cocktails/freddie-fudpucker.jpg",
+    "abv": 0.112
   },
   {
     "id": "french-75",
     "name": "French 75",
     "description": "Created in 1915 at the New York Bar in Paris. Named after the French 75mm artillery cannon, a reference to the \"kick\" of this gin, lemon juice, simple syrup, and sparkling wine cocktail.",
-    "ingredients": "Gin – 30 ml  Lemon Juice – 30 ml  Simple Syrup – 15 ml  Sparkling Wine – 60 ml  Lemon Peel – 1",
+    "ingredients": "Gin – 30 ml\nLemon Juice – 30 ml\nSimple Syrup – 15 ml\nSparkling Wine – 60 ml\nLemon Peel – 1",
     "timesMade": 29,
-    "image": "images/cocktails/french-75.jpg"
+    "image": "images/cocktails/french-75.jpg",
+    "abv": 0.142
   },
   {
     "id": "garden-party",
     "name": "Garden Party",
     "description": "Perfectly at home at the event it was named for. Green Chartreuse, muddled mint, lime juice, and club soda combine for an herbal, refreshing drink ideal for a hot summer day.",
-    "ingredients": "Mint – 5 leaf  Lime Juice – 15 ml  Simple Syrup – 7 ml  Green Chartreuse – 45 ml  Club Soda – 75 ml  Mint – 1 sprig",
+    "ingredients": "Mint – 5 leaf\nLime Juice – 15 ml\nSimple Syrup – 7 ml\nGreen Chartreuse – 45 ml\nClub Soda – 75 ml\nMint – 1 sprig",
     "timesMade": 2,
-    "image": "images/cocktails/garden-party.jpg"
+    "image": "images/cocktails/garden-party.jpg",
+    "abv": 0.175
   },
   {
     "id": "gimlet",
     "name": "Gimlet",
     "description": "A classic cocktail of gin and lime juice, similar to a daiquiri but with gin. As described in Raymond Chandler's The Long Goodbye: half gin and half lime juice and nothing else.",
-    "ingredients": "Gin – 60 ml  Lime Juice – 30 ml  Simple Syrup – 20 ml",
+    "ingredients": "Gin – 60 ml\nLime Juice – 30 ml\nSimple Syrup – 20 ml",
     "timesMade": 7,
-    "image": "images/cocktails/gimlet.jpg"
+    "image": "images/cocktails/gimlet.jpg",
+    "abv": 0.218
   },
   {
     "id": "gin-genie",
     "name": "Gin Genie",
     "description": "A visually striking layered drink from expert mixologist Wayne Collins, named after David Bowie's song The Jean Genie. Gin and sloe gin are combined with lemon, simple syrup, and muddled mint.",
-    "ingredients": "Mint – 8 leaf  Gin – 30 ml  Lemon Juice – 30 ml  Simple Syrup – 15 ml  Sloe Gin – 30 ml",
+    "ingredients": "Mint – 8 leaf\nGin – 30 ml\nLemon Juice – 30 ml\nSimple Syrup – 15 ml\nSloe Gin – 30 ml",
     "timesMade": 31,
-    "image": "images/cocktails/gin-genie.jpg"
+    "image": "images/cocktails/gin-genie.jpg",
+    "abv": 0.189
   },
   {
     "id": "gin-rickey",
     "name": "Gin Rickey",
     "description": "Originally made with bourbon by Col. Joe Rickey at Shoomakers bar in Washington, D.C. in the 1880s. The gin version may have originated at the 1893 Chicago Exposition and has become the standard.",
-    "ingredients": "Gin - 60 ml  Lime Juice - 15 ml  Spent Lime Hull - 1  Club Soda - 120 ml",
+    "ingredients": "Gin - 60 ml\nLime Juice - 15 ml\nSpent Lime Hull - 1\nClub Soda - 120 ml",
     "timesMade": 1,
-    "image": "images/cocktails/gin-rickey.jpg"
+    "image": "images/cocktails/gin-rickey.jpg",
+    "abv": 0.123
   },
   {
     "id": "ginger-champagne",
     "name": "Ginger Champagne",
     "description": "A way to spice up your champagne with ginger and vodka! A splash of vodka and ginger syrup adds warmth and complexity to sparkling wine, perfect for the holiday season.",
-    "ingredients": "Vodka – 10 ml  Ginger Syrup – 20 ml  Sparkling Wine – 100 ml  Candied Ginger – 3",
+    "ingredients": "Vodka – 10 ml\nGinger Syrup – 20 ml\nSparkling Wine – 100 ml\nCandied Ginger – 3",
     "timesMade": 27,
-    "image": "images/cocktails/ginger-champagne.jpg"
+    "image": "images/cocktails/ginger-champagne.jpg",
+    "abv": 0.123
   },
   {
     "id": "ginger-spritz",
     "name": "Ginger Spritz",
     "description": "The illegitimate child of a Spritz and a Moscow Mule. Lillet Blanc, sparkling wine, and ginger beer combine for a light, effervescent aperitif with a spicy ginger kick.",
-    "ingredients": "Lillet Blanc – 40 ml  Sparkling Wine – 60 ml  Ginger Beer – 20 ml",
+    "ingredients": "Lillet Blanc – 40 ml\nSparkling Wine – 60 ml\nGinger Beer – 20 ml",
     "timesMade": 9,
-    "image": "images/cocktails/ginger-spritz.jpg"
+    "image": "images/cocktails/ginger-spritz.jpg",
+    "abv": 0.117
   },
   {
     "id": "godfather",
     "name": "Godfather",
     "description": "The origins of this drink are unknown, but the unlikely pairing of Scotch whisky and amaretto works better than one might expect. The almond sweetness softens the Scotch's smoky bite.",
-    "ingredients": "Scotch Whiskey – 60 ml  Amaretto – 30 ml",
+    "ingredients": "Scotch Whiskey – 60 ml\nAmaretto – 30 ml",
     "timesMade": 1,
-    "image": "images/cocktails/godfather.jpg"
+    "image": "images/cocktails/godfather.jpg",
+    "abv": 0.36
   },
   {
     "id": "godmother",
     "name": "Godmother",
     "description": "A variation on the Godfather cocktail using vodka in place of Scotch. The neutral spirit lets the sweet almond flavor of amaretto take center stage in this simple two-ingredient drink.",
-    "ingredients": "Vodka – 60 ml  Amaretto – 30 ml",
+    "ingredients": "Vodka – 60 ml\nAmaretto – 30 ml",
     "timesMade": 0,
-    "image": "images/cocktails/godmother.jpg"
+    "image": "images/cocktails/godmother.jpg",
+    "abv": 0.36
   },
   {
     "id": "happy-honey",
     "name": "Happy Honey",
     "description": "According to Philippe Collin's 2024 novel Le Barman du Ritz, this cocktail was invented by Charles, one of Frank Meier's students, who became owner of the Hôtel du Palais in Biarritz.",
-    "ingredients": "Brandy – 50 ml  Grapefruit Juice – 25 ml  Honey – 7 ml  Hot Sauce – 2 dash",
+    "ingredients": "Brandy – 50 ml\nGrapefruit Juice – 25 ml\nHoney – 7 ml\nHot Sauce – 2 dash",
     "timesMade": 0,
-    "image": "images/cocktails/happy-honey.jpg"
+    "image": "images/cocktails/happy-honey.jpg",
+    "abv": 0.244
   },
   {
     "id": "harvard-cooler",
     "name": "Harvard Cooler",
     "description": "Slate's Troy Patterson ranked this the best Ivy League-named cocktail. A refreshing twist on the Collins, using Calvados as the base spirit with lime juice, simple syrup, and club soda.",
-    "ingredients": "Calvados – 60 ml  Lime Juice – 20 ml  Simple Syrup – 15 ml  Club Soda – 120 ml  Lime – 1 wedge",
+    "ingredients": "Calvados – 60 ml\nLime Juice – 20 ml\nSimple Syrup – 15 ml\nClub Soda – 120 ml\nLime – 1 wedge",
     "timesMade": 4,
-    "image": "images/cocktails/harvard-cooler.jpg"
+    "image": "images/cocktails/harvard-cooler.jpg",
+    "abv": 0.112
   },
   {
     "id": "harvey-wallbanger",
     "name": "Harvey Wallbanger",
     "description": "Invented in 1952 by Donato \"Duke\" Antone, who started the first American mixology school in California. Vodka and orange juice are topped with a float of Italian Galliano liqueur.",
-    "ingredients": "Vodka – 30 ml  Orange Juice – 120 ml  Galliano – 15 ml  Lemon Peel – 1",
+    "ingredients": "Vodka – 30 ml\nOrange Juice – 120 ml\nGalliano – 15 ml\nLemon Peel – 1",
     "timesMade": 2,
-    "image": "images/cocktails/harvey-wallbanger.jpg"
+    "image": "images/cocktails/harvey-wallbanger.jpg",
+    "abv": 0.112
   },
   {
     "id": "hemingway-daiquiri",
     "name": "Hemingway Daiquiri",
     "description": "A friendlier version of a Hemingway favorite, similar to the El Floridita but with the addition of grapefruit juice. Light rum, lime, maraschino liqueur, and grapefruit make it tangy and bright.",
-    "ingredients": "Light Rum – 60 ml  Lime Juice – 20 ml  Maraschino Liqueur – 15 ml  Grapefruit Juice – 15 ml  Lime – 1 wedge",
+    "ingredients": "Light Rum – 60 ml\nLime Juice – 20 ml\nMaraschino Liqueur – 15 ml\nGrapefruit Juice – 15 ml\nLime – 1 wedge",
     "timesMade": 23,
-    "image": "images/cocktails/hemingway-daiquiri.jpg"
+    "image": "images/cocktails/hemingway-daiquiri.jpg",
+    "abv": 0.262
   },
   {
     "id": "honeymoon",
     "name": "Honeymoon",
     "description": "A wonderful cocktail from Hugo Ensslin's 1917 Recipes for Mixed Drinks. Calvados, Benedictine, orange curaçao, and lemon juice combine for a beautifully balanced, aromatic celebration drink.",
-    "ingredients": "Calvados – 30 ml  Lemon Juice – 15 ml  Benedictine – 15 ml  Orange Curacao – 15 ml  Lemon Peel – 1 twist",
+    "ingredients": "Calvados – 30 ml\nLemon Juice – 15 ml\nBenedictine – 15 ml\nOrange Curacao – 15 ml\nLemon Peel – 1 twist",
     "timesMade": 0,
-    "image": "images/cocktails/honeymoon.jpg"
+    "image": "images/cocktails/honeymoon.jpg",
+    "abv": 0.3
   },
   {
     "id": "hot-caipirinha",
     "name": "Hot Caipirinha",
     "description": "In Germany, the biggest market for cachaça outside Brazil, drinkers adapt the Caipirinha for cold weather by serving it hot. Choosing a barrel-aged cachaça makes this odd combination work well.",
-    "ingredients": "Lime – 2 quarter  Simple Syrup – 30 ml  Cachaca – 60 ml  Water – 150 ml",
+    "ingredients": "Lime – 2 quarter\nSimple Syrup – 30 ml\nCachaca – 60 ml\nWater – 150 ml",
     "timesMade": 0,
-    "image": "images/cocktails/hot-caipirinha.jpg"
+    "image": "images/cocktails/hot-caipirinha.jpg",
+    "abv": 0.1
   },
   {
     "id": "hummingbird",
     "name": "Hummingbird",
     "description": "A refreshing take on the Hummingbird from Brooks Reitz of FIG in Charleston, South Carolina. Gin, Campari, St. Germain, and sweet vermouth make a bittersweet, floral, and complex aperitif.",
-    "ingredients": "Gin – 20 ml  Campari – 20 ml  St. Germain – 15 ml  Sweet Vermouth – 7 ml  Orange – 1 wheel",
-    "timesMade": 0,
-    "image": "images/cocktails/hummingbird.jpg"
+    "ingredients": "Gin – 20 ml\nCampari – 20 ml\nSt. Germain – 15 ml\nSweet Vermouth – 7 ml\nOrange – 1 wheel",
+    "timesMade": 1,
+    "image": "images/cocktails/hummingbird.jpg",
+    "abv": 0.276
   },
   {
     "id": "in-the-neighborhood",
     "name": "In The Neighborhood",
     "description": "This signature drink was served to celebrities and VIPs at the 2015 Neighborhood Awards hosted by Steve Harvey. Aged rum, lime, maple syrup, and bitters make a smooth, balanced cocktail.",
-    "ingredients": "Aged Rum – 60 ml  Lime Juice – 30 ml  Maple Syrup – 20 ml  Angostura Bitters – 1 dash  Lime Peel – 1 twist",
+    "ingredients": "Aged Rum – 60 ml\nLime Juice – 30 ml\nMaple Syrup – 20 ml\nAngostura Bitters – 1 dash\nLime Peel – 1 twist",
     "timesMade": 0,
-    "image": "images/cocktails/in-the-neighborhood.jpg"
+    "image": "images/cocktails/in-the-neighborhood.jpg",
+    "abv": 0.218
   },
   {
     "id": "incognito",
     "name": "Incognito",
     "description": "A variation on a cocktail from the Cafe Royal Cocktail Book, credited to J. E. Johnson. Cognac, dry vermouth, and apricot liqueur are combined with Angostura bitters and a lemon twist.",
-    "ingredients": "Cognac – 45 ml  Dry Vermouth – 45 ml  Apricot Liqueur – 30 ml  Angostura Bitters – 3 dash  Lemon Peel – 1 twist",
+    "ingredients": "Cognac – 45 ml\nDry Vermouth – 45 ml\nApricot Liqueur – 30 ml\nAngostura Bitters – 3 dash\nLemon Peel – 1 twist",
     "timesMade": 1,
-    "image": "images/cocktails/incognito.jpg"
+    "image": "images/cocktails/incognito.jpg",
+    "abv": 0.277
   },
   {
     "id": "jack-rose",
     "name": "Jack Rose",
     "description": "A classic dating back to the 1920s that appears in Hemingway's The Sun Also Rises and David Embury's The Fine Art of Mixing Drinks. Applejack, lemon juice, and grenadine create a rosy hue.",
-    "ingredients": "Applejack – 60 ml  Lemon Juice – 30 ml  Grenadine – 20 ml  Lemon Peel – 1 twist",
+    "ingredients": "Applejack – 60 ml\nLemon Juice – 30 ml\nGrenadine – 20 ml\nLemon Peel – 1 twist",
     "timesMade": 1,
-    "image": "images/cocktails/jack-rose.jpg"
+    "image": "images/cocktails/jack-rose.jpg",
+    "abv": 0.218
   },
   {
     "id": "jacob-s-rainbow",
     "name": "Jacob's Rainbow",
     "description": "A carefully layered cocktail that tastes much better once stirred to blend the flavors. Grenadine, blue curaçao, citrus juices, and dark rum create a colorful, fruity showstopper.",
-    "ingredients": "Grenadine – 30 ml  Blue Curacao – 30 ml  Orange Juice – 60 ml  Lime Juice – 15 ml  Pineapple Juice – 60 ml  Dark Rum – 30 ml",
+    "ingredients": "Grenadine – 30 ml\nBlue Curacao – 30 ml\nOrange Juice – 60 ml\nLime Juice – 15 ml\nPineapple Juice – 60 ml\nDark Rum – 30 ml",
     "timesMade": 0,
-    "image": "images/cocktails/jacob-s-rainbow.jpg"
+    "image": "images/cocktails/jacob-s-rainbow.jpg",
+    "abv": 0.087
   },
   {
     "id": "jamaican-mule",
     "name": "Jamaican Mule",
     "description": "A Caribbean twist on the Moscow Mule, swapping vodka for dark rum. The rum's molasses richness pairs naturally with spicy ginger beer and fresh lime juice for a tropical, full-bodied mule.",
-    "ingredients": "Dark Rum – 60 ml  Lime Juice – 15 ml  Ginger Beer – 120 ml",
+    "ingredients": "Dark Rum – 60 ml\nLime Juice – 15 ml\nGinger Beer – 120 ml",
     "timesMade": 2,
-    "image": "images/cocktails/jamaican-mule.jpg"
+    "image": "images/cocktails/jamaican-mule.jpg",
+    "abv": 0.123
   },
   {
     "id": "james-joyce",
     "name": "James Joyce",
     "description": "Named for Ireland's most famous author and based on the Oriental cocktail. Irish whiskey is paired with sweet vermouth, Cointreau, and lime juice for a citrusy, literary libation.",
-    "ingredients": "Irish Whiskey – 45 ml  Sweet Vermouth – 20 ml  Cointreau – 20 ml  Lime Juice – 15 ml",
+    "ingredients": "Irish Whiskey – 45 ml\nSweet Vermouth – 20 ml\nCointreau – 20 ml\nLime Juice – 15 ml",
     "timesMade": 3,
-    "image": "images/cocktails/james-joyce.jpg"
+    "image": "images/cocktails/james-joyce.jpg",
+    "abv": 0.292
   },
   {
     "id": "jasmine",
     "name": "Jasmine",
     "description": "Created by Paul Harrington in the mid-1990s at the Townhouse Bar & Grill in Emeryville, California. Gin, triple sec, Campari, and lemon juice yield a bittersweet, citrus-forward cocktail.",
-    "ingredients": "Gin – 45 ml  Triple Sec – 30 ml  Campari – 20 ml  Lemon Juice – 15 ml",
+    "ingredients": "Gin – 45 ml\nTriple Sec – 30 ml\nCampari – 20 ml\nLemon Juice – 15 ml",
     "timesMade": 2,
-    "image": "images/cocktails/jasmine.jpg"
+    "image": "images/cocktails/jasmine.jpg",
+    "abv": 0.291
   },
   {
     "id": "jm-amaretto-sour",
     "name": "JM Amaretto Sour",
     "description": "From Jeffrey Morgenthaler of Clyde Common in Portland, Oregon, who calls this the \"best Amaretto Sour you've ever had.\" Cask-strength bourbon helps balance the sweetness of the amaretto.",
-    "ingredients": "Egg white – 15 ml  Amaretto – 45 ml  Lemon Juice – 30 ml  Bourbon – 20 ml  Simple Syrup – 7 ml  Lemon Peel – 1 twist  Cherry – 1",
+    "ingredients": "Egg white – 15 ml\nAmaretto – 45 ml\nLemon Juice – 30 ml\nBourbon – 20 ml\nSimple Syrup – 7 ml\nLemon Peel – 1 twist\nCherry – 1",
     "timesMade": 4,
-    "image": "images/cocktails/jm-amaretto-sour.jpg"
+    "image": "images/cocktails/jm-amaretto-sour.jpg",
+    "abv": 0.176
   },
   {
     "id": "jubilant",
     "name": "Jubilant",
     "description": "A smooth, refreshing, herbal cocktail from The Cafe Royal Cocktail Book. Gin and Benedictine are shaken with lemon and orange juice and egg white for a silky, frothy, elegant drink.",
-    "ingredients": "Egg white – 15 ml  Gin – 45 ml  Benedictine – 20 ml  Lemon Juice – 15 ml  Orange Juice – 15 ml  Orange – 1 slice",
+    "ingredients": "Egg white – 15 ml\nGin – 45 ml\nBenedictine – 20 ml\nLemon Juice – 15 ml\nOrange Juice – 15 ml\nOrange – 1 slice",
     "timesMade": 5,
-    "image": "images/cocktails/jubilant.jpg"
+    "image": "images/cocktails/jubilant.jpg",
+    "abv": 0.236
   },
   {
     "id": "kal-sour",
     "name": "Kalê Sour",
     "description": "A tailor-made cocktail recipe created and shared by a fellow home mixologist. Kalê liqueur, lemon juice, and egg white are shaken vigorously to produce a silky, frothy sour cocktail.",
-    "ingredients": "Kalê Liqueur – 60 ml  Lemon Juice – 30 ml  Egg white – 30 g",
+    "ingredients": "Kalê Liqueur – 60 ml\nLemon Juice – 30 ml\nEgg white – 30 g",
     "timesMade": 2,
-    "image": "images/cocktails/kal-sour.jpg"
+    "image": "images/cocktails/kal-sour.jpg",
+    "abv": 0.167
   },
   {
     "id": "kamikaze",
     "name": "Kamikaze",
     "description": "No verified origin exists for the Kamikaze, but most accounts place it in the mid-1970s via a Smirnoff advertisement. Vodka, triple sec, and lime juice make a sharp, citrusy shooter or cocktail.",
-    "ingredients": "Vodka – 60 ml  Triple Sec – 30 ml  Lime Juice – 15 ml  Lime – 1 wedge",
+    "ingredients": "Vodka – 60 ml\nTriple Sec – 30 ml\nLime Juice – 15 ml\nLime – 1 wedge",
     "timesMade": 8,
-    "image": "images/cocktails/kamikaze.jpg"
+    "image": "images/cocktails/kamikaze.jpg",
+    "abv": 0.314
   },
   {
     "id": "kilmoon-sour",
     "name": "Kilmoon Sour",
     "description": "A Celtic variation on the whisky sour created for the release of mystery novel Kilmoon by Lisa Alber. Irish whiskey and grenadine add a red hue suggestive of its murderous origin.",
-    "ingredients": "Irish Whiskey – 60 ml  Lemon Juice – 20 ml  Grenadine – 15 ml  Angostura Bitters – 2 dash  Blood Orange – 1 wheel",
+    "ingredients": "Irish Whiskey – 60 ml\nLemon Juice – 20 ml\nGrenadine – 15 ml\nAngostura Bitters – 2 dash\nBlood Orange – 1 wheel",
     "timesMade": 2,
-    "image": "images/cocktails/kilmoon-sour.jpg"
+    "image": "images/cocktails/kilmoon-sour.jpg",
+    "abv": 0.253
   },
   {
     "id": "kir-royale",
     "name": "Kir Royale",
     "description": "The Kir Royale is a standard Kir made with sparkling wine instead of white wine. Usually served in France as an apéritif, a splash of crème de cassis adds deep berry sweetness to the bubbly.",
-    "ingredients": "Creme de Cassis – 15 ml  Sparkling Wine – 150 ml  Lemon – 1 twist",
+    "ingredients": "Creme de Cassis – 15 ml\nSparkling Wine – 150 ml\nLemon – 1 twist",
     "timesMade": 1,
-    "image": "images/cocktails/kir-royale.jpg"
+    "image": "images/cocktails/kir-royale.jpg",
+    "abv": 0.127
   },
   {
     "id": "la-louisiane",
     "name": "La Louisiane",
     "description": "According to Stanley Arthur's 1937 \"Famous New Orleans Drinks,\" this was the house cocktail of the Restaurant de la Louisiane. Equal parts rye, sweet vermouth, and Benedictine.",
-    "ingredients": "Rye – 20 ml  Sweet Vermouth – 20 ml  Benedictine – 20 ml  Absinthe – 3 dash  Peychaud's Bitters – 3 dash  Cherry – 1",
+    "ingredients": "Rye – 20 ml\nSweet Vermouth – 20 ml\nBenedictine – 20 ml\nAbsinthe – 3 dash\nPeychaud's Bitters – 3 dash\nCherry – 1",
     "timesMade": 4,
-    "image": "images/cocktails/la-louisiane.jpg"
+    "image": "images/cocktails/la-louisiane.jpg",
+    "abv": 0.32
   },
   {
     "id": "lagerita",
     "name": "Lagerita",
     "description": "A beery version of a margarita that works best with a light Mexican beer. From cocktail expert Simon Ford, it combines tequila, Cointreau, and lime juice, topped off with cold lager.",
-    "ingredients": "Lime  Salt  Ice  Tequila – 60 ml  Cointreau – 20 ml  Lime Juice – 30 ml  Lime – 1 wheel",
+    "ingredients": "Lime\nSalt\nIce\nTequila – 60 ml\nCointreau – 20 ml\nLime Juice – 30 ml\nLime – 1 wheel",
     "timesMade": 0,
-    "image": "images/cocktails/lagerita.jpg"
+    "image": "images/cocktails/lagerita.jpg",
+    "abv": 0.291
   },
   {
     "id": "last-word",
     "name": "Last Word",
     "description": "A Prohibition-era cocktail from the Detroit Athletic Club, lost after WWII. Rediscovered in 2004 by Murray Stenson at Seattle's Zig Zag Cafe. Equal parts gin, Chartreuse, lime, and maraschino.",
-    "ingredients": "Gin – 20 ml  Green Chartreuse – 20 ml  Lime Juice – 20 ml  Maraschino Liqueur – 20 ml",
+    "ingredients": "Gin – 20 ml\nGreen Chartreuse – 20 ml\nLime Juice – 20 ml\nMaraschino Liqueur – 20 ml",
     "timesMade": 1,
-    "image": "images/cocktails/last-word.jpg"
+    "image": "images/cocktails/last-word.jpg",
+    "abv": 0.318
   },
   {
     "id": "leatherneck",
     "name": "Leatherneck",
     "description": "Created in 1951 by columnist Frank Farrell, a former U.S. Marine (\"Leatherneck\" is Marine slang). Canadian whiskey and blue curaçao give this cocktail its distinctive color and citrus notes.",
-    "ingredients": "Canadian Whiskey – 60 ml  Blue Curacao – 30 ml  Lime Juice – 15 ml  Lime – 1 wheel",
+    "ingredients": "Canadian Whiskey – 60 ml\nBlue Curacao – 30 ml\nLime Juice – 15 ml\nLime – 1 wheel",
     "timesMade": 1,
-    "image": "images/cocktails/leatherneck.jpg"
+    "image": "images/cocktails/leatherneck.jpg",
+    "abv": 0.3
   },
   {
     "id": "lonely-bull",
     "name": "Lonely Bull",
     "description": "A tequila-based variation on the White Russian, replacing vodka with tequila. Equal parts tequila, coffee liqueur, and cream blend into a smooth, rich after-dinner cocktail.",
-    "ingredients": "Tequila – 30 ml  Coffee Liqueur – 30 ml  Cream – 30 ml",
+    "ingredients": "Tequila – 30 ml\nCoffee Liqueur – 30 ml\nCream – 30 ml",
     "timesMade": 1,
-    "image": "images/cocktails/lonely-bull.jpg"
+    "image": "images/cocktails/lonely-bull.jpg",
+    "abv": 0.2
   },
   {
     "id": "long-island-iced-tea",
     "name": "Long Island Iced Tea",
     "description": "Approach with caution! Famous for tasting just like iced tea while being mostly liquor. Vodka, rum, gin, tequila, and triple sec are topped with a splash of cola for a deceptively smooth drink.",
-    "ingredients": "Vodka – 20 ml  Light Rum – 20 ml  Gin – 20 ml  Tequila Blanco – 20 ml  Triple Sec – 20 ml  Simple Syrup – 15 ml  Cola – 30 ml  Lemon – 1 wedge",
+    "ingredients": "Vodka – 20 ml\nLight Rum – 20 ml\nGin – 20 ml\nTequila Blanco – 20 ml\nTriple Sec – 20 ml\nSimple Syrup – 15 ml\nCola – 30 ml\nLemon – 1 wedge",
     "timesMade": 3,
-    "image": "images/cocktails/long-island-iced-tea.jpg"
+    "image": "images/cocktails/long-island-iced-tea.jpg",
+    "abv": 0.262
   },
   {
     "id": "madras",
     "name": "Madras",
     "description": "Perhaps an evolution of the Cape Cod Cocktail, the Madras adds orange juice to the cranberry-vodka base for a more complex, fruity drink. Refreshing and easy to make at home.",
-    "ingredients": "Cranberry Juice – 45 ml  Vodka – 60 ml  Orange Juice – 60 ml  Orange – 1 wheel",
+    "ingredients": "Cranberry Juice – 45 ml\nVodka – 60 ml\nOrange Juice – 60 ml\nOrange – 1 wheel",
     "timesMade": 0,
-    "image": "images/cocktails/madras.jpg"
+    "image": "images/cocktails/madras.jpg",
+    "abv": 0.145
   },
   {
     "id": "mai-tai",
     "name": "Mai Tai",
     "description": "Reportedly created by Victor Bergeron of Trader Vic's in 1944. Its name derives from the Tahitian \"Maita'i roa ae!\" meaning \"Very good!\" It became synonymous with 1950s and 1960s tiki culture.",
-    "ingredients": "Orgeat Syrup – 20 ml  Triple Sec – 15 ml  Lime Juice – 30 ml  Light Rum – 30 ml  Dark Rum – 30 ml  Cherry – 1",
+    "ingredients": "Orgeat Syrup – 20 ml\nTriple Sec – 15 ml\nLime Juice – 30 ml\nLight Rum – 30 ml\nDark Rum – 30 ml\nCherry – 1",
     "timesMade": 25,
-    "image": "images/cocktails/mai-tai.jpg"
+    "image": "images/cocktails/mai-tai.jpg",
+    "abv": 0.228
   },
   {
     "id": "mamie-taylor",
     "name": "Mamie Taylor",
     "description": "One of the most popular cocktails of the late 1800s, named after a Broadway singer of that era. Similar to the Moscow Mule and the Dark and Stormy, it features Scotch and ginger beer.",
-    "ingredients": "Scotch Whiskey – 45 ml  Lime Juice – 15 ml  Ginger Beer – 120 ml",
+    "ingredients": "Scotch Whiskey – 45 ml\nLime Juice – 15 ml\nGinger Beer – 120 ml",
     "timesMade": 39,
-    "image": "images/cocktails/mamie-taylor.jpg"
+    "image": "images/cocktails/mamie-taylor.jpg",
+    "abv": 0.1
   },
   {
     "id": "manhattan",
     "name": "Manhattan",
     "description": "Its precise origin is debatable, with some tracing it to the Manhattan Club in NYC in the 1870s. Traditionally made with rye, many recipes now use bourbon with sweet vermouth and bitters.",
-    "ingredients": "Bourbon – 60 ml  Sweet Vermouth – 30 ml  Angostura Bitters – 2 dash  Cherry – 1",
+    "ingredients": "Bourbon – 60 ml\nSweet Vermouth – 30 ml\nAngostura Bitters – 2 dash\nCherry – 1",
     "timesMade": 1,
-    "image": "images/cocktails/manhattan.jpg"
+    "image": "images/cocktails/manhattan.jpg",
+    "abv": 0.32
   },
   {
     "id": "manhattan-rye",
     "name": "Manhattan Rye",
     "description": "The original Manhattan recipe calls for rye whiskey, offering a spicier, drier flavor profile than the bourbon version. Rye, sweet vermouth, and Angostura bitters make a timeless classic.",
-    "ingredients": "Rye – 60 ml  Sweet Vermouth – 30 ml  Angostura Bitters – 2 dash  Cherry – 1",
+    "ingredients": "Rye – 60 ml\nSweet Vermouth – 30 ml\nAngostura Bitters – 2 dash\nCherry – 1",
     "timesMade": 2,
-    "image": "images/cocktails/manhattan-rye.jpg"
+    "image": "images/cocktails/manhattan-rye.jpg",
+    "abv": 0.32
   },
   {
     "id": "maple-bourbon-old-fashioned",
     "name": "Maple Bourbon Old Fashioned",
     "description": "A seasonal take on the Old Fashioned, substituting maple syrup for sugar. The maple gives the bourbon a smoother, earthier flavor, complemented by Angostura bitters and orange peel.",
-    "ingredients": "Angostura Bitters – 3 dash  Maple Syrup – 15 ml  Bourbon – 60 ml  Orange Peel – 1 twist",
+    "ingredients": "Angostura Bitters – 3 dash\nMaple Syrup – 15 ml\nBourbon – 60 ml\nOrange Peel – 1 twist",
     "timesMade": 1,
-    "image": "images/cocktails/maple-bourbon-old-fashioned.jpg"
+    "image": "images/cocktails/maple-bourbon-old-fashioned.jpg",
+    "abv": 0.32
   },
   {
     "id": "maple-leaf",
     "name": "Maple Leaf",
     "description": "A wonderful fall cocktail and a variation on the whiskey sour. Maple syrup takes the place of sugar as the sweetener, pairing beautifully with bourbon and lemon juice for autumn sipping.",
-    "ingredients": "Bourbon – 45 ml  Lemon Juice – 15 ml  Maple Syrup – 15 ml",
+    "ingredients": "Bourbon – 45 ml\nLemon Juice – 15 ml\nMaple Syrup – 15 ml",
     "timesMade": 6,
-    "image": "images/cocktails/maple-leaf.jpg"
+    "image": "images/cocktails/maple-leaf.jpg",
+    "abv": 0.24
   },
   {
     "id": "margarita",
     "name": "Margarita",
     "description": "The most common tequila cocktail in the US, often attributed to Don Carlo Orozco at Hussong's Cantina in Ensenada in 1941. Margarita is Spanish for daisy, linking it to an older brandy drink.",
-    "ingredients": "Lime – 1 wedge  Kosher Salt  Tequila Blanco – 45 ml  Triple Sec – 20 ml  Lime Juice – 15 ml",
+    "ingredients": "Lime – 1 wedge\nKosher Salt\nTequila Blanco – 45 ml\nTriple Sec – 20 ml\nLime Juice – 15 ml",
     "timesMade": 18,
-    "image": "images/cocktails/margarita.jpg"
+    "image": "images/cocktails/margarita.jpg",
+    "abv": 0.3
   },
   {
     "id": "martini",
     "name": "Martini",
     "description": "Probably the best-known cocktail of all time, the Martini evolved from the 1860s-era Martinez. The ideal gin-to-vermouth ratio is endlessly debated; this recipe uses a classic 3:1 proportion.",
-    "ingredients": "Gin – 75 ml  Dry Vermouth – 20 ml  Green Olive – 1",
+    "ingredients": "Gin – 75 ml\nDry Vermouth – 20 ml\nGreen Olive – 1",
     "timesMade": 2,
-    "image": "images/cocktails/martini.jpg"
+    "image": "images/cocktails/martini.jpg",
+    "abv": 0.354
   },
   {
     "id": "m-nage-trois",
     "name": "Ménage à trois",
     "description": "The classic Old Fashioned revisited with a fruity, spicy twist. Belle De Brillet pear liqueur, dark rum, and fresh coffee form a trio in harmony, accented by a dash of Angostura bitters.",
-    "ingredients": "Belle de Brillet – 50 ml   Dark rum – 20 ml   Coffee – 15 ml   Angostura Bitters – 1 dash",
+    "ingredients": "Belle de Brillet – 50 ml \nDark rum – 20 ml \nCoffee – 15 ml \nAngostura Bitters – 1 dash",
     "timesMade": 0,
-    "image": "images/cocktails/menage-a-trois.jpg"
+    "image": "images/cocktails/menage-a-trois.jpg",
+    "abv": 0.271
   },
   {
     "id": "mezcal-negroni",
     "name": "Mezcal Negroni",
     "description": "A smoky twist on the classic Negroni, replacing gin with mezcal. The spirit's earthy, smoky character adds a distinctive Mexican dimension to the Campari and sweet vermouth combination.",
-    "ingredients": "Mezcal – 30 ml  Campari – 30 ml  Sweet Vermouth – 30 ml  Orange Peel – 1",
+    "ingredients": "Mezcal – 30 ml\nCampari – 30 ml\nSweet Vermouth – 30 ml\nOrange Peel – 1",
     "timesMade": 4,
-    "image": "images/cocktails/mezcal-negroni.jpg"
+    "image": "images/cocktails/mezcal-negroni.jpg",
+    "abv": 0.27
   },
   {
     "id": "michelada",
     "name": "Michelada",
     "description": "A popular Mexican beer cocktail with many versions throughout Latin America, often used as a hangover remedy. Spiced with hot sauce, Worcestershire, lime, and celery salt over beer.",
-    "ingredients": "Beer– 360 ml  Cayenne Pepper  Salt  Lime Juice – 15 ml  Hot Sauce – 2 drop  Worcestershire Sauce – 2 dash  Black Pepper – 1 pinch  Celery Salt – 1 pinch  Lime – 1 wedge",
+    "ingredients": "Beer– 360 ml\nCayenne Pepper\nSalt\nLime Juice – 15 ml\nHot Sauce – 2 drop\nWorcestershire Sauce – 2 dash\nBlack Pepper – 1 pinch\nCelery Salt – 1 pinch\nLime – 1 wedge",
     "timesMade": 0,
-    "image": "images/cocktails/michelada.jpg"
+    "image": "images/cocktails/michelada.jpg",
+    "abv": 0.048
   },
   {
     "id": "milano-torino-2",
     "name": "Milano Torino #2",
     "description": "Milano Torino is the original name of the Americano cocktail, but this version omits the seltzer. Equal parts Campari and sweet vermouth make it a more concentrated, bittersweet variation.",
-    "ingredients": "Campari – 60 ml  Sweet Vermouth – 60 ml  Orange – 1 slice",
+    "ingredients": "Campari – 60 ml\nSweet Vermouth – 60 ml\nOrange – 1 slice",
     "timesMade": 1,
-    "image": "images/cocktails/milano-torino-2.jpg"
+    "image": "images/cocktails/milano-torino-2.jpg",
+    "abv": 0.205
   },
   {
     "id": "mimosa",
     "name": "Mimosa",
     "description": "Typically served at brunch or to wedding guests. A standard Mimosa is equal parts orange juice and sparkling wine, but this recipe adds Cointreau for a little extra citrus twist.",
-    "ingredients": "Cointreau – 15 ml  Orange Juice – 60 ml  Sparkling Wine – 120 ml  Orange – 1 wedge",
+    "ingredients": "Cointreau – 15 ml\nOrange Juice – 60 ml\nSparkling Wine – 120 ml\nOrange – 1 wedge",
     "timesMade": 1,
-    "image": "images/cocktails/mimosa.jpg"
+    "image": "images/cocktails/mimosa.jpg",
+    "abv": 0.105
   },
   {
     "id": "mint-julep",
     "name": "Mint Julep",
     "description": "The classic drink of the American South, around since at least 1803. Muddled mint and simple syrup with bourbon over crushed ice. It is famously associated with the Kentucky Derby horse race.",
-    "ingredients": "Mint – 10 leaf  Simple Syrup – 15 ml  Bourbon – 30 ml  Mint – 1 sprig",
+    "ingredients": "Mint – 10 leaf\nSimple Syrup – 15 ml\nBourbon – 30 ml\nMint – 1 sprig",
     "timesMade": 0,
-    "image": "images/cocktails/mint-julep.jpg"
+    "image": "images/cocktails/mint-julep.jpg",
+    "abv": 0.267
   },
   {
     "id": "mojito",
     "name": "Mojito",
     "description": "Originating in Cuba and similar to a 19th-century drink called El Draque after privateer Sir Francis Drake. Rum, lime, mint, sugar, and soda make this an enduringly popular refresher.",
-    "ingredients": "Simple Syrup – 20 ml  Mint – 1 sprig  Light Rum – 60 ml  Lime Juice – 30 ml  Club Soda – 90 ml  Lime – 1 wedge",
+    "ingredients": "Simple Syrup – 20 ml\nMint – 1 sprig\nLight Rum – 60 ml\nLime Juice – 30 ml\nClub Soda – 90 ml\nLime – 1 wedge",
     "timesMade": 11,
-    "image": "images/cocktails/mojito.jpg"
+    "image": "images/cocktails/mojito.jpg",
+    "abv": 0.12
   },
   {
     "id": "mojitosco",
     "name": "Mojitosco",
     "description": "Mocktail based on the famous Mojito, with Osco original as a base. Very refreshing.",
-    "ingredients": "Club Soda – 60 ml\nOsco – 25 ml\nSimple Syrup – 10 ml\nLime Juice – 10 ml\nMint – 1 sprig",
+    "ingredients": "Club Soda – 60 ml \nOsco – 25 ml \nSimple Syrup – 10 ml \nLime Juice – 10 ml \nMint – 1 sprig",
     "timesMade": 3,
-    "image": "images/cocktails/mojitosco.jpg"
+    "image": "images/cocktails/mojitosco.jpg",
+    "abv": 0.0
   },
   {
     "id": "moscow-mule",
     "name": "Moscow Mule",
     "description": "Created in 1941 by spirits distributor John Martin and Jack Morgan of L.A.'s Cock 'n Bull restaurant. Popular with Hollywood celebrities, it helped popularize vodka in the United States.",
-    "ingredients": "Vodka – 60 ml  Lime Juice – 15 ml  Ginger Beer – 120 ml",
+    "ingredients": "Vodka – 60 ml\nLime Juice – 15 ml\nGinger Beer – 120 ml",
     "timesMade": 338,
-    "image": "images/cocktails/moscow-mule.jpg"
+    "image": "images/cocktails/moscow-mule.jpg",
+    "abv": 0.123
   },
   {
     "id": "mudslide",
     "name": "Mudslide",
     "description": "A creamy cocktail containing three liquors (a Trio). While its exact origins are hard to prove, some of the first Mudslides were served at Rum Point in the Cayman Islands.",
-    "ingredients": "Vodka – 60 ml  Coffee Liqueur – 30 ml  Irish Cream – 30 ml  Cream – 30 ml",
+    "ingredients": "Vodka – 60 ml\nCoffee Liqueur – 30 ml\nIrish Cream – 30 ml\nCream – 30 ml",
     "timesMade": 0,
-    "image": "images/cocktails/mudslide.jpg"
+    "image": "images/cocktails/mudslide.jpg",
+    "abv": 0.234
   },
   {
     "id": "naked-and-famous",
     "name": "Naked And Famous",
     "description": "Inspired by the Last Word and Paper Plane, this drink was created by Joaquín Simó in 2011. Equal parts mezcal, yellow Chartreuse, Aperol, and lime juice create a smoky, balanced cocktail.",
-    "ingredients": "Mezcal – 20 ml  Yellow Chartreuse – 20 ml  Aperol – 20 ml  Lime Juice – 20 ml",
+    "ingredients": "Mezcal – 20 ml\nYellow Chartreuse – 20 ml\nAperol – 20 ml\nLime Juice – 20 ml",
     "timesMade": 5,
-    "image": "images/cocktails/naked-and-famous.jpg"
+    "image": "images/cocktails/naked-and-famous.jpg",
+    "abv": 0.227
   },
   {
     "id": "negroni",
     "name": "Negroni",
     "description": "Created in Florence in 1919 when Count Negroni asked bartender Fosco Scarselli for a stronger Americano with gin instead of soda. Equal parts gin, Campari, and sweet vermouth since then.",
-    "ingredients": "Gin – 30 ml  Campari – 30 ml  Sweet Vermouth – 30 ml  Orange Peel – 1",
+    "ingredients": "Gin – 30 ml\nCampari – 30 ml\nSweet Vermouth – 30 ml\nOrange Peel – 1",
     "timesMade": 33,
-    "image": "images/cocktails/negroni.jpg"
+    "image": "images/cocktails/negroni.jpg",
+    "abv": 0.27
   },
   {
     "id": "negroni-sbagliato",
     "name": "Negroni Sbagliato",
     "description": "Sbagliato means \"mistaken\" in Italian. Legend says it came from a bartender mistakenly using sparkling wine instead of gin in a Negroni. A happy accident that makes a great aperitif.",
-    "ingredients": "Campari – 30 ml  Sweet Vermouth – 30 ml  Sparkling Wine – 30 ml  Orange Peel – 1 twist",
+    "ingredients": "Campari – 30 ml\nSweet Vermouth – 30 ml\nSparkling Wine – 30 ml\nOrange Peel – 1 twist",
     "timesMade": 6,
-    "image": "images/cocktails/negroni-sbagliato.jpg"
+    "image": "images/cocktails/negroni-sbagliato.jpg",
+    "abv": 0.177
   },
   {
     "id": "negroski",
     "name": "Negroski",
     "description": "A variant of the classic Negroni using vodka in place of gin. The neutral spirit allows the bold flavors of Campari and sweet vermouth to take center stage in this simple, bitter-forward twist.",
-    "ingredients": "Vodka – 30 ml  Campari – 30 ml  Sweet Vermouth – 30 ml  Orange Peel – 1",
+    "ingredients": "Vodka – 30 ml\nCampari – 30 ml\nSweet Vermouth – 30 ml\nOrange Peel – 1",
     "timesMade": 1,
-    "image": "images/cocktails/negroski.jpg"
+    "image": "images/cocktails/negroski.jpg",
+    "abv": 0.27
   },
   {
     "id": "nevada",
     "name": "Nevada",
     "description": "A great rum drink from Judge Jr.'s 1927 \"Here's How\" cocktail book. Light rum, grapefruit juice, lime juice, simple syrup, and a dash of Angostura bitters create a citrusy, balanced sour.",
-    "ingredients": "Light Rum – 45 ml  Grapefruit Juice – 30 ml  Lime Juice – 15 ml  Simple Syrup – 15 ml  Angostura Bitters – 1 dash",
+    "ingredients": "Light Rum – 45 ml\nGrapefruit Juice – 30 ml\nLime Juice – 15 ml\nSimple Syrup – 15 ml\nAngostura Bitters – 1 dash",
     "timesMade": 1,
-    "image": "images/cocktails/nevada.jpg"
+    "image": "images/cocktails/nevada.jpg",
+    "abv": 0.171
   },
   {
     "id": "non-violette-aviation",
     "name": "Non-Violette Aviation",
     "description": "Created by Hugo Ensslin at the Hotel Wallick in New York (1916). This version follows Harry Craddock's 1930 Savoy recipe, omitting the crème de violette. Gin, lemon, and maraschino liqueur.",
-    "ingredients": "Gin – 50 ml  Lemon Juice – 20 ml  Maraschino Liqueur – 20 ml  Cherry – 1",
+    "ingredients": "Gin – 50 ml\nLemon Juice – 20 ml\nMaraschino Liqueur – 20 ml\nCherry – 1",
     "timesMade": 0,
-    "image": "images/cocktails/non-violette-aviation.jpg"
+    "image": "images/cocktails/non-violette-aviation.jpg",
+    "abv": 0.293
   },
   {
     "id": "nuts-berries",
     "name": "Nuts & Berries",
     "description": "A unique combination of nut and fruit flavors. Hazelnut-flavored Frangelico and raspberry liqueur are blended with cream for a dessert-like cocktail that's sweet, smooth, and indulgent.",
-    "ingredients": "Frangelico – 30 ml  Raspberry Liqueur – 30 ml  Cream – 30 ml",
+    "ingredients": "Frangelico – 30 ml\nRaspberry Liqueur – 30 ml\nCream – 30 ml",
     "timesMade": 14,
-    "image": "images/cocktails/nuts-berries.jpg"
+    "image": "images/cocktails/nuts-berries.jpg",
+    "abv": 0.133
   },
   {
     "id": "nutty-martini",
     "name": "Nutty Martini",
     "description": "This easy-drinking cocktail gets its nutty flavor from Frangelico, an Italian hazelnut liqueur. Combined with vodka, it creates a smooth, dessert-style drink with rich toasted nut notes.",
-    "ingredients": "Vodka – 60 ml  Frangelico – 30 ml",
+    "ingredients": "Vodka – 60 ml\nFrangelico – 30 ml",
     "timesMade": 1,
-    "image": "images/cocktails/nutty-martini.jpg"
+    "image": "images/cocktails/nutty-martini.jpg",
+    "abv": 0.333
   },
   {
     "id": "oaxacan-mule",
     "name": "Oaxacan Mule",
     "description": "A variant of the Moscow Mule using mezcal in place of vodka for an earthier, smokier flavor. Lime juice and ginger beer complement the mezcal's complexity in this Mexican-inspired twist.",
-    "ingredients": "Mezcal – 45 ml  Lime Juice – 15 ml  Ginger Beer – 60 ml  Lime – 1 wedge",
+    "ingredients": "Mezcal – 45 ml\nLime Juice – 15 ml\nGinger Beer – 60 ml\nLime – 1 wedge",
     "timesMade": 10,
-    "image": "images/cocktails/oaxacan-mule.jpg"
+    "image": "images/cocktails/oaxacan-mule.jpg",
+    "abv": 0.15
   },
   {
     "id": "old-fashioned",
     "name": "Old Fashioned",
     "description": "A classic American drink rooted in sweet whisky cocktails of the 1800s. \"Old Fashioned\" refers to the original way of making a cocktail: spirit, sugar, bitters, and ice. Simple and timeless.",
-    "ingredients": "Bourbon – 60 ml  Simple Syrup – 15 ml  Angostura Bitters – 2 dash  Cherry – 1",
+    "ingredients": "Bourbon – 60 ml\nSimple Syrup – 15 ml\nAngostura Bitters – 2 dash\nCherry – 1",
     "timesMade": 12,
-    "image": "images/cocktails/old-fashioned.jpg"
+    "image": "images/cocktails/old-fashioned.jpg",
+    "abv": 0.32
   },
   {
     "id": "oriental",
     "name": "Oriental",
     "description": "Another classic from Harry Craddock's Savoy Cocktail Book. Rye whiskey, sweet vermouth, triple sec, and lime juice combine for a balanced cocktail with citrus and spice character.",
-    "ingredients": "Rye – 45 ml  Sweet Vermouth – 20 ml  Triple Sec – 20 ml  Lime Juice – 15 ml",
+    "ingredients": "Rye – 45 ml\nSweet Vermouth – 20 ml\nTriple Sec – 20 ml\nLime Juice – 15 ml",
     "timesMade": 4,
-    "image": "images/cocktails/oriental.jpg"
+    "image": "images/cocktails/oriental.jpg",
+    "abv": 0.272
   },
   {
     "id": "osco-daiquiri",
     "name": "Osco Daiquiri",
     "description": "Mocktail based on the classic Daiquiri, with Osco Original as a base. Interesting flavors!",
-    "ingredients": "Osco – 50 ml\nLime Juice – 20 ml\nAgave Syrup – 20 ml",
+    "ingredients": "Osco – 50 ml \nLime Juice – 20 ml \nAgave Syrup – 20 ml",
     "timesMade": 0,
-    "image": "images/cocktails/oscodaiquiri.jpg"
+    "image": "images/cocktails/oscodaiquiri.jpg",
+    "abv": 0.0
   },
   {
     "id": "osco-ice-tea",
@@ -1253,7 +1409,8 @@
     "description": "Original mocktail, with Osco Rouge Ardent as a base. Very refreshing.",
     "ingredients": "Iced Tea – 150 ml\nOsco Rouge Ardent – 50 ml\nLime Juice – 20 ml\nAgave Syrup – 20 ml",
     "timesMade": 3,
-    "image": "images/cocktails/oscoicetea.jpg"
+    "image": "images/cocktails/oscoicetea.jpg",
+    "abv": 0.0
   },
   {
     "id": "osco-mule",
@@ -1261,7 +1418,8 @@
     "description": "Mocktail based on the classic Moscow Mule, with Osco Rouge Ardent as a base.",
     "ingredients": "Ginger Beer – 80 ml\nOsco Rouge Ardent – 40 ml",
     "timesMade": 1,
-    "image": "images/cocktails/oscomule.jpg"
+    "image": "images/cocktails/oscomule.jpg",
+    "abv": 0.0
   },
   {
     "id": "osco-tonic",
@@ -1269,223 +1427,251 @@
     "description": "Star mix of the Osco Original alcohol-free mix. Nice and bitter. For a sweeter version, try the Osco Daiquiri!",
     "ingredients": "Tonic water – 80 ml\nOsco – 40 ml",
     "timesMade": 0,
-    "image": "images/cocktails/oscotonic.jpg"
+    "image": "images/cocktails/oscotonic.jpg",
+    "abv": 0.0
   },
   {
     "id": "paper-plane",
     "name": "Paper Plane",
     "description": "Created by star New York bartender Sam Ross, named after the M.I.A. song he listened to while inventing it. Equal parts bourbon, lemon juice, Aperol, and amaro make a bittersweet modern classic.",
-    "ingredients": "Bourbon – 20 ml  Lemon Juice – 20 ml  Aperol – 20 ml  Amaro – 20 ml",
+    "ingredients": "Bourbon – 20 ml\nLemon Juice – 20 ml\nAperol – 20 ml\nAmaro – 20 ml",
     "timesMade": 1,
-    "image": "images/cocktails/paper-plane.jpg"
+    "image": "images/cocktails/paper-plane.jpg",
+    "abv": 0.202
   },
   {
     "id": "penicillin",
     "name": "Penicillin",
     "description": "A modern classic created by New York bartender Sam Ross. Scotch whisky is combined with honey, lemon juice, and ginger for a soothing, warming cocktail that's a cure for a chilly night.",
-    "ingredients": "Scotch Whiskey – 50 ml  Lemon Juice – 20 ml  Ginger Syrup – 10 ml  Honey – 5 ml",
+    "ingredients": "Scotch Whiskey – 50 ml\nLemon Juice – 20 ml\nGinger Syrup – 10 ml\nHoney – 5 ml",
     "timesMade": 5,
-    "image": "images/cocktails/penicillin.jpg"
+    "image": "images/cocktails/penicillin.jpg",
+    "abv": 0.235
   },
   {
     "id": "penja-22",
     "name": "Penja #22",
     "description": "A tailor-made cocktail recipe created and shared by a fellow home mixologist. White Penja pepper syrup is combined with beer in this unusual, spice-forward drink from Cameroon's pepper region.",
-    "ingredients": "Paragon White Penja Pepper – 15 ml  Beer – 100 ml",
+    "ingredients": "Paragon White Penja Pepper – 15 ml\nBeer – 100 ml",
     "timesMade": 1,
-    "image": "images/cocktails/penja-22.jpg"
+    "image": "images/cocktails/penja-22.jpg",
+    "abv": 0.043
   },
   {
     "id": "perfect-rob-roy",
     "name": "Perfect Rob Roy",
     "description": "Created at the Waldorf Astoria in 1894 for the operetta Rob Roy. Similar to a Manhattan but with Scotch; the Perfect version uses equal parts sweet and dry vermouth for balanced complexity.",
-    "ingredients": "Scotch Whiskey – 75 ml  Dry Vermouth – 15 ml  Sweet Vermouth – 15 ml  Angostura Bitters – 2 dash  Lemon Peel – 1",
+    "ingredients": "Scotch Whiskey – 75 ml\nDry Vermouth – 15 ml\nSweet Vermouth – 15 ml\nAngostura Bitters – 2 dash\nLemon Peel – 1",
     "timesMade": 5,
-    "image": "images/cocktails/perfect-rob-roy.jpg"
+    "image": "images/cocktails/perfect-rob-roy.jpg",
+    "abv": 0.334
   },
   {
     "id": "pimm-s-cup",
     "name": "Pimm's Cup",
     "description": "A refreshing summer drink popular in Great Britain and closely associated with New Orleans, where it's the house drink at the Napoleon House. Pimm's No. 1, lemon, and ginger ale over ice.",
-    "ingredients": "Pimm's No. 1 – 60 ml  Lemon Juice – 15 ml  Ginger Ale – 120 ml  Cucumber – 1 slice",
+    "ingredients": "Pimm's No. 1 – 60 ml\nLemon Juice – 15 ml\nGinger Ale – 120 ml\nCucumber – 1 slice",
     "timesMade": 3,
-    "image": "images/cocktails/pimm-s-cup.jpg"
+    "image": "images/cocktails/pimm-s-cup.jpg",
+    "abv": 0.077
   },
   {
     "id": "pisco-sour",
     "name": "Pisco Sour",
     "description": "Created in Lima, Peru by American bartender Victor Morris in the early 1920s. The Pisco Sour is the national drink of both Peru and Chile, featuring pisco, lime, egg white, and bitters.",
-    "ingredients": "Egg white – 30 ml  Pisco – 60 ml  Lime Juice – 20 ml  Simple Syrup – 15 ml  Angostura Bitters – 4 dash",
+    "ingredients": "Egg white – 30 ml\nPisco – 60 ml\nLime Juice – 20 ml\nSimple Syrup – 15 ml\nAngostura Bitters – 4 dash",
     "timesMade": 15,
-    "image": "images/cocktails/pisco-sour.jpg"
+    "image": "images/cocktails/pisco-sour.jpg",
+    "abv": 0.192
   },
   {
     "id": "pompadour",
     "name": "Pompadour",
     "description": "Mentioned in Philippe Collin's 2024 novel Le Barman du Ritz. Created by Frank Meier at the Ritz, it combines Pineau des Charentes, light rum, and lemon juice for an extraordinary flavor.",
-    "ingredients": "Pineau des Charentes – 45 ml  Light Rum – 45 ml  Lemon Juice – 15 ml",
-    "timesMade": 4,
-    "image": "images/cocktails/pompadour.jpg"
+    "ingredients": "Pineau des Charentes – 45 ml\nLight Rum – 45 ml\nLemon Juice – 15 ml",
+    "timesMade": 5,
+    "image": "images/cocktails/pompadour.jpg",
+    "abv": 0.247
   },
   {
     "id": "preakness",
     "name": "Preakness",
     "description": "A complex variation on the Manhattan accented with richly herbal Benedictine liqueur. Rye whiskey, sweet vermouth, and Angostura bitters round out this classic horse-racing-themed cocktail.",
-    "ingredients": "Rye – 45 ml  Sweet Vermouth – 20 ml  Benedictine – 7 ml  Angostura Bitters – 2 dash  Cherry – 1",
+    "ingredients": "Rye – 45 ml\nSweet Vermouth – 20 ml\nBenedictine – 7 ml\nAngostura Bitters – 2 dash\nCherry – 1",
     "timesMade": 0,
-    "image": "images/cocktails/preakness.jpg"
+    "image": "images/cocktails/preakness.jpg",
+    "abv": 0.333
   },
   {
     "id": "queen-bee",
     "name": "Queen Bee",
     "description": "Created by Neil Kopplin of the Carlyle Restaurant in Portland, Oregon. Vodka, lemon juice, St. Germain, and honey syrup are shaken and topped with sparkling wine for a floral, elegant fizz.",
-    "ingredients": "Vodka – 20 ml  Lemon Juice – 20 ml  St. Germain – 20 ml  Honey Syrup – 7 ml  Sparkling Wine – 30 ml  Orange Peel – 1",
+    "ingredients": "Vodka – 20 ml\nLemon Juice – 20 ml\nSt. Germain – 20 ml\nHoney Syrup – 7 ml\nSparkling Wine – 30 ml\nOrange Peel – 1",
     "timesMade": 2,
-    "image": "images/cocktails/queen-bee.jpg"
+    "image": "images/cocktails/queen-bee.jpg",
+    "abv": 0.161
   },
   {
     "id": "queen-elizabeth",
     "name": "Queen Elizabeth",
     "description": "Named after its Philadelphia creator's wife, not the queen of England. Dating from just after Prohibition, it combines dry vermouth, Benedictine, and lime juice for an herbal sipper.",
-    "ingredients": "Dry Vermouth – 45 ml  Benedictine – 20 ml  Lime Juice – 20 ml",
+    "ingredients": "Dry Vermouth – 45 ml\nBenedictine – 20 ml\nLime Juice – 20 ml",
     "timesMade": 12,
-    "image": "images/cocktails/queen-elizabeth.jpg"
+    "image": "images/cocktails/queen-elizabeth.jpg",
+    "abv": 0.189
   },
   {
     "id": "rainbow-dee-lite",
     "name": "Rainbow Dee-Lite",
     "description": "A layered cocktail from Dee Brun, the Cocktail Diva. After impressing your audience with the stunning visuals of blue curaçao, grenadine, and juices, stir to blend all the flavors.",
-    "ingredients": "Blue Curacao – 30 ml  Vodka – 30 ml  Grenadine – 30 ml  Orange Juice – 60 ml  Pineapple Juice – 30 ml",
+    "ingredients": "Blue Curacao – 30 ml\nVodka – 30 ml\nGrenadine – 30 ml\nOrange Juice – 60 ml\nPineapple Juice – 30 ml",
     "timesMade": 0,
-    "image": "images/cocktails/rainbow-dee-lite.jpg"
+    "image": "images/cocktails/rainbow-dee-lite.jpg",
+    "abv": 0.108
   },
   {
     "id": "ramos-gin-fizz",
     "name": "Ramos Gin Fizz",
     "description": "Invented by Henry C. Ramos in New Orleans. The key is shaking with ice for 1-2 minutes for a silky texture. Gin, citrus, egg white, cream, and orange flower water create an iconic, frothy drink.",
-    "ingredients": "Egg white – 15 ml  Gin – 60 ml  Lemon Juice – 15 ml  Lime Juice – 15 ml  Simple Syrup – 30 ml  Orange-Flower Water – 3 drop",
+    "ingredients": "Egg white – 15 ml\nGin – 60 ml\nLemon Juice – 15 ml\nLime Juice – 15 ml\nSimple Syrup – 30 ml\nOrange-Flower Water – 3 drop",
     "timesMade": 10,
-    "image": "images/cocktails/ramos-gin-fizz.jpg"
+    "image": "images/cocktails/ramos-gin-fizz.jpg",
+    "abv": 0.178
   },
   {
     "id": "raspberry-silver-fizz",
     "name": "Raspberry Silver Fizz",
     "description": "From Harry Johnson's 1882 New and Improved Bartender's Manual. Gin, raspberry liqueur, lime juice, and egg white are shaken and topped with club soda for a fruity, frothy fizz.",
-    "ingredients": "Egg white – 15 ml  Gin – 45 ml  Raspberry Liqueur – 15 ml  Simple Syrup – 8 ml  Lime Juice – 15 ml  Club Soda – 60 ml",
+    "ingredients": "Egg white – 15 ml\nGin – 45 ml\nRaspberry Liqueur – 15 ml\nSimple Syrup – 8 ml\nLime Juice – 15 ml\nClub Soda – 60 ml",
     "timesMade": 7,
-    "image": "images/cocktails/raspberry-silver-fizz.jpg"
+    "image": "images/cocktails/raspberry-silver-fizz.jpg",
+    "abv": 0.133
   },
   {
     "id": "red-eye",
     "name": "Red Eye",
     "description": "A brunch cocktail for those who prefer beer over vodka in their Bloody Marys. Beer, tomato juice, hot sauce, and a raw egg make this hearty eye-opener, inspired by the movie Cocktail.",
-    "ingredients": "Beer – 180 ml  Tomato Juice – 120 ml  Hot Sauce – 1 dash  Black Pepper – 1 pinch  Salt – 1 pinch  Egg – 1",
+    "ingredients": "Beer – 180 ml\nTomato Juice – 120 ml\nHot Sauce – 1 dash\nBlack Pepper – 1 pinch\nSalt – 1 pinch\nEgg – 1",
     "timesMade": 0,
-    "image": "images/cocktails/red-eye.jpg"
+    "image": "images/cocktails/red-eye.jpg",
+    "abv": 0.03
   },
   {
     "id": "rhett-butler",
     "name": "Rhett Butler",
     "description": "A refreshing cocktail named after the character in Gone with the Wind. Southern Comfort, orange curaçao, lime juice, and cranberry juice create a fruity, Southern-inspired drink.",
-    "ingredients": "Southern Comfort – 30 ml  Orange Curacao – 30 ml  Lime Juice – 30 ml  Cranberry Juice – 60 ml",
+    "ingredients": "Southern Comfort – 30 ml\nOrange Curacao – 30 ml\nLime Juice – 30 ml\nCranberry Juice – 60 ml",
     "timesMade": 2,
-    "image": "images/cocktails/rhett-butler.jpg"
+    "image": "images/cocktails/rhett-butler.jpg",
+    "abv": 0.13
   },
   {
     "id": "rhum-swizzle",
     "name": "Rhum Swizzle",
     "description": "A tasty swizzle from author and former Food & Wine editor Nick Fauchald. Rhum agricole, grapefruit juice, muddled mint, brown sugar syrup, and grenadine make a complex tropical refresher.",
-    "ingredients": "Mint – 8 leaf  Rhum Agricole – 60 ml  Grapefruit Juice – 60 ml  Brown Sugar Syrup – 15 ml  Grenadine – 3.5 ml",
+    "ingredients": "Mint – 8 leaf\nRhum Agricole – 60 ml\nGrapefruit Juice – 60 ml\nBrown Sugar Syrup – 15 ml\nGrenadine – 3.5 ml",
     "timesMade": 2,
-    "image": "images/cocktails/rhum-swizzle.jpg"
+    "image": "images/cocktails/rhum-swizzle.jpg",
+    "abv": 0.173
   },
   {
     "id": "ricard-jaune-lemon",
     "name": "Ricard Jaune Lemon",
     "description": "One of the rare cocktails featuring pastis as an ingredient. Orgeat syrup and lemon juice tame the anise spirit, topped with water for a refreshing, licorice-accented long drink.",
-    "ingredients": "Pastis – 20 ml  Orgeat Syrup – 10 ml  Lemon Juice – 20 ml  Water – 160 ml",
+    "ingredients": "Pastis – 20 ml\nOrgeat Syrup – 10 ml\nLemon Juice – 20 ml\nWater – 160 ml",
     "timesMade": 1,
-    "image": "images/cocktails/ricard-jaune-lemon.jpg"
+    "image": "images/cocktails/ricard-jaune-lemon.jpg",
+    "abv": 0.043
   },
   {
     "id": "richmond-gimlet",
     "name": "Richmond Gimlet",
     "description": "This Gimlet variation was created in 2001 by Jeffrey Morgenthaler. Gin, lime juice, and simple syrup form the classic sour base, elevated with a fresh sprig of muddled mint.",
-    "ingredients": "Gin – 60 ml  Lime Juice – 30 ml  Simple Syrup – 15 ml  Mint – 1 sprig  Mint – 1 sprig",
+    "ingredients": "Gin – 60 ml\nLime Juice – 30 ml\nSimple Syrup – 15 ml\nMint – 1 sprig\nMint – 1 sprig",
     "timesMade": 2,
-    "image": "images/cocktails/richmond-gimlet.jpg"
+    "image": "images/cocktails/richmond-gimlet.jpg",
+    "abv": 0.229
   },
   {
     "id": "rob-roy",
     "name": "Rob Roy",
     "description": "Created at the Waldorf Astoria in 1894 for the operetta Rob Roy, based on the Scottish hero. Similar to a Manhattan but made with Scotch instead of bourbon, with sweet vermouth and bitters.",
-    "ingredients": "Scotch Whiskey – 60 ml  Sweet Vermouth – 30 ml  Peychaud's Bitters – 2 dash  Cherry – 1  Lemon Peel – 1",
+    "ingredients": "Scotch Whiskey – 60 ml\nSweet Vermouth – 30 ml\nPeychaud's Bitters – 2 dash\nCherry – 1\nLemon Peel – 1",
     "timesMade": 0,
-    "image": "images/cocktails/rob-roy.jpg"
+    "image": "images/cocktails/rob-roy.jpg",
+    "abv": 0.32
   },
   {
     "id": "rosita",
     "name": "Rosita",
     "description": "A drink for fans of slightly bitter cocktails like the Negroni. Dating from the late 1980s, it features tequila, Campari, both sweet and dry vermouth, and a dash of Angostura bitters.",
-    "ingredients": "Tequila – 45 ml  Campari – 30 ml  Sweet Vermouth – 15 ml  Dry Vermouth – 15 ml  Angostura Bitters – 1 dash  Orange Peel – 1",
+    "ingredients": "Tequila – 45 ml\nCampari – 30 ml\nSweet Vermouth – 15 ml\nDry Vermouth – 15 ml\nAngostura Bitters – 1 dash\nOrange Peel – 1",
     "timesMade": 0,
-    "image": "images/cocktails/rosita.jpg"
+    "image": "images/cocktails/rosita.jpg",
+    "abv": 0.291
   },
   {
     "id": "rusty-nail",
     "name": "Rusty Nail",
     "description": "A mix of Scotch whisky and Drambuie, where the sweetness of the liqueur mellows the bite of the Scotch. Cocktails similar to the Rusty Nail have been around since the late 1930s.",
-    "ingredients": "Scotch Whiskey – 60 ml  Drambuie – 20 ml  Lemon Peel – 1",
+    "ingredients": "Scotch Whiskey – 60 ml\nDrambuie – 20 ml\nLemon Peel – 1",
     "timesMade": 2,
-    "image": "images/cocktails/rusty-nail.jpg"
+    "image": "images/cocktails/rusty-nail.jpg",
+    "abv": 0.4
   },
   {
     "id": "sazerac",
     "name": "Sazerac",
     "description": "A New Orleans classic created around 1850, named after a cognac brand. Originally made with absinthe, the recipe evolved to use rye whiskey and Peychaud's bitters. Louisiana's official cocktail.",
-    "ingredients": "Rye – 60 ml  Simple Syrup – 15 ml  Peychaud's Bitters – 3 dash",
+    "ingredients": "Rye – 60 ml\nSimple Syrup – 15 ml\nPeychaud's Bitters – 3 dash",
     "timesMade": 1,
-    "image": "images/cocktails/sazerac.jpg"
+    "image": "images/cocktails/sazerac.jpg",
+    "abv": 0.32
   },
   {
     "id": "scofflaw",
     "name": "Scofflaw",
     "description": "First served at Harry's Bar in Paris in 1924. The term Scofflaw described those who secretly drank alcohol during Prohibition. Rye, dry vermouth, lemon juice, and grenadine.",
-    "ingredients": "Rye – 60 ml  Dry Vermouth – 20 ml  Lemon Juice – 15 ml  Grenadine – 7 ml  Orange Bitters – 1 dash",
+    "ingredients": "Rye – 60 ml\nDry Vermouth – 20 ml\nLemon Juice – 15 ml\nGrenadine – 7 ml\nOrange Bitters – 1 dash",
     "timesMade": 0,
-    "image": "images/cocktails/scofflaw.jpg"
+    "image": "images/cocktails/scofflaw.jpg",
+    "abv": 0.271
   },
   {
     "id": "screaming-orgasm",
     "name": "Screaming Orgasm",
     "description": "Described as \"like drinking ice cream,\" this creamy cocktail is served on the rocks or as a shooter. Coffee liqueur, Irish cream, amaretto, vodka, and cream make a rich indulgence.",
-    "ingredients": "Coffee Liqueur – 15 ml  Irish Cream – 15 ml  Amaretto – 15 ml  Vodka – 30 ml  Half & Half – 90 ml  Orange – 1 slice",
+    "ingredients": "Coffee Liqueur – 15 ml\nIrish Cream – 15 ml\nAmaretto – 15 ml\nVodka – 30 ml\nHalf & Half – 90 ml\nOrange – 1 slice",
     "timesMade": 0,
-    "image": "images/cocktails/screaming-orgasm.jpg"
+    "image": "images/cocktails/screaming-orgasm.jpg",
+    "abv": 0.132
   },
   {
     "id": "screwdriver",
     "name": "Screwdriver",
     "description": "A very simple cocktail of vodka and orange juice. The first reference to a Screwdriver appeared in Time magazine in 1949. Legend says it was named by oil workers who stirred it with a screwdriver.",
-    "ingredients": "Vodka – 45 ml  Orange Juice – 120 ml",
+    "ingredients": "Vodka – 45 ml\nOrange Juice – 120 ml",
     "timesMade": 0,
-    "image": "images/cocktails/screwdriver.jpg"
+    "image": "images/cocktails/screwdriver.jpg",
+    "abv": 0.109
   },
   {
     "id": "sea-breeze",
     "name": "Sea Breeze",
     "description": "Dating from the 1920s, originally made with gin and grenadine. Since cranberry juice became popular in the 1950s, the Sea Breeze has featured vodka, cranberry, and grapefruit juice.",
-    "ingredients": "Vodka – 60 ml  Cranberry Juice – 45 ml  Grapefruit Juice – 45 ml  Lime – 1 wedge",
+    "ingredients": "Vodka – 60 ml\nCranberry Juice – 45 ml\nGrapefruit Juice – 45 ml\nLime – 1 wedge",
     "timesMade": 0,
-    "image": "images/cocktails/sea-breeze.jpg"
+    "image": "images/cocktails/sea-breeze.jpg",
+    "abv": 0.16
   },
   {
     "id": "seedlip-cosmo",
     "name": "Seedlip Cosmo",
     "description": "A sophisticated and refreshing non-alcoholic cocktail experience . At its core is Seedlip Grove 42, that delivers a zesty, citrus-forward profile with notes of bitter orange, complemented by a dry lemongrass finish.",
-    "ingredients": "Seedlip Grove 42 – 40 ml  Cranberry Juice – 20 ml  Lime Juice – 10 ml  Simple Syrup – 10 ml",
+    "ingredients": "Seedlip Grove 42 – 40 ml\nCranberry Juice – 20 ml\nLime Juice – 10 ml\nSimple Syrup – 10 ml",
     "timesMade": 0,
-    "image": "images/cocktails/seedlipcosmo.jpg"
+    "image": "images/cocktails/seedlipcosmo.jpg",
+    "abv": 0.0
   },
   {
     "id": "seedlip-tonic",
@@ -1493,358 +1679,403 @@
     "description": "A non-alcoholic tonic with Seedlip 42, a zesty, citrus blend made using oranges, lemons, ginger, and lemongrass. A cool prickle of Japanese sansho peppercorn gives this non-alcoholic spirit a bright, dry finish.",
     "ingredients": "Seedlip Grove 42 – 50 ml\nTonic Water – 100 ml",
     "timesMade": 0,
-    "image": "images/cocktails/seedliptonic.jpg"
+    "image": "images/cocktails/seedliptonic.jpg",
+    "abv": 0.0
   },
   {
     "id": "seelbach",
     "name": "Seelbach",
     "description": "Created at the Seelbach Hotel in Louisville, Kentucky in 1917. The recipe was lost during Prohibition but \"rediscovered\" in 1995. Bourbon, Cointreau, bitters, and sparkling wine.",
-    "ingredients": "Bourbon – 30 ml  Cointreau – 15 ml  Angostura Bitters – 7 dash  Peychaud's Bitters – 7 dash  Sparkling Wine – 120 ml  Orange Peel – 1",
+    "ingredients": "Bourbon – 30 ml\nCointreau – 15 ml\nAngostura Bitters – 7 dash\nPeychaud's Bitters – 7 dash\nSparkling Wine – 120 ml\nOrange Peel – 1",
     "timesMade": 0,
-    "image": "images/cocktails/seelbach.jpg"
+    "image": "images/cocktails/seelbach.jpg",
+    "abv": 0.196
   },
   {
     "id": "shandygaff",
     "name": "Shandygaff",
     "description": "Most recipes call for equal parts ale and ginger beer. This version, adapted from a recipe by Charles Dickens' great-grandson Cedric Dickens, adds orange curaçao for extra complexity.",
-    "ingredients": "Ale – 150 ml  Ginger Beer – 150 ml  Lemon Juice – 15 ml  Orange Curacao – 15 ml",
+    "ingredients": "Ale – 150 ml\nGinger Beer – 150 ml\nLemon Juice – 15 ml\nOrange Curacao – 15 ml",
     "timesMade": 2,
-    "image": "images/cocktails/shandygaff.jpg"
+    "image": "images/cocktails/shandygaff.jpg",
+    "abv": 0.036
   },
   {
     "id": "sidecar",
     "name": "Sidecar",
     "description": "First appeared at the end of WWI in either London or Paris, with recipes published in 1922. Similar to a Daiquiri but uses brandy instead of rum, served with a sugar-crusted rim.",
-    "ingredients": "Lime – 1 wedge  Granulated Sugar  Brandy – 60 ml  Triple Sec – 30 ml  Lemon Juice – 20 ml",
+    "ingredients": "Lime – 1 wedge\nGranulated Sugar\nBrandy – 60 ml\nTriple Sec – 30 ml\nLemon Juice – 20 ml",
     "timesMade": 2,
-    "image": "images/cocktails/sidecar.jpg"
+    "image": "images/cocktails/sidecar.jpg",
+    "abv": 0.3
   },
   {
     "id": "siesta",
     "name": "Siesta",
     "description": "Part grapefruit margarita, part tequila daiquiri, created by New York bartender Katie Stipe. Tequila, Campari, lime, grapefruit, and simple syrup make this a citrusy, bittersweet delight.",
-    "ingredients": "Tequila Blanco – 45 ml  Campari – 15 ml  Simple Syrup – 15 ml  Lime Juice – 15 ml  Grapefruit Juice – 15 ml",
+    "ingredients": "Tequila Blanco – 45 ml\nCampari – 15 ml\nSimple Syrup – 15 ml\nLime Juice – 15 ml\nGrapefruit Juice – 15 ml",
     "timesMade": 1,
-    "image": "images/cocktails/siesta.jpg"
+    "image": "images/cocktails/siesta.jpg",
+    "abv": 0.208
   },
   {
     "id": "silver-fizz",
     "name": "Silver Fizz",
     "description": "From Harry Johnson's 1882 New and Improved Bartender's Manual. Old Tom gin, lemon juice, simple syrup, and egg white are shaken and topped with club soda for a classic, frothy fizz.",
-    "ingredients": "Egg white – 15 ml  Old Tom Gin – 60 ml  Simple Syrup – 15 ml  Lemon Juice – 15 ml  Club Soda – 60 ml",
+    "ingredients": "Egg white – 15 ml\nOld Tom Gin – 60 ml\nSimple Syrup – 15 ml\nLemon Juice – 15 ml\nClub Soda – 60 ml",
     "timesMade": 61,
-    "image": "images/cocktails/silver-fizz.jpg"
+    "image": "images/cocktails/silver-fizz.jpg",
+    "abv": 0.145
   },
   {
     "id": "silver-monk",
     "name": "Silver Monk",
     "description": "From NYC mixologist Phil Ward, similar to a margarita but with yellow Chartreuse and muddled cucumber. Tequila, mint, and lime add layers of herbal, refreshing complexity to the blend.",
-    "ingredients": "Mint – 8 leaf  Cucumber – 2 slice  Salt – 1 pinch  Simple Syrup – 15 ml  Tequila Blanco – 60 ml  Yellow Chartreuse – 20 ml  Lime Juice – 30 ml  Mint – 2 leaf  Cucumber – 1 slice",
+    "ingredients": "Mint – 8 leaf\nCucumber – 2 slice\nSalt – 1 pinch\nSimple Syrup – 15 ml\nTequila Blanco – 60 ml\nYellow Chartreuse – 20 ml\nLime Juice – 30 ml\nMint – 2 leaf\nCucumber – 1 slice",
     "timesMade": 2,
-    "image": "images/cocktails/silver-monk.jpg"
+    "image": "images/cocktails/silver-monk.jpg",
+    "abv": 0.256
   },
   {
     "id": "siphon-ramos-gin-fizz",
     "name": "Siphon Ramos Gin Fizz",
     "description": "A Ramos Gin Fizz made lazily with a siphon instead of shaking for multiple minutes. The siphon carbonates a pre-made mix, delivering the same silky, frothy result with much less effort.",
-    "ingredients": "Ramos Gin Fizz Mix – 100 ml  Club Soda – 90 ml",
+    "ingredients": "Ramos Gin Fizz Mix – 100 ml\nClub Soda – 90 ml",
     "timesMade": 54,
-    "image": "images/cocktails/siphon-ramos-gin-fizz.jpg"
+    "image": "images/cocktails/siphon-ramos-gin-fizz.jpg",
+    "abv": 0.084
   },
   {
     "id": "sloe-gin-fizz",
     "name": "Sloe Gin Fizz",
     "description": "A variation of the sour family with added carbonation. The term fizz first appeared in Jerry Thomas' 1887 guide. Sloe gin, lemon juice, simple syrup, and club soda create a fruity classic.",
-    "ingredients": "Sloe Gin – 45 ml  Lemon Juice – 20 ml  Simple Syrup – 7 ml  Club Soda – 90 ml  Lemon Peel – 1",
+    "ingredients": "Sloe Gin – 45 ml\nLemon Juice – 20 ml\nSimple Syrup – 7 ml\nClub Soda – 90 ml\nLemon Peel – 1",
     "timesMade": 49,
-    "image": "images/cocktails/sloe-gin-fizz.jpg"
+    "image": "images/cocktails/sloe-gin-fizz.jpg",
+    "abv": 0.072
   },
   {
     "id": "some-like-it-hot",
     "name": "Some Like It Hot",
     "description": "A spicy and citrusy drink created by Brandon Burkart of Haddington's in Austin, Texas. Rye, Aperol, yellow Chartreuse, orange juice, bitters, and hot sauce deliver complex heat and flavor.",
-    "ingredients": "Rye – 45 ml  Aperol – 15 ml  Yellow Chartreuse – 15 ml  Orange Juice – 9 ml  Angostura Bitters – 2 dash  Hot Sauce – 1 dash  Orange – 1 twist",
+    "ingredients": "Rye – 45 ml\nAperol – 15 ml\nYellow Chartreuse – 15 ml\nOrange Juice – 9 ml\nAngostura Bitters – 2 dash\nHot Sauce – 1 dash\nOrange – 1 twist",
     "timesMade": 0,
-    "image": "images/cocktails/some-like-it-hot.jpg"
+    "image": "images/cocktails/some-like-it-hot.jpg",
+    "abv": 0.306
   },
   {
     "id": "spazerack",
     "name": "Spazerack",
     "description": "An unusual frozen spin on the classic Sazerac. Rye, simple syrup, lemon juice, absinthe, and Peychaud's bitters are blended with ice for a refreshing, slushy take on the New Orleans classic.",
-    "ingredients": "Rye – 75 ml  Simple Syrup – 15 ml  Lemon Juice – 7 ml  Absinthe – 2.5 ml  Peychaud's Bitters – 3 dash  Lemon Peel – 1",
+    "ingredients": "Rye – 75 ml\nSimple Syrup – 15 ml\nLemon Juice – 7 ml\nAbsinthe – 2.5 ml\nPeychaud's Bitters – 3 dash\nLemon Peel – 1",
     "timesMade": 1,
-    "image": "images/cocktails/spazerack.jpg"
+    "image": "images/cocktails/spazerack.jpg",
+    "abv": 0.319
   },
   {
     "id": "spritz",
     "name": "Spritz",
     "description": "An Italian wine-based cocktail commonly served as an aperitif in Northeast Italy. Prosecco, Aperol, and soda water combine in this light, refreshing, bittersweet drink now popular worldwide.",
-    "ingredients": "Aperol – 40 ml  Sparkling Wine – 60 ml  Club Soda – 20 ml",
+    "ingredients": "Aperol – 40 ml\nSparkling Wine – 60 ml\nClub Soda – 20 ml",
     "timesMade": 113,
-    "image": "images/cocktails/spritz.jpg"
+    "image": "images/cocktails/spritz.jpg",
+    "abv": 0.097
   },
   {
     "id": "spritz-averna",
     "name": "Spritz Averna",
     "description": "A Spritz version with Averna, an Italian liqueur in the amaro category produced in Caltanissetta, Italy",
-    "ingredients": "Averna – 40 ml  Sparkling Wine – 60 ml  Club Soda – 20 ml",
+    "ingredients": "Averna – 40 ml\nSparkling Wine – 60 ml\nClub Soda – 20 ml",
     "timesMade": 0,
-    "image": "images/cocktails/spritzaverna.jpg"
+    "image": "images/cocktails/spritzaverna.jpg",
+    "abv": 0.097
   },
   {
     "id": "spritz-campari",
     "name": "Spritz Campari",
     "description": "A Spritz version with Campari, the famous Italian bitter characterised by its dark red colour",
-    "ingredients": "Campari – 40 ml  Sparkling Wine – 60 ml  Club Soda – 20 ml",
-    "timesMade": 0,
-    "image": "images/cocktails/spritzcampari.jpg"
+    "ingredients": "Campari – 40 ml\nSparkling Wine – 60 ml\nClub Soda – 20 ml",
+    "timesMade": 1,
+    "image": "images/cocktails/spritzcampari.jpg",
+    "abv": 0.097
   },
   {
     "id": "spritz-cynar",
     "name": "Spritz Cynar",
     "description": "A Spritz version with Cynar, an Italian bitter apéritif of the amaro variety. It is made from 13 herbs and plants, predominantly artichoke (Cynara scolymus), from which the drink derives its name",
-    "ingredients": "Cynar – 40 ml  Sparkling Wine – 60 ml  Club Soda – 20 ml",
-    "timesMade": 1,
-    "image": "images/cocktails/spritzcynar.jpg"
+    "ingredients": "Cynar – 40 ml\nSparkling Wine – 60 ml\nClub Soda – 20 ml",
+    "timesMade": 2,
+    "image": "images/cocktails/spritzcynar.jpg",
+    "abv": 0.097
   },
   {
     "id": "spritz-immortelle",
     "name": "Spritz Immortelle",
     "description": "A Spritz version with Spritz des Dunes, a bitter from Corsica with Immortelle flowers",
-    "ingredients": "Spritz des Dunes – 40 ml  Sparkling Wine – 60 ml  Club Soda – 20 ml",
-    "timesMade": 1,
-    "image": "images/cocktails/spritzimmortelle.jpg"
+    "ingredients": "Spritz des Dunes – 40 ml\nSparkling Wine – 60 ml\nClub Soda – 20 ml",
+    "timesMade": 3,
+    "image": "images/cocktails/spritzimmortelle.jpg",
+    "abv": 0.097
   },
   {
     "id": "spritz-italicus",
     "name": "Spritz Italicus",
     "description": "A Spritz version with Italicus, a bergamot rosolio (a type of aperitivo) manufactured in Italy. The liqueur uses bergamot from Calabria and citrons from Sicily, along with Italian flower varieties.",
-    "ingredients": "Italicus – 40 ml  Sparkling Wine – 60 ml  Club Soda – 20 ml",
+    "ingredients": "Italicus – 40 ml\nSparkling Wine – 60 ml\nClub Soda – 20 ml",
     "timesMade": 0,
-    "image": "images/cocktails/spritzitalicus.jpg"
+    "image": "images/cocktails/spritzitalicus.jpg",
+    "abv": 0.097
   },
   {
     "id": "spritz-select",
     "name": "Spritz Select",
     "description": "A Spritz version with Select, an original Venetian aperitivo crafted with 30 botanicals including juniper berries and rhubarb root for a refined harmony of bitter, floral, and citrus notes.",
-    "ingredients": "Select – 40 ml  Sparkling Wine – 60 ml  Club Soda – 20 ml",
-    "timesMade": 3,
-    "image": "images/cocktails/spritzselect.jpg"
+    "ingredients": "Select – 40 ml\nSparkling Wine – 60 ml\nClub Soda – 20 ml",
+    "timesMade": 5,
+    "image": "images/cocktails/spritzselect.jpg",
+    "abv": 0.097
   },
   {
     "id": "hugo-spritz",
     "name": "Spritz St Germain (Hugo)",
     "description": "A lighter variation of the Spritz popular in Austria and northern Italy. St. Germain elderflower liqueur replaces the traditional Aperol, combined with sparkling wine and a splash of club soda.",
-    "ingredients": "St. Germain – 40 ml  Sparkling Wine – 60 ml  Club Soda – 20 ml",
-    "timesMade": 5,
-    "image": "images/cocktails/hugo-spritz.jpg"
+    "ingredients": "St. Germain – 40 ml\nSparkling Wine – 60 ml\nClub Soda – 20 ml",
+    "timesMade": 6,
+    "image": "images/cocktails/hugo-spritz.jpg",
+    "abv": 0.127
   },
   {
     "id": "sweet-basil-2",
     "name": "Sweet Basil #2",
     "description": "A cocktail for basil lovers from Todd Thrasher of Restaurant Eve in Alexandria, Virginia. Lillet Blanc, gin, and basil syrup combine for a fragrant, herbaceous, and refreshing drink.",
-    "ingredients": "Lillet Blanc – 90 ml  Gin – 15 ml  Basil Syrup – 30 ml  Basil – 1 leaf",
+    "ingredients": "Lillet Blanc – 90 ml\nGin – 15 ml\nBasil Syrup – 30 ml\nBasil – 1 leaf",
     "timesMade": 5,
-    "image": "images/cocktails/sweet-basil-2.jpg"
+    "image": "images/cocktails/sweet-basil-2.jpg",
+    "abv": 0.158
   },
   {
     "id": "tailspin",
     "name": "Tailspin",
     "description": "A variation of the Bijou replacing orange bitters with Campari. Equal parts gin, sweet vermouth, and green Chartreuse are enhanced with a dash of Campari for an herbal, bitter-forward cocktail.",
-    "ingredients": "Gin – 20 ml  Sweet Vermouth – 20 ml  Green Chartreuse – 20 ml  Campari – 2.5 ml  Lemon – 1 twist  Cherry – 1",
+    "ingredients": "Gin – 20 ml\nSweet Vermouth – 20 ml\nGreen Chartreuse – 20 ml\nCampari – 2.5 ml\nLemon – 1 twist\nCherry – 1",
     "timesMade": 0,
-    "image": "images/cocktails/tailspin.jpg"
+    "image": "images/cocktails/tailspin.jpg",
+    "abv": 0.365
   },
   {
     "id": "tampico",
     "name": "Tampico",
     "description": "A nice long drink created by Rudolf Slavik at the George V Hotel in Paris in 1960. Triple sec, Campari, and lemon juice are topped with tonic water for a refreshingly bitter, citrusy cocktail.",
-    "ingredients": "Triple Sec – 20 ml  Campari – 30 ml  Lemon Juice – 20 ml  Tonic Water – 50 ml",
+    "ingredients": "Triple Sec – 20 ml\nCampari – 30 ml\nLemon Juice – 20 ml\nTonic Water – 50 ml",
     "timesMade": 2,
-    "image": "images/cocktails/tampico.jpg"
+    "image": "images/cocktails/tampico.jpg",
+    "abv": 0.113
   },
   {
     "id": "tennessee",
     "name": "Tennessee",
     "description": "A variation on the whiskey sour using Tennessee whiskey, found in David Embury's classic 1948 The Fine Art of Mixing Drinks. Maraschino liqueur adds a subtle cherry note to the sour profile.",
-    "ingredients": "Tennessee Whiskey – 45 ml  Lemon Juice – 20 ml  Maraschino Liqueur – 15 ml",
+    "ingredients": "Tennessee Whiskey – 45 ml\nLemon Juice – 20 ml\nMaraschino Liqueur – 15 ml",
     "timesMade": 4,
-    "image": "images/cocktails/tennessee.jpg"
+    "image": "images/cocktails/tennessee.jpg",
+    "abv": 0.285
   },
   {
     "id": "the-end-of-the-road",
     "name": "The End of the Road",
     "description": "Created by Chris McMillian and found in the excellent Beta Cocktails book. Equal parts Scotch, Campari, and green Chartreuse make a bold, herbal, and complex spirit-forward cocktail.",
-    "ingredients": "Scotch Whiskey – 30 ml  Campari – 30 ml  Green Chartreuse – 30 ml",
+    "ingredients": "Scotch Whiskey – 30 ml\nCampari – 30 ml\nGreen Chartreuse – 30 ml",
     "timesMade": 1,
-    "image": "images/cocktails/the-end-of-the-road.jpg"
+    "image": "images/cocktails/the-end-of-the-road.jpg",
+    "abv": 0.4
   },
   {
     "id": "the-espresso-martini",
     "name": "The Espresso Martini",
     "description": "Born in the late 1980s when bartenders discovered vodka's potential with fresh ingredients. Vodka, Kahlúa, espresso, and simple syrup are shaken into a rich, caffeinated modern classic.",
-    "ingredients": "Vodka – 50 ml  Kahlua – 15 ml  Simple Syrup – 10 ml  Espresso – 50 ml  Coffee Bean – 3",
+    "ingredients": "Vodka – 50 ml\nKahlua – 15 ml\nSimple Syrup – 10 ml\nEspresso – 50 ml\nCoffee Bean – 3",
     "timesMade": 1,
-    "image": "images/cocktails/the-espresso-martini.jpg"
+    "image": "images/cocktails/the-espresso-martini.jpg",
+    "abv": 0.184
   },
   {
     "id": "tipperary",
     "name": "Tipperary",
     "description": "The original Tipperary probably appeared in the early 1900s, but wasn't very tasty. This balanced version with Irish whiskey, sweet vermouth, Campari, and green Chartreuse is much better.",
-    "ingredients": "Irish Whiskey – 60 ml  Sweet Vermouth – 20 ml  Campari – 20 ml  Green Chartreuse – 7 ml  Orange Peel – 1",
+    "ingredients": "Irish Whiskey – 60 ml\nSweet Vermouth – 20 ml\nCampari – 20 ml\nGreen Chartreuse – 7 ml\nOrange Peel – 1",
     "timesMade": 2,
-    "image": "images/cocktails/tipperary.jpg"
+    "image": "images/cocktails/tipperary.jpg",
+    "abv": 0.337
   },
   {
     "id": "tom-collins",
     "name": "Tom Collins",
     "description": "First published in 1876 by Jerry Thomas. Named after the Great Tom Collins Hoax of 1874, when pranksters would send people to bars asking for the non-existent \"Tom Collins.\" Gin, lemon, and soda.",
-    "ingredients": "Gin – 45 ml  Lemon Juice – 20 ml  Simple Syrup – 15 ml  Club Soda – 120 ml  Lemon – 1 wedge",
+    "ingredients": "Gin – 45 ml\nLemon Juice – 20 ml\nSimple Syrup – 15 ml\nClub Soda – 120 ml\nLemon – 1 wedge",
     "timesMade": 81,
-    "image": "images/cocktails/tom-collins.jpg"
+    "image": "images/cocktails/tom-collins.jpg",
+    "abv": 0.09
   },
   {
     "id": "too-close-for-comfort",
     "name": "Too Close For Comfort",
     "description": "From Difford's Guide, adapted from a recipe at Mezza9 in Singapore. Vodka and Southern Comfort are mixed with lemon juice and simple syrup for a smooth, citrusy, easy-drinking cocktail.",
-    "ingredients": "Vodka – 45 ml  Southern Comfort – 30 ml  Lemon Juice – 30 ml  Simple Syrup – 20 ml  Lemon Peel – 1",
+    "ingredients": "Vodka – 45 ml\nSouthern Comfort – 30 ml\nLemon Juice – 30 ml\nSimple Syrup – 20 ml\nLemon Peel – 1",
     "timesMade": 1,
-    "image": "images/cocktails/too-close-for-comfort.jpg"
+    "image": "images/cocktails/too-close-for-comfort.jpg",
+    "abv": 0.228
   },
   {
     "id": "treacle",
     "name": "Treacle",
     "description": "Created by Dick Bradsell, who trained many of London's top bartenders. Similar to an Old Fashioned but uses dark rum instead of bourbon, with simple syrup and Angostura bitters.",
-    "ingredients": "Dark Rum – 60 ml  Simple Syrup – 7 ml  Angostura Bitters – 1 dash  Orange Peel – 1",
+    "ingredients": "Dark Rum – 60 ml\nSimple Syrup – 7 ml\nAngostura Bitters – 1 dash\nOrange Peel – 1",
     "timesMade": 1,
-    "image": "images/cocktails/treacle.jpg"
+    "image": "images/cocktails/treacle.jpg",
+    "abv": 0.358
   },
   {
     "id": "trinidad",
     "name": "Trinidad",
     "description": "A variation of Rum and Coke created by Dale DeGroff, where bitters add complexity. Light rum, a generous amount of Angostura bitters, and cola with lime create a deeper, more nuanced highball.",
-    "ingredients": "Light Rum – 45 ml  Angostura Bitters – 4 dash  Cola – 150 ml  Lime – 1 wedge",
+    "ingredients": "Light Rum – 45 ml\nAngostura Bitters – 4 dash\nCola – 150 ml\nLime – 1 wedge",
     "timesMade": 1,
-    "image": "images/cocktails/trinidad.jpg"
+    "image": "images/cocktails/trinidad.jpg",
+    "abv": 0.092
   },
   {
     "id": "twelve-mile-limit",
     "name": "Twelve Mile Limit",
     "description": "A Prohibition-era cocktail named after the \"Rum Line,\" which prohibited alcohol consumption within 12 miles of American shores. Rum, rye, brandy, grenadine, and lemon juice.",
-    "ingredients": "Light Rum – 30 ml  Rye – 15 ml  Brandy – 15 ml  Grenadine – 15 ml  Lemon Juice – 15 ml  Lemon Peel – 1",
+    "ingredients": "Light Rum – 30 ml\nRye – 15 ml\nBrandy – 15 ml\nGrenadine – 15 ml\nLemon Juice – 15 ml\nLemon Peel – 1",
     "timesMade": 7,
-    "image": "images/cocktails/twelve-mile-limit.jpg"
+    "image": "images/cocktails/twelve-mile-limit.jpg",
+    "abv": 0.267
   },
   {
     "id": "vendome",
     "name": "Vendome",
     "description": "Dating from the 1930s, this was the house cocktail at the Vendome Club in Hollywood. Equal parts gin, Dubonnet, and dry vermouth are stirred and garnished with a lemon twist for a balanced aperitif.",
-    "ingredients": "Gin – 30 ml  Dubonnet – 30 ml  Dry Vermouth – 30 ml  Lemon Peel – 1 twist",
+    "ingredients": "Gin – 30 ml\nDubonnet – 30 ml\nDry Vermouth – 30 ml\nLemon Peel – 1 twist",
     "timesMade": 1,
-    "image": "images/cocktails/vendome.jpg"
+    "image": "images/cocktails/vendome.jpg",
+    "abv": 0.242
   },
   {
     "id": "vesper",
     "name": "Vesper",
     "description": "Created by James Bond in Ian Fleming's 1953 Casino Royale, named after Vesper Lynd. Gin, vodka, and Lillet Blanc are shaken together for an elegant, potent drink. Recipe credited to Ivar Bryce.",
-    "ingredients": "Gin – 60 ml  Vodka – 30 ml  Lillet Blanc – 15 ml  Lemon Peel – 1",
+    "ingredients": "Gin – 60 ml\nVodka – 30 ml\nLillet Blanc – 15 ml\nLemon Peel – 1",
     "timesMade": 2,
-    "image": "images/cocktails/vesper.jpg"
+    "image": "images/cocktails/vesper.jpg",
+    "abv": 0.368
   },
   {
     "id": "vieux-carr",
     "name": "Vieux Carré",
     "description": "A 1930s cocktail from New Orleans, named after the city's famed French Quarter. Cognac, rye, sweet vermouth, Benedictine, and both Angostura and Peychaud's bitters make a rich, complex classic.",
-    "ingredients": "Cognac – 30 ml  Rye – 30 ml  Sweet Vermouth – 30 ml  Benedictine – 5.0 ml  Angostura Bitters – 2 dash  Peychaud's Bitters – 2 dash  Cherry – 1",
+    "ingredients": "Cognac – 30 ml\nRye – 30 ml\nSweet Vermouth – 30 ml\nBenedictine – 5.0 ml\nAngostura Bitters – 2 dash\nPeychaud's Bitters – 2 dash\nCherry – 1",
     "timesMade": 2,
-    "image": "images/cocktails/vieux-carr.jpg"
+    "image": "images/cocktails/vieux-carr.jpg",
+    "abv": 0.324
   },
   {
     "id": "vodka-gimlet",
     "name": "Vodka Gimlet",
     "description": "A variation of the classic Gimlet using vodka instead of gin. The neutral spirit lets the tartness of lime juice shine, balanced with simple syrup for a clean, refreshing citrus cocktail.",
-    "ingredients": "Vodka – 60 ml  Lime Juice – 30 ml  Simple Syrup – 20 ml  Lime – 1 wedge",
+    "ingredients": "Vodka – 60 ml\nLime Juice – 30 ml\nSimple Syrup – 20 ml\nLime – 1 wedge",
     "timesMade": 2,
-    "image": "images/cocktails/vodka-gimlet.jpg"
+    "image": "images/cocktails/vodka-gimlet.jpg",
+    "abv": 0.218
   },
   {
     "id": "vodka-martini",
     "name": "Vodka Martini",
     "description": "Also known as a Vodkatini or Kangaroo Cocktail. Purists insist martinis must contain gin, but this iconic vodka version can be stirred or shaken à la James Bond, with olive or lemon twist.",
-    "ingredients": "Vodka – 75 ml  Dry Vermouth – 20 ml  Lemon Peel – 1",
+    "ingredients": "Vodka – 75 ml\nDry Vermouth – 20 ml\nLemon Peel – 1",
     "timesMade": 0,
-    "image": "images/cocktails/vodka-martini.jpg"
+    "image": "images/cocktails/vodka-martini.jpg",
+    "abv": 0.354
   },
   {
     "id": "ward-8",
     "name": "Ward 8",
     "description": "Invented in Boston in 1898, this cocktail is a cousin of the Whiskey Sour. Rye, lemon juice, orange juice, and grenadine are shaken and topped with a splash of soda for a fruity, balanced drink.",
-    "ingredients": "Rye – 60 ml  Lemon Juice – 15 ml  Orange Juice – 15 ml  Grenadine – 7 ml  Club Soda – 15 ml",
+    "ingredients": "Rye – 60 ml\nLemon Juice – 15 ml\nOrange Juice – 15 ml\nGrenadine – 7 ml\nClub Soda – 15 ml",
     "timesMade": 4,
-    "image": "images/cocktails/ward-8.jpg"
+    "image": "images/cocktails/ward-8.jpg",
+    "abv": 0.214
   },
   {
     "id": "whiskey-collins",
     "name": "Whiskey Collins",
     "description": "A Tom Collins variation using bourbon instead of gin. Bourbon, lemon juice, and simple syrup are shaken, poured over ice, and topped with club soda for a refreshing, whiskey-forward cooler.",
-    "ingredients": "Bourbon – 45 ml  Lemon Juice – 20 ml  Simple Syrup – 15 ml  Club Soda – 120 ml  Lemon – 1 wedge",
+    "ingredients": "Bourbon – 45 ml\nLemon Juice – 20 ml\nSimple Syrup – 15 ml\nClub Soda – 120 ml\nLemon – 1 wedge",
     "timesMade": 4,
-    "image": "images/cocktails/whiskey-collins.jpg"
+    "image": "images/cocktails/whiskey-collins.jpg",
+    "abv": 0.09
   },
   {
     "id": "whiskey-sour",
     "name": "Whiskey Sour",
     "description": "First referred to in print in a Wisconsin newspaper in 1870. The sour family features a base spirit, citrus juice, and a sweetener. Bourbon, lemon juice, and simple syrup define this classic.",
-    "ingredients": "Bourbon – 60 ml  Lemon Juice – 20 ml  Simple Syrup – 15 ml  Cherry – 1",
+    "ingredients": "Bourbon – 60 ml\nLemon Juice – 20 ml\nSimple Syrup – 15 ml\nCherry – 1",
     "timesMade": 23,
-    "image": "images/cocktails/whiskey-sour.jpg"
+    "image": "images/cocktails/whiskey-sour.jpg",
+    "abv": 0.253
   },
   {
     "id": "white-lady",
     "name": "White Lady",
     "description": "Also known as a Delilah or Chelsea Sidecar, this is a Sidecar made with gin instead of brandy. Gin, triple sec, lemon juice, and egg white are shaken to produce a frothy, elegant classic.",
-    "ingredients": "Egg white – 15 ml  Lemon Juice – 20 ml  Gin – 45 ml  Triple Sec – 20 ml  Lemon Peel – 1",
+    "ingredients": "Egg white – 15 ml\nLemon Juice – 20 ml\nGin – 45 ml\nTriple Sec – 20 ml\nLemon Peel – 1",
     "timesMade": 22,
-    "image": "images/cocktails/white-lady.jpg"
+    "image": "images/cocktails/white-lady.jpg",
+    "abv": 0.24
   },
   {
     "id": "white-negroni",
     "name": "White Negroni",
     "description": "A lighter, more delicate take on the classic Negroni. Gin is paired with Suze gentian liqueur and Lillet Blanc instead of Campari and sweet vermouth, creating a floral, bittersweet aperitif.",
-    "ingredients": "Gin – 30 ml  Suze – 30 ml  Lillet Blanc – 30 ml  Orange Peel – 1",
+    "ingredients": "Gin – 30 ml\nSuze – 30 ml\nLillet Blanc – 30 ml\nOrange Peel – 1",
     "timesMade": 8,
-    "image": "images/cocktails/white-negroni.jpg"
+    "image": "images/cocktails/white-negroni.jpg",
+    "abv": 0.24
   },
   {
     "id": "white-negroni-2-less-suze",
     "name": "White Negroni #2 - Less Suze",
     "description": "A softer variation on the White Negroni with less Suze and more Lillet Blanc. This shifts the balance toward floral and wine-like notes while retaining the gentian's subtle bitterness.",
-    "ingredients": "Gin – 30 ml  Suze – 15 ml  Lillet Blanc – 45 ml",
+    "ingredients": "Gin – 30 ml\nSuze – 15 ml\nLillet Blanc – 45 ml",
     "timesMade": 0,
-    "image": "images/cocktails/white-negroni-2-less-suze.jpg"
+    "image": "images/cocktails/white-negroni-2-less-suze.jpg",
+    "abv": 0.243
   },
   {
     "id": "white-russian",
     "name": "White Russian",
     "description": "A variation of the 1949 Black Russian, adding cream. Made famous as the favorite drink of The Dude in the 1998 Coen Brothers film The Big Lebowski, who called it a \"Caucasian.\"",
-    "ingredients": "Vodka – 30 ml  Coffee Liqueur – 30 ml  Cream – 30 ml",
+    "ingredients": "Vodka – 30 ml\nCoffee Liqueur – 30 ml\nCream – 30 ml",
     "timesMade": 14,
-    "image": "images/cocktails/white-russian.jpg"
+    "image": "images/cocktails/white-russian.jpg",
+    "abv": 0.2
   },
   {
     "id": "wp-martinez",
     "name": "WP Martinez",
     "description": "A tailor-made cocktail recipe created and shared by a fellow home mixologist. White Penja pepper syrup adds an exotic spicy note to this gin-based Martinez variation with sweet vermouth.",
-    "ingredients": "Paragon White Penja Pepper – 15 ml  Gin – 45 ml  Sweet Vermouth – 20 ml  Maraschino Liqueur – 5 ml  Angostura Bitters – 2 drop",
+    "ingredients": "Paragon White Penja Pepper – 15 ml\nGin – 45 ml\nSweet Vermouth – 20 ml\nMaraschino Liqueur – 5 ml\nAngostura Bitters – 2 drop",
     "timesMade": 2,
-    "image": "images/cocktails/wp-martinez.jpg"
+    "image": "images/cocktails/wp-martinez.jpg",
+    "abv": 0.268
   },
   {
     "id": "yellow-bird",
     "name": "Yellow Bird",
     "description": "An exotic Caribbean cocktail. This sophisticated version omits the extra fruit juices of other recipes, letting light rum, lime juice, triple sec, and Galliano shine in a clean, tropical blend.",
-    "ingredients": "Light Rum – 45 ml  Lime Juice – 15 ml  Triple Sec – 15 ml  Galliano – 15 ml  Lime – 1 wedge",
+    "ingredients": "Light Rum – 45 ml\nLime Juice – 15 ml\nTriple Sec – 15 ml\nGalliano – 15 ml\nLime – 1 wedge",
     "timesMade": 2,
-    "image": "images/cocktails/yellow-bird.jpg"
+    "image": "images/cocktails/yellow-bird.jpg",
+    "abv": 0.321
   }
 ]
