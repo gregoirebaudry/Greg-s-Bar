@@ -1,4 +1,4 @@
-const CACHE_NAME = 'gregs-bar-v3';
+const CACHE_NAME = 'gregs-bar-v4';
 const APP_ASSETS = [
   './',
   './index.html',
