@@ -643,7 +643,7 @@ function barmanIcons(barman) {
       badge: `./icons/icon-${name}-512.png`
     };
   }
-  return { icon: './icons/icon-512.png', badge: './icons/icon-512.png' };
+  return { icon: './icons/icon-greg-512.png', badge: './icons/icon-greg-512.png' };
 }
 
 async function sendPushToAll(payload, barmanFilter) {

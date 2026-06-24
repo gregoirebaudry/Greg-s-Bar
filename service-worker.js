@@ -1,13 +1,14 @@
-const CACHE_NAME = 'gregs-bar-v2';
+const CACHE_NAME = 'gregs-bar-v3';
 const APP_ASSETS = [
   './',
   './index.html',
   './admin.html',
   './manifest.webmanifest',
   './icon-180.png',
-  './icon-192.png',
-  './icon-512.png',
-  './icon-maskable-512.png'
+  './icon-maskable-512.png',
+  './icons/icon-greg-512.png',
+  './icons/icon-bastien-512.png',
+  './icons/icon-clement-512.png'
 ];
 
 self.addEventListener('install', (event) => {
@@ -78,8 +79,8 @@ self.addEventListener('push', (event) => {
   const title = data.title || 'New cocktail order';
   const options = {
     body: data.body || 'You have a new order waiting.',
-    icon: data.icon || './icon-512.png',
-    badge: data.badge || './icon-192.png',
+    icon: data.icon || './icons/icon-greg-512.png',
+    badge: data.badge || './icons/icon-greg-512.png',
     data: {
       url: data.url || './admin.html'
     },
