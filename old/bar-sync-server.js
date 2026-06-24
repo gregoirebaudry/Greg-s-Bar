@@ -624,15 +624,23 @@ async function restoreStateFromRemote() {
   }
 }
 
-async function sendPushToAll(payload) {
+async function sendPushToAll(payload, barmanFilter) {
   if (!VAPID_PUBLIC_KEY || !VAPID_PRIVATE_KEY) return;
 
-  const subscriptions = await getStoredSubscriptions();
-  if (subscriptions.length === 0) return;
+  const allSubscriptions = await getStoredSubscriptions();
+  if (allSubscriptions.length === 0) return;
+
+  // If a barmanFilter is provided, only notify subscriptions tagged for that barman.
+  // Subscriptions with no tag (legacy) always receive notifications so nothing breaks.
+  const subscriptions = barmanFilter
+    ? allSubscriptions.filter(s => !s.barman || s.barman === barmanFilter)
+    : allSubscriptions;
 
   for (const subscription of subscriptions) {
+    // Strip our custom barman field before sending to web-push
+    const { barman: _tag, ...pushSub } = subscription;
     try {
-      await webpush.sendNotification(subscription, JSON.stringify(payload));
+      await webpush.sendNotification(pushSub, JSON.stringify(payload));
     } catch (error) {
       const statusCode = Number(error && error.statusCode);
       if (statusCode === 404 || statusCode === 410) {
@@ -790,7 +798,7 @@ async function handleOrder(body) {
     url: './admin.html',
     icon: './icons/icon-512.png',
     badge: './icons/icon-192.png'
-  }).catch((error) => console.warn('Unable to send push notifications.', error && error.message ? error.message : error));
+  }, nextState.barman).catch((error) => console.warn('Unable to send push notifications.', error && error.message ? error.message : error));
 
   return { status: 200, payload: { ok: true, state: buildPublicState(nextState), order: pendingOrder } };
 }
@@ -917,6 +925,7 @@ async function handleCloseByToken(body) {
 
 async function handlePushSubscribe(body) {
   const subscription = body && body.subscription;
+  const barman = String(body && body.barman ? body.barman : '').trim();
 
   if (!VAPID_PUBLIC_KEY || !VAPID_PRIVATE_KEY) {
     return { status: 503, payload: { error: 'Push is not configured on the server.' } };
@@ -926,7 +935,9 @@ async function handlePushSubscribe(body) {
     return { status: 400, payload: { error: 'A valid push subscription is required.' } };
   }
 
-  await upsertStoredSubscription(subscription);
+  // Store barman tag alongside the subscription so we can filter at send time
+  const taggedSubscription = { ...subscription, barman: barman || null };
+  await upsertStoredSubscription(taggedSubscription);
   return { status: 200, payload: { ok: true } };
 }
 
@@ -1075,7 +1086,7 @@ async function bootstrap() {
       url: './admin.html',
       icon: './icons/icon-512.png',
       badge: './icons/icon-192.png'
-    }).catch((error) => console.warn('Unable to send backlog reminder push notification.', error && error.message ? error.message : error));
+    }, state.barman).catch((error) => console.warn('Unable to send backlog reminder push notification.', error && error.message ? error.message : error));
   }, BACKLOG_REMINDER_INTERVAL_MS);
 }
 

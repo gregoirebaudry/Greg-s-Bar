@@ -59,7 +59,7 @@ const DEFAULT_STATE = {
   sessionOrders: 0,
   pendingOrders: [],
   orderHistory: [],
-  adminSessionToken: null,
+  adminSessionTokens: [],
   updatedAt: new Date().toISOString()
 };
 
@@ -106,7 +106,13 @@ function normalizeState(raw) {
     : 0;
   const pendingOrders = normalizePendingOrders(raw && raw.pendingOrders);
   const orderHistory = normalizeOrderHistory(raw && raw.orderHistory);
-  const adminSessionToken = raw && typeof raw.adminSessionToken === 'string' ? raw.adminSessionToken : null;
+  // Support legacy single-token field from old state files
+  let adminSessionTokens = [];
+  if (Array.isArray(raw && raw.adminSessionTokens)) {
+    adminSessionTokens = raw.adminSessionTokens.filter(t => typeof t === 'string' && t.length > 0);
+  } else if (raw && typeof raw.adminSessionToken === 'string' && raw.adminSessionToken) {
+    adminSessionTokens = [raw.adminSessionToken];
+  }
 
   return {
     isOpen: isOpen && Boolean(barman),
@@ -116,7 +122,7 @@ function normalizeState(raw) {
     sessionOrders: isOpen && barman ? sessionOrders : 0,
     pendingOrders: isOpen && barman ? pendingOrders : [],
     orderHistory: isOpen && barman ? orderHistory : [],
-    adminSessionToken: isOpen && barman ? adminSessionToken : null,
+    adminSessionTokens: isOpen && barman ? adminSessionTokens : [],
     updatedAt: raw && raw.updatedAt ? String(raw.updatedAt) : new Date().toISOString()
   };
 }
@@ -152,7 +158,12 @@ function buildPublicState(currentState) {
 }
 
 function isValidAdminToken(token) {
-  return Boolean(token && state.isOpen && state.adminSessionToken && token === state.adminSessionToken);
+  return Boolean(
+    token &&
+    state.isOpen &&
+    Array.isArray(state.adminSessionTokens) &&
+    state.adminSessionTokens.includes(token)
+  );
 }
 
 function sendJson(res, statusCode, payload) {
@@ -705,7 +716,7 @@ async function handleToggle(body) {
       sessionOrders: 0,
       pendingOrders: [],
       orderHistory: [],
-      adminSessionToken: null
+      adminSessionTokens: []
     });
 
     await clearRemoteBarState();
@@ -724,7 +735,7 @@ async function handleToggle(body) {
     console.warn('Unable to refresh cocktails while opening the bar.', error && error.message ? error.message : error);
   }
 
-  const adminSessionToken = crypto.randomUUID();
+  const firstToken = crypto.randomUUID();
   const openState = persistState({
     isOpen: true,
     barman: name,
@@ -733,7 +744,7 @@ async function handleToggle(body) {
     sessionOrders: 0,
     pendingOrders: [],
     orderHistory: [],
-    adminSessionToken
+    adminSessionTokens: [firstToken]
   });
 
   await upsertRemoteBarState();
@@ -743,7 +754,7 @@ async function handleToggle(body) {
     payload: {
       ok: true,
       state: buildPublicState(openState),
-      adminSessionToken,
+      adminSessionToken: firstToken,
       cocktailsUpdatedAt: cocktailsCacheUpdatedAt,
       cocktailsSource: cocktailsCacheSource
     }
@@ -891,6 +902,38 @@ async function handleCancelOrder(body) {
   return { status: 200, payload: { ok: true, state: buildPublicState(nextState) } };
 }
 
+async function handleJoinSession(body) {
+  const name     = String(body && body.name     ? body.name     : '').trim();
+  const password = String(body && body.password ? body.password : '');
+  const config   = BARMEN[name];
+
+  if (!config || config.password !== password) {
+    return { status: 401, payload: { error: 'Invalid credentials.' } };
+  }
+
+  if (!state.isOpen || state.barman !== name) {
+    return { status: 409, payload: { error: 'No active session for this barman.' } };
+  }
+
+  // Mint a new token and add it to the pool
+  const newToken = crypto.randomUUID();
+  persistState({
+    ...state,
+    adminSessionTokens: [...(state.adminSessionTokens || []), newToken]
+  });
+
+  await upsertRemoteBarState();
+
+  return {
+    status: 200,
+    payload: {
+      ok: true,
+      adminSessionToken: newToken,
+      state: buildPublicState(state)
+    }
+  };
+}
+
 async function handleCloseByToken(body) {
   const token = String(body && body.token ? body.token : '').trim();
   if (!isValidAdminToken(token)) {
@@ -915,7 +958,7 @@ async function handleCloseByToken(body) {
     sessionOrders: 0,
     pendingOrders: [],
     orderHistory: [],
-    adminSessionToken: null
+    adminSessionTokens: []
   });
 
   await clearRemoteBarState();
@@ -1009,10 +1052,11 @@ const server = http.createServer(async (req, res) => {
 
     if (req.method === 'GET' && req.url.startsWith('/api/admin-session?token=')) {
       const token = new URL(req.url, 'http://localhost').searchParams.get('token') || '';
+      const active = isValidAdminToken(token);
       return sendJson(res, 200, {
         ok: true,
-        active: isValidAdminToken(token),
-        state: isValidAdminToken(token)
+        active,
+        state: active
           ? buildPublicState(state)
           : buildPublicState({
               isOpen: false,
@@ -1022,6 +1066,13 @@ const server = http.createServer(async (req, res) => {
               updatedAt: new Date().toISOString()
             })
       });
+    }
+
+    // New device joining an active session — issues a fresh token without reopening the bar
+    if (req.method === 'POST' && req.url === '/api/admin-session/join') {
+      const body = await readJsonBody(req);
+      const result = await enqueue(() => handleJoinSession(body));
+      return sendJson(res, result.status, result.payload);
     }
 
     if (req.method === 'POST' && req.url === '/api/bar-state/close') {

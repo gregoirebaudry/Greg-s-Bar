@@ -413,7 +413,8 @@
   <!-- Kicked out overlay (session expired / bar closed externally) -->
   <div class="kicked-overlay" id="kickedOverlay">
     <h2 style="font-family:'Playfair Display',serif;font-size:1.5rem;">Session ended</h2>
-    <p>The bar has been closed or your admin session has expired.</p>
+    <p id="kickedMsg">The bar has been closed or your admin session has expired.</p>
+    <button type="button" id="reclaimBtn" style="display:none;border:1px solid rgba(212,168,83,0.4);border-radius:999px;padding:0.7rem 1.4rem;background:rgba(212,168,83,0.14);color:#f4efe6;font:inherit;font-weight:600;cursor:pointer;">🔑 Reclaim session</button>
     <a href="index.html">← Back to menu</a>
   </div>
 
@@ -606,6 +607,10 @@
           const { res, payload } = await apiFetch('/api/bar-state');
           if (!res.ok) throw new Error(payload.error || `Server error ${res.status}`);
           applyState(payload.state);
+          // Bar is open but we have no token — offer to reclaim silently on first load
+          if (!silent && payload.state && payload.state.isOpen) {
+            offerReclaim(payload.state.barman);
+          }
           return;
         }
 
@@ -723,6 +728,56 @@
       lastKnownOrderIds = incoming;
     }
 
+    // ─── Reclaim / join session ───────────────────────────────────────────────
+    // Called when this device has no token but the bar is already open.
+    // Uses /api/admin-session/join to mint a fresh token for this device
+    // without touching the session or pending orders at all.
+    async function reclaimSession(barmanName) {
+      const name = barmanName || urlBarman;
+      if (!name && !barState.barman) {
+        // No idea who the barman is — fall back to full open flow
+        return openBar();
+      }
+
+      const credentials = await showCredentialDialog(name || barState.barman);
+      if (!credentials) return;
+
+      setAdminBusy(true, 'Joining session…');
+      try {
+        const { res, payload } = await apiFetch('/api/admin-session/join', {
+          method: 'POST',
+          body: JSON.stringify(credentials)
+        });
+        if (!res.ok) throw new Error(payload.error || `Server error ${res.status}`);
+        if (payload.adminSessionToken) {
+          try { localStorage.setItem(ADMIN_SESSION_STORAGE_KEY, payload.adminSessionToken); } catch {}
+        }
+        // Hide kicked overlay if it was showing
+        document.getElementById('kickedOverlay').classList.remove('active');
+        if (payload.state) applyState(payload.state);
+        startPolling();
+      } catch (err) {
+        setError(err.message || 'Unable to join session.');
+      } finally {
+        setAdminBusy(false);
+      }
+    }
+
+    function offerReclaim(barmanName) {
+      const overlay = document.getElementById('kickedOverlay');
+      const msg     = document.getElementById('kickedMsg');
+      const btn     = document.getElementById('reclaimBtn');
+      if (!overlay || !btn) return;
+      if (msg) msg.textContent = 'The bar is open but your session token is missing (e.g. after reinstalling the app). Re-enter your password to continue.';
+      btn.style.display = 'inline-block';
+      btn.onclick = () => {
+        overlay.classList.remove('active');
+        btn.style.display = 'none';
+        reclaimSession(barmanName);
+      };
+      overlay.classList.add('active');
+    }
+
     async function closeBar() {
       // Show custom confirmation dialog without the browser title
       const confirmed = await showCustomConfirm('Close the bar and end the session?');
@@ -774,7 +829,7 @@
       }
     }
 
-    function showCredentialDialog() {
+    function showCredentialDialog(prefillName) {
       return new Promise((resolve) => {
         const overlay = document.createElement('div');
         overlay.style.cssText = `
@@ -824,9 +879,10 @@
         passwordInput.addEventListener('keydown', (event) => {
           if (event.key === 'Enter') dialog.querySelector('#confirmOpenBtn').click();
         });
-        // Pre-fill name from URL param so the barman only needs to enter password
-        if (urlBarman) {
-          nameInput.value = urlBarman;
+        // Pre-fill name from explicit arg, URL param, or leave blank
+        const fillName = prefillName || urlBarman;
+        if (fillName) {
+          nameInput.value = fillName;
           setTimeout(() => passwordInput.focus(), 0);
         } else {
           setTimeout(() => nameInput.focus(), 0);
@@ -947,7 +1003,12 @@
     // ─── Kicked-out overlay ───────────────────────────────────────────────────
     function showKickedOverlay() {
       stopPolling();
-      document.getElementById('kickedOverlay').classList.add('active');
+      // If bar is still open (mid-session 401), offer reclaim instead of dead-end
+      if (barState.isOpen) {
+        offerReclaim(barState.barman || urlBarman);
+      } else {
+        document.getElementById('kickedOverlay').classList.add('active');
+      }
     }
 
     // ─── Push notifications ───────────────────────────────────────────────────
