@@ -800,6 +800,12 @@
     
     async function toggleBarFromAdmin() {
       if (barState.isOpen) {
+        // If we have no token, join the session first (silently), then close
+        if (!getToken()) {
+          await reclaimSession(barState.barman || urlBarman);
+          // reclaimSession is async and updates the token; if it succeeded we now have one
+          if (!getToken()) return; // user cancelled or join failed
+        }
         closeBar();
       } else {
         openBar();
