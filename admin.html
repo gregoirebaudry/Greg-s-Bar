@@ -384,7 +384,7 @@
       </div>
       <div class="hero-main">
         <div class="admin-brand">
-          <img id="adminLogo" src="images/logos/greg-logo.png" alt="Bar logo">
+          <img id="adminLogo" src="" alt="Bar logo">
           <div class="admin-brand-text"><span>Barman</span><span>Console</span></div>
         </div>
         <div class="hero-meta">
@@ -510,7 +510,7 @@
 
     // ─── Render ───────────────────────────────────────────────────────────────
     function renderHero() {
-      const cfg = BAR_CONFIG[barState.barman] || BAR_CONFIG.Greg;
+      const cfg = BAR_CONFIG[barState.barman] || BAR_CONFIG[urlBarman] || BAR_CONFIG.Greg;
       document.getElementById('adminLogo').src = cfg.logo;
       document.getElementById('adminLogo').alt = cfg.headerAlt;
       document.getElementById('metricOrders').textContent  = barState.sessionOrders;

@@ -373,7 +373,7 @@
       </div>
       <div class="hero-main">
         <div class="admin-brand">
-          <img id="adminLogo" src="images/logos/greg-logo.png" alt="Bar logo">
+          <img id="adminLogo" src="" alt="Bar logo">
           <div class="admin-brand-text"><span>Barman</span><span>Console</span></div>
         </div>
         <div class="hero-meta">
@@ -434,11 +434,7 @@
     // Each barman bookmarks admin.html?bar=Greg (or Clement / Bastien).
     // This restricts push subscriptions so only the active barman's phone
     // receives new-order notifications.
-    const urlBarman = (() => {
-      const p = new URLSearchParams(window.location.search).get('bar') || '';
-      const name = p.charAt(0).toUpperCase() + p.slice(1).toLowerCase();
-      return BAR_CONFIG[name] ? name : null;
-    })();
+    const urlBarman = 'Greg'; // hardcoded for this barman's page
 
     // ─── State ────────────────────────────────────────────────────────────────
     let barState   = { isOpen: false, barman: null, sessionOrders: 0, pendingOrders: [] };
