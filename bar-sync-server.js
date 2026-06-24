@@ -635,6 +635,17 @@ async function restoreStateFromRemote() {
   }
 }
 
+function barmanIcons(barman) {
+  const name = String(barman || '').toLowerCase();
+  if (name === 'greg' || name === 'bastien' || name === 'clement') {
+    return {
+      icon:  `./icons/icon-${name}-512.png`,
+      badge: `./icons/icon-${name}-512.png`
+    };
+  }
+  return { icon: './icons/icon-512.png', badge: './icons/icon-512.png' };
+}
+
 async function sendPushToAll(payload, barmanFilter) {
   if (!VAPID_PUBLIC_KEY || !VAPID_PRIVATE_KEY) return;
 
@@ -807,8 +818,7 @@ async function handleOrder(body) {
     tag: 'bar-order',
     renotify: true,
     url: './admin.html',
-    icon: './icons/icon-512.png',
-    badge: './icons/icon-192.png'
+    ...barmanIcons(nextState.barman)
   }, nextState.barman).catch((error) => console.warn('Unable to send push notifications.', error && error.message ? error.message : error));
 
   return { status: 200, payload: { ok: true, state: buildPublicState(nextState), order: pendingOrder } };
@@ -1184,8 +1194,7 @@ async function bootstrap() {
       tag: 'bar-backlog-reminder',
       renotify: true,
       url: './admin.html',
-      icon: './icons/icon-512.png',
-      badge: './icons/icon-192.png'
+      ...barmanIcons(state.barman)
     }, state.barman).catch((error) => console.warn('Unable to send backlog reminder push notification.', error && error.message ? error.message : error));
   }, BACKLOG_REMINDER_INTERVAL_MS);
 }

@@ -934,6 +934,49 @@ async function handleJoinSession(body) {
   };
 }
 
+async function handleCloseWithPassword(body) {
+  const name     = String(body && body.name     ? body.name     : '').trim();
+  const password = String(body && body.password ? body.password : '');
+  const config   = BARMEN[name];
+
+  if (!config || config.password !== password) {
+    return { status: 401, payload: { error: 'Invalid credentials.' } };
+  }
+
+  if (!state.isOpen) {
+    return { status: 409, payload: { error: 'The bar is already closed.' } };
+  }
+
+  if (state.barman !== name) {
+    return { status: 403, payload: { error: `The bar was opened by ${state.barman}, not ${name}.` } };
+  }
+
+  const sessionSnapshot = {
+    sessionId: state.sessionId,
+    barman: state.barman,
+    sessionStartedAt: state.sessionStartedAt,
+    sessionEndedAt: new Date().toISOString(),
+    orderHistory: state.orderHistory
+  };
+
+  await appendUnloggedOrders(sessionSnapshot);
+
+  const closedState = persistState({
+    isOpen: false,
+    barman: null,
+    sessionId: null,
+    sessionStartedAt: null,
+    sessionOrders: 0,
+    pendingOrders: [],
+    orderHistory: [],
+    adminSessionTokens: []
+  });
+
+  await clearRemoteBarState();
+
+  return { status: 200, payload: { ok: true, state: buildPublicState(closedState) } };
+}
+
 async function handleCloseByToken(body) {
   const token = String(body && body.token ? body.token : '').trim();
   if (!isValidAdminToken(token)) {
@@ -1078,6 +1121,12 @@ const server = http.createServer(async (req, res) => {
     if (req.method === 'POST' && req.url === '/api/bar-state/close') {
       const body = await readJsonBody(req);
       const result = await enqueue(() => handleCloseByToken(body));
+      return sendJson(res, result.status, result.payload);
+    }
+
+    if (req.method === 'POST' && req.url === '/api/bar-state/close-with-password') {
+      const body = await readJsonBody(req);
+      const result = await enqueue(() => handleCloseWithPassword(body));
       return sendJson(res, result.status, result.payload);
     }
 
