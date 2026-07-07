@@ -121,7 +121,7 @@
     "name": "Atlas",
     "description": "A rich, spicy after-dinner cocktail first published in the late 1930s. Dark rum meets triple sec and Calvados for a spirit-forward blend of fruit and woody notes.",
     "ingredients": "Dark Rum – 45 ml\nTriple Sec – 30 ml\nCalvados – 15 ml\nOrange – 1 slice",
-    "timesMade": 2,
+    "timesMade": 0,
     "image": "images/cocktails/atlas.jpg",
     "abv": 0.367
   },
@@ -165,7 +165,7 @@
     "id": "belle-ipa",
     "name": "Belle IPA",
     "description": "Freshness and simplicity in a glass. The sweet bitterness of IPA beer marries beautifully with the pear fruitiness of Belle De Brillet for an easy, refreshing two-ingredient beer cocktail.",
-    "ingredients": "Belle de Brillet – 40 ml\nIPA Beer – 200 ml",
+    "ingredients": "Belle de Brillet – 40 ml \nIPA Beer – 200 ml",
     "timesMade": 0,
     "image": "images/cocktails/belle-ipa.jpg",
     "abv": 0.104
@@ -174,7 +174,7 @@
     "id": "belle-mimosa",
     "name": "Belle Mimosa",
     "description": "A variation of the classic Mimosa, the star cocktail of brunches sublimated by the pear! Belle De Brillet replaces the traditional triple sec, adding fruity depth to orange juice and champagne.",
-    "ingredients": "Belle de Brillet – 40 ml\nOrange juice – 50 ml\nChampagne – 120 ml",
+    "ingredients": "Belle de Brillet – 40 ml \nOrange juice – 50 ml \nChampagne – 120 ml",
     "timesMade": 2,
     "image": "images/cocktails/belle-mimosa.jpg",
     "abv": 0.126
@@ -183,7 +183,7 @@
     "id": "belle-ros",
     "name": "Belle Rosé",
     "description": "A fresh and fruity summer aperitif blending Belle De Brillet pear liqueur with rosé wine and tonic. The pear's sweetness complements the dry rosé, while tonic adds a crisp effervescence.",
-    "ingredients": "Belle de Brillet – 30 ml\nRosé wine – 80 ml\nTonic – 100 ml",
+    "ingredients": "Belle de Brillet – 30 ml \nRosé wine – 80 ml \nTonic – 100 ml",
     "timesMade": 0,
     "image": "images/cocktails/belle-rose.jpg",
     "abv": 0.089
@@ -201,7 +201,7 @@
     "id": "belle-tampico",
     "name": "Belle Tampico",
     "description": "A long, bittersweet, and refreshing drink. Belle De Brillet pear liqueur meets Campari's bitter edge, brightened by lemon juice and lengthened with tonic water for a vibrant, citrusy aperitif.",
-    "ingredients": "Belle de Brillet – 40 ml\nCampari – 20 ml\nLemon juice – 15 ml\nTonic Water – 100 ml",
+    "ingredients": "Belle de Brillet – 40 ml \nCampari – 20 ml \nLemon juice – 15 ml \nTonic Water – 100 ml",
     "timesMade": 0,
     "image": "images/cocktails/belle-tampico.jpg",
     "abv": 0.097
@@ -643,7 +643,7 @@
     "name": "Darb",
     "description": "An adaptation of a cocktail from The Savoy Cocktail Book. Equal parts gin, apricot liqueur, and dry vermouth are brightened with a splash of lemon juice for a fruity, balanced drink.",
     "ingredients": "Gin – 20 ml\nApricot Liqueur – 20 ml\nDry Vermouth – 20 ml\nLemon Juice – 7 ml",
-    "timesMade": 2,
+    "timesMade": 1,
     "image": "images/cocktails/darb.jpg",
     "abv": 0.245
   },
@@ -760,7 +760,7 @@
     "name": "El Presidente",
     "description": "A classic Cuban cocktail named after president Gerardo Machado in the 1920s. Light rum, bianco vermouth, orange curaçao, and a touch of grenadine make this elegant pre-dinner drink.",
     "ingredients": "Light Rum – 45 ml\nBianco Vermouth – 30 ml\nOrange Curacao – 5.0 ml\nGrenadine – 2.5 ml\nCherry – 1",
-    "timesMade": 5,
+    "timesMade": 4,
     "image": "images/cocktails/el-presidente.jpg",
     "abv": 0.291
   },
@@ -931,7 +931,7 @@
     "name": "Honeymoon",
     "description": "A wonderful cocktail from Hugo Ensslin's 1917 Recipes for Mixed Drinks. Calvados, Benedictine, orange curaçao, and lemon juice combine for a beautifully balanced, aromatic celebration drink.",
     "ingredients": "Calvados – 30 ml\nLemon Juice – 15 ml\nBenedictine – 15 ml\nOrange Curacao – 15 ml\nLemon Peel – 1 twist",
-    "timesMade": 1,
+    "timesMade": 0,
     "image": "images/cocktails/honeymoon.jpg",
     "abv": 0.3
   },
@@ -1030,7 +1030,7 @@
     "name": "Jubilant",
     "description": "A smooth, refreshing, herbal cocktail from The Cafe Royal Cocktail Book. Gin and Benedictine are shaken with lemon and orange juice and egg white for a silky, frothy, elegant drink.",
     "ingredients": "Egg white – 15 ml\nGin – 45 ml\nBenedictine – 20 ml\nLemon Juice – 15 ml\nOrange Juice – 15 ml\nOrange – 1 slice",
-    "timesMade": 6,
+    "timesMade": 5,
     "image": "images/cocktails/jubilant.jpg",
     "abv": 0.236
   },
@@ -1084,7 +1084,7 @@
     "name": "Lagerita",
     "description": "A beery version of a margarita that works best with a light Mexican beer. From cocktail expert Simon Ford, it combines tequila, Cointreau, and lime juice, topped off with cold lager.",
     "ingredients": "Lime\nSalt\nIce\nTequila – 60 ml\nCointreau – 20 ml\nLime Juice – 30 ml\nLime – 1 wheel",
-    "timesMade": 1,
+    "timesMade": 0,
     "image": "images/cocktails/lagerita.jpg",
     "abv": 0.291
   },
@@ -1192,7 +1192,7 @@
     "name": "Margarita",
     "description": "The most common tequila cocktail in the US, often attributed to Don Carlo Orozco at Hussong's Cantina in Ensenada in 1941. Margarita is Spanish for daisy, linking it to an older brandy drink.",
     "ingredients": "Lime – 1 wedge\nKosher Salt\nTequila Blanco – 45 ml\nTriple Sec – 20 ml\nLime Juice – 15 ml",
-    "timesMade": 19,
+    "timesMade": 18,
     "image": "images/cocktails/margarita.jpg",
     "abv": 0.3
   },
@@ -1204,6 +1204,15 @@
     "timesMade": 2,
     "image": "images/cocktails/martini.jpg",
     "abv": 0.354
+  },
+  {
+    "id": "m-nage-trois",
+    "name": "Ménage à trois",
+    "description": "The classic Old Fashioned revisited with a fruity, spicy twist. Belle De Brillet pear liqueur, dark rum, and fresh coffee form a trio in harmony, accented by a dash of Angostura bitters.",
+    "ingredients": "Belle de Brillet – 50 ml \nDark rum – 20 ml \nCoffee – 15 ml \nAngostura Bitters – 1 dash",
+    "timesMade": 0,
+    "image": "images/cocktails/menage-a-trois.jpg",
+    "abv": 0.271
   },
   {
     "id": "mezcal-negroni",
@@ -1263,7 +1272,7 @@
     "id": "mojitosco",
     "name": "Mojitosco",
     "description": "Mocktail based on the famous Mojito, with Osco original as a base. Very refreshing.",
-    "ingredients": "Club Soda – 60 ml\nOsco – 25 ml\nSimple Syrup – 10 ml\nLime Juice – 10 ml\nMint – 1 sprig",
+    "ingredients": "Club Soda – 60 ml \nOsco – 25 ml \nSimple Syrup – 10 ml \nLime Juice – 10 ml \nMint – 1 sprig",
     "timesMade": 3,
     "image": "images/cocktails/mojitosco.jpg",
     "abv": 0.0
@@ -1273,7 +1282,7 @@
     "name": "Moscow Mule",
     "description": "Created in 1941 by spirits distributor John Martin and Jack Morgan of L.A.'s Cock 'n Bull restaurant. Popular with Hollywood celebrities, it helped popularize vodka in the United States.",
     "ingredients": "Vodka – 60 ml\nLime Juice – 15 ml\nGinger Beer – 120 ml",
-    "timesMade": 340,
+    "timesMade": 338,
     "image": "images/cocktails/moscow-mule.jpg",
     "abv": 0.123
   },
@@ -1285,15 +1294,6 @@
     "timesMade": 0,
     "image": "images/cocktails/mudslide.jpg",
     "abv": 0.234
-  },
-  {
-    "id": "m-nage-trois",
-    "name": "Ménage à trois",
-    "description": "The classic Old Fashioned revisited with a fruity, spicy twist. Belle De Brillet pear liqueur, dark rum, and fresh coffee form a trio in harmony, accented by a dash of Angostura bitters.",
-    "ingredients": "Belle de Brillet – 50 ml\nDark rum – 20 ml\nCoffee – 15 ml\nAngostura Bitters – 1 dash",
-    "timesMade": 0,
-    "image": "images/cocktails/menage-a-trois.jpg",
-    "abv": 0.271
   },
   {
     "id": "naked-and-famous",
@@ -1398,7 +1398,7 @@
     "id": "osco-daiquiri",
     "name": "Osco Daiquiri",
     "description": "Mocktail based on the classic Daiquiri, with Osco Original as a base. Interesting flavors!",
-    "ingredients": "Osco – 50 ml\nLime Juice – 20 ml\nAgave Syrup – 20 ml",
+    "ingredients": "Osco – 50 ml \nLime Juice – 20 ml \nAgave Syrup – 20 ml",
     "timesMade": 0,
     "image": "images/cocktails/oscodaiquiri.jpg",
     "abv": 0.0
@@ -1426,7 +1426,7 @@
     "name": "Osco Tonic",
     "description": "Star mix of the Osco Original alcohol-free mix. Nice and bitter. For a sweeter version, try the Osco Daiquiri!",
     "ingredients": "Tonic water – 80 ml\nOsco – 40 ml",
-    "timesMade": 2,
+    "timesMade": 0,
     "image": "images/cocktails/oscotonic.jpg",
     "abv": 0.0
   },
@@ -1656,6 +1656,15 @@
     "abv": 0.109
   },
   {
+    "id": "sea-breeze",
+    "name": "Sea Breeze",
+    "description": "Dating from the 1920s, originally made with gin and grenadine. Since cranberry juice became popular in the 1950s, the Sea Breeze has featured vodka, cranberry, and grapefruit juice.",
+    "ingredients": "Vodka – 60 ml\nCranberry Juice – 45 ml\nGrapefruit Juice – 45 ml\nLime – 1 wedge",
+    "timesMade": 0,
+    "image": "images/cocktails/sea-breeze.jpg",
+    "abv": 0.16
+  },
+  {
     "id": "seedlip-cosmo",
     "name": "Seedlip Cosmo",
     "description": "A sophisticated and refreshing non-alcoholic cocktail experience . At its core is Seedlip Grove 42, that delivers a zesty, citrus-forward profile with notes of bitter orange, complemented by a dry lemongrass finish.",
@@ -1741,7 +1750,7 @@
     "name": "Sloe Gin Fizz",
     "description": "A variation of the sour family with added carbonation. The term fizz first appeared in Jerry Thomas' 1887 guide. Sloe gin, lemon juice, simple syrup, and club soda create a fruity classic.",
     "ingredients": "Sloe Gin – 45 ml\nLemon Juice – 20 ml\nSimple Syrup – 7 ml\nClub Soda – 90 ml\nLemon Peel – 1",
-    "timesMade": 50,
+    "timesMade": 49,
     "image": "images/cocktails/sloe-gin-fizz.jpg",
     "abv": 0.072
   },
@@ -1768,7 +1777,7 @@
     "name": "Spritz",
     "description": "An Italian wine-based cocktail commonly served as an aperitif in Northeast Italy. Prosecco, Aperol, and soda water combine in this light, refreshing, bittersweet drink now popular worldwide.",
     "ingredients": "Aperol – 40 ml\nSparkling Wine – 60 ml\nClub Soda – 20 ml",
-    "timesMade": 115,
+    "timesMade": 113,
     "image": "images/cocktails/spritz.jpg",
     "abv": 0.097
   },
@@ -1795,7 +1804,7 @@
     "name": "Spritz Cynar",
     "description": "A Spritz version with Cynar, an Italian bitter apéritif of the amaro variety. It is made from 13 herbs and plants, predominantly artichoke (Cynara scolymus), from which the drink derives its name",
     "ingredients": "Cynar – 40 ml\nSparkling Wine – 60 ml\nClub Soda – 20 ml",
-    "timesMade": 3,
+    "timesMade": 2,
     "image": "images/cocktails/spritzcynar.jpg",
     "abv": 0.097
   },
@@ -1818,27 +1827,11 @@
     "abv": 0.097
   },
   {
-    "id": "spritz-limoncello",
-    "name": "Spritz Limoncello",
-    "description": "A Spritz version with Limoncello, a liqueur made from the zest of lemons.",
-    "ingredients": "Lilmoncello – 40 ml\nSparkling Wine – 60 ml\nClub Soda – 20 ml",
-    "timesMade": 0,
-    "image": "images/cocktails/spritzlimoncello.jpg"
-  },
-  {
-    "id": "spritz-sarti-rosa",
-    "name": "Spritz Sarti Rosa",
-    "description": "A Spritz version with Sarti Rosa, an aperitivo crafted with blood orange, mango and passion fruit.",
-    "ingredients": "Sarti Rosa – 40 ml\nSparkling Wine – 60 ml\nClub Soda – 20 ml\nLime juice – 5 ml",
-    "timesMade": 1,
-    "image": "images/cocktails/spritzsartirosa.jpg"
-  },
-  {
     "id": "spritz-select",
     "name": "Spritz Select",
     "description": "A Spritz version with Select, an original Venetian aperitivo crafted with 30 botanicals including juniper berries and rhubarb root for a refined harmony of bitter, floral, and citrus notes.",
     "ingredients": "Select – 40 ml\nSparkling Wine – 60 ml\nClub Soda – 20 ml",
-    "timesMade": 6,
+    "timesMade": 5,
     "image": "images/cocktails/spritzselect.jpg",
     "abv": 0.097
   },
@@ -1888,14 +1881,6 @@
     "abv": 0.285
   },
   {
-    "id": "the-elderflower-collins",
-    "name": "The Elderflower Collins",
-    "description": "A Tom Collins variation using Vodka as a spirit and St Germain for the sweet touch. Very refreshing cooler.",
-    "ingredients": "Vodka – 50 ml\nLemon Juice – 30 ml\nSt Germain – 20 ml\nClub Soda – 150 ml\nLemon – 2 wheels",
-    "timesMade": 2,
-    "image": "images/cocktails/elderflowercollins.jpg"
-  },
-  {
     "id": "the-end-of-the-road",
     "name": "The End of the Road",
     "description": "Created by Chris McMillian and found in the excellent Beta Cocktails book. Equal parts Scotch, Campari, and green Chartreuse make a bold, herbal, and complex spirit-forward cocktail.",
@@ -1909,17 +1894,9 @@
     "name": "The Espresso Martini",
     "description": "Born in the late 1980s when bartenders discovered vodka's potential with fresh ingredients. Vodka, Kahlúa, espresso, and simple syrup are shaken into a rich, caffeinated modern classic.",
     "ingredients": "Vodka – 50 ml\nKahlua – 15 ml\nSimple Syrup – 10 ml\nEspresso – 50 ml\nCoffee Bean – 3",
-    "timesMade": 2,
+    "timesMade": 1,
     "image": "images/cocktails/the-espresso-martini.jpg",
     "abv": 0.184
-  },
-  {
-    "id": "the-sea-breeze",
-    "name": "The Sea Breeze",
-    "description": "Dating from the 1920s, originally made with gin and grenadine. Since cranberry juice became popular in the 1950s, the Sea Breeze has featured vodka, cranberry, and grapefruit juice.",
-    "ingredients": "Vodka – 60 ml\nCranberry Juice – 45 ml\nGrapefruit Juice – 45 ml\nLime – 1 wedge",
-    "timesMade": 1,
-    "image": "images/cocktails/sea-breeze.jpg"
   },
   {
     "id": "tipperary",
@@ -2061,7 +2038,7 @@
     "name": "White Negroni",
     "description": "A lighter, more delicate take on the classic Negroni. Gin is paired with Suze gentian liqueur and Lillet Blanc instead of Campari and sweet vermouth, creating a floral, bittersweet aperitif.",
     "ingredients": "Gin – 30 ml\nSuze – 30 ml\nLillet Blanc – 30 ml\nOrange Peel – 1",
-    "timesMade": 6,
+    "timesMade": 8,
     "image": "images/cocktails/white-negroni.jpg",
     "abv": 0.24
   },
@@ -2070,7 +2047,7 @@
     "name": "White Negroni #2 - Less Suze",
     "description": "A softer variation on the White Negroni with less Suze and more Lillet Blanc. This shifts the balance toward floral and wine-like notes while retaining the gentian's subtle bitterness.",
     "ingredients": "Gin – 30 ml\nSuze – 15 ml\nLillet Blanc – 45 ml",
-    "timesMade": 2,
+    "timesMade": 0,
     "image": "images/cocktails/white-negroni-2-less-suze.jpg",
     "abv": 0.243
   },
