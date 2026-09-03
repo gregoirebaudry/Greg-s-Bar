@@ -1440,6 +1440,15 @@
     "abv": 0.202
   },
   {
+    "id": "pegu-club",
+    "name": "Pegu Club",
+    "description": "The signature drink of the Pegu Club, a long closed gentlemen's club in Rangoon, Burma. The cocktail is now served at the Pegu Club bar in New York City's SoHo district.",
+    "ingredients": "Gin – 52 ml\nTriple Sec – 22 ml\nLime Juice – 15 ml\nOrange Bitters – 1 dash\nAngostura Bitters – 1 dash",
+    "timesMade": 0,
+    "image": "images/cocktails/pegu-club.jpg",
+    "abv": 0.308
+  },
+  {
     "id": "penicillin",
     "name": "Penicillin",
     "description": "A modern classic created by New York bartender Sam Ross. Scotch whisky is combined with honey, lemon juice, and ginger for a soothing, warming cocktail that's a cure for a chilly night.",
